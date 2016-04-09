@@ -1,0 +1,6 @@
+1、apache-tomcat-8.0.33-windows-x64（9.0需要JDK 1.8.0以上支持）
+2、JDK 1.7.0
+3、cocos creator 1.0.0
+4、花生壳 2.8.0
+5、Git 2.7.2
+6、source tree 1.7.0
