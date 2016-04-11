@@ -9,5 +9,5 @@
   "packageName": "org.cocos2d.SGameProject",
   "startScene": "8cde38ca-4fe1-4ef5-aec3-5d40b89eda55",
   "title": "SGameProject",
-  "webOrientation": "landscape"
+  "webOrientation": "auto"
 }
