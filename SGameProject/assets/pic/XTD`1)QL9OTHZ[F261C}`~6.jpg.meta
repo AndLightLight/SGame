@@ -19,9 +19,9 @@
       "width": 28,
       "height": 23,
       "borderTop": 0,
-      "borderBottom": 0,
-      "borderLeft": 0,
-      "borderRight": 0,
+      "borderBottom": 6,
+      "borderLeft": 5,
+      "borderRight": 6,
       "subMetas": {}
     }
   }
