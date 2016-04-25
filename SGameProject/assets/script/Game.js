@@ -15,7 +15,8 @@ cc.Class({
     mousefun: function (event) {
         if (event.type == cc.Node.EventType.MOUSE_UP) {
             var dbmgr = require("datamgr");
-            var tb = dbmgr.GetInstance();
+            var dbmgrinst = dbmgr.GetInstance();
+            var tb = dbmgrinst.GetTalbeByName("Act");
         }
     },
     // use this for initialization

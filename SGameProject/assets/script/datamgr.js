@@ -1,20 +1,16 @@
-cc.Class({
+var DataMgr = cc.Class({
     extends: cc.Component,
     properties: {
         m_table : [],
     },
     
     GetInstance: function () {
-        var _instance = _instance || {};
-        if (_instance == null) {
-            _instance = new this;
-        }
-        return _instance;
+
     },
 
     GetTalbeByName : function (tablename) {
         if (this.m_table[tablename] == null) {
-            var mod = require(tablename + ".js");
+            var mod = require(tablename);
             if (mod) {
                 var tb = mod.LoadFromeJson(tablename + ".json");
                 this.m_table[tablename] = tb;
@@ -23,3 +19,12 @@ cc.Class({
         return this.m_table[tablename];
     },
 });
+
+
+DataMgr._instance;
+DataMgr.GetInstance = function (){
+    if (DataMgr._instance == null) {
+        DataMgr._instance = new DataMgr;
+    }
+    return DataMgr._instance;
+};
