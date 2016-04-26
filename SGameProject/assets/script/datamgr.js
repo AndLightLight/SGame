@@ -33,8 +33,21 @@ var DataMgr = cc.Class({
     GetTalbeByName : function (tablename) {
         if (this.m_table[tablename] == null) {
             cc.log("table is not load: " + tablename + ".json");
+            return null;
         }
         return this.m_table[tablename];
+    },
+    
+    GetInfoByTalbeNameAndId : function (tablename , id) {
+        if (this.m_table[tablename] == null) {
+            cc.log("table is not load: " + tablename + ".json");
+            return null;
+        }
+        if (this.m_table[tablename][id.toString()] == null) {
+            cc.log("table have no id: " + tablename + ".json" + "id" + id);
+            return null;
+        }
+        return this.m_table[tablename][id.toString()];
     },
     
     Init: function () {
