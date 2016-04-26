@@ -22,6 +22,8 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
         this.node.on(cc.Node.EventType.MOUSE_UP,this.mousefun);
+        var d = require("datamgr").GetInstance();
+        require("datamgr").GetInstance().Init();
     },
 
     // called every frame, uncomment this function to activate update callback
