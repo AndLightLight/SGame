@@ -97,7 +97,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 15
+        "__id__": 16
       }
     ],
     "_prefab": null
@@ -201,7 +201,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 14
+        "__id__": 15
       }
     ],
     "_prefab": null
@@ -260,7 +260,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 13
+        "__id__": 14
       }
     ],
     "_prefab": null
@@ -420,7 +420,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 12
+        "__id__": 13
       }
     ],
     "_prefab": null
@@ -473,6 +473,9 @@
     "_components": [
       {
         "__id__": 11
+      },
+      {
+        "__id__": 12
       }
     ],
     "_prefab": null
@@ -485,6 +488,23 @@
       "__id__": 10
     },
     "_enabled": true
+  },
+  {
+    "__type__": "fca57s5NKRE5o/qUuPBMXrQ",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 10
+    },
+    "_enabled": true,
+    "pre": [
+      {
+        "__uuid__": "36ac609e-4c5d-433b-adbc-06bf6f7d54fc"
+      },
+      {
+        "__uuid__": "068081c5-4456-4388-8418-20f3436753a6"
+      }
+    ]
   },
   {
     "__type__": "cc.TiledMap",
