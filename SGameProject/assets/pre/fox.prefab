@@ -53,10 +53,13 @@
     "_components": [
       {
         "__id__": 2
+      },
+      {
+        "__id__": 3
       }
     ],
     "_prefab": {
-      "__id__": 3
+      "__id__": 4
     }
   },
   {
@@ -88,11 +91,20 @@
     }
   },
   {
+    "__type__": "ed4793gIjxLBqzKN9J5QxPK",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true
+  },
+  {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 1
     },
     "asset": null,
-    "fileId": "d7a6aeJCk1B/4fUbmU0sHD4"
+    "fileId": "796a8lhwPtKvrDnvz6L4EXB"
   }
 ]
