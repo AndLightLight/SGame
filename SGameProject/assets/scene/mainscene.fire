@@ -97,7 +97,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 16
+        "__id__": 17
       }
     ],
     "_prefab": null
@@ -201,7 +201,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 15
+        "__id__": 16
       }
     ],
     "_prefab": null
@@ -260,7 +260,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 14
+        "__id__": 15
       }
     ],
     "_prefab": null
@@ -387,8 +387,8 @@
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
+      "x": 0,
+      "y": 0
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -406,8 +406,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 384,
-      "y": 512
+      "x": 24,
+      "y": 149
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -443,8 +443,8 @@
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
+      "x": 0,
+      "y": 0
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -508,7 +508,8 @@
     "map": [],
     "samenum": 3,
     "width": 15,
-    "height": 15
+    "height": 15,
+    "bload": false
   },
   {
     "__type__": "cc.TiledMap",
@@ -521,7 +522,19 @@
     "_tmxFile": {
       "__uuid__": "ff2b7d3f-06c5-45d7-89a2-552f53079940"
     },
-    "mapLoaded": []
+    "mapLoaded": [
+      {
+        "__id__": 14
+      }
+    ]
+  },
+  {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 10
+    },
+    "component": "cc.TiledLayer",
+    "handler": "getTiles"
   },
   {
     "__type__": "cc.Widget",
