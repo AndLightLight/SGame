@@ -61,7 +61,34 @@ var DataMgr = cc.Class({
         for (var i = 0;i < this.jsonConfig.length;i ++) {
             resArray[i] = this.jsonPath + this.jsonConfig[i] + this.jsonHz;
         }
-        cc.loader.load(resArray,this._loadCallBack)
+        //cc.loader.load(resArray,this._loadCallBack)
+        cc.loader.load("project/assets/map/maptest.tmx",function (err,res) {
+            if (!err) {
+                cc.log(res);
+            }
+            else{
+                cc.log(err);
+            }
+        });
+
+        cc.loader.load("project/assets/map/maptest.tmx",function (err,res) {
+            if (!err) {
+                cc.log(res);
+            }
+            else{
+                cc.log(err);
+            }
+        });
+        
+        cc.log("dddddddddd");
+        cc.loader.load("project/assets/map/bag_panel_ui@2x.png",function (err,res) {
+            if (!err) {
+                cc.log(res);
+            }
+            else{
+                cc.log(err);
+            }
+        });
     },
     
     

@@ -17,6 +17,7 @@ cc.Class({
         width: 15,
         height: 15,
         bload: false,
+        num: 2,
     },
 
     // use this for initialization
@@ -73,7 +74,7 @@ cc.Class({
     
     getPosByIndex: function (idx) {
         idx ++;
-        var pos = new cc.v2(idx%this.width-1,idx/this.width);
+        var pos = new cc.v2(idx%this.width-1,Math.floor(idx/this.width));
         return pos;
     },
     

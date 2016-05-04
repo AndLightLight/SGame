@@ -1005,10 +1005,14 @@ declare module cc {
 	/** Constructor 
 	*/
 	export function HashElement() : void;	
-	/** cc.view is the shared view object. */
+	/** !#en cc.view is the shared view object.
+	!#zh cc.view 是全局的视图对象。 */
 	export var view : View;	
+	/** !#en Director
+	!#zh 导演类。 */
 	export var director : Director;	
-	/** cc.winSize is the alias object for the size of the current game window. */
+	/** !#en cc.winSize is the alias object for the size of the current game window.
+	!#zh cc.winSize 为当前的游戏窗口的大小。 */
 	export var winSize : Size;	
 	export var game : Game;	
 	/** Checks whether subclass is child of superclass or equals to superclass 
@@ -1117,173 +1121,384 @@ declare module cc {
 	It is recommended to not use this function every frame instead cache the result at startup. 
 	*/
 	export function find(path : string, referenceNode? : Node) : Node;	
-	/** The convenience method to create a new {{#crossLink "Color/Color:method"}}cc.Color{{/crossLink}}
+	/** !#en
+	The convenience method to create a new {{#crossLink "Color/Color:method"}}cc.Color{{/crossLink}}
 	Alpha channel is optional. Default value is 255.
+	
+	!#zh
+	通过该方法来创建一个新的 {{#crossLink "Color/Color:method"}}cc.Color{{/crossLink}} 对象。
+	Alpha 通道是可选的。默认值是 255。
 	
 	@example 
 	```js
 	-----------------------
 	// 1. All channels seperately as parameters
-	var color1 = cc.color(255, 255, 255, 255);
+	var color1 = new cc.Color(255, 255, 255, 255);
 	// 2. Convert a hex string to a color
-	var color2 = cc.color("#000000");
+	var color2 = new cc.Color("#000000");
 	// 3. An color object as parameter
-	var color3 = cc.color({r: 255, g: 255, b: 255, a: 255});
+	var color3 = new cc.Color({r: 255, g: 255, b: 255, a: 255});
 	
 	``` 
 	*/
 	export function color(r? : number, g? : number, b? : number, a? : number) : Color;	
-	/** returns true if both ccColor3B are equal. Otherwise it returns false. 
+	/** !#en returns true if both ccColor3B are equal. Otherwise it returns false.
+	!#zh 判断两个颜色对象的 RGB 部分是否相等，不比较透明度。
+	
+	@example 
+	```js
+	cc.log(cc.colorEqual(cc.Color.RED, new cc.Color(255, 0, 0))); // true
+	``` 
 	*/
 	export function colorEqual(color1: (r: number, g: number, b: number, a: number) => void, color2: (r: number, g: number, b: number, a: number) => void) : boolean;	
-	/** convert a string of color for style to Color.
-	e.g. "#ff06ff"  to : cc.color(255,6,255) 
+	/** !#en
+	convert a string of color for style to Color.
+	e.g. "#ff06ff"  to : cc.color(255,6,255)。
+	!#zh 16 进制转换为 Color
+	
+	@example 
+	```js
+	cc.hexToColor("#FFFF33"); // Color {r: 255, g: 255, b: 51, a: 255};
+	``` 
 	*/
 	export function hexToColor(hex : string) : Color;	
-	/** convert Color to a string of color for style.
-	e.g.  cc.color(255,6,255)  to : "#ff06ff" 
+	/** !#en
+	convert Color to a string of color for style.
+	e.g.  cc.color(255,6,255)  to : "#ff06ff"
+	!#zh Color 转换为 16进制。
+	
+	@example 
+	```js
+	var color = new cc.Color(255, 6, 255)
+	cc.colorToHex(color); // #ff06ff;
+	``` 
 	*/
 	export function colorToHex(color: (r: number, g: number, b: number, a: number) => void) : string;	
-	/** Define an enum type. If a enum item has a value of -1, it will be given an Integer number according to it's order in the list. Otherwise it will use the value specified by user who writes the enum definition.
+	/** !#en
+	Define an enum type. <br/>
+	If a enum item has a value of -1, it will be given an Integer number according to it's order in the list.<br/>
+	Otherwise it will use the value specified by user who writes the enum definition.
+	
+	!#zh
+	定义一个枚举类型。<br/>
+	用户可以把枚举值设为任意的整数，如果设为 -1，系统将会分配为上一个枚举值 + 1。
 	@param obj a JavaScript literal object containing enum names and values
 	
 	@example 
 	```js
-	Texture.WrapMode = cc.Enum({
-	Repeat: -1,
-	Clamp: -1
+	var WrapMode = cc.Enum({
+	    Repeat: -1,
+	    Clamp: -1
 	});
+	
 	// Texture.WrapMode.Repeat == 0
 	// Texture.WrapMode.Clamp == 1
 	// Texture.WrapMode[0] == "Repeat"
 	// Texture.WrapMode[1] == "Clamp"
 	
 	var FlagType = cc.Enum({
-	Flag1: 1,
-	Flag2: 2,
-	Flag3: 4,
-	Flag4: 8,
+	    Flag1: 1,
+	    Flag2: 2,
+	    Flag3: 4,
+	    Flag4: 8,
 	});
+	
 	var AtlasSizeList = cc.Enum({
-	128: 128,
-	256: 256,
-	512: 512,
-	1024: 1024,
+	    128: 128,
+	    256: 256,
+	    512: 512,
+	    1024: 1024,
 	});
 	``` 
 	*/
 	export function Enum(obj : any) : any;	
-	/** Returns opposite of point. 
-	*/
-	export function pNeg(point : Vec2) : Vec2;	
-	/** Calculates sum of two points. 
-	*/
-	export function pAdd(v1 : Vec2, v2 : Vec2) : Vec2;	
-	/** Calculates difference of two points. 
-	*/
-	export function pSub(v1 : Vec2, v2 : Vec2) : Vec2;	
-	/** Returns point multiplied by given factor. 
-	*/
-	export function pMult(point : Vec2, floatVar : number) : Vec2;	
-	/** Calculates midpoint between two points. 
-	*/
-	export function pMidpoint(v1 : Vec2, v2 : Vec2) : Vec2;	
-	/** Calculates dot product of two points. 
-	*/
-	export function pDot(v1 : Vec2, v2 : Vec2) : number;	
-	/** Calculates cross product of two points. 
-	*/
-	export function pCross(v1 : Vec2, v2 : Vec2) : number;	
-	/** Calculates perpendicular of v, rotated 90 degrees counter-clockwise -- cross(v, perp(v)) greater than 0 
-	*/
-	export function pPerp(point : Vec2) : Vec2;	
-	/** Calculates perpendicular of v, rotated 90 degrees clockwise -- cross(v, rperp(v)) smaller than 0 
-	*/
-	export function pRPerp(point : Vec2) : Vec2;	
-	/** Calculates the projection of v1 over v2. 
-	*/
-	export function pProject(v1 : Vec2, v2 : Vec2) : Vec2;	
-	/** Rotates two points. 
-	*/
-	export function pRotate(v1 : Vec2, v2 : Vec2) : Vec2;	
-	/** Unrotates two points. 
-	*/
-	export function pUnrotate(v1 : Vec2, v2 : Vec2) : Vec2;	
-	/** Calculates the square length of a cc.Vec2 (not calling sqrt() ) 
-	*/
-	export function pLengthSQ(v : Vec2) : number;	
-	/** Calculates the square distance between two points (not calling sqrt() ) 
-	*/
-	export function pDistanceSQ(point1 : Vec2, point2 : Vec2) : number;	
-	/** Calculates distance between point an origin 
-	*/
-	export function pLength(v : Vec2) : number;	
-	/** Calculates the distance between two points 
-	*/
-	export function pDistance(v1 : Vec2, v2 : Vec2) : number;	
-	/** Returns point multiplied to a length of 1. 
-	*/
-	export function pNormalize(v : Vec2) : Vec2;	
-	/** Converts radians to a normalized vector. 
-	*/
-	export function pForAngle(a : number) : Vec2;	
-	/** Converts a vector to radians. 
-	*/
-	export function pToAngle(v : Vec2) : number;	
-	/** Clamp a value between from and to. 
-	*/
-	export function clampf(value : number, min_inclusive : number, max_inclusive : number) : number;	
-	/** Clamp a value between 0 and 1. 
-	*/
-	export function clamp01(value : number) : number;	
-	/** Clamp a point between from and to. 
-	*/
-	export function pClamp(p : Vec2, min_inclusive : number, max_inclusive : number) : Vec2;	
-	/** Quickly convert cc.Size to a cc.Vec2. 
-	*/
-	export function pFromSize(s : Size) : Vec2;	
-	/** Run a math operation function on each point component <br />
-	Math.abs, Math.fllor, Math.ceil, Math.round.
+	/** !#en Returns opposite of Vec2.
+	!#zh 返回相反的向量。
 	
 	@example 
 	```js
-	--------------
-	//For example: let's try to take the floor of x,y
-	var p = cc.pCompOp(cc.p(10,10),Math.abs);
+	cc.pNeg(cc.v2(10, 10));// Vec2 {x: -10, y: -10};
+	``` 
+	*/
+	export function pNeg(point : Vec2) : Vec2;	
+	/** !#en Calculates sum of two points.
+	!#zh 返回两个向量的和。
 	
+	@example 
+	```js
+	cc.pAdd(cc.v2(1, 1), cc.v2(2, 2));// Vec2 {x: 3, y: 3};
+	``` 
+	*/
+	export function pAdd(v1 : Vec2, v2 : Vec2) : Vec2;	
+	/** !#en Calculates difference of two points.
+	!#zh 返回两个向量的差。
+	
+	@example 
+	```js
+	cc.pSub(cc.v2(20, 20), cc.v2(5, 5)); // Vec2 {x: 15, y: 15};
+	``` 
+	*/
+	export function pSub(v1 : Vec2, v2 : Vec2) : Vec2;	
+	/** !#en Returns point multiplied by given factor.
+	!#zh 向量缩放。
+	
+	@example 
+	```js
+	cc.pMult(cc.v2(5, 5), 4); // Vec2 {x: 20, y: 20};
+	``` 
+	*/
+	export function pMult(point : Vec2, floatVar : number) : Vec2;	
+	/** !#en Calculates midpoint between two points.
+	!#zh 两个向量之间的中心点。
+	
+	@example 
+	```js
+	cc.pMidpoint(cc.v2(10, 10), cc.v2(5, 5)); // Vec2 {x: 7.5, y: 7.5};
+	``` 
+	*/
+	export function pMidpoint(v1 : Vec2, v2 : Vec2) : Vec2;	
+	/** !#en Calculates dot product of two points.
+	!#zh 两个向量之间进行点乘。
+	
+	@example 
+	```js
+	cc.pDot(cc.v2(20, 20), cc.v2(5, 5)); // 200;
+	``` 
+	*/
+	export function pDot(v1 : Vec2, v2 : Vec2) : number;	
+	/** !#en Calculates cross product of two points.
+	!#zh 两个向量之间进行叉乘。
+	
+	@example 
+	```js
+	cc.pCross(cc.v2(20, 20), cc.v2(5, 5)); // 0;
+	``` 
+	*/
+	export function pCross(v1 : Vec2, v2 : Vec2) : number;	
+	/** !#en Calculates perpendicular of v, rotated 90 degrees counter-clockwise -- cross(v, perp(v)) greater than 0.
+	!#zh 返回逆时针旋转 90 度后的新向量。
+	
+	@example 
+	```js
+	cc.pPerp(cc.v2(20, 20)); // Vec2 {x: -20, y: 20};
+	``` 
+	*/
+	export function pPerp(point : Vec2) : Vec2;	
+	/** !#en Calculates perpendicular of v, rotated 90 degrees clockwise -- cross(v, rperp(v)) smaller than 0.
+	!#zh 将指定向量顺时针旋转 90 度并返回。
+	
+	@example 
+	```js
+	cc.pRPerp(cc.v2(20, 20)); // Vec2 {x: 20, y: -20};
+	``` 
+	*/
+	export function pRPerp(point : Vec2) : Vec2;	
+	/** !#en Calculates the projection of v1 over v2.
+	!#zh 返回 v1 在 v2 上的投影向量。
+	
+	@example 
+	```js
+	var v1 = cc.v2(20, 20);
+	var v2 = cc.v2(5, 5);
+	cc.pProject(v1, v2); // Vec2 {x: 20, y: 20};
+	``` 
+	*/
+	export function pProject(v1 : Vec2, v2 : Vec2) : Vec2;	
+	/** !#en Calculates the square length of a cc.Vec2 (not calling sqrt() ).
+	!#zh 返回指定向量长度的平方。
+	
+	@example 
+	```js
+	cc.pLengthSQ(cc.v2(20, 20)); // 800;
+	``` 
+	*/
+	export function pLengthSQ(v : Vec2) : number;	
+	/** !#en Calculates the square distance between two points (not calling sqrt() ).
+	!#zh 返回两个点之间距离的平方。
+	
+	@example 
+	```js
+	var point1 = cc.v2(20, 20);
+	var point2 = cc.v2(5, 5);
+	cc.pDistanceSQ(point1, point2); // 450;
+	``` 
+	*/
+	export function pDistanceSQ(point1 : Vec2, point2 : Vec2) : number;	
+	/** !#en Calculates distance between point an origin.
+	!#zh 返回指定向量的长度.
+	
+	@example 
+	```js
+	cc.pLength(cc.v2(20, 20)); // 28.284271247461902;
+	``` 
+	*/
+	export function pLength(v : Vec2) : number;	
+	/** !#en Calculates the distance between two points.
+	!#zh 返回指定 2 个向量之间的距离。
+	
+	@example 
+	```js
+	var v1 = cc.v2(20, 20);
+	var v2 = cc.v2(5, 5);
+	cc.pDistance(v1, v2); // 21.213203435596427;
+	``` 
+	*/
+	export function pDistance(v1 : Vec2, v2 : Vec2) : number;	
+	/** !#en Returns this vector with a magnitude of 1.
+	!#zh 返回一个长度为 1 的标准化过后的向量。
+	
+	@example 
+	```js
+	cc.pNormalize(cc.v2(20, 20)); // Vec2 {x: 0.7071067811865475, y: 0.7071067811865475};
+	``` 
+	*/
+	export function pNormalize(v : Vec2) : Vec2;	
+	/** !#en Converts radians to a normalized vector.
+	!#zh 将弧度转换为一个标准化后的向量，返回坐标 x = cos(a) , y = sin(a)。
+	
+	@example 
+	```js
+	cc.pForAngle(20); // Vec2 {x: 0.40808206181339196, y: 0.9129452507276277};
+	``` 
+	*/
+	export function pForAngle(a : number) : Vec2;	
+	/** !#en Converts a vector to radians.
+	!#zh 返回指定向量的弧度。
+	
+	@example 
+	```js
+	cc.pToAngle(cc.v2(20, 20)); // 0.7853981633974483;
+	``` 
+	*/
+	export function pToAngle(v : Vec2) : number;	
+	/** !#en Clamp a value between from and to.
+	!#zh
+	限定浮点数的最大最小值。<br/>
+	数值大于 max_inclusive 则返回 max_inclusive。<br/>
+	数值小于 min_inclusive 则返回 min_inclusive。<br/>
+	否则返回自身。
+	
+	@example 
+	```js
+	var v1 = cc.clampf(20, 0, 20); // 20;
+	var v2 = cc.clampf(-1, 0, 20); //  0;
+	var v3 = cc.clampf(10, 0, 20); // 10;
+	``` 
+	*/
+	export function clampf(value : number, min_inclusive : number, max_inclusive : number) : number;	
+	/** !#en Clamp a value between 0 and 1.
+	!#zh 限定浮点数的取值范围为 0 ~ 1 之间。
+	
+	@example 
+	```js
+	var v1 = cc.clampf(20);  // 1;
+	var v2 = cc.clampf(-1);  // 0;
+	var v3 = cc.clampf(0.5); // 0.5;
+	``` 
+	*/
+	export function clamp01(value : number) : number;	
+	/** !#en Clamp a point between from and to.
+	!#zh
+	返回指定限制区域后的向量。<br/>
+	向量大于 max_inclusive 则返回 max_inclusive。<br/>
+	向量小于 min_inclusive 则返回 min_inclusive。<br/>
+	否则返回自身。
+	
+	@example 
+	```js
+	var min_inclusive = cc.v2(0, 0);
+	var max_inclusive = cc.v2(20, 20);
+	var v1 = cc.pClamp(cc.v2(20, 20), min_inclusive, max_inclusive); // Vec2 {x: 20, y: 20};
+	var v2 = cc.pClamp(cc.v2(0, 0), min_inclusive, max_inclusive);   // Vec2 {x: 0, y: 0};
+	var v3 = cc.pClamp(cc.v2(10, 10), min_inclusive, max_inclusive); // Vec2 {x: 10, y: 10};
+	``` 
+	*/
+	export function pClamp(p : Vec2, min_inclusive : Vec2, max_inclusive : Vec2) : Vec2;	
+	/** !#en Quickly convert cc.Size to a cc.Vec2.
+	!#zh 快速转换 cc.Size 为 cc.Vec2。
+	
+	@example 
+	```js
+	cc.pFromSize(new cc.size(20, 20)); // Vec2 {x: 20, y: 20};
+	``` 
+	*/
+	export function pFromSize(s : Size) : Vec2;	
+	/** !#en
+	Run a math operation function on each point component <br />
+	Math.abs, Math.fllor, Math.ceil, Math.round.
+	!#zh 通过运行指定的数学运算函数来计算指定的向量。
+	
+	@example 
+	```js
+	cc.pCompOp(cc.p(-10, -10), Math.abs); // Vec2 {x: 10, y: 10};
 	``` 
 	*/
 	export function pCompOp(p : Vec2, opFunc : Function) : Vec2;	
-	/** Linear Interpolation between two points a and b.
-	alpha == 0 ? a
-	alpha == 1 ? b
-	otherwise a value between a..b 
+	/** !#en
+	Linear Interpolation between two points a and b.<br />
+	alpha == 0 ? a <br />
+	alpha == 1 ? b <br />
+	otherwise a value between a..b.
+	!#zh
+	两个点 A 和 B 之间的线性插值。 <br />
+	alpha == 0 ? a <br />
+	alpha == 1 ? b <br />
+	否则这个数值在 a ~ b 之间。
+	
+	@example 
+	```js
+	cc.pLerp(cc.v2(20, 20), cc.v2(5, 5), 0.5); // Vec2 {x: 12.5, y: 12.5};
+	``` 
 	*/
 	export function pLerp(a : Vec2, b : Vec2, alpha : number) : Vec2;	
-	/**  
+	/** !#en TODO
+	!#zh
+	近似判断两个点是否相等。<br/>
+	判断 2 个向量是否在指定数值的范围之内，如果在则返回 true，反之则返回 false。
+	
+	@example 
+	```js
+	var a = cc.v2(20, 20);
+	var b = cc.v2(5, 5);
+	var b1 = cc.pFuzzyEqual(a, b, 10); // false;
+	var b2 = cc.pFuzzyEqual(a, b, 18); // true;
+	``` 
 	*/
 	export function pFuzzyEqual(a : Vec2, b : Vec2, variance : number) : boolean;	
-	/** Multiplies a nd b components, a.x*b.x, a.y*b.y. 
+	/** !#en Multiplies a nd b components, a.x*b.x, a.y*b.y.
+	!#zh 计算两个向量的每个分量的乘积， a.x * b.x, a.y * b.y。
+	
+	@example 
+	```js
+	cc.pCompMult(acc.v2(20, 20), cc.v2(5, 5)); // Vec2 {x: 100, y: 100};
+	``` 
 	*/
 	export function pCompMult(a : Vec2, b : Vec2) : Vec2;	
-	/**  
+	/** !#en TODO
+	!#zh 返回两个向量之间带正负号的弧度。 
 	*/
 	export function pAngleSigned(a : Vec2, b : Vec2) : number;	
-	/**  
+	/** !#en TODO
+	!#zh 获取当前向量与指定向量之间的弧度角。 
 	*/
 	export function pAngle(a : Vec2, b : Vec2) : number;	
-	/** Rotates a point counter clockwise by the angle around a pivot.
+	/** !#en Rotates a point counter clockwise by the angle around a pivot.
+	!#zh 返回给定向量围绕指定轴心顺时针旋转一定弧度后的结果。
 	@param v v is the point to rotate
 	@param pivot pivot is the pivot, naturally
 	@param angle angle is the angle of rotation cw in radians 
 	*/
 	export function pRotateByAngle(v : Vec2, pivot : Vec2, angle : number) : Vec2;	
-	/** A general line-line intersection test
+	/** !#en
+	A general line-line intersection test
 	indicating successful intersection of a line<br />
 	note that to truly test intersection for segments we have to make<br />
 	sure that s & t lie within [0..1] and for rays, make sure s & t > 0<br />
 	the hit point is        p3 + t * (p4 - p3);<br />
 	the hit point also is    p1 + s * (p2 - p1);
+	!#zh
+	返回 A 为起点 B 为终点线段 1 所在直线和 C 为起点 D 为终点线段 2 所在的直线是否相交，<br />
+	如果相交返回 true，反之则为 false，参数 retP 是返回交点在线段 1、线段 2 上的比例。
 	@param A A is the startpoint for the first line P1 = (p1 - p2).
 	@param B B is the endpoint for the first line P1 = (p1 - p2).
 	@param C C is the startpoint for the second line P2 = (p3 - p4).
@@ -1292,114 +1507,290 @@ declare module cc {
 	retP.y is the range for a hitpoint in P3 (pa = p2 + t*(p4 - p3)). 
 	*/
 	export function pLineIntersect(A : Vec2, B : Vec2, C : Vec2, D : Vec2, retP : Vec2) : boolean;	
-	/** ccpSegmentIntersect return YES if Segment A-B intersects with segment C-D. 
+	/** !#en ccpSegmentIntersect return YES if Segment A-B intersects with segment C-D.
+	!#zh 返回线段 A - B 和线段 C - D 是否相交。 
 	*/
 	export function pSegmentIntersect(A : Vec2, B : Vec2, C : Vec2, D : Vec2) : boolean;	
-	/** ccpIntersectPoint return the intersection point of line A-B, C-D. 
+	/** !#en ccpIntersectPoint return the intersection point of line A-B, C-D.
+	!#zh 返回线段 A - B 和线段 C - D 的交点。 
 	*/
 	export function pIntersectPoint(A : Vec2, B : Vec2, C : Vec2, D : Vec2) : Vec2;	
-	/** check to see if both points are equal.
+	/** !#en check to see if both points are equal.
+	!#zh 检查指定的 2 个向量是否相等。
 	@param A A ccp a
 	@param B B ccp b to be compared 
 	*/
 	export function pSameAs(A : Vec2, B : Vec2) : boolean;	
-	/** sets the position of the point to 0. 
+	/** !#en sets the position of the point to 0.
+	!#zh 设置指定向量归 0。 
 	*/
 	export function pZeroIn(v : Vec2) : void;	
-	/** copies the position of one point to another. 
+	/** !#en copies the position of one point to another.
+	!#zh 令 v1 向量等同于 v2。 
 	*/
 	export function pIn(v1 : Vec2, v2 : Vec2) : void;	
-	/** multiplies the point with the given factor (inplace). 
+	/** !#en multiplies the point with the given factor (inplace).
+	!#zh 向量缩放，结果保存到第一个向量。 
 	*/
 	export function pMultIn(point : Vec2, floatVar : number) : void;	
-	/** subtracts one point from another (inplace). 
+	/** !#en subtracts one point from another (inplace).
+	!#zh 向量减法，结果保存到第一个向量。 
 	*/
 	export function pSubIn(v1 : Vec2, v2 : Vec2) : void;	
-	/** adds one point to another (inplace). 
+	/** !#en adds one point to another (inplace).
+	!#zh 向量加法，结果保存到第一个向量。 
 	*/
 	export function pAddIn(v1 : Vec2, v2 : Vec2) : void;	
-	/** normalizes the point (inplace). 
+	/** !#en normalizes the point (inplace).
+	!#zh 规范化 v 向量，设置 v 向量长度为 1。 
 	*/
 	export function pNormalizeIn(v : Vec2) : void;	
-	/** The convenience method to create a new Rect.
-	see {{#crossLink "Rect/Rect:method"}}cc.Rect{{/crossLink}} 
+	/** !#en
+	The convenience method to create a new Rect.
+	see {{#crossLink "Rect/Rect:method"}}cc.Rect{{/crossLink}}
+	!#zh
+	该方法用来快速创建一个新的矩形。{{#crossLink "Rect/Rect:method"}}cc.Rect{{/crossLink}}
+	
+	@example 
+	```js
+	var a = new cc.rect(0 , 0, 10, 0);
+	``` 
 	*/
 	export function rect(x? : Number[]|number, y? : number, w? : number, h? : number) : Rect;	
-	/** Check whether a rect's value equals to another.
-	@param rect1 Constructor of cc.Rect class.
+	/** !#en Check whether a rect's value equals to another.
+	!#zh 判断两个矩形是否相等。
+	@param rect1 !#en
+	Constructor of cc.Rect class.
 	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
-	@param rect2 Constructor of cc.Rect class.
-	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method. 
+	!#zh
+	cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
+	@param rect2 !#en
+	Constructor of cc.Rect class.
+	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
+	!#zh
+	cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
+	
+	@example 
+	```js
+	var a = new cc.rect(0, 0, 10, 10);
+	var b = new cc.rect(0, 0, 5, 5);
+	cc.rectEqualToRect(a, b); // false;
+	var c = new cc.rect(0, 0, 5, 5);
+	cc.rectEqualToRect(b, c); // true;
+	``` 
 	*/
 	export function rectEqualToRect(rect1: (x: number, y: number, w: number, h: number) => void, rect2: (x: number, y: number, w: number, h: number) => void) : boolean;	
-	/** Check whether the rect1 contains rect2.
-	@param rect1 Constructor of cc.Rect class.
+	/** !#en Check whether the rect1 contains rect2.
+	!#zh
+	检查 rect1 矩形是否包含 rect2 矩形。 <br/>
+	注意：如果要允许 rect1 和 rect2 的边界重合，应该用 cc.rectOverlapsRect
+	@param rect1 !#en
+	Constructor of cc.Rect class.
 	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
-	@param rect2 Constructor of cc.Rect class.
-	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method. 
+	!#zh
+	cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
+	@param rect2 !#en
+	Constructor of cc.Rect class.
+	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
+	!#zh
+	cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
+	
+	@example 
+	```js
+	var a = new cc.rect(0, 0, 20, 20);
+	var b = new cc.rect(10, 10, 20, 20);
+	cc.rectContainsRect(a, b); // true;
+	``` 
 	*/
 	export function rectContainsRect(rect1: (x: number, y: number, w: number, h: number) => void, rect2: (x: number, y: number, w: number, h: number) => void) : boolean;	
-	/** Returns the rightmost x-value of a rect.
-	@param rect Constructor of cc.Rect class.
-	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method. 
+	/** !#en Returns the rightmost x-value of a rect.
+	!#zh 返回矩形在 x 轴上的最大值
+	@param rect !#en
+	Constructor of cc.Rect class.
+	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
+	!#zh
+	cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
+	
+	@example 
+	```js
+	var a = new cc.rect(10, 0, 20, 20);
+	cc.rectGetMaxX(a); // 30;
+	``` 
 	*/
 	export function rectGetMaxX(rect: (x: number, y: number, w: number, h: number) => void) : number;	
-	/** Return the midpoint x-value of a rect.
-	@param rect Constructor of cc.Rect class.
-	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method. 
+	/** !#en Return the midpoint x-value of a rect.
+	!#zh 返回矩形在 x 轴上的中点。
+	@param rect !#en
+	Constructor of cc.Rect class.
+	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
+	!#zh
+	cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
+	
+	@example 
+	```js
+	var a = new cc.rect(10, 0, 20, 20);
+	cc.rectGetMidX(a); // 20;
+	``` 
 	*/
 	export function rectGetMidX(rect: (x: number, y: number, w: number, h: number) => void) : number;	
-	/** Returns the leftmost x-value of a rect.
-	@param rect Constructor of cc.Rect class.
-	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method. 
+	/** !#en Returns the leftmost x-value of a rect.
+	!#zh 返回矩形在 x 轴上的最小值。
+	@param rect !#en
+	Constructor of cc.Rect class.
+	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
+	!#zh
+	cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
+	
+	@example 
+	```js
+	var a = new cc.rect(10, 0, 20, 20);
+	cc.rectGetMinX(a); // 10;
+	``` 
 	*/
 	export function rectGetMinX(rect: (x: number, y: number, w: number, h: number) => void) : number;	
-	/** Return the topmost y-value of a rect.
-	@param rect Constructor of cc.Rect class.
-	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method. 
+	/** !#en Return the topmost y-value of a rect.
+	!#zh 返回矩形在 y 轴上的最大值。
+	@param rect !#en
+	Constructor of cc.Rect class.
+	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
+	!#zh
+	cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
+	
+	@example 
+	```js
+	var a = new cc.rect(0, 10, 20, 20);
+	cc.rectGetMaxY(a); // 30;
+	``` 
 	*/
 	export function rectGetMaxY(rect: (x: number, y: number, w: number, h: number) => void) : number;	
-	/** Return the midpoint y-value of `rect'.
-	@param rect Constructor of cc.Rect class.
-	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method. 
+	/** !#en Return the midpoint y-value of `rect'.
+	!#zh 返回矩形在 y 轴上的中点。
+	@param rect !#en
+	Constructor of cc.Rect class.
+	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
+	!#zh
+	cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
+	
+	@example 
+	```js
+	var a = new cc.rect(0, 10, 20, 20);
+	cc.rectGetMidY(a); // 20;
+	``` 
 	*/
 	export function rectGetMidY(rect: (x: number, y: number, w: number, h: number) => void) : number;	
-	/** Return the bottommost y-value of a rect.
-	@param rect Constructor of cc.Rect class.
-	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method. 
+	/** !#en Return the bottommost y-value of a rect.
+	!#zh 返回矩形在 y 轴上的最小值。
+	@param rect !#en
+	Constructor of cc.Rect class.
+	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
+	!#zh
+	cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
+	
+	@example 
+	```js
+	var a = new cc.rect(0, 10, 20, 20);
+	cc.rectGetMinY(a); // 10;
+	``` 
 	*/
 	export function rectGetMinY(rect: (x: number, y: number, w: number, h: number) => void) : number;	
-	/** Check whether a rect contains a point.
-	@param rect Constructor of cc.Rect class.
-	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method. 
+	/** !#en Check whether a rect contains a point.
+	!#zh 检查一个矩形是否包含某个坐标点。
+	@param rect !#en
+	Constructor of cc.Rect class.
+	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
+	!#zh
+	cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
+	
+	@example 
+	```js
+	var a = new cc.rect(0, 10, 20, 20);
+	var b = cc.v2(0, 10, 10, 10);
+	cc.rectContainsPoint(a, b); // true;
+	``` 
 	*/
 	export function rectContainsPoint(rect: (x: number, y: number, w: number, h: number) => void, point : Vec2) : boolean;	
-	/** Check whether a rect intersect with another.
-	@param rectA Constructor of cc.Rect class.
+	/** !#en Check whether a rect intersect with another.
+	!#zh 检查一个矩形是否与另一个相交。
+	@param rectA !#en
+	Constructor of cc.Rect class.
 	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
-	@param rectB Constructor of cc.Rect class.
-	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method. 
+	!#zh
+	cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
+	@param rectB !#en
+	Constructor of cc.Rect class.
+	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
+	!#zh
+	cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
+	
+	@example 
+	```js
+	var a = new cc.rect(0, 10, 20, 20);
+	var b = new cc.rect(0, 10, 10, 10);
+	cc.rectIntersectsRect(a, b); // true;
+	``` 
 	*/
 	export function rectIntersectsRect(rectA: (x: number, y: number, w: number, h: number) => void, rectB: (x: number, y: number, w: number, h: number) => void) : boolean;	
-	/** Check whether a rect overlaps another.
-	@param rectA Constructor of cc.Rect class.
+	/** !#en Check whether a rect overlaps another.
+	!#zh 检查一个矩形是否重叠另一个。
+	@param rectA !#en
+	Constructor of cc.Rect class.
 	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
-	@param rectB Constructor of cc.Rect class.
-	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method. 
+	!#zh
+	cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
+	@param rectB !#en
+	Constructor of cc.Rect class.
+	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
+	!#zh
+	cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
+	
+	@example 
+	```js
+	var a = new cc.rect(0, 10, 20, 20);
+	var b = new cc.rect(0, 10, 10, 10);
+	cc.rectOverlapsRect(a, b); // true;
+	``` 
 	*/
 	export function rectOverlapsRect(rectA: (x: number, y: number, w: number, h: number) => void, rectB: (x: number, y: number, w: number, h: number) => void) : boolean;	
-	/** Returns the smallest rectangle that contains the two source rectangles.
-	@param rectA Constructor of cc.Rect class.
+	/** !#en Returns the smallest rectangle that contains the two source rectangles.
+	!#zh 返回一个包含两个指定矩形的最小矩形。
+	@param rectA !#en
+	Constructor of cc.Rect class.
 	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
-	@param rectB Constructor of cc.Rect class.
-	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method. 
+	!#zh
+	cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
+	@param rectB !#en
+	Constructor of cc.Rect class.
+	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
+	!#zh
+	cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
+	
+	@example 
+	```js
+	var a = new cc.rect(0, 10, 20, 20);
+	var b = new cc.rect(0, 10, 10, 10);
+	cc.rectUnion(a, b); // Rect {x: 0, y: 10, width: 20, height: 20};
+	``` 
 	*/
 	export function rectUnion(rectA: (x: number, y: number, w: number, h: number) => void, rectB: (x: number, y: number, w: number, h: number) => void) : Rect;	
-	/** Returns the overlapping portion of 2 rectangles.
-	@param rectA Constructor of cc.Rect class.
+	/** !#en Returns the overlapping portion of 2 rectangles.
+	!#zh 返回 2 个矩形重叠的部分。
+	@param rectA !#en
+	Constructor of cc.Rect class.
 	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
-	@param rectB Constructor of cc.Rect class.
-	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method. 
+	!#zh
+	cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
+	@param rectB !#en
+	Constructor of cc.Rect class.
+	see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
+	!#zh
+	cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
+	
+	@example 
+	```js
+	var a = new cc.rect(0, 10, 20, 20);
+	var b = new cc.rect(0, 10, 10, 10);
+	cc.rectIntersection(a, b); // Rect {x: 0, y: 10, width: 10, height: 10};
+	``` 
 	*/
 	export function rectUnion(rectA: (x: number, y: number, w: number, h: number) => void, rectB: (x: number, y: number, w: number, h: number) => void) : Rect;	
 	export function V3F_C4B_T2F_QuadZero() : V3F_C4B_T2F_Quad;	
@@ -1409,10 +1800,20 @@ declare module cc {
 	/**  
 	*/
 	export function V3F_C4B_T2F_QuadsCopy(sourceQuads : any[]) : any[];	
-	/** The convenience method to create a new {{#crossLink "Vec2"}}cc.Vec2{{/crossLink}}. 
+	/** !#en The convenience method to create a new {{#crossLink "Vec2"}}cc.Vec2{{/crossLink}}.
+	!#zh 通过该简便的函数进行创建 {{#crossLink "Vec2"}}cc.Vec2{{/crossLink}} 对象。
+	
+	@example 
+	```js
+	var v1 = cc.v2();
+	var v2 = cc.v2(0, 0);
+	var v3 = cc.v2(v2);
+	var v4 = cc.v2({x: 100, y: 100});
+	``` 
 	*/
 	export function v2(x? : number|any, y? : number) : Vec2;	
-	/** The convenience method to creates a new {{#crossLink "Vec2"}}cc.Vec2{{/crossLink}}.
+	/** !#en The convenience method to creates a new {{#crossLink "Vec2"}}cc.Vec2{{/crossLink}}.
+	!#zh 通过该简便的函数进行创建 {{#crossLink "Vec2"}}cc.Vec2{{/crossLink}} 对象。
 	@param x a Number or a size object
 	
 	@example 
@@ -1424,11 +1825,18 @@ declare module cc {
 	``` 
 	*/
 	export function p(x? : number|any, y? : number) : Vec2;	
-	/** Check whether a point's value equals to another
-	@param point1 Constructor
+	/** !#en Check whether a point's value equals to another.
+	!#zh 判断两个向量是否相等。
+	@param point1 !#en
+	Constructor
 	see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
-	@param point2 Constructor
-	see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}} 
+	!#zh
+	构造函数，可查看 {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} 或者 {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
+	@param point2 !#en
+	Constructor
+	see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
+	!#zh
+	构造函数，可查看 {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} 或者 {{#crossLink "cc/p:method"}}cc.p{{/crossLink}} 
 	*/
 	export function pointEqualToPoint(point1: (x: number, y: number) => void, point2: (x: number, y: number) => void) : boolean;	
 	/** Enum for debug modes. */
@@ -1551,9 +1959,7 @@ declare module cc {
 		
 		@example 
 		
-		//example
 		action.easeing(cc.easeIn(3.0));,```js
-		//example
 		action.easeing(cc.easeIn(3.0));
 		``` 
 		*/
@@ -2023,19 +2429,13 @@ declare module cc {
 		/** Pause the director's ticker 
 		*/
 		pause() : void;		
-		/** Suspends the execution of the running scene, pushing it on the stack of suspended scenes.<br/>
-		The new scene will be executed.<br/>
-		Try to avoid big stacks of pushed scenes to reduce memory allocation.<br/>
-		ONLY call it if there is a running scene. 
-		*/
-		pushScene(scene : Scene) : void;		
 		/** Run a scene. Replaces the running scene with a new one or enter the first scene.
 		The new scene will be launched immediately.
 		@param scene The need run scene.
 		@param onBeforeLoadScene The function invoked at the scene before loading.
 		@param onLaunched The function invoked at the scene after launch. 
 		*/
-		runScene(scene : Scene, onBeforeLoadScene? : Function, onLaunched? : Function) : void;		
+		runSceneImmediate(scene : Scene, onBeforeLoadScene? : Function, onLaunched? : Function) : void;		
 		/** Run a scene. Replaces the running scene with a new one or enter the first scene.
 		The new scene will be launched at the end of the current frame.
 		@param scene The need run scene.
@@ -2137,82 +2537,129 @@ declare module cc {
 		*/
 		getDeltaTime() : number;	
 	}		
-		/** cc.game is the singleton object for game related functions. */
+		/** !#en cc.game is the singleton object for game related functions.
+		!#zh cc.game 是 Game 的实例，用来驱动整个游戏。 */
 		export class Game {		
-		/** The outer frame of the game canvas, parent of cc.container. */
+		/** !#en The outer frame of the game canvas, parent of cc.container.
+		!#zh 游戏画布的外框，cc.container 的父类。 */
 		frame : any;		
-		/** The container of game canvas, equals to cc.container. */
+		/** !#en The container of game canvas, equals to cc.container.
+		!#zh 游戏画布的容器。 */
 		container : any;		
-		/** The canvas of the game, equals to cc._canvas. */
+		/** !#en The canvas of the game, equals to cc._canvas.
+		!#zh 游戏的画布。 */
 		canvas : any;		
-		/** The current game configuration, including:
-		1. debugMode
-		     "debugMode" possible values :
-		     0 - No message will be printed.
-		     1 - cc.error, cc.assert, cc.warn, cc.log will print in console.
-		     2 - cc.error, cc.assert, cc.warn will print in console.
-		     3 - cc.error, cc.assert will print in console.
-		     4 - cc.error, cc.assert, cc.warn, cc.log will print on canvas, available only on web.
-		     5 - cc.error, cc.assert, cc.warn will print on canvas, available only on web.
-		     6 - cc.error, cc.assert will print on canvas, available only on web.
-		2. showFPS
-		     Left bottom corner fps information will show when "showFPS" equals true, otherwise it will be hide.
-		3. frameRate
-		     "frameRate" set the wanted frame rate for your game, but the real fps depends on your game implementation and the running environment.
-		4. id
-		     "gameCanvas" sets the id of your canvas element on the web page, it's useful only on web.
-		5. renderMode
-		     "renderMode" sets the renderer type, only useful on web :
-		     0 - Automatically chosen by engine
-		     1 - Forced to use canvas renderer
-		     2 - Forced to use WebGL renderer, but this will be ignored on mobile browsers
-		6. scenes
-		     "scenes" include available scenes in the current bundle.
-		
-		Please DO NOT modify this object directly, it won't have any effect. */
+		/** !#en
+		The current game configuration, including:<br/>
+		1. debugMode<br/>
+		     "debugMode" possible values :<br/>
+		     0 - No message will be printed.                                                      <br/>
+		     1 - cc.error, cc.assert, cc.warn, cc.log will print in console.                      <br/>
+		     2 - cc.error, cc.assert, cc.warn will print in console.                              <br/>
+		     3 - cc.error, cc.assert will print in console.                                       <br/>
+		     4 - cc.error, cc.assert, cc.warn, cc.log will print on canvas, available only on web.<br/>
+		     5 - cc.error, cc.assert, cc.warn will print on canvas, available only on web.        <br/>
+		     6 - cc.error, cc.assert will print on canvas, available only on web.                 <br/>
+		2. showFPS<br/>
+		     Left bottom corner fps information will show when "showFPS" equals true, otherwise it will be hide.<br/>
+		3. frameRate<br/>
+		     "frameRate" set the wanted frame rate for your game, but the real fps depends on your game implementation and the running environment.<br/>
+		4. id<br/>
+		     "gameCanvas" sets the id of your canvas element on the web page, it's useful only on web.<br/>
+		5. renderMode<br/>
+		     "renderMode" sets the renderer type, only useful on web :<br/>
+		     0 - Automatically chosen by engine<br/>
+		     1 - Forced to use canvas renderer<br/>
+		     2 - Forced to use WebGL renderer, but this will be ignored on mobile browsers<br/>
+		6. scenes<br/>
+		     "scenes" include available scenes in the current bundle.<br/>
+		<br/>
+		Please DO NOT modify this object directly, it won't have any effect.<br/>
+		!#zh
+		当前的游戏配置，包括：                                                                  <br/>
+		1. debugMode（debug 模式，但是在浏览器中这个选项会被忽略）                                <br/>
+		     "debugMode" 各种设置选项的意义。                                                   <br/>
+		         0 - 没有消息被打印出来。                                                       <br/>
+		         1 - cc.error，cc.assert，cc.warn，cc.log 将打印在 console 中。                  <br/>
+		         2 - cc.error，cc.assert，cc.warn 将打印在 console 中。                          <br/>
+		         3 - cc.error，cc.assert 将打印在 console 中。                                   <br/>
+		         4 - cc.error，cc.assert，cc.warn，cc.log 将打印在 canvas 中（仅适用于 web 端）。 <br/>
+		         5 - cc.error，cc.assert，cc.warn 将打印在 canvas 中（仅适用于 web 端）。         <br/>
+		         6 - cc.error，cc.assert 将打印在 canvas 中（仅适用于 web 端）。                  <br/>
+		2. showFPS（显示 FPS）                                                            <br/>
+		     当 showFPS 为 true 的时候界面的左下角将显示 fps 的信息，否则被隐藏。              <br/>
+		3. frameRate (帧率)                                                              <br/>
+		     “frameRate” 设置想要的帧率你的游戏，但真正的FPS取决于你的游戏实现和运行环境。      <br/>
+		4. id                                                                            <br/>
+		     "gameCanvas" Web 页面上的 Canvas Element ID，仅适用于 web 端。                         <br/>
+		5. renderMode（渲染模式）                                                         <br/>
+		     “renderMode” 设置渲染器类型，仅适用于 web 端：                              <br/>
+		         0 - 通过引擎自动选择。                                                     <br/>
+		         1 - 强制使用 canvas 渲染。
+		         2 - 强制使用 WebGL 渲染，但是在部分 Android 浏览器中这个选项会被忽略。     <br/>
+		6. scenes                                                                         <br/>
+		     “scenes” 当前包中可用场景。                                                   <br/>
+		<br/>
+		注意：请不要直接修改这个对象，它不会有任何效果。 */
 		config : any;		
-		/** Callback when the scripts of engine have been load. 
+		/** !#en Callback when the scripts of engine have been load.
+		!#zh 当引擎完成启动后的回调函数。 
 		*/
 		onStart() : void;		
-		/** Callback when game exits. 
+		/** !#en Callback when game exits.
+		!#zh 当游戏结束后的回调函数。 
 		*/
 		onStop() : void;		
-		/** Set frameRate of game. 
+		/** !#en Set frameRate of game.
+		!#zh 设置游戏帧率。 
 		*/
 		setFrameRate(frameRate : number) : void;		
-		/** Run the game frame by frame. 
+		/** !#en Run the game frame by frame.
+		!#zh 执行一帧游戏循环。 
 		*/
 		step() : void;		
-		/** Pause the game. 
+		/** !#en Pause the game.
+		!#zh 暂停游戏。 
 		*/
 		pause() : void;		
-		/** Resume the game from pause. 
+		/** !#en Resume the game from pause.
+		!#zh 继续游戏 
 		*/
 		resume() : void;		
-		/** Check whether the game is paused. 
+		/** !#en Check whether the game is paused.
+		!#zh 判断游戏是否暂停。 
 		*/
 		isPaused() : boolean;		
-		/** Restart game. 
+		/** !#en Restart game.
+		!#zh 重新开始游戏 
 		*/
 		restart() : void;		
-		/** Prepare game. 
+		/** !#en Prepare game.
+		!#zh 准备引擎，请不要直接调用这个函数。 
 		*/
 		prepare(cb : Function) : void;		
-		/** Run game with configuration object and onStart function.
+		/** !#en Run game with configuration object and onStart function.
+		!#zh 运行游戏，并且指定引擎配置和 onStart 的回调。
 		@param config Pass configuration object or onStart function
 		@param onStart function to be executed after game initialized 
 		*/
 		run(config? : any|Function, onStart? : Function) : void;		
-		/** Add a persistent root node to the game, the persistent node won't be destroyed during scene transition.
+		/** !#en
+		Add a persistent root node to the game, the persistent node won't be destroyed during scene transition.<br/>
 		The target node must be placed in the root level of hierarchy, otherwise this API won't have any effect.
+		!#zh
+		声明常驻根节点，该节点不会被在场景切换中被销毁。<br/>
+		目标节点必须位于为层级的根节点，否则无效。
 		@param node The node to be made persistent 
 		*/
 		addPersistRootNode(node : Node) : void;		
-		/** Remove a persistent root node
+		/** !#en Remove a persistent root node.
+		!#zh 取消常驻根节点。
 		@param node The node to be removed from persistent node list 
 		*/
 		removePersistRootNode(node : Node) : void;		
-		/** Check whether the node is a persistent root node
+		/** !#en Check whether the node is a persistent root node.
+		!#zh 检查节点是否是常驻根节点。
 		@param node The node to be checked 
 		*/
 		isPersistRootNode(node : Node) : boolean;	
@@ -2434,37 +2881,57 @@ declare module cc {
 		*/
 		getNumberOfRunningActions() : number;	
 	}		
-		/** !#en Class for scene handling.
-		!#zh 场景资源类。 */
-		export class Scene extends Asset {		
-		constructor();	
+		/** !#en
+		cc.Scene is a subclass of cc.Node that is used only as an abstract concept.<br/>
+		cc.Scene and cc.Node are almost identical with the difference that users can not modify cc.Scene manually.
+		!#zh
+		cc.Scene 是 cc.Node 的子类，仅作为一个抽象的概念。<br/>
+		cc.Scene 和 cc.Node 有点不同，用户不应直接修改 cc.Scene。 */
+		export class Scene extends _BaseNode {	
 	}		
-		/** <p>
-		   Scheduler is responsible of triggering the scheduled callbacks.<br/>
-		   You should not use NSTimer. Instead use this class.<br/>
-		   <br/>
-		   There are 2 different types of callbacks (selectors):<br/>
-		      - update callback: the 'update' callback will be called every frame. You can customize the priority.<br/>
-		      - custom callback: A custom callback will be called every frame, or with a custom interval of time<br/>
-		      <br/>
-		   The 'custom selectors' should be avoided when possible. It is faster, and consumes less memory to use the 'update callback'. *
-		</p> */
+		/** !#en
+		Scheduler is responsible of triggering the scheduled callbacks.<br/>
+		You should not use NSTimer. Instead use this class.<br/>
+		<br/>
+		There are 2 different types of callbacks (selectors):<br/>
+		    - update callback: the 'update' callback will be called every frame. You can customize the priority.<br/>
+		    - custom callback: A custom callback will be called every frame, or with a custom interval of time<br/>
+		<br/>
+		The 'custom selectors' should be avoided when possible. It is faster,
+		and consumes less memory to use the 'update callback'. *
+		!#zh
+		Scheduler 是负责触发回调函数的类。<br/>
+		通常情况下，建议使用 cc.director.getScheduler() 来获取系统定时器。<br/>
+		有两种不同类型的定时器：<br/>
+		    - update 定时器：每一帧都会触发。您可以自定义优先级。<br/>
+		    - 自定义定时器：自定义定时器可以每一帧或者自定义的时间间隔触发。<br/>
+		如果希望每帧都触发，应该使用 update 定时器，使用 update 定时器更快，而且消耗更少的内存。 */
 		export class Scheduler {		
-		/** <p>
-		   Modifies the time of all scheduled callbacks.<br/>
-		   You can use this property to create a 'slow motion' or 'fast forward' effect.<br/>
-		   Default is 1.0. To create a 'slow motion' effect, use values below 1.0.<br/>
-		   To create a 'fast forward' effect, use values higher than 1.0.<br/> 
+		/** !#en
+		Modifies the time of all scheduled callbacks.<br/>
+		You can use this property to create a 'slow motion' or 'fast forward' effect.<br/>
+		Default is 1.0. To create a 'slow motion' effect, use values below 1.0.<br/>
+		To create a 'fast forward' effect, use values higher than 1.0.<br/>
+		Note：It will affect EVERY scheduled selector / action.
+		!#zh
+		设置时间间隔的缩放比例。<br/>
+		您可以使用这个方法来创建一个 “slow motion（慢动作）” 或 “fast forward（快进）” 的效果。<br/>
+		默认是 1.0。要创建一个 “slow motion（慢动作）” 效果,使用值低于 1.0。<br/>
+		要使用 “fast forward（快进）” 效果，使用值大于 1.0。<br/>
+		注意：它影响该 Scheduler 下管理的所有定时器。 
 		*/
 		setTimeScale(timeScale : number) : void;		
-		/** Returns time scale of scheduler. 
+		/** !#en Returns time scale of scheduler.
+		!#zh 获取时间间隔的缩放比例。 
 		*/
 		getTimeScale() : number;		
-		/** 'update' the scheduler. (You should NEVER call this method, unless you know what you are doing.)
+		/** !#en 'update' the scheduler. (You should NEVER call this method, unless you know what you are doing.)
+		!#zh update 调度函数。(不应该直接调用这个方法，除非完全了解这么做的结果)
 		@param dt delta time 
 		*/
 		update(dt : number) : void;		
-		/** <p>
+		/** !#en
+		<p>
 		  The scheduled method will be called every 'interval' seconds.</br>
 		  If paused is YES, then it won't be called until it is resumed.<br/>
 		  If 'interval' is 0, it will be called every frame, but if so, it recommended to use 'scheduleUpdateForTarget:' instead.<br/>
@@ -2472,148 +2939,213 @@ declare module cc {
 		  repeat let the action be repeated repeat + 1 times, use cc.macro.REPEAT_FOREVER to let the action run continuously<br/>
 		  delay is the amount of time the action will wait before it'll start<br/>
 		</p>
+		!#zh
+		指定回调函数，调用对象等信息来添加一个新的定时器。</br>
+		当时间间隔达到指定值时，设置的回调函数将会被调用。</br>
+		如果 paused 值为 true，那么直到 resume 被调用才开始计时。</br>
+		如果 interval 值为 0，那么回调函数每一帧都会被调用，但如果是这样，
+		建议使用 scheduleUpdateForTarget 代替。</br>
+		如果回调函数已经被定时器使用，那么只会更新之前定时器的时间间隔参数，不会设置新的定时器。<br/>
+		repeat 值可以让定时器触发 repeat + 1 次，使用 cc.macro.REPEAT_FOREVER
+		可以让定时器一直循环触发。<br/>
+		delay 值指定延迟时间，定时器会在延迟指定的时间之后开始计时。
 		
 		@example 
 		```js
-		-------------------
 		//register a schedule to scheduler
-		cc.director.getScheduler().scheduleCallbackForTarget(this, function, interval, repeat, delay, !this._isRunning );
+		var scheduler = cc.director.getScheduler();
+		scheduler.scheduleCallbackForTarget(this, function, interval, repeat, delay, !this._isRunning);
 		
 		``` 
 		*/
 		scheduleCallbackForTarget(target : any, callback_fn : Function, interval : number, repeat : number, delay : number, paused : boolean) : void;		
-		/** The schedule
+		/** !#en The schedule
+		!#zh 定时器
 		
 		@example 
 		```js
-		-------------------
 		//register a schedule to scheduler
 		cc.director.getScheduler().schedule(callback, this, interval, !this._isRunning);
 		
 		``` 
 		*/
 		schedule(callback : Function, target : any, interval : number, repeat : number, delay : number, paused : boolean) : void;		
-		/** Schedules the update callback for a given target, the callback will be invoked every frame after schedule started 
+		/** !#en
+		Schedules the update callback for a given target,
+		the callback will be invoked every frame after schedule started.
+		!#zh
+		使用指定的优先级为指定的对象设置 update 定时器。
+		update 定时器每一帧都会被触发。优先级的值越低，定时器被触发的越早。 
 		*/
 		scheduleUpdate(target : any, priority : number, paused : boolean, updateFunc : Function) : void;		
-		/** Unschedules a callback for a callback and a given target.
+		/** !#en
+		Unschedules a callback for a callback and a given target.
 		If you want to unschedule the "update", use `unscheudleUpdate()`
+		!#zh
+		根据指定的回调函数和调用对象。
+		如果需要取消 update 定时器，请使用 unscheudleUpdate()。
 		@param callback The callback to be unscheduled
 		@param target The target bound to the callback. 
 		*/
 		unschedule(callback : Function, target : any) : void;		
-		/** Unschedules the update callback for a given target
+		/** !#en Unschedules the update callback for a given target.
+		!#zh 取消指定对象的 update 定时器。
 		@param target The target to be unscheduled. 
 		*/
 		unscheduleUpdate(target : any) : void;		
-		/** Unschedules all scheduled callbacks for a given target.
+		/** !#en
+		Unschedules all scheduled callbacks for a given target.
 		This also includes the "update" callback.
+		!#zh 取消指定对象的所有定时器，包括 update 定时器。
 		@param target The target to be unscheduled. 
 		*/
 		unscheduleAllForTarget(target : any) : void;		
-		/** Unschedules all scheduled callbacks from all targets including the system callbacks.
-		You should NEVER call this method, unless you know what you are doing. 
+		/** !#en
+		Unschedules all scheduled callbacks from all targets including the system callbacks.<br/>
+		You should NEVER call this method, unless you know what you are doing.
+		!#zh
+		取消所有对象的所有定时器，包括系统定时器。<br/>
+		不用调用此函数，除非你确定你在做什么。 
 		*/
 		unscheduleAll() : void;		
-		/** Unschedules all callbacks from all targets with a minimum priority.
+		/** !#en
+		Unschedules all callbacks from all targets with a minimum priority.<br/>
 		You should only call this with `PRIORITY_NON_SYSTEM_MIN` or higher.
+		!#zh
+		取消所有优先级的值大于指定优先级的定时器。<br/>
+		你应该只取消优先级的值大于 PRIORITY_NON_SYSTEM_MIN 的定时器。
 		@param minPriority The minimum priority of selector to be unscheduled. Which means, all selectors which
 		       priority is higher than minPriority will be unscheduled. 
 		*/
 		unscheduleAllWithMinPriority(minPriority : number) : void;		
-		/** Checks whether a callback for a given target is scheduled.
-		@param key The callback to check.
+		/** !#en Checks whether a callback for a given target is scheduled.
+		!#zh 检查指定的回调函数和回调对象组合是否存在定时器。
+		@param callback The callback to check.
 		@param target The target of the callback. 
 		*/
-		isScheduled(key : Function|string, target : any) : boolean;		
-		/** <p>
-		 Pause all selectors from all targets.<br/>
-		 You should NEVER call this method, unless you know what you are doing.
-		</p> 
+		isScheduled(callback : Function, target : any) : boolean;		
+		/** !#en
+		Pause all selectors from all targets.<br/>
+		You should NEVER call this method, unless you know what you are doing.
+		!#zh
+		暂停所有对象的所有定时器。<br/>
+		不要调用这个方法，除非你知道你正在做什么。 
 		*/
 		pauseAllTargets() : void;		
-		/** Pause all selectors from all targets with a minimum priority. <br/>
-		You should only call this with kCCPriorityNonSystemMin or higher. 
+		/** !#en
+		Pause all selectors from all targets with a minimum priority. <br/>
+		You should only call this with kCCPriorityNonSystemMin or higher.
+		!#zh
+		暂停所有优先级的值大于指定优先级的定时器。<br/>
+		你应该只暂停优先级的值大于 PRIORITY_NON_SYSTEM_MIN 的定时器。 
 		*/
 		pauseAllTargetsWithMinPriority(minPriority : number) : void;		
-		/** Resume selectors on a set of targets.<br/>
-		This can be useful for undoing a call to pauseAllCallbacks. 
+		/** !#en
+		Resume selectors on a set of targets.<br/>
+		This can be useful for undoing a call to pauseAllCallbacks.
+		!#zh
+		恢复指定数组中所有对象的定时器。<br/>
+		这个函数是 pauseAllCallbacks 的逆操作。 
 		*/
 		resumeTargets(targetsToResume : any[]) : void;		
-		/** <p>
-		   Pauses the target.<br/>
-		   All scheduled selectors/update for a given target won't be 'ticked' until the target is resumed.<br/>
-		   If the target is not present, nothing happens.
-		</p> 
+		/** !#en
+		Pauses the target.<br/>
+		All scheduled selectors/update for a given target won't be 'ticked' until the target is resumed.<br/>
+		If the target is not present, nothing happens.
+		!#zh
+		暂停指定对象的定时器。<br/>
+		指定对象的所有定时器都会被暂停。<br/>
+		如果指定的对象没有定时器，什么也不会发生。 
 		*/
 		pauseTarget(target : any) : void;		
-		/** Resumes the target.<br/>
+		/** !#en
+		Resumes the target.<br/>
 		The 'target' will be unpaused, so all schedule selectors/update will be 'ticked' again.<br/>
-		If the target is not present, nothing happens. 
+		If the target is not present, nothing happens.
+		!#zh
+		恢复指定对象的所有定时器。<br/>
+		指定对象的所有定时器将继续工作。<br/>
+		如果指定的对象没有定时器，什么也不会发生。 
 		*/
 		resumeTarget(target : any) : void;		
-		/** Returns whether or not the target is paused 
+		/** !#en Returns whether or not the target is paused.
+		!#zh 返回指定对象的定时器是否暂停了。 
 		*/
 		isTargetPaused(target : any) : boolean;		
-		/** <p>
-		   Schedules the 'update' callback_fn for a given target with a given priority.<br/>
-		   The 'update' callback_fn will be called every frame.<br/>
-		   The lower the priority, the earlier it is called.
-		</p>
+		/** !#en
+		Schedules the 'update' callback_fn for a given target with a given priority.<br/>
+		The 'update' callback_fn will be called every frame.<br/>
+		The lower the priority, the earlier it is called.
+		!#zh
+		为指定对象设置 update 定时器。<br/>
+		update 定时器每一帧都会被调用。<br/>
+		优先级的值越低，越早被调用。
 		
 		@example 
 		```js
-		-------------------
 		//register this object to scheduler
-		cc.director.getScheduler().scheduleUpdateForTarget(this, priority, !this._isRunning );
+		var scheduler = cc.director.getScheduler();
+		scheduler.scheduleUpdateForTarget(this, priority, !this._isRunning );
 		
 		``` 
 		*/
 		scheduleUpdateForTarget(target : any, priority : number, paused : boolean) : void;		
-		/** <p>
-		  Unschedule a callback function for a given target.<br/>
-		  If you want to unschedule the "update", use unscheudleUpdateForTarget.
-		</p>
+		/** !#en
+		Unschedule a callback function for a given target.<br/>
+		If you want to unschedule the "update", use unscheudleUpdateForTarget.
+		!#zh
+		根据指定的回调函数和调用对象对象取消相应的定时器。<br/>
+		如果需要取消 update 定时器，请使用 unscheudleUpdateForTarget()。
 		@param callback callback[Function] or key[String]
 		
 		@example 
 		```js
-		-------------------
 		//unschedule a callback of target
-		cc.director.getScheduler().unscheduleCallbackForTarget(function, this);
+		var scheduler = cc.director.getScheduler();
+		scheduler.unscheduleCallbackForTarget(this, callback);
 		
 		``` 
 		*/
 		unscheduleCallbackForTarget(target : any, callback : Function) : void;		
-		/** Unschedules the update callback function for a given target
+		/** !#en Unschedules the update callback function for a given target.
+		!#zh 取消指定对象的所有定时器。
 		
 		@example 
 		```js
-		-------------------
 		//unschedules the "update" method.
-		cc.director.getScheduler().unscheduleUpdateForTarget(this);
+		var scheduler = cc.director.getScheduler();
+		scheduler.unscheduleUpdateForTarget(this);
 		
 		``` 
 		*/
 		unscheduleUpdateForTarget(target : any) : void;		
-		/** Unschedules all function callbacks for a given target. This also includes the "update" callback function. 
+		/** !#en
+		Unschedules all function callbacks for a given target.<br/>
+		This also includes the "update" callback function.
+		!#zh 取消指定对象的所有定时器，包括 update 定时器。 
 		*/
 		unscheduleAllCallbacksForTarget(target : any) : void;		
-		/** <p>
-		    Unschedules all function callbacks from all targets. <br/>
-		    You should NEVER call this method, unless you know what you are doing.
-		</p> 
+		/** !#en
+		Unschedules all function callbacks from all targets. <br/>
+		You should NEVER call this method, unless you know what you are doing.
+		!#zh
+		取消所有对象的所有定时器。<br/>
+		不要调用这个方法，除非你知道你正在做什么。 
 		*/
 		unscheduleAllCallbacks() : void;		
-		/** <p>
-		   Unschedules all function callbacks from all targets with a minimum priority.<br/>
-		   You should only call this with kCCPriorityNonSystemMin or higher.
-		</p> 
+		/** !#en
+		Unschedules all function callbacks from all targets with a minimum priority.<br/>
+		You should only call this with kCCPriorityNonSystemMin or higher.
+		!#zh
+		取消所有优先级的值大于指定优先级的所有对象的所有定时器。<br/>
+		你应该只暂停优先级的值大于 PRIORITY_NON_SYSTEM_MIN 的定时器。 
 		*/
 		unscheduleAllCallbacksWithMinPriority(minPriority : number) : void;		
-		/** Priority level reserved for system services. */
+		/** !#en Priority level reserved for system services.
+		!#zh 系统服务的优先级。 */
 		PRIORITY_SYSTEM : number;		
-		/** Minimum priority level for user scheduling. */
+		/** !#en Minimum priority level for user scheduling.
+		!#zh 用户调度最低优先级。 */
 		PRIORITY_NON_SYSTEM : number;	
 	}		
 		/** Particle System base class. <br/>
@@ -3385,6 +3917,11 @@ declare module cc {
 		*/
 		createNodeByInfo(Info : any, callback: (error: string, node: any) => void) : void;	
 	}		
+		/** !#en Class for scene handling.
+		!#zh 场景资源类。 */
+		export class SceneAsset extends Asset {		
+		constructor();	
+	}		
 		/** !#en Class for script handling.
 		!#zh Script 资源类。 */
 		export class _Script extends Asset {		
@@ -3420,212 +3957,6 @@ declare module cc {
 		!#zh 文本资源类。 */
 		export class TextAsset extends Asset {		
 		constructor();	
-	}		
-		/** !#en
-		EventTarget is an object to which an event is dispatched when something has occurred.
-		Entity are the most common event targets, but other objects can be event targets too.
-		
-		Event targets are an important part of the Fireball event model.
-		The event target serves as the focal point for how events flow through the scene graph.
-		When an event such as a mouse click or a keypress occurs, Fireball dispatches an event object
-		into the event flow from the root of the hierarchy. The event object then makes its way through
-		the scene graph until it reaches the event target, at which point it begins its return trip through
-		the scene graph. This round-trip journey to the event target is conceptually divided into three phases:
-		- The capture phase comprises the journey from the root to the last node before the event target's node
-		- The target phase comprises only the event target node
-		- The bubbling phase comprises any subsequent nodes encountered on the return trip to the root of the tree
-		See also: http://www.w3.org/TR/DOM-Level-3-Events/#event-flow
-		
-		Event targets can implement the following methods:
-		 - _getCapturingTargets
-		 - _getBubblingTargets
-		
-		!#zh
-		事件目标是事件触发时，分派的事件对象，Node 是最常见的事件目标，
-		但是其他对象也可以是事件目标。<br/> */
-		export class EventTarget {		
-		/** !#en
-		Register an callback of a specific event type on the EventTarget.
-		This method is merely an alias to addEventListener.
-		!#zh
-		注册事件目标的特定事件类型回调，仅仅是 addEventListener 的别名。
-		@param type A string representing the event type to listen for.
-		@param callback The callback that will be invoked when the event is dispatched.
-		                             The callback is ignored if it is a duplicate (the callbacks are unique).
-		@param target The target to invoke the callback, can be null
-		@param useCapture When set to true, the capture argument prevents callback
-		                             from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE.
-		                             When false, callback will NOT be invoked when event's eventPhase attribute value is CAPTURING_PHASE.
-		                             Either way, callback will be invoked when event's eventPhase attribute value is AT_TARGET.
-		
-		@example 
-		```js
-		node.on(cc.Node.EventType.TOUCH_END, function (event) {
-		    cc.log("this is callback");
-		}, node);
-		``` 
-		*/
-		on(type : string, callback: (param: Event) => void, target : any, useCapture : boolean) : Function;		
-		/** !#en
-		Removes the callback previously registered with the same type, callback, target and or useCapture.
-		This method is merely an alias to removeEventListener.
-		!#zh
-		删除之前与同类型，回调，目标或 useCapture 注册的回调，仅仅是 removeEventListener 的别名。
-		@param type A string representing the event type being removed.
-		@param callback The callback to remove.
-		@param target The target to invoke the callback, if it's not given, only callback without target will be removed
-		@param useCapture Specifies whether the callback being removed was registered as a capturing callback or not.
-		                             If not specified, useCapture defaults to false. If a callback was registered twice,
-		                             one with capture and one without, each must be removed separately. Removal of a capturing callback
-		                             does not affect a non-capturing version of the same listener, and vice versa.
-		
-		@example 
-		```js
-		// register touchEnd eventListener
-		var touchEnd = node.on(cc.Node.EventType.TOUCH_END, function (event) {
-		    cc.log("this is callback");
-		}, node);
-		// remove touchEnd eventListener
-		node.off(cc.Node.EventType.TOUCH_END, touchEnd, node);
-		``` 
-		*/
-		off(type : string, callback : Function, target : any, useCapture : boolean) : void;		
-		/** !#en Removes all callbacks previously registered with the same target.
-		!#zh 删除指定目标上的所有注册回调。
-		@param target The target to be searched for all related callbacks 
-		*/
-		targetOff(target : any) : void;		
-		/** !#en
-		Register an callback of a specific event type on the EventTarget,
-		the callback will remove itself after the first time it is triggered.
-		!#zh
-		注册事件目标的特定事件类型回调，回调会在第一时间被触发后删除自身。
-		@param type A string representing the event type to listen for.
-		@param callback The callback that will be invoked when the event is dispatched.
-		                             The callback is ignored if it is a duplicate (the callbacks are unique).
-		@param target The target to invoke the callback, can be null
-		@param useCapture When set to true, the capture argument prevents callback
-		                             from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE.
-		                             When false, callback will NOT be invoked when event's eventPhase attribute value is CAPTURING_PHASE.
-		                             Either way, callback will be invoked when event's eventPhase attribute value is AT_TARGET.
-		
-		@example 
-		```js
-		node.once(cc.Node.EventType.TOUCH_END, function (event) {
-		    cc.log("this is callback");
-		}, node);
-		``` 
-		*/
-		once(type : string, callback: (param: Event) => void, target : any, useCapture : boolean) : void;		
-		/** !#en
-		Dispatches an event into the event flow.
-		The event target is the EventTarget object upon which the dispatchEvent() method is called.
-		!#zh 分发事件到事件流中。
-		@param event The Event object that is dispatched into the event flow 
-		*/
-		dispatchEvent(event : Event) : boolean;		
-		/** !#en
-		Send an event to this object directly, this method will not propagate the event to any other objects.
-		The event will be created from the supplied message, you can get the "detail" argument from event.detail.
-		!#zh
-		该对象直接发送事件， 这种方法不会对事件传播到任何其他对象。
-		@param message the message to send
-		@param detail whatever argument the message needs 
-		*/
-		emit(message : string, detail? : any) : void;	
-	}		
-		/** !#en Base class of all kinds of events.
-		!#zh 包含事件相关信息的对象。 */
-		export class Event {		
-		constructor();		
-		/** 
-		@param type The name of the event (case-sensitive), e.g. "click", "fire", or "submit"
-		@param bubbles A boolean indicating whether the event bubbles up through the tree or not 
-		*/
-		Event(type : string, bubbles : boolean) : Event;		
-		/** !#en The name of the event (case-sensitive), e.g. "click", "fire", or "submit".
-		!#zh 事件类型。 */
-		type : string;		
-		/** !#en Indicate whether the event bubbles up through the tree or not.
-		!#zh 表示该事件是否进行冒泡。 */
-		bubbles : boolean;		
-		/** !#en A reference to the target to which the event was originally dispatched.
-		!#zh 最初事件触发的目标 */
-		target : any;		
-		/** !#en A reference to the currently registered target for the event.
-		!#zh 当前目标 */
-		currentTarget : any;		
-		/** !#en
-		Indicates which phase of the event flow is currently being evaluated.
-		Returns an integer value represented by 4 constants:
-		 - Event.NONE = 0
-		 - Event.CAPTURING_PHASE = 1
-		 - Event.AT_TARGET = 2
-		 - Event.BUBBLING_PHASE = 3
-		The phases are explained in the [section 3.1, Event dispatch and DOM event flow]
-		(http://www.w3.org/TR/DOM-Level-3-Events/#event-flow), of the DOM Level 3 Events specification.
-		!#zh 事件阶段 */
-		eventPhase : number;		
-		/** !#en Reset the event for being stored in the object pool.
-		!#zh 重置对象池中存储的事件。 
-		*/
-		unuse() : string;		
-		/** !#en Reuse the event for being used again by the object pool.
-		!#zh 用于对象池再次使用的事件。 
-		*/
-		reuse() : string;		
-		/** !#en
-		If invoked when the cancelable attribute value is true, signals to the operation that caused event to be dispatched that it needs to be canceled.
-		!#zh 捕获阶段时，阻止传递给最终目标。 
-		*/
-		preventDefault() : void;		
-		/** !#en Stops propagation for current event.
-		!#zh 停止传递当前事件。 
-		*/
-		stopPropagation() : void;		
-		/** !#en Stops propagation for current event immediately,
-		the event won't even be dispatched to the listeners attached in the current target.
-		!#zh 立即停止当前事件的传递，事件甚至不会被分派到所连接的当前目标。 
-		*/
-		stopPropagationImmediate() : void;		
-		/** !#en Checks whether the event has been stopped.
-		!#zh 检查该事件是否已经停止传递. 
-		*/
-		isStopped() : boolean;		
-		/** !#en
-		<p>
-		    Gets current target of the event                                                            <br/>
-		    note: It only be available when the event listener is associated with node.                <br/>
-		         It returns 0 when the listener is associated with fixed priority.
-		</p>
-		!#zh 获取当前目标节点 
-		*/
-		getCurrentTarget() : Node;		
-		/** !#en Gets the event type.
-		!#zh 获取事件类型 
-		*/
-		getType() : string;		
-		/** !#en Code for event without type.
-		!#zh 没有类型的事件 */
-		NO_TYPE : string;		
-		/** !#en Events not currently dispatched are in this phase
-		!#zh 尚未派发事件阶段 */
-		NONE : number;		
-		/** !#en
-		The capturing phase comprises the journey from the root to the last node before the event target's node
-		see http://www.w3.org/TR/DOM-Level-3-Events/#event-flow
-		!#zh 捕获阶段，包括事件目标节点之前从根节点到最后一个节点的过程。 */
-		CAPTURING_PHASE : number;		
-		/** !#en
-		The target phase comprises only the event target node
-		see http://www.w3.org/TR/DOM-Level-3-Events/#event-flow
-		!#zh 目标阶段仅包括事件目标节点。 */
-		AT_TARGET : number;		
-		/** !#en
-		The bubbling phase comprises any subsequent nodes encountered on the return trip to the root of the hierarchy
-		see http://www.w3.org/TR/DOM-Level-3-Events/#event-flow
-		!#zh 冒泡阶段， 包括回程遇到到层次根节点的任何后续节点。 */
-		BUBBLING_PHASE : number;	
 	}		
 		/** !#en The animation component is used to play back animations.
 		!#zh Animation 组件用于播放动画。你能指定动画剪辑到动画组件并从脚本控制播放。 */
@@ -4149,7 +4480,7 @@ declare module cc {
 		lineHeight : number;		
 		/** !#en Overflow of label.
 		!#zh 文字显示超出范围时的处理方式。 */
-		overFlow : Label.Overflow;		
+		overflow : Label.Overflow;		
 		/** !#en Whether auto wrap label when string width is large than label width.
 		!#zh 是否自动换行。 */
 		enableWrapText : boolean;		
@@ -4592,6 +4923,16 @@ declare module cc {
 		*/
 		getInsetBottom() : number;	
 	}		
+		/** !#en A distortion used to change the rendering of simple sprite.If will take effect after sprite component is added.
+		!#zh 扭曲效果组件,用于改变SIMPLE类型sprite的渲染,只有当sprite组件已经添加后,才能起作用. */
+		export class SpriteDistortion extends Component {		
+		/** !#en Change the UV offset for distortion rendering.
+		!#zh 在渲染时改变UV的整体偏移. */
+		offset : Vec2;		
+		/** !#en Change the UV scale for distortion rendering.
+		!#zh 在渲染时改变UV的寻址系数 */
+		tiling : Vec2;	
+	}		
 		/** !#en
 		Stores and manipulate the anchoring based on its parent.
 		Widget are used for GUI but can also be used for other things.
@@ -4682,6 +5023,212 @@ declare module cc {
 		这样便于脚本或动画继续控制当前节点。
 		注意：onEnable 时所在的那一帧仍然会进行对齐。 */
 		isAlignOnce : boolean;	
+	}		
+		/** !#en
+		EventTarget is an object to which an event is dispatched when something has occurred.
+		Entity are the most common event targets, but other objects can be event targets too.
+		
+		Event targets are an important part of the Fireball event model.
+		The event target serves as the focal point for how events flow through the scene graph.
+		When an event such as a mouse click or a keypress occurs, Fireball dispatches an event object
+		into the event flow from the root of the hierarchy. The event object then makes its way through
+		the scene graph until it reaches the event target, at which point it begins its return trip through
+		the scene graph. This round-trip journey to the event target is conceptually divided into three phases:
+		- The capture phase comprises the journey from the root to the last node before the event target's node
+		- The target phase comprises only the event target node
+		- The bubbling phase comprises any subsequent nodes encountered on the return trip to the root of the tree
+		See also: http://www.w3.org/TR/DOM-Level-3-Events/#event-flow
+		
+		Event targets can implement the following methods:
+		 - _getCapturingTargets
+		 - _getBubblingTargets
+		
+		!#zh
+		事件目标是事件触发时，分派的事件对象，Node 是最常见的事件目标，
+		但是其他对象也可以是事件目标。<br/> */
+		export class EventTarget {		
+		/** !#en
+		Register an callback of a specific event type on the EventTarget.
+		This method is merely an alias to addEventListener.
+		!#zh
+		注册事件目标的特定事件类型回调，仅仅是 addEventListener 的别名。
+		@param type A string representing the event type to listen for.
+		@param callback The callback that will be invoked when the event is dispatched.
+		                             The callback is ignored if it is a duplicate (the callbacks are unique).
+		@param target The target to invoke the callback, can be null
+		@param useCapture When set to true, the capture argument prevents callback
+		                             from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE.
+		                             When false, callback will NOT be invoked when event's eventPhase attribute value is CAPTURING_PHASE.
+		                             Either way, callback will be invoked when event's eventPhase attribute value is AT_TARGET.
+		
+		@example 
+		```js
+		node.on(cc.Node.EventType.TOUCH_END, function (event) {
+		    cc.log("this is callback");
+		}, node);
+		``` 
+		*/
+		on(type : string, callback: (param: Event) => void, target : any, useCapture : boolean) : Function;		
+		/** !#en
+		Removes the callback previously registered with the same type, callback, target and or useCapture.
+		This method is merely an alias to removeEventListener.
+		!#zh
+		删除之前与同类型，回调，目标或 useCapture 注册的回调，仅仅是 removeEventListener 的别名。
+		@param type A string representing the event type being removed.
+		@param callback The callback to remove.
+		@param target The target to invoke the callback, if it's not given, only callback without target will be removed
+		@param useCapture Specifies whether the callback being removed was registered as a capturing callback or not.
+		                             If not specified, useCapture defaults to false. If a callback was registered twice,
+		                             one with capture and one without, each must be removed separately. Removal of a capturing callback
+		                             does not affect a non-capturing version of the same listener, and vice versa.
+		
+		@example 
+		```js
+		// register touchEnd eventListener
+		var touchEnd = node.on(cc.Node.EventType.TOUCH_END, function (event) {
+		    cc.log("this is callback");
+		}, node);
+		// remove touchEnd eventListener
+		node.off(cc.Node.EventType.TOUCH_END, touchEnd, node);
+		``` 
+		*/
+		off(type : string, callback : Function, target : any, useCapture : boolean) : void;		
+		/** !#en Removes all callbacks previously registered with the same target.
+		!#zh 删除指定目标上的所有注册回调。
+		@param target The target to be searched for all related callbacks 
+		*/
+		targetOff(target : any) : void;		
+		/** !#en
+		Register an callback of a specific event type on the EventTarget,
+		the callback will remove itself after the first time it is triggered.
+		!#zh
+		注册事件目标的特定事件类型回调，回调会在第一时间被触发后删除自身。
+		@param type A string representing the event type to listen for.
+		@param callback The callback that will be invoked when the event is dispatched.
+		                             The callback is ignored if it is a duplicate (the callbacks are unique).
+		@param target The target to invoke the callback, can be null
+		@param useCapture When set to true, the capture argument prevents callback
+		                             from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE.
+		                             When false, callback will NOT be invoked when event's eventPhase attribute value is CAPTURING_PHASE.
+		                             Either way, callback will be invoked when event's eventPhase attribute value is AT_TARGET.
+		
+		@example 
+		```js
+		node.once(cc.Node.EventType.TOUCH_END, function (event) {
+		    cc.log("this is callback");
+		}, node);
+		``` 
+		*/
+		once(type : string, callback: (param: Event) => void, target : any, useCapture : boolean) : void;		
+		/** !#en
+		Dispatches an event into the event flow.
+		The event target is the EventTarget object upon which the dispatchEvent() method is called.
+		!#zh 分发事件到事件流中。
+		@param event The Event object that is dispatched into the event flow 
+		*/
+		dispatchEvent(event : Event) : boolean;		
+		/** !#en
+		Send an event to this object directly, this method will not propagate the event to any other objects.
+		The event will be created from the supplied message, you can get the "detail" argument from event.detail.
+		!#zh
+		该对象直接发送事件， 这种方法不会对事件传播到任何其他对象。
+		@param message the message to send
+		@param detail whatever argument the message needs 
+		*/
+		emit(message : string, detail? : any) : void;	
+	}		
+		/** !#en Base class of all kinds of events.
+		!#zh 包含事件相关信息的对象。 */
+		export class Event {		
+		constructor();		
+		/** 
+		@param type The name of the event (case-sensitive), e.g. "click", "fire", or "submit"
+		@param bubbles A boolean indicating whether the event bubbles up through the tree or not 
+		*/
+		Event(type : string, bubbles : boolean) : Event;		
+		/** !#en The name of the event (case-sensitive), e.g. "click", "fire", or "submit".
+		!#zh 事件类型。 */
+		type : string;		
+		/** !#en Indicate whether the event bubbles up through the tree or not.
+		!#zh 表示该事件是否进行冒泡。 */
+		bubbles : boolean;		
+		/** !#en A reference to the target to which the event was originally dispatched.
+		!#zh 最初事件触发的目标 */
+		target : any;		
+		/** !#en A reference to the currently registered target for the event.
+		!#zh 当前目标 */
+		currentTarget : any;		
+		/** !#en
+		Indicates which phase of the event flow is currently being evaluated.
+		Returns an integer value represented by 4 constants:
+		 - Event.NONE = 0
+		 - Event.CAPTURING_PHASE = 1
+		 - Event.AT_TARGET = 2
+		 - Event.BUBBLING_PHASE = 3
+		The phases are explained in the [section 3.1, Event dispatch and DOM event flow]
+		(http://www.w3.org/TR/DOM-Level-3-Events/#event-flow), of the DOM Level 3 Events specification.
+		!#zh 事件阶段 */
+		eventPhase : number;		
+		/** !#en Reset the event for being stored in the object pool.
+		!#zh 重置对象池中存储的事件。 
+		*/
+		unuse() : string;		
+		/** !#en Reuse the event for being used again by the object pool.
+		!#zh 用于对象池再次使用的事件。 
+		*/
+		reuse() : string;		
+		/** !#en
+		If invoked when the cancelable attribute value is true, signals to the operation that caused event to be dispatched that it needs to be canceled.
+		!#zh 捕获阶段时，阻止传递给最终目标。 
+		*/
+		preventDefault() : void;		
+		/** !#en Stops propagation for current event.
+		!#zh 停止传递当前事件。 
+		*/
+		stopPropagation() : void;		
+		/** !#en Stops propagation for current event immediately,
+		the event won't even be dispatched to the listeners attached in the current target.
+		!#zh 立即停止当前事件的传递，事件甚至不会被分派到所连接的当前目标。 
+		*/
+		stopPropagationImmediate() : void;		
+		/** !#en Checks whether the event has been stopped.
+		!#zh 检查该事件是否已经停止传递. 
+		*/
+		isStopped() : boolean;		
+		/** !#en
+		<p>
+		    Gets current target of the event                                                            <br/>
+		    note: It only be available when the event listener is associated with node.                <br/>
+		         It returns 0 when the listener is associated with fixed priority.
+		</p>
+		!#zh 获取当前目标节点 
+		*/
+		getCurrentTarget() : Node;		
+		/** !#en Gets the event type.
+		!#zh 获取事件类型 
+		*/
+		getType() : string;		
+		/** !#en Code for event without type.
+		!#zh 没有类型的事件 */
+		NO_TYPE : string;		
+		/** !#en Events not currently dispatched are in this phase
+		!#zh 尚未派发事件阶段 */
+		NONE : number;		
+		/** !#en
+		The capturing phase comprises the journey from the root to the last node before the event target's node
+		see http://www.w3.org/TR/DOM-Level-3-Events/#event-flow
+		!#zh 捕获阶段，包括事件目标节点之前从根节点到最后一个节点的过程。 */
+		CAPTURING_PHASE : number;		
+		/** !#en
+		The target phase comprises only the event target node
+		see http://www.w3.org/TR/DOM-Level-3-Events/#event-flow
+		!#zh 目标阶段仅包括事件目标节点。 */
+		AT_TARGET : number;		
+		/** !#en
+		The bubbling phase comprises any subsequent nodes encountered on the return trip to the root of the hierarchy
+		see http://www.w3.org/TR/DOM-Level-3-Events/#event-flow
+		!#zh 冒泡阶段， 包括回程遇到到层次根节点的任何后续节点。 */
+		BUBBLING_PHASE : number;	
 	}		
 		/** !#en
 		<p>
@@ -4976,13 +5523,13 @@ declare module cc {
 		<br>
 		Note: All asset urls in Creator use forward slashes, urls using backslashes will not work.
 		@param url Url of the target resource.
-		                       The url is relative to the "resources" folder, extensions must be omitted.
+		                      The url is relative to the "resources" folder, extensions must be omitted.
 		@param completeCallback Callback invoked when the resource loaded.
 		
 		@example 
 		```js
-		// load the sprite frame (project/assets/resources/imgs/cocos.png/cocos) from resources folder with no extension
-		cc.loader.loadRes('imgs/cocos/cocos', function (err, spriteFrame) {
+		// load the sprite frame (project/assets/resources/imgs/cocos.png/cocos) from resources folder
+		cc.loader.loadRes('imgs/cocos.png/cocos', function (err, spriteFrame) {
 		    if (err) {
 		        cc.error(err.message || err);
 		        return;
@@ -4992,6 +5539,27 @@ declare module cc {
 		``` 
 		*/
 		loadRes(url : string, completeCallback: (error: Error, resource: any) => void) : void;		
+		/** Load all assets in a folder inside the "assets/resources" folder of your project.<br>
+		<br>
+		Note: All asset urls in Creator use forward slashes, urls using backslashes will not work.
+		@param url Url of the target folder.
+		                      The url is relative to the "resources" folder.
+		@param completeCallback A callback which is called when all assets have been loaded, or an error occurs.
+		
+		@example 
+		```js
+		// load the sprite frame (project/assets/resources/imgs/cocos.png/cocos) from resources folder
+		cc.loader.loadResAll('imgs/cocos.png', function (err, assets) {
+		    if (err) {
+		        cc.error(err);
+		        return;
+		    }
+		    var texture = assets[0];
+		    var spriteFrame = assets[1];
+		});
+		``` 
+		*/
+		loadResAll(url : string, completeCallback: (error: Error, assets: any[]) => void) : void;		
 		/** Get resource data by id. <br>
 		When you load resources with {{#crossLink "loader/load:method"}}{{/crossLink}} or {{#crossLink "loader/loadRes:method"}}{{/crossLink}},
 		the url will be the unique identity of the resource.
@@ -5021,7 +5589,8 @@ declare module cc {
 		/** LoadingItems is the manager of items in pipeline.
 		It hold a map of items, each entry in the map is a url to object key value pair.
 		Each item always contains the following property:
-		- src: The url
+		- id: The identification of the item, usually it's identical to url
+		- url: The url
 		- type: The type, it's the extension name of the url by default, could be specified manually too
 		- error: The error happened in pipeline will be stored in this property
 		- content: The content processed by the pipeline, the final result will also be stored in this property
@@ -5173,109 +5742,6 @@ declare module cc {
 		``` 
 		*/
 		onComplete(error : any[], items : LoadingItems) : void;	
-	}		
-		/** <p>
-		   A cc.SpriteFrame has:<br/>
-		     - texture: A cc.Texture2D that will be used by the _ccsg.Sprite<br/>
-		     - rectangle: A rectangle of the texture<br/>
-		   <br/>
-		   You can modify the frame of a _ccsg.Sprite by doing:<br/>
-		</p> */
-		export class SpriteFrame extends Asset {		
-		constructor();		
-		/** Constructor of SpriteFrame class
-		@param rect If parameters' length equal 2, rect in points, else rect in pixels
-		@param rotated Whether the frame is rotated in the texture
-		@param offset The offset of the frame in the texture
-		@param originalSize The size of the frame in the texture
-		
-		@example 
-		```js
-		// ----------------------------------------------------
-		// 1. Create a cc.SpriteFrame with image path
-		var url = cc.url.raw('resources/textures/grossini_dance.png');
-		var frame1 = new cc.SpriteFrame(url, cc.Rect(0, 0, 90, 128));
-		
-		// ----------------------------------------------------
-		// 2. Create a cc.SpriteFrame with a texture, rect, rotated, offset and originalSize in pixels.
-		var url = cc.url.raw('resources/textures/grossini_dance.png');
-		var texture = cc.textureCache.addImage(url);
-		var frame1 = new cc.SpriteFrame(texture, cc.Rect(0, 0, 90, 128));
-		var frame2 = new cc.SpriteFrame(texture, cc.Rect(0, 0, 90, 128), false, 0, cc.Size(90, 128));
-		
-		// ----------------------------------------------------
-		// 3. load a cc.SpriteFrame with image path (Recommend)
-		var url = 'resources://test assets/PurpleMonster.png/PurpleMonster';
-		var self = this;
-		cc.loader.load(url, function (err, spriteFrame) {
-		        var node = new cc.Node("New Sprite");
-		        var sprite = node.addComponent(cc.Sprite);
-		        sprite.spriteFrame = spriteFrame;
-		        node.parent = self.node
-		    }
-		);
-		
-		``` 
-		*/
-		SpriteFrame(filename : string|Texture2D, rect : Rect, rotated? : boolean, offset? : Vec2, originalSize? : Size) : void;		
-		/** Top border of the sprite */
-		insetTop : number;		
-		/** Bottom border of the sprite */
-		insetBottom : number;		
-		/** Left border of the sprite */
-		insetLeft : number;		
-		/** Right border of the sprite */
-		insetRight : number;		
-		/** Returns whether the texture have been loaded 
-		*/
-		textureLoaded() : boolean;		
-		/** Add a event listener for texture loaded event. 
-		*/
-		addLoadedEventListener(callback : Function, target : any) : void;		
-		/** Returns whether the sprite frame is rotated in the texture. 
-		*/
-		isRotated() : boolean;		
-		/** Set whether the sprite frame is rotated in the texture. 
-		*/
-		setRotated(bRotated : boolean) : void;		
-		/** Returns the rect of the sprite frame in the texture. 
-		*/
-		getRect() : Rect;		
-		/** Sets the rect of the sprite frame in the texture. 
-		*/
-		setRect(rect : Rect) : void;		
-		/** Returns the original size of the trimmed image. 
-		*/
-		getOriginalSize() : Size;		
-		/** Sets the original size of the trimmed image. 
-		*/
-		setOriginalSize(size : Size) : void;		
-		/** Returns the texture of the frame. 
-		*/
-		getTexture() : Texture2D;		
-		/** Sets the texture of the frame, the texture is retained automatically. 
-		*/
-		_refreshTexture(texture : Texture2D) : void;		
-		/** Returns the offset of the frame in the texture. 
-		*/
-		getOffset() : Vec2;		
-		/** Sets the offset of the frame in the texture. 
-		*/
-		setOffset(offsets : Vec2) : void;		
-		/** Clone the sprite frame. 
-		*/
-		clone() : SpriteFrame;		
-		/** Initializes SpriteFrame with Texture, rect, rotated, offset and originalSize in pixels.<br/>
-		Please pass parameters to the constructor to initialize the sprite, do not call this function yourself.
-		@param rect if parameters' length equal 2, rect in points, else rect in pixels 
-		*/
-		initWithTexture(texture : string|Texture2D, rect : Rect, rotated? : boolean, offset? : Vec2, originalSize? : Size) : boolean;		
-		/** Copy the sprite frame 
-		*/
-		copyWithZone() : SpriteFrame;		
-		/** Copy the sprite frame 
-		*/
-		copy() : SpriteFrame;	
 	}		
 		/** The asset library which managing loading/unloading assets in project. */
 		export class AssetLibrary {		
@@ -6117,10 +6583,9 @@ declare module cc {
 		export class _CallbacksHandler {		
 		constructor();		
 		/** 
-		@param callback can be null
 		@param target can be null 
 		*/
-		add(key : string, callback : Function, target : any) : boolean;		
+		add(key : string, callback : Function, target? : any) : boolean;		
 		/** Check if the specified key has any registered callback. If a callback is also specified,
 		it will only return true if the callback is registered. 
 		*/
@@ -6194,6 +6659,105 @@ declare module cc {
 		``` 
 		*/
 		builtinRaw(url : string) : string;	
+	}		
+		/** A cc.SpriteFrame has:<br/>
+		 - texture: A cc.Texture2D that will be used by the _ccsg.Sprite<br/>
+		 - rectangle: A rectangle of the texture<br/>
+		<br/>
+		You can modify the frame of a _ccsg.Sprite by doing:<br/> */
+		export class SpriteFrame extends Asset {		
+		constructor();		
+		/** Constructor of SpriteFrame class
+		@param rotated Whether the frame is rotated in the texture
+		@param offset The offset of the frame in the texture
+		@param originalSize The size of the frame in the texture
+		
+		@example 
+		```js
+		// ----------------------------------------------------
+		// 1. Create a cc.SpriteFrame with image path
+		var url = cc.url.raw('resources/textures/grossini_dance.png');
+		var frame1 = new cc.SpriteFrame(url, cc.Rect(0, 0, 90, 128));
+		
+		// ----------------------------------------------------
+		// 2. Create a cc.SpriteFrame with a texture, rect, rotated, offset and originalSize in pixels.
+		var url = cc.url.raw('resources/textures/grossini_dance.png');
+		var texture = cc.textureCache.addImage(url);
+		var frame1 = new cc.SpriteFrame(texture, cc.Rect(0, 0, 90, 128));
+		var frame2 = new cc.SpriteFrame(texture, cc.Rect(0, 0, 90, 128), false, 0, cc.Size(90, 128));
+		
+		// ----------------------------------------------------
+		// 3. load a cc.SpriteFrame with image path (Recommend)
+		var url = 'resources://test assets/PurpleMonster.png/PurpleMonster';
+		var self = this;
+		cc.loader.load(url, function (err, spriteFrame) {
+		        var node = new cc.Node("New Sprite");
+		        var sprite = node.addComponent(cc.Sprite);
+		        sprite.spriteFrame = spriteFrame;
+		        node.parent = self.node
+		    }
+		);
+		
+		``` 
+		*/
+		SpriteFrame(filename? : string|Texture2D, rect? : Rect, rotated? : boolean, offset? : Vec2, originalSize? : Size) : void;		
+		/** Top border of the sprite */
+		insetTop : number;		
+		/** Bottom border of the sprite */
+		insetBottom : number;		
+		/** Left border of the sprite */
+		insetLeft : number;		
+		/** Right border of the sprite */
+		insetRight : number;		
+		/** Returns whether the texture have been loaded 
+		*/
+		textureLoaded() : boolean;		
+		/** Add a event listener for texture loaded event. 
+		*/
+		addLoadedEventListener(callback : Function, target : any) : void;		
+		/** Returns whether the sprite frame is rotated in the texture. 
+		*/
+		isRotated() : boolean;		
+		/** Set whether the sprite frame is rotated in the texture. 
+		*/
+		setRotated(bRotated : boolean) : void;		
+		/** Returns the rect of the sprite frame in the texture. 
+		*/
+		getRect() : Rect;		
+		/** Sets the rect of the sprite frame in the texture. 
+		*/
+		setRect(rect : Rect) : void;		
+		/** Returns the original size of the trimmed image. 
+		*/
+		getOriginalSize() : Size;		
+		/** Sets the original size of the trimmed image. 
+		*/
+		setOriginalSize(size : Size) : void;		
+		/** Returns the texture of the frame. 
+		*/
+		getTexture() : Texture2D;		
+		/** Sets the texture of the frame, the texture is retained automatically. 
+		*/
+		_refreshTexture(texture : Texture2D) : void;		
+		/** Returns the offset of the frame in the texture. 
+		*/
+		getOffset() : Vec2;		
+		/** Sets the offset of the frame in the texture. 
+		*/
+		setOffset(offsets : Vec2) : void;		
+		/** Clone the sprite frame. 
+		*/
+		clone() : SpriteFrame;		
+		/** Initializes SpriteFrame with Texture, rect, rotated, offset and originalSize in pixels.<br/>
+		Please pass parameters to the constructor to initialize the sprite, do not call this function yourself. 
+		*/
+		initWithTexture(texture : string|Texture2D, rect? : Rect, rotated? : boolean, offset? : Vec2, originalSize? : Size) : boolean;		
+		/** Copy the sprite frame 
+		*/
+		copyWithZone() : SpriteFrame;		
+		/** Copy the sprite frame 
+		*/
+		copy() : SpriteFrame;	
 	}		
 		/** <p>
 		This class allows to easily create OpenGL or Canvas 2D textures from images, text or raw data.                                    <br/>
@@ -7255,80 +7819,108 @@ declare module cc {
 		*/
 		setCascadeColorEnabled(cascadeColorEnabled : boolean) : void;	
 	}		
-		/** <p>cc.AffineTransform class represent an affine transform matrix. It's composed basically by translation, rotation, scale transformations.<br/>
+		/** !#en
+		cc.AffineTransform class represent an affine transform matrix. It's composed basically by translation, rotation, scale transformations.<br/>
 		Please do not use its constructor directly, use cc.affineTransformMake alias function instead.
-		</p> */
+		!#zh
+		cc.AffineTransform 类代表一个仿射变换矩阵。它基本上是由平移旋转，缩放转变所组成。<br/>
+		请不要直接使用它的构造，请使用 cc.affineTransformMake 函数代替。 */
 		export class AffineTransform {		
-		/** Create a cc.AffineTransform object with all contents in the matrix 
+		/** !#en Create a cc.AffineTransform object with all contents in the matrix.
+		!#zh 用在矩阵中的所有内容创建一个 cc.AffineTransform 对象。 
 		*/
 		affineTransformMake(a : number, b : number, c : number, d : number, tx : number, ty : number) : AffineTransform;		
-		/** Clone a cc.AffineTransform object from the specified transform 
+		/** !#en Clone a cc.AffineTransform object from the specified transform.
+		!#zh 克隆指定的 cc.AffineTransform 对象。 
 		*/
 		affineTransformClone(t : AffineTransform) : AffineTransform;		
-		/** Apply the affine transformation on a point.
+		/** !#en Apply the affine transformation on a point.
+		!#zh 对一个点应用矩阵变换。
 		@param point or x.
 		@param transOrY transform matrix or y.
 		@param t transform matrix or y. 
 		*/
 		pointApplyAffineTransform(point : Vec2|number, transOrY : AffineTransform|number, t : AffineTransform) : Vec2;		
-		/** Apply the affine transformation on a size. 
+		/** !#en Apply the affine transformation on a size.
+		!#zh 应用 Size 到仿射变换矩阵上。 
 		*/
 		sizeApplyAffineTransform(size : Size, t : AffineTransform) : Size;		
-		/** <p>Create a identity transformation matrix: <br/>
+		/** !#en
+		Create a identity transformation matrix: <br/>
 		[ 1, 0, 0, <br/>
-		  0, 1, 0 ]</p> 
+		  0, 1, 0 ]
+		!#zh
+		单位矩阵：<br/>
+		[ 1, 0, 0, <br/>
+		  0, 1, 0 ] 
 		*/
 		affineTransformMakeIdentity() : AffineTransform;		
-		/** <p>Create a identity transformation matrix: <br/>
-		[ 1, 0, 0, <br/>
-		  0, 1, 0 ]</p> 
-		*/
-		affineTransformIdentity() : AffineTransform;		
-		/** Apply the affine transformation on a rect. 
+		/** !#en Apply the affine transformation on a rect.
+		!#zh 应用 Rect 到仿射变换矩阵上。 
 		*/
 		rectApplyAffineTransform(rect : Rect, anAffineTransform : AffineTransform) : Rect;		
-		/** Create a new affine transformation with a base transformation matrix and a translation based on it.
+		/** !#en Create a new affine transformation with a base transformation matrix and a translation based on it.
+		!#zh 基于一个基础矩阵加上一个平移操作来创建一个新的矩阵。
 		@param t The base affine transform object.
 		@param tx The translation on x axis.
 		@param ty The translation on y axis. 
 		*/
 		affineTransformTranslate(t : AffineTransform, tx : number, ty : number) : AffineTransform;		
-		/** Create a new affine transformation with a base transformation matrix and a scale based on it.
+		/** !#en Create a new affine transformation with a base transformation matrix and a scale based on it.
+		!#zh 创建一个基础变换矩阵，并在此基础上进行了 Scale 仿射变换。
 		@param t The base affine transform object.
 		@param sx The scale on x axis.
 		@param sy The scale on y axis. 
 		*/
 		affineTransformScale(t : AffineTransform, sx : number, sy : number) : AffineTransform;		
-		/** Create a new affine transformation with a base transformation matrix and a rotation based on it.
+		/** !#en Create a new affine transformation with a base transformation matrix and a rotation based on it.
+		!#zh 创建一个基础变换矩阵，并在此基础上进行了 Rotation 仿射变换。
 		@param aTransform The base affine transform object.
 		@param anAngle The angle to rotate. 
 		*/
 		affineTransformRotate(aTransform : AffineTransform, anAngle : number) : AffineTransform;		
-		/** Concatenate a transform matrix to another and return the result:<br/>
+		/** !#en
+		Concatenate a transform matrix to another and return the result:<br/>
+		t' = t1 * t2
+		!#zh 拼接两个矩阵，并返回结果：<br/>
 		t' = t1 * t2
 		@param t1 The first transform object.
 		@param t2 The transform object to concatenate. 
 		*/
 		affineTransformConcat(t1 : AffineTransform, t2 : AffineTransform) : AffineTransform;		
-		/** Concatenate a transform matrix to another<br/>
+		/** !#en
+		Concatenate a transform matrix to another<br/>
 		The results are reflected in the first matrix.<br/>
+		t' = t1 * t2
+		!#zh
+		拼接两个矩阵，将结果保存到第一个矩阵。<br/>
 		t' = t1 * t2
 		@param t1 The first transform object.
 		@param t2 The transform object to concatenate. 
 		*/
 		affineTransformConcatIn(t1 : AffineTransform, t2 : AffineTransform) : AffineTransform;		
-		/** Return true if an affine transform equals to another, false otherwise. 
+		/** !#en Return true if an affine transform equals to another, false otherwise.
+		!#zh 判断两个矩阵是否相等。 
 		*/
 		affineTransformEqualToTransform(t1 : AffineTransform, t2 : AffineTransform) : boolean;		
-		/** Get the invert transform of an AffineTransform object. 
+		/** !#en Get the invert transform of an AffineTransform object.
+		!#zh 求逆矩阵。 
 		*/
 		affineTransformInvert(t : AffineTransform) : AffineTransform;	
 	}		
-		/** Representation of RGBA colors.
+		/** !#en
+		Representation of RGBA colors.
 		
 		Each color component is a floating point value with a range from 0 to 255.
 		
-		You can also use the convenience method {{#crossLink "cc/color:method"}}cc.color{{/crossLink}} to create a new Color. */
+		You can also use the convenience method {{#crossLink "cc/color:method"}}cc.color{{/crossLink}} to create a new Color.
+		
+		!#zh
+		cc.Color 用于表示颜色。
+		
+		它包含 RGBA 四个以浮点数保存的颜色分量，每个的值都在 0 到 255 之间。
+		
+		您也可以通过使用 {{#crossLink "cc/color:method"}}cc.color{{/crossLink}} 的便捷方法来创建一个新的 Color。 */
 		export class Color extends ValueType {		
 		/** 
 		@param r red component of the color, default value is 0.
@@ -7337,152 +7929,478 @@ declare module cc {
 		@param a alpha component of the color, default value is 255. 
 		*/
 		Color(r? : number, g? : number, b? : number, a? : number) : Color;		
+		/** !#en Solid white, RGBA is [255, 255, 255, 255].
+		!#zh 纯白色，RGBA 是 [255, 255, 255, 255]。 */
 		WHITE : Color;		
+		/** !#en Solid black, RGBA is [0, 0, 0, 255].
+		!#zh 纯黑色，RGBA 是 [0, 0, 0, 255]。 */
 		BLACK : Color;		
+		/** !#en Transparent, RGBA is [0, 0, 0, 0].
+		!#zh 透明，RGBA 是 [0, 0, 0, 0]。 */
 		TRANSPARENT : Color;		
+		/** !#en Grey, RGBA is [127.5, 127.5, 127.5].
+		!#zh 灰色，RGBA 是 [127.5, 127.5, 127.5]。 */
 		GRAY : Color;		
+		/** !#en Solid red, RGBA is [255, 0, 0].
+		!#zh 纯红色，RGBA 是 [255, 0, 0]。 */
 		RED : Color;		
+		/** !#en Solid green, RGBA is [0, 255, 0].
+		!#zh 纯绿色，RGBA 是 [0, 255, 0]。 */
 		GREEN : Color;		
+		/** !#en Solid blue, RGBA is [0, 0, 255].
+		!#zh 纯蓝色，RGBA 是 [0, 0, 255]。 */
 		BLUE : Color;		
+		/** !#en Yellow, RGBA is [255, 235, 4].
+		!#zh 黄色，RGBA 是 [255, 235, 4]。 */
 		YELLOW : Color;		
+		/** !#en Orange, RGBA is [255, 127, 0].
+		!#zh 橙色，RGBA 是 [255, 127, 0]。 */
 		ORANGE : Color;		
+		/** !#en Cyan, RGBA is [0, 255, 255].
+		!#zh 青色，RGBA 是 [0, 255, 255]。 */
 		CYAN : Color;		
+		/** !#en Magenta, RGBA is [255, 0, 255].
+		!#zh 洋红色（品红色），RGBA 是 [255, 0, 255]。 */
 		MAGENTA : Color;		
-		/** Clone a new color from the current color. 
+		/** !#en Clone a new color from the current color.
+		!#zh 克隆当前颜色。
+		
+		@example 
+		```js
+		var color = new cc.Color();
+		var newColor = color.clone();// Color {r: 0, g: 0, b: 0, a: 255}
+		``` 
 		*/
 		clone() : Color;		
-		/**  
+		/** !#en TODO
+		!#zh 判断两个颜色是否相等。
+		
+		@example 
+		```js
+		var color1 = cc.Color.WHITE;
+		var color2 = new cc.Color(255, 255, 255);
+		cc.log(color1.equals(color2)); // true;
+		color2 = cc.Color.RED;
+		cc.log(color2.equals(color1)); // false;
+		``` 
 		*/
 		equals(other: (r: number, g: number, b: number, a: number) => void) : boolean;		
-		/** 
+		/** !#en TODO
+		!#zh 线性插值
 		@param ratio the interpolation coefficient.
-		@param out optional, the receiving vector. 
+		@param out optional, the receiving vector.
+		
+		@example 
+		```js
+		// Converts a white color to a black one trough time.
+		update: function (dt) {
+		    var color = this.node.color;
+		    if (color.equals(cc.Color.BLACK)) {
+		        return;
+		    }
+		    this.ratio += dt * 0.1;
+		    this.node.color = cc.Color.WHITE.lerp(cc.Color.BLACK, ratio);
+		}
+		
+		``` 
 		*/
 		lerp(to: (r: number, g: number, b: number, a: number) => void, ratio : number, out: (r: number, g: number, b: number, a: number) => void) : Color;		
+		/** !#en TODO
+		!#zh 转换为方便阅读的字符串。
+		
+		@example 
+		```js
+		var color = cc.Color.WHITE;
+		color.toString(); // "rgba(255, 255, 255, 255)"
+		``` 
+		*/
 		toString() : string;		
-		/** 
-		@param red the new Red component. 
+		/** !#en TODO
+		!#zh 设置当前的红色值，并返回当前对象。
+		@param red the new Red component.
+		
+		@example 
+		```js
+		var color = new cc.Color();
+		color.setR(255); // Color {r: 255, g: 0, b: 0, a: 255}
+		``` 
 		*/
 		setR(red : number) : Color;		
-		/** 
-		@param green the new Green component. 
+		/** !#en TODO
+		!#zh 设置当前的绿色值，并返回当前对象。
+		@param green the new Green component.
+		
+		@example 
+		```js
+		var color = new cc.Color();
+		color.setG(255); // Color {r: 0, g: 255, b: 0, a: 255}
+		``` 
 		*/
 		setG(green : number) : Color;		
-		/** 
-		@param blue the new Blue component. 
+		/** !#en TODO
+		!#zh 设置当前的蓝色值，并返回当前对象。
+		@param blue the new Blue component.
+		
+		@example 
+		```js
+		var color = new cc.Color();
+		color.setB(255); // Color {r: 0, g: 0, b: 255, a: 255}
+		``` 
 		*/
 		setB(blue : number) : Color;		
-		/** 
-		@param alpha the new Alpha component. 
+		/** !#en TODO
+		!#zh 设置当前的透明度，并返回当前对象。
+		@param alpha the new Alpha component.
+		
+		@example 
+		```js
+		var color = new cc.Color();
+		color.setA(0); // Color {r: 0, g: 0, b: 0, a: 0}
+		``` 
 		*/
 		setA(alpha : number) : Color;		
-		/** 
-		@param opt "rgba", "rgb", "#rgb" or "#rrggbb". 
+		/** !#en TODO
+		!#zh 转换为 CSS 格式。
+		@param opt "rgba", "rgb", "#rgb" or "#rrggbb".
+		
+		@example 
+		```js
+		var color = cc.Color.BLACK;
+		color.toCSS();          // "#000";
+		color.toCSS("rgba");    // "rgba(0,0,0,1.00)";
+		color.toCSS("rgb");     // "rgba(0,0,0)";
+		color.toCSS("#rgb");    // "#000";
+		color.toCSS("#rrggbb"); // "#000000";
+		``` 
 		*/
 		toCSS(opt : string) : string;		
-		/** Clamp this color to make all components between 0 to 1. 
+		/** !#en Clamp this color to make all components between 0 to 255。
+		!#zh 限制颜色数值，在 0 到 255 之间。
+		
+		@example 
+		```js
+		var color = new cc.Color(1000, 0, 0, 255);
+		color.clamp();
+		cc.log(color); // (255, 0, 0, 255)
+		``` 
 		*/
 		clamp() : void;		
-		/**  
+		/** !#en TODO
+		!#zh 读取 16 进制。
+		
+		@example 
+		```js
+		var color = cc.Color.BLACK;
+		color.fromHEX("#FFFF33"); // Color {r: 255, g: 255, b: 51, a: 255};
+		``` 
 		*/
 		fromHEX(hexString : string) : Color;		
-		/** 
-		@param fmt "#rgb" or "#rrggbb". 
+		/** !#en TODO
+		!#zh 转换为 16 进制。
+		@param fmt "#rgb" or "#rrggbb".
+		
+		@example 
+		```js
+		var color = cc.Color.BLACK;
+		color.toHEX("#rgb");     // "000";
+		color.toHEX("#rrggbb");  // "000000";
+		``` 
 		*/
 		toHEX(fmt : string) : string;		
-		/** Convert to 24bit rgb value. 
+		/** !#en Convert to 24bit rgb value.
+		!#zh 转换为 24bit 的 RGB 值。
+		
+		@example 
+		```js
+		var color = cc.Color.YELLOW;
+		color.toRGBValue(); // 16771844;
+		``` 
 		*/
 		toRGBValue() : number;		
-		/**  
+		/** !#en TODO
+		!#zh 读取 HSV（色彩模型）格式。
+		
+		@example 
+		```js
+		var color = cc.Color.YELLOW;
+		color.fromHSV(0, 0, 1); // Color {r: 255, g: 255, b: 255, a: 255};
+		``` 
 		*/
 		fromHSV(h : number, s : number, v : number) : Color;		
+		/** !#en TODO
+		!#zh 转换为 HSV（色彩模型）格式。
+		
+		@example 
+		```js
+		var color = cc.Color.YELLOW;
+		color.toHSV(); // Object {h: 0.1533864541832669, s: 0.9843137254901961, v: 1};
+		``` 
+		*/
 		toHSV() : any;		
-		/** 
+		/** !#en TODO
+		!#zh RGB 转换为 HSV。
 		@param r red, must be [0, 255].
 		@param g red, must be [0, 255].
-		@param b red, must be [0, 255]. 
+		@param b red, must be [0, 255].
+		
+		@example 
+		```js
+		cc.Color.rgb2hsv(255, 255, 255); // Object {h: 0, s: 0, v: 1};
+		``` 
 		*/
 		rgb2hsv(r : number, g : number, b : number) : any;		
-		/**  
+		/** !#en TODO
+		!#zh HSV 转换为 RGB。
+		
+		@example 
+		```js
+		cc.Color.hsv2rgb(0, 0, 1); // Object {r: 255, g: 255, b: 255};
+		``` 
 		*/
 		hsv2rgb(h : number, s : number, v : number) : any;	
 	}		
-		/** A 2D rectangle defined by x, y position and width, height. */
+		/** !#en A 2D rectangle defined by x, y position and width, height.
+		!#zh 通过位置和宽高定义的 2D 矩形。 */
 		export class Rect extends ValueType {		
-		/** Constructor of cc.Rect class.
-		see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method. 
+		/** !#en
+		Constructor of cc.Rect class.
+		see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
+		!#zh
+		cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。 
 		*/
 		Rect(x? : number, y? : number, w? : number, h? : number) : Rect;		
-		/** Creates a rectangle from two coordinate values. 
+		/** !#en Creates a rectangle from two coordinate values.
+		!#zh 根据指定 2 个坐标创建出一个矩形区域。
+		
+		@example 
+		```js
+		cc.Rect.fromMinMax(cc.v2(10, 10), cc.v2(20, 20)); // Rect {x: 10, y: 10, width: 10, height: 10};
+		``` 
 		*/
 		fromMinMax(v1 : Vec2, v2 : Vec2) : Rect;		
-		/** Checks if rect contains.
+		/** !#en Checks if rect contains.
+		!#zh
+		判断 2 个矩形是否有包含。<br/>
+		返回 1 为 a 包含 b，如果 -1 为 b 包含 a,
+		0 这则都不包含。
 		@param a Rect a
-		@param b Rect b 
+		@param b Rect b
+		
+		@example 
+		```js
+		var a = new cc.rect(0, 0, 10, 10);
+		var b = new cc.rect(5, 5, 5, 5);
+		var c = new cc.rect(20, 20, 10, 10);
+		cc.Rect.contain(a, b); //  1;
+		cc.Rect.contain(b, a); // -1;
+		cc.Rect.contain(a, c); //  0;
+		``` 
 		*/
 		contain(a: (x: number, y: number, w: number, h: number) => void, b: (x: number, y: number, w: number, h: number) => void) : number;		
+		/** !#en TODO
+		!#zh 克隆一个新的 Rect。
+		
+		@example 
+		```js
+		var a = new cc.rect(0, 0, 10, 10);
+		a.clone();// Rect {x: 0, y: 0, width: 10, height: 10}
+		``` 
+		*/
 		clone() : Rect;		
-		/** 
-		@param other Constructor of cc.Rect class.
-		see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method. 
+		/** !#en TODO
+		!#zh 是否等于指定的矩形。
+		@param other !#en
+		Constructor of cc.Rect class.
+		see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
+		!#zh
+		cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
+		
+		@example 
+		```js
+		var a = new cc.rect(0, 0, 10, 10);
+		var b = new cc.rect(0, 0, 10, 10);
+		a.equals(b);// true;
+		``` 
 		*/
 		equals(other: (x: number, y: number, w: number, h: number) => void) : boolean;		
-		/** 
-		@param to Constructor of cc.Rect class.
+		/** !#en TODO
+		!#zh 线性插值
+		@param to !#en
+		Constructor of cc.Rect class.
 		see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
+		!#zh
+		cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
 		@param ratio the interpolation coefficient.
-		@param out optional, the receiving vector. 
+		@param out optional, the receiving vector.
+		
+		@example 
+		```js
+		var a = new cc.rect(0, 0, 10, 10);
+		var b = new cc.rect(50, 50, 100, 100);
+		update (dt) {
+		   // method 1;
+		   var c = a.lerp(b, dt * 0.1);
+		   // method 2;
+		   a.lerp(b, dt * 0.1, c);
+		}
+		``` 
 		*/
 		lerp(to: (x: number, y: number, w: number, h: number) => void, ratio : number, out: (x: number, y: number, w: number, h: number) => void) : Rect;		
+		/** !#en TODO
+		!#zh 转换为方便阅读的字符串
+		
+		@example 
+		```js
+		var a = new cc.rect(0, 0, 10, 10);
+		a.toString();// "(0.00, 0.00, 10.00, 10.00)";
+		``` 
+		*/
 		toString() : string;		
+		/** !#en TODO
+		!#zh 矩形 x 轴上的最小值。 */
 		xMin : number;		
+		/** !#en TODO
+		!#zh 矩形 y 轴上的最小值。 */
 		yMin : number;		
+		/** !#en TODO
+		!#zh 矩形 x 轴上的最大值。 */
 		xMax : number;		
+		/** !#en TODO
+		!#zh 矩形 y 轴上的最大值。 */
 		yMax : number;		
+		/** !#en TODO
+		!#zh 矩形的中心点。 */
 		center : number;		
+		/** !#en TODO
+		!#zh 矩形的大小。 */
 		size : Size;		
-		/** 
-		@param rect Constructor of cc.Rect class.
-		see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method. 
+		/** !#en TODO
+		!#zh 当前矩形与指定矩形是否相交。
+		@param rect !#en
+		Constructor of cc.Rect class.
+		see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
+		!#zh
+		cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
+		
+		@example 
+		```js
+		var a = new cc.rect(0, 0, 10, 10);
+		var b = new cc.rect(0, 0, 20, 20);
+		a.intersects(b);// true
+		``` 
 		*/
 		intersects(rect: (x: number, y: number, w: number, h: number) => void) : void;		
-		/** Returns true if the point inside this rectangle. 
+		/** !#en TODO
+		!#zh 当前矩形是否包含指定坐标点。
+		Returns true if the point inside this rectangle.
+		
+		@example 
+		```js
+		var a = new cc.rect(0, 0, 10, 10);
+		var b = new cc.v2(0, 5);
+		a.contains(b);// true
+		``` 
 		*/
 		contains(point : Vec2) : void;		
-		/** Returns true if the other rect totally inside this rectangle.
-		@param rect Constructor of cc.Rect class.
-		see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method. 
+		/** !#en Returns true if the other rect totally inside this rectangle.
+		!#zh 当前矩形是否包含指定矩形。
+		@param rect !#en
+		Constructor of cc.Rect class.
+		see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
+		!#zh
+		cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
+		
+		@example 
+		```js
+		var a = new cc.rect(0, 0, 10, 10);
+		var b = new cc.rect(0, 0, 20, 20);
+		a.containsRect(b);// true
+		``` 
 		*/
 		containsRect(rect: (x: number, y: number, w: number, h: number) => void) : void;	
 	}		
-		/** cc.Size is the class for size object, please do not use its constructor to create sizes, use {{#crossLink "cc/size:method"}}{{/crossLink}} alias function instead.
-		It will be deprecated soon, please use cc.Vec2 instead */
+		/** !#en
+		cc.Size is the class for size object,<br/>
+		please do not use its constructor to create sizes,<br/>
+		use {{#crossLink "cc/size:method"}}{{/crossLink}} alias function instead.<br/>
+		It will be deprecated soon, please use cc.Vec2 instead.
+		
+		!#zh
+		cc.Size 是 size 对象的类。<br/>
+		请不要使用它的构造函数创建的 size，<br/>
+		使用 {{#crossLink "cc/size:method"}}{{/crossLink}} 别名函数。<br/>
+		它不久将被取消，请使用cc.Vec2代替。 */
 		export class Size {		
 		/**  
 		*/
 		Size(width : number, height : number) : Size;		
-		/** return a Size object with width = 0 and height = 0. */
+		/** !#en return a Size object with width = 0 and height = 0.
+		!#zh 返回一个宽度为 0 和高度为 0 的 Size 对象。 */
 		ZERO : Size;		
+		/** !#en TODO
+		!#zh 克隆 size 对象。
+		
+		@example 
+		```js
+		var a = new cc.size(10, 10);
+		a.clone();// return Size {width: 0, height: 0};
+		``` 
+		*/
 		clone() : Size;		
-		/**  
+		/** !#en TODO
+		!#zh 当前 Size 对象是否等于指定 Size 对象。
+		
+		@example 
+		```js
+		var a = new cc.size(10, 10);
+		a.equals(new cc.size(10, 10));// return true;
+		``` 
 		*/
 		equals(other: (width: number, height: number) => void) : boolean;		
-		/** 
-		@param to Constructor of cc.Rect class.
+		/** !#en TODO
+		!#zh 线性插值。
+		@param to !#en
+		Constructor of cc.Rect class.
 		see {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} for convenience method.
+		!#zh
+		cc.Rect类的构造函数。可以通过 {{#crossLink "cc/rect:method"}} cc.rect {{/crossLink}} 简便方法进行创建。
 		@param ratio the interpolation coefficient.
-		@param out optional, the receiving vector. 
+		@param out optional, the receiving vector.
+		
+		@example 
+		```js
+		var a = new cc.size(10, 10);
+		var b = new cc.rect(50, 50, 100, 100);
+		update (dt) {
+		   // method 1;
+		   var c = a.lerp(b, dt * 0.1);
+		   // method 2;
+		   a.lerp(b, dt * 0.1, c);
+		}
+		``` 
 		*/
 		lerp(to: (x: number, y: number, w: number, h: number) => void, ratio : number, out: (width: number, height: number) => void) : Size;		
+		/** !#en TODO
+		!#zh 转换为方便阅读的字符串。
+		
+		@example 
+		```js
+		var a = new cc.size(10, 10);
+		a.toString();// return "(10.00, 10.00)";
+		``` 
+		*/
 		toString() : string;		
-		/** Helper function that creates a cc.Size.
+		/** !#en
+		Helper function that creates a cc.Size.<br/>
 		Please use cc.p or cc.v2 instead, it will soon replace cc.Size.
+		!#zh
+		创建一个 cc.Size 对象的帮助函数。<br/>
+		注意：可以使用 cc.p 或者是 cc.v2 代替，它们将很快取代 cc.Size。
 		@param w width or a size object
 		@param h height
 		
 		@example 
 		```js
-		-----
 		var size1 = cc.size();
 		var size2 = cc.size(100,100);
 		var size3 = cc.size(size2);
@@ -7491,18 +8409,30 @@ declare module cc {
 		``` 
 		*/
 		size(w : number|Size, h : number) : Size;		
-		/** Check whether a point's value equals to another. 
+		/** !#en Check whether a point's value equals to another.
+		!#zh 检查 Size 对象是否等于另一个。
+		
+		@example 
+		```js
+		var a = new cc.size(10, 10);
+		var b = new cc.size(10, 10);
+		cc.sizeEqualToSize(a, b);// return true;
+		var b = new cc.size(5, 10);
+		cc.sizeEqualToSize(a, b);// return false;
+		``` 
 		*/
 		sizeEqualToSize(size1: (width: number, height: number) => void, size2: (width: number, height: number) => void) : boolean;	
 	}		
-		/** the device accelerometer reports values for each axis in units of g-force. */
+		/** !#en the device accelerometer reports values for each axis in units of g-force.
+		!#zh 设备重力传感器传递的各个轴的数据。 */
 		export class Acceleration {		
 		constructor();		
 		/**  
 		*/
 		Acceleration(x : number, y : number, z : number, timestamp : number) : Acceleration;	
 	}		
-		/** Blend Function used for textures. */
+		/** !#en Blend Function used for textures.
+		!#zh 图像的混合方式。 */
 		export class BlendFunc {		
 		constructor();		
 		/** 
@@ -7545,7 +8475,8 @@ declare module cc {
 		}); */
 		export class FontDefinition {		
 		constructor();		
-		/** 
+		/** !#en TODO
+		!#zh 定义字体基本属性的结构体。
 		@param properties (OPTIONAL) Allow inline FontDefinition 
 		*/
 		FontDefinition(properties : any) : FontDefinition;	
@@ -7626,159 +8557,363 @@ declare module cc {
 		*/
 		V2F_C4B_T2F_Triangle(a: (vertices: Vertex2F, colors: Color, texCoords: Tex2F, arrayBuffer: any[], offset: number) => void, b: (vertices: Vertex2F, colors: Color, texCoords: Tex2F, arrayBuffer: any[], offset: number) => void, c: (vertices: Vertex2F, colors: Color, texCoords: Tex2F, arrayBuffer: any[], offset: number) => void, arrayBuffer : any[], offset : number) : V2F_C4B_T2F_Triangle;	
 	}		
-		/** The base class of all value types. */
+		/** !#en The base class of all value types.
+		!#zh 所有值类型的基类。 */
 		export class ValueType {		
 		constructor();		
 		/** !#en This method returns an exact copy of current value.
 		!#zh 克隆当前值，该方法返回一个新对象，新对象的值和原对象相等。 
 		*/
 		clone() : ValueType;		
-		/** Compares this object with the other one. 
+		/** !#en Compares this object with the other one.
+		!#zh 当前对象是否等于指定对象。 
 		*/
 		equals(other : ValueType) : boolean;		
+		/** !#en TODO
+		!#zh 转换为方便阅读的字符串。 
+		*/
 		toString() : string;		
-		/** Linearly interpolates between this value to to value by ratio which is in the range [0, 1].
+		/** !#en
+		Linearly interpolates between this value to to value by ratio which is in the range [0, 1].
 		When ratio = 0 returns this. When ratio = 1 return to. When ratio = 0.5 returns the average of this and to.
+		!#zh
+		线性插值。<br/>
+		当 ratio = 0 时返回自身，ratio = 1 时返回目标，ratio = 0.5 返回自身和目标的平均值。。
 		@param to the to value
 		@param ratio the interpolation coefficient 
 		*/
 		lerp(to : ValueType, ratio : number) : ValueType;	
 	}		
-		/** Representation of 2D vectors and points. */
+		/** !#en Representation of 2D vectors and points.
+		!#zh 表示 2D 向量和坐标 */
 		export class Vec2 extends ValueType {		
 		constructor();		
-		/** Constructor
-		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}} 
+		/** !#en
+		Constructor
+		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
+		!#zh
+		构造函数，可查看 {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} 或者 {{#crossLink "cc/p:method"}}cc.p{{/crossLink}} 
 		*/
 		Vec2(x? : number, y? : number) : Vec2;		
 		/** !#en clone a Vec2 value
 		!#zh 克隆一个 Vec2 值 
 		*/
 		clone() : Vec2;		
-		/** 
+		/** !#en TODO
+		!#zh 设置向量值。
 		@param newValue !#en new value to set. !#zh 要设置的新值 
 		*/
 		set(newValue: (x: number, y: number) => void) : Vec2;		
-		/** 
-		@param other Constructor
-		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}} 
+		/** !#en TODO
+		!#zh 当前的向量是否与指定的向量相等。
+		@param other !#en
+		Constructor
+		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
+		!#zh
+		构造函数，可查看 {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} 或者 {{#crossLink "cc/p:method"}}cc.p{{/crossLink}} 
 		*/
 		equals(other: (x: number, y: number) => void) : boolean;		
+		/** !#en TODO
+		!#zh 转换为方便阅读的字符串。 
+		*/
 		toString() : string;		
-		/** 
-		@param to Constructor
+		/** !#en TODO
+		!#zh 线性插值。
+		@param to !#en
+		Constructor
 		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
+		!#zh
+		构造函数，可查看 {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} 或者 {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
 		@param ratio the interpolation coefficient
 		@param out optional, the receiving vector 
 		*/
 		lerp(to: (x: number, y: number) => void, ratio : number, out: (x: number, y: number) => void) : Vec2;		
-		/** Adds this vector. If you want to save result to another vector, use add() instead.
-		@param vector Constructor
-		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}} 
+		/** !#en Adds this vector. If you want to save result to another vector, use add() instead.
+		!#zh 向量加法。如果你想保存结果到另一个向量，使用 add() 代替。
+		@param vector !#en
+		Constructor
+		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
+		!#zh
+		构造函数，可查看 {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} 或者 {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
+		
+		@example 
+		```js
+		var v = cc.v2(10, 10);
+		v.addSelf(cc.v2(5, 5));// return Vec2 {x: 15, y: 15};
+		``` 
 		*/
 		addSelf(vector: (x: number, y: number) => void) : Vec2;		
-		/** Adds two vectors, and returns the new result.
-		@param vector Constructor
+		/** !#en Adds two vectors, and returns the new result.
+		!#zh 向量加法，并返回新结果。
+		@param vector !#en
+		Constructor
 		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
-		@param out optional, the receiving vector 
+		!#zh
+		构造函数，可查看 {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} 或者 {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
+		@param out optional, the receiving vector
+		
+		@example 
+		```js
+		var v = cc.v2(10, 10);
+		v.add(cc.v2(5, 5));      // return Vec2 {x: 15, y: 15};
+		var v1;
+		v.add(cc.v2(5, 5), v1);  // return Vec2 {x: 15, y: 15};
+		``` 
 		*/
 		add(vector: (x: number, y: number) => void, out: (x: number, y: number) => void) : Vec2;		
-		/** Subtracts one vector from this. If you want to save result to another vector, use sub() instead.
-		@param vector Constructor
-		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}} 
+		/** !#en Subtracts one vector from this. If you want to save result to another vector, use sub() instead.
+		!#zh 向量减法。如果你想保存结果到另一个向量，可使用 sub() 代替。
+		@param vector !#en
+		Constructor
+		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
+		!#zh
+		构造函数，可查看 {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} 或者 {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
+		
+		@example 
+		```js
+		var v = cc.v2(10, 10);
+		v.subSelf(cc.v2(5, 5));// return Vec2 {x: 5, y: 5};
+		``` 
 		*/
 		subSelf(vector: (x: number, y: number) => void) : Vec2;		
-		/** Subtracts one vector from this, and returns the new result.
-		@param vector Constructor
+		/** !#en Subtracts one vector from this, and returns the new result.
+		!#zh 向量减法，并返回新结果。
+		@param vector !#en
+		Constructor
 		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
-		@param out optional, the receiving vector 
+		!#zh
+		构造函数，可查看 {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} 或者 {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
+		@param out optional, the receiving vector
+		
+		@example 
+		```js
+		var v = cc.v2(10, 10);
+		v.sub(cc.v2(5, 5));      // return Vec2 {x: 5, y: 5};
+		var v1;
+		v.sub(cc.v2(5, 5), v1);  // return Vec2 {x: 5, y: 5};
+		``` 
 		*/
 		sub(vector: (x: number, y: number) => void, out: (x: number, y: number) => void) : Vec2;		
-		/** Multiplies this by a number. If you want to save result to another vector, use mul() instead. 
+		/** !#en Multiplies this by a number. If you want to save result to another vector, use mul() instead.
+		!#zh 缩放当前向量。如果你想结果保存到另一个向量，可使用 mul() 代替。
+		
+		@example 
+		```js
+		var v = cc.v2(10, 10);
+		v.mulSelf(5);// return Vec2 {x: 50, y: 50};
+		``` 
 		*/
 		mulSelf(num : number) : Vec2;		
-		/** Multiplies by a number, and returns the new result.
-		@param out optional, the receiving vector 
+		/** !#en Multiplies by a number, and returns the new result.
+		!#zh 缩放当前向量，并返回新结果。
+		@param out optional, the receiving vector
+		
+		@example 
+		```js
+		var v = cc.v2(10, 10);
+		v.mul(5);      // return Vec2 {x: 50, y: 50};
+		var v1;
+		v.mul(5, v1);  // return Vec2 {x: 50, y: 50};
+		``` 
 		*/
 		mul(num : number, out: (x: number, y: number) => void) : Vec2;		
-		/** Multiplies two vectors.
-		@param vector Constructor
-		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}} 
+		/** !#en Multiplies two vectors.
+		!#zh 分量相乘。
+		@param vector !#en
+		Constructor
+		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
+		!#zh
+		构造函数，可查看 {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} 或者 {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
+		
+		@example 
+		```js
+		var v = cc.v2(10, 10);
+		v.scaleSelf(cc.v2(5, 5));// return Vec2 {x: 50, y: 50};
+		``` 
 		*/
 		scaleSelf(vector: (x: number, y: number) => void) : Vec2;		
-		/** Multiplies two vectors, and returns the new result.
-		@param vector Constructor
+		/** !#en Multiplies two vectors, and returns the new result.
+		!#zh 分量相乘，并返回新的结果。
+		@param vector !#en
+		Constructor
 		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
-		@param out optional, the receiving vector 
+		!#zh
+		构造函数，可查看 {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} 或者 {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
+		@param out optional, the receiving vector
+		
+		@example 
+		```js
+		var v = cc.v2(10, 10);
+		v.scale(cc.v2(5, 5));      // return Vec2 {x: 50, y: 50};
+		var v1;
+		v.scale(cc.v2(5, 5), v1);  // return Vec2 {x: 50, y: 50};
+		``` 
 		*/
 		scale(vector: (x: number, y: number) => void, out: (x: number, y: number) => void) : Vec2;		
-		/** Divides by a number. If you want to save result to another vector, use div() instead.
-		@param vector Constructor
-		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}} 
+		/** !#en Divides by a number. If you want to save result to another vector, use div() instead.
+		!#zh 向量除法。如果你想结果保存到另一个向量，可使用 div() 代替。
+		@param vector !#en
+		Constructor
+		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
+		!#zh
+		构造函数，可查看 {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} 或者 {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
+		
+		@example 
+		```js
+		var v = cc.v2(10, 10);
+		v.divSelf(5); // return Vec2 {x: 2, y: 2};
+		``` 
 		*/
 		divSelf(vector: (x: number, y: number) => void) : Vec2;		
-		/** Divides by a number, and returns the new result.
-		@param vector Constructor
+		/** !#en Divides by a number, and returns the new result.
+		!#zh 向量除法，并返回新的结果。
+		@param vector !#en
+		Constructor
 		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
-		@param out optional, the receiving vector 
+		!#zh
+		构造函数，可查看 {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} 或者 {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
+		@param out optional, the receiving vector
+		
+		@example 
+		```js
+		var v = cc.v2(10, 10);
+		v.div(5);      // return Vec2 {x: 2, y: 2};
+		var v1;
+		v.div(5, v1);  // return Vec2 {x: 2, y: 2};
+		``` 
 		*/
 		div(vector: (x: number, y: number) => void, out: (x: number, y: number) => void) : Vec2;		
-		/** Negates the components. If you want to save result to another vector, use neg() instead. 
+		/** !#en Negates the components. If you want to save result to another vector, use neg() instead.
+		!#zh 向量取反。如果你想结果保存到另一个向量，可使用 neg() 代替。
+		
+		@example 
+		```js
+		var v = cc.v2(10, 10);
+		v.negSelf(); // return Vec2 {x: -10, y: -10};
+		``` 
 		*/
 		negSelf() : Vec2;		
-		/** Negates the components, and returns the new result.
-		@param out optional, the receiving vector 
+		/** !#en Negates the components, and returns the new result.
+		!#zh 返回取反后的新向量。
+		@param out optional, the receiving vector
+		
+		@example 
+		```js
+		var v = cc.v2(10, 10);
+		var v1;
+		v.neg(v1);  // return Vec2 {x: -10, y: -10};
+		``` 
 		*/
 		neg(out: (x: number, y: number) => void) : Vec2;		
-		/** Dot product
-		@param vector Constructor
-		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}} 
+		/** !#en Dot product
+		!#zh 当前向量与指定向量进行点乘。
+		@param vector !#en
+		Constructor
+		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
+		!#zh
+		构造函数，可查看 {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} 或者 {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
+		
+		@example 
+		```js
+		var v = cc.v2(10, 10);
+		v.dot(cc.v2(5, 5)); // return 100;
+		``` 
 		*/
 		dot(vector: (x: number, y: number) => void) : number;		
-		/** Cross product
-		@param vector Constructor
-		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}} 
+		/** !#en Cross product
+		!#zh 当前向量与指定向量进行叉乘。
+		@param vector !#en
+		Constructor
+		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
+		!#zh
+		构造函数，可查看 {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} 或者 {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
+		
+		@example 
+		```js
+		var v = cc.v2(10, 10);
+		v.cross(cc.v2(5, 5)); // return 0;
+		``` 
 		*/
 		cross(vector: (x: number, y: number) => void) : number;		
-		/** Returns the length of this vector. 
+		/** !#en Returns the length of this vector.
+		!#zh 返回该向量的长度。
+		
+		@example 
+		```js
+		var v = cc.v2(10, 10);
+		v.mag(); // return 14.142135623730951;
+		``` 
 		*/
 		mag() : number;		
-		/** Returns the squared length of this vector. 
+		/** !#en Returns the squared length of this vector.
+		!#zh 返回该向量的长度平方。
+		
+		@example 
+		```js
+		var v = cc.v2(10, 10);
+		v.magSqr(); // return 200;
+		``` 
 		*/
 		magSqr() : number;		
-		/** Make the length of this vector to 1. 
+		/** !#en Make the length of this vector to 1.
+		!#zh 向量归一化，让这个向量的长度为 1。
+		
+		@example 
+		```js
+		var v = cc.v2(10, 10);
+		v.normalizeSelf(); // return Vec2 {x: 0.7071067811865475, y: 0.7071067811865475};
+		``` 
 		*/
 		normalizeSelf() : Vec2;		
-		/** Returns this vector with a magnitude of 1.
-		
+		/** !#en
+		Returns this vector with a magnitude of 1.<br/>
+		<br/>
 		Note that the current vector is unchanged and a new normalized vector is returned. If you want to normalize the current vector, use normalizeSelf function.
+		!#zh
+		返回归一化后的向量。<br/>
+		<br/>
+		注意，当前向量不变，并返回一个新的归一化向量。如果你想来归一化当前向量，可使用 normalizeSelf 函数。
 		@param out optional, the receiving vector 
 		*/
 		normalize(out: (x: number, y: number) => void) : Vec2;		
-		/** Get angle in radian between this and vector
-		@param vector Constructor
-		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}} 
+		/** !#en Get angle in radian between this and vector.
+		!#zh 夹角的弧度。
+		@param vector !#en
+		Constructor
+		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
+		!#zh
+		构造函数，可查看 {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} 或者 {{#crossLink "cc/p:method"}}cc.p{{/crossLink}} 
 		*/
 		angle(vector: (x: number, y: number) => void) : number;		
-		/** Get angle in radian between this and vector with direction
-		@param vector Constructor
-		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}} 
+		/** !#en Get angle in radian between this and vector with direction.
+		!#zh 带方向的夹角的弧度。
+		@param vector !#en
+		Constructor
+		see {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} or {{#crossLink "cc/p:method"}}cc.p{{/crossLink}}
+		!#zh
+		构造函数，可查看 {{#crossLink "cc/vec2:method"}}cc.v2{{/crossLink}} 或者 {{#crossLink "cc/p:method"}}cc.p{{/crossLink}} 
 		*/
 		signAngle(vector: (x: number, y: number) => void) : number;		
-		/** rotate
+		/** !#en rotate
+		!#zh 返回旋转给定弧度后的新向量。
 		@param out optional, the receiving vector 
 		*/
 		rotate(radians : number, out: (x: number, y: number) => void) : Vec2;		
-		/** rotate self 
+		/** !#en rotate self
+		!#zh 按指定弧度旋转向量。 
 		*/
 		rotateSelf(radians : number) : Vec2;		
-		/** return a Vec2 object with x = 1 and y = 1 */
+		/** !#en return a Vec2 object with x = 1 and y = 1.
+		!#zh 新 Vec2 对象。 */
 		ONE : Vec2;		
-		/** return a Vec2 object with x = 0 and y = 0 */
+		/** !#en return a Vec2 object with x = 0 and y = 0.
+		!#zh 返回 x = 0 和 y = 0 的 Vec2 对象。 */
 		ZERO : Vec2;		
-		/** return a Vec2 object with x = 0 and y = 1 */
+		/** !#en return a Vec2 object with x = 0 and y = 1.
+		!#zh 返回 x = 0 和 y = 1 的 Vec2 对象。 */
 		up : Vec2;		
-		/** return a Vec2 object with x = 1 and y = 0 */
+		/** !#en return a Vec2 object with x = 1 and y = 0.
+		!#zh 返回 x = 1 和 y = 0 的 Vec2 对象。 */
 		RIGHT : Vec2;	
 	}	
 	
@@ -7852,38 +8987,6 @@ declare module cc {
 			DIAGONAL = 0,
 			FLIPPED_ALL = 0,
 			FLIPPED_MASK = 0,		
-		}	
-	}	
-	
-	/****************************************************
-	* Event
-	*****************************************************/
-	
-	export module Event {			
-			/** !#en The Custom event
-			!#zh 自定义事件 */
-			export class EventCustom extends Event {			
-			constructor();			
-			/** 
-			@param type The name of the event (case-sensitive), e.g. "click", "fire", or "submit"
-			@param bubbles A boolean indicating whether the event bubbles up through the tree or not 
-			*/
-			EventCustom(type : string, bubbles : boolean) : EventCustom;			
-			/** !#en A reference to the detailed data of the event
-			!#zh 事件的详细数据 */
-			detail : any;			
-			/** !#en Sets user data
-			!#zh 设置用户数据 
-			*/
-			setUserData(data : any) : void;			
-			/** !#en Gets user data
-			!#zh 获取用户数据 
-			*/
-			getUserData() : any;			
-			/** !#en Gets event name
-			!#zh 获取事件名称 
-			*/
-			getEventName() : string;		
 		}	
 	}	
 	
@@ -8089,6 +9192,21 @@ declare module cc {
 	}	
 	
 	/****************************************************
+	* Mask
+	*****************************************************/
+	
+	export module Mask {		
+		/** !#en the type for mask.
+		!#zh 遮罩组件的类型 */
+		export enum Type {			
+			RECT = 0,
+			ELLIPSE = 0,
+			type = 0,
+			segements = 0,		
+		}	
+	}	
+	
+	/****************************************************
 	* ProgressBar
 	*****************************************************/
 	
@@ -8154,6 +9272,38 @@ declare module cc {
 			CUSTOM = 0,
 			TRIMMED = 0,
 			RAW = 0,		
+		}	
+	}	
+	
+	/****************************************************
+	* Event
+	*****************************************************/
+	
+	export module Event {			
+			/** !#en The Custom event
+			!#zh 自定义事件 */
+			export class EventCustom extends Event {			
+			constructor();			
+			/** 
+			@param type The name of the event (case-sensitive), e.g. "click", "fire", or "submit"
+			@param bubbles A boolean indicating whether the event bubbles up through the tree or not 
+			*/
+			EventCustom(type : string, bubbles : boolean) : EventCustom;			
+			/** !#en A reference to the detailed data of the event
+			!#zh 事件的详细数据 */
+			detail : any;			
+			/** !#en Sets user data
+			!#zh 设置用户数据 
+			*/
+			setUserData(data : any) : void;			
+			/** !#en Gets user data
+			!#zh 获取用户数据 
+			*/
+			getUserData() : any;			
+			/** !#en Gets event name
+			!#zh 获取事件名称 
+			*/
+			getEventName() : string;		
 		}	
 	}	
 	
@@ -8718,7 +9868,7 @@ declare module js {
 	export function obsoletes(obj : any, objName : any, props : any, writable? : boolean) : void;	
 	/** A string tool to construct a string with format string.
 	for example:
-	     cc.js.formatStr("a: %d, b: %b", a, b);
+	     cc.js.formatStr("a: %s, b: %s", a, b);
 	     cc.js.formatStr(a, b, c); 
 	*/
 	export function formatStr() : string;		

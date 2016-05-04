@@ -23,8 +23,8 @@
     "_parent": null,
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
+      "x": 0,
+      "y": 0
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -38,8 +38,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 47,
-      "y": 750
+      "x": 0,
+      "y": 0
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -97,7 +97,8 @@
     "node": {
       "__id__": 1
     },
-    "_enabled": true
+    "_enabled": true,
+    "type": 0
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -105,6 +106,6 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "796a8lhwPtKvrDnvz6L4EXB"
+    "fileId": "3c30bOO7cVBTo3Xpvvv6YVJ"
   }
 ]

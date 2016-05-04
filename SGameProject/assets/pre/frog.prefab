@@ -23,8 +23,8 @@
     "_parent": null,
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
+      "x": 0,
+      "y": 0
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -93,6 +93,6 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "88c1c4jU5BAcrJXks+JmYmT"
+    "fileId": "c9b8bWbSUlCQYxAG9PduC45"
   }
 ]
