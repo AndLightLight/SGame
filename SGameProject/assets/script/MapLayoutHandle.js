@@ -134,7 +134,7 @@ cc.Class({
                         if (canRTimes <= 0) {
                             break;
                         }
-                        var r = Math.ceil(Math.random()*(num-1)*num);
+                        var r = Math.ceil(Math.random()*(num-1)+1);
                         var pre = this.pre[r-1];
                         type = r;
                     }while(this.checkBom(i,r));
