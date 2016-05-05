@@ -25,47 +25,66 @@ cc.Class({
 
     },
     
-    checkBom: function (idx) {
+    checkBom: function (idx,type) {
         var box = this.map[idx];
-        if (box) {
-            var ctnode = box.getComponent(require("boxnode"));
-            if (ctnode) {
-                var ctype = ctnode.type;
-                var backtype = [samenum - 1];
-                for (var index = 0; index < samenum - 1; index++) {
+        //return true;
+        if (box || type) {
+            var ctnode = box?box.getComponent(require("boxnode")):null;
+            if (ctnode|| type) {
+                var ctype = ctnode?ctnode.type:type;
+                var backtype = [this.samenum - 1];
+                var bBom = true;
+                for (var index = 0; index < this.samenum - 1; index++) {
                     backtype[index] = this.map[idx - index - 1]?
                     (this.map[idx - index - 1].getComponent(require("boxnode"))?
                     (this.map[idx - index - 1].getComponent(require("boxnode")).type):0):0;
                     if (backtype[index] != ctype) {
-                        return false;
+                        bBom = false;
+                        break;
                     }
                 }
-                for (var index = 0; index < samenum - 1; index++) {
+                if (bBom) {
+                    return true;
+                }
+                bBom = true
+                for (var index = 0; index < this.samenum - 1; index++) {
                     backtype[index] = this.map[idx + index + 1]?
                     (this.map[idx + index + 1].getComponent(require("boxnode"))?
                     (this.map[idx + index + 1].getComponent(require("boxnode")).type):0):0;
                     if (backtype[index] != ctype) {
-                        return false;
+                        bBom = false;
+                        break;
                     }
                 }
-                for (var index = 0; index < samenum - 1; index++) {
+                if (bBom) {
+                    return true;
+                }
+                bBom = true
+                for (var index = 0; index < this.samenum - 1; index++) {
                     backtype[index] = this.map[idx - this.width *(index + 1)]?
                     (this.map[idx - this.width *(index + 1)].getComponent(require("boxnode"))?
                     (this.map[idx - this.width *(index + 1)].getComponent(require("boxnode")).type):0):0;
                     if (backtype[index] != ctype) {
-                        return false;
+                        bBom = false;
+                        break;
                     }
                 }
-                for (var index = 0; index < samenum - 1; index++) {
+                if (bBom) {
+                    return true;
+                }
+                bBom = true
+                for (var index = 0; index < this.samenum - 1; index++) {
                     backtype[index] = this.map[idx + this.width *(index + 1)]?
                     (this.map[idx + this.width *(index + 1)].getComponent(require("boxnode"))?
                     (this.map[idx + this.width *(index + 1)].getComponent(require("boxnode")).type):0):0;
                     if (backtype[index] != ctype) {
-                        return false;
+                        bBom = false;
+                        break;
                     }
                 }
-                
-                return true;
+                if (bBom) {
+                    return true;
+                }
             }
         }
         
@@ -108,19 +127,26 @@ cc.Class({
                 if (bnot == 0) {
                     var pos = map.getPositionAt(this.getPosByIndex(i))
                     var num = this.pre.length;
-                    var r = Math.ceil(Math.random()*(num-1)*num);
-                    var pre = this.pre[r-1];
+                    var type = 0;
+                    var canRTimes = 10000;
+                    do{
+                        canRTimes --;
+                        if (canRTimes <= 0) {
+                            break;
+                        }
+                        var r = Math.ceil(Math.random()*(num-1)*num);
+                        var pre = this.pre[r-1];
+                        type = r;
+                    }while(this.checkBom(i,r));
                     var nd = cc.instantiate(pre);
                     nd.parent = this.node;
                     nd.x = pos.x;
                     nd.y = pos.y;
+                    var bn = nd.getComponent(require("boxnode"));
+                    bn.type = type;
+                    this.map[i] = nd;
                 }
             }         
         }
-        else{
-            var map = this.node.getComponent(cc.TiledLayer);
-            var tiles = map.getTiles();
-        }
-
     },
 });
