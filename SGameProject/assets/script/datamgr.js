@@ -3,7 +3,7 @@ var DataMgr = cc.Class({
     properties: {
         jsonPath: "project/assets/resources/json/",
         jsonHz: ".json",
-        jsonConfig: [],
+        jsonConfig: [cc.String],
     },
     
     
@@ -51,44 +51,12 @@ var DataMgr = cc.Class({
     },
     
     Init: function () {
-        this.jsonConfig = [
-            "act",
-            "Action",
-            "b被动技能",
-        ];
         this.m_table = {};
         var resArray = [];
         for (var i = 0;i < this.jsonConfig.length;i ++) {
             resArray[i] = this.jsonPath + this.jsonConfig[i] + this.jsonHz;
         }
-        //cc.loader.load(resArray,this._loadCallBack)
-        cc.loader.load("project/assets/map/maptest.tmx",function (err,res) {
-            if (!err) {
-                cc.log(res);
-            }
-            else{
-                cc.log(err);
-            }
-        });
-
-        cc.loader.load("project/assets/map/maptest.tmx",function (err,res) {
-            if (!err) {
-                cc.log(res);
-            }
-            else{
-                cc.log(err);
-            }
-        });
-        
-        cc.log("dddddddddd");
-        cc.loader.load("project/assets/map/bag_panel_ui@2x.png",function (err,res) {
-            if (!err) {
-                cc.log(res);
-            }
-            else{
-                cc.log(err);
-            }
-        });
+        cc.loader.load(resArray,this._loadCallBack);
     },
     
     

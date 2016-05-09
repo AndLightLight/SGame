@@ -97,7 +97,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 17
+        "__id__": 19
       }
     ],
     "_prefab": null
@@ -202,6 +202,12 @@
     "_components": [
       {
         "__id__": 16
+      },
+      {
+        "__id__": 17
+      },
+      {
+        "__id__": 18
       }
     ],
     "_prefab": null
@@ -487,7 +493,7 @@
     "node": {
       "__id__": 10
     },
-    "_enabled": false
+    "_enabled": true
   },
   {
     "__type__": "fca57s5NKRE5o/qUuPBMXrQ",
@@ -543,8 +549,8 @@
     "target": {
       "__id__": 10
     },
-    "component": "cc.TiledLayer",
-    "handler": "getTiles"
+    "component": "MapLayoutHandle",
+    "handler": "loadMap"
   },
   {
     "__type__": "cc.Widget",
@@ -587,6 +593,31 @@
     "_isAbsBottom": true,
     "_originalWidth": 0,
     "_originalHeight": 0
+  },
+  {
+    "__type__": "08e6a7xD6VDupunlJrW9VEp",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 4
+    },
+    "_enabled": true
+  },
+  {
+    "__type__": "1b5a7omWT9KXJYgfixcKd8D",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 4
+    },
+    "_enabled": true,
+    "jsonPath": "project/assets/resources/json/",
+    "jsonHz": ".json",
+    "jsonConfig": [
+      "act",
+      "Action",
+      "b被动技能"
+    ]
   },
   {
     "__type__": "cc.Canvas",
