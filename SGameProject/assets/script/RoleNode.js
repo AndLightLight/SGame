@@ -62,7 +62,7 @@ var RoleNode = cc.Class({
                 var my = event.getLocation().y;
                 var width = node.width;
                 var height = node.height;
-                var newpos = node.parent.convertToNodeSpace(cc.v2(mx + width/2,my + height/2)); 
+                var newpos = node.parent.convertToNodeSpace(cc.v2(mx,my)); 
                 // node.x = newpos.x;
                 // node.y = newpos.y;
                 if (rolenode._maphandle) {
@@ -72,8 +72,9 @@ var RoleNode = cc.Class({
                         if (torole) {
                             var can = rolenode._maphandle.selectRole.checkCanChangePos(torole);
                             if (can) {
-                                rolenode.startChange(rolenode._maphandle.selectRole.pos);
-                                rolenode._maphandle.selectRole.startChange(rolenode.pos);
+                                var can2 = rolenode._maphandle.selectRole.checkCanChangePos(torole);
+                                rolenode.startChange(torole.pos);
+                                torole.startChange(rolenode.pos);
                                 rolenode._maphandle.selectRole.bdown = false;
                                 rolenode._maphandle.selectRole = null;
                             }
@@ -85,8 +86,8 @@ var RoleNode = cc.Class({
     },
     
     startChange: function (topos) {
-        var pos = this._layer.getPositionAt(topos);
-        var action = cc.moveTo(2, pos);
+        var pos = this._layer.getPositionAt(this._maphandle.getPosByIndex(topos));
+        var action = cc.moveTo(0.5, pos);
         this.node.runAction(action);
     },
     

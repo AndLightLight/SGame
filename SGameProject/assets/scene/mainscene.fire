@@ -520,12 +520,13 @@
         "__uuid__": "556f856b-a22f-4b7a-afd2-9409eb42f517"
       }
     ],
-    "map": [],
     "samenum": 3,
-    "width": 15,
-    "height": 15,
-    "bload": false,
-    "num": 2
+    "selectRole": null,
+    "_map": [],
+    "mapWidth": 0,
+    "mapHeight": 0,
+    "tileWidth": 0,
+    "tileHeight": 0
   },
   {
     "__type__": "cc.TiledMap",

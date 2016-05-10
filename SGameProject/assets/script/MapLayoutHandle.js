@@ -57,7 +57,7 @@ var MapLayoutHandle = cc.Class({
     
     getPosByPixelPos:  function (ppos) {
         var widx = Math.floor(ppos.x/this.tileWidth);
-        var hidx = this.mapHeight - Math.floor(ppos.y/this.tileHeight);
+        var hidx = this.mapHeight - 1 - Math.floor(ppos.y/this.tileHeight);
         
         return cc.v2(widx,hidx);
     },
