@@ -108,13 +108,21 @@ var RoleNode = cc.Class({
     startChange: function (toidx) {
         this.stateType = StateType.CHANGE;
         this.node.stopAllActions();
+        this._maphandle.setRoleInIdx(null,this.idx);
         var ppos = this._layer.getPositionAt(this._maphandle.getPosByIndex(toidx));
         var action = cc.moveTo(0.5, ppos);
         var callfun = cc.callFunc(function (params) {
             this.stateType = StateType.IDLE;
             this._maphandle.setRoleInIdx(this,toidx);
             this.node.zIndex = 0;
-            this._maphandle.checkBom(toidx);
+            this._maphandle.checkBom(this.idx,null,function (re,linerole) {
+                if (re) {
+                    for (var index = 0; index < linerole.length; index++) {
+                        var element = linerole[index];
+                        element.startShake();
+                    }
+                }
+            });
         },this);
         var sqe = cc.sequence(action,callfun);
         this.node.runAction(sqe);
@@ -123,10 +131,10 @@ var RoleNode = cc.Class({
     startShake: function () {
         this.stateType = StateType.SHAKE;
         this.node.stopAllActions();
-        var right = cc.moveBy(0.1, 2);
-        var left = cc.moveBy(0.1, 2);
+        var right = cc.moveBy(0.1, 2, 0);
+        var left = cc.moveBy(0.1, -2, 0);
         var sqerl = cc.sequence(right,left);
-        var rep = cc.repeat(sqe,10);
+        var rep = cc.repeat(sqerl,10);
         
         var callfun = cc.callFunc(function (params) {
             this.startBoom();
@@ -140,8 +148,9 @@ var RoleNode = cc.Class({
         this.node.stopAllActions();
         var be = cc.instantiate(this.boomEffect);
         var bea = be.getComponent(cc.Animation);
-        bea.play();
-        this.node.addChild(be);
+        be.parent = this.node;
+        be.x = this.node.width/2;
+        be.y = this.node.height/2;
     },
     
     

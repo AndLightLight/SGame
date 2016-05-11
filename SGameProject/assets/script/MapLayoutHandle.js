@@ -67,9 +67,12 @@ var MapLayoutHandle = cc.Class({
     },
     
     setRoleInIdx: function (role,idx) {
-        if (role instanceof require("RoleNode")) {
-            role.idx = idx;
-            this._map[role.idx] = role;
+        if (role instanceof require("RoleNode") || role == null) {
+            idx = Number(idx);
+            this._map[idx] = role;
+            if (role) {
+                role.idx = idx;
+            }
         }else{
             cc.log("not rolenode type");
         }
@@ -77,6 +80,11 @@ var MapLayoutHandle = cc.Class({
     
     checkBom: function (idx,type,callback) {
         var rolenode = this._map[idx];
+        var linerole = [];
+        var result = false;
+        if (rolenode) {
+            linerole[0] = rolenode;
+        }
         //return true;
         if (rolenode || type) {
             var ctnode = rolenode;
@@ -84,7 +92,6 @@ var MapLayoutHandle = cc.Class({
                 var ctype = ctnode?ctnode.type:type;
                 var backtype = [this.samenum - 1];
                 var bBom = true;
-                var linerole = [];
                 var leftnum = 0;
                 for (var index = 0; index < this.samenum - 1; index++) {
                     backtype[index] = this._map[idx - index - 1]?
@@ -94,7 +101,7 @@ var MapLayoutHandle = cc.Class({
                         break;
                     }
                     leftnum ++;
-                    linerole[linerole.length+1] = this._map[idx - index - 1];
+                    linerole[linerole.length] = this._map[idx - index - 1];
                 }
                 // if (bBom) {
                 //     return true;
@@ -109,7 +116,7 @@ var MapLayoutHandle = cc.Class({
                         break;
                     }
                     rightnum ++;
-                    linerole[linerole.length+1] = this._map[idx + index + 1];
+                    linerole[linerole.length] = this._map[idx + index + 1];
                 }
                 // if (bBom) {
                 //     return true;
@@ -124,7 +131,7 @@ var MapLayoutHandle = cc.Class({
                         break;
                     }
                     upnum ++;
-                    linerole[linerole.length+1] = this._map[idx - this.mapWidth *(index + 1)];
+                    linerole[linerole.length] = this._map[idx - this.mapWidth *(index + 1)];
                 }
                 // if (bBom) {
                 //     return true;
@@ -139,22 +146,26 @@ var MapLayoutHandle = cc.Class({
                         break;
                     }
                     downnum ++;
-                    linerole[linerole.length+1] = this._map[idx + this.mapWidth *(index + 1)];
+                    linerole[linerole.length] = this._map[idx + this.mapWidth *(index + 1)];
                 }
                 // if (bBom) {
                 //     return true;
                 // }
                 
-                if (leftnum + rightnum >= this.samenum) {
-                    return true;
+                if (leftnum + rightnum >= this.samenum-1) {
+                    result = true;
                 }
-                if (upnum + downnum >= this.samenum) {
-                    return true;
+                if (upnum + downnum >= this.samenum-1) {
+                    result = true;
                 }
             }
         }
+        cc.log("idx:"+idx+"leftnum:"+leftnum+"rightnum:"+rightnum+"upnum:"+upnum+"downnum:"+downnum)
+        if (callback) {
+            callback(result,linerole);
+        }
         
-        return false;
+        return result;
     },
     
     
