@@ -98,7 +98,15 @@
       "__id__": 1
     },
     "_enabled": true,
-    "type": 0
+    "type": 0,
+    "boomEffect": {
+      "__uuid__": "38866650-a00b-4ed0-b231-77a266cd125f"
+    },
+    "idx": -1,
+    "bDown": false,
+    "stateType": 0,
+    "_layer": null,
+    "_maphandle": null
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -106,6 +114,6 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "3c30bOO7cVBTo3Xpvvv6YVJ"
+    "fileId": "c6f7e2VBXZE4JM0UTeoi1DX"
   }
 ]

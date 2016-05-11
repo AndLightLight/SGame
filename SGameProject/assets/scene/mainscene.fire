@@ -97,7 +97,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 19
+        "__id__": 18
       }
     ],
     "_prefab": null
@@ -205,9 +205,6 @@
       },
       {
         "__id__": 17
-      },
-      {
-        "__id__": 18
       }
     ],
     "_prefab": null
@@ -603,22 +600,6 @@
       "__id__": 4
     },
     "_enabled": true
-  },
-  {
-    "__type__": "1b5a7omWT9KXJYgfixcKd8D",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 4
-    },
-    "_enabled": true,
-    "jsonPath": "project/assets/resources/json/",
-    "jsonHz": ".json",
-    "jsonConfig": [
-      "act",
-      "Action",
-      "b被动技能"
-    ]
   },
   {
     "__type__": "cc.Canvas",

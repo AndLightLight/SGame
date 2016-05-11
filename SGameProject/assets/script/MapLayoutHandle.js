@@ -66,7 +66,16 @@ var MapLayoutHandle = cc.Class({
         return this._map[this.getIndexByPos(pos)];
     },
     
-    checkBom: function (idx,type) {
+    setRoleInIdx: function (role,idx) {
+        if (role instanceof require("RoleNode")) {
+            role.idx = idx;
+            this._map[role.idx] = role;
+        }else{
+            cc.log("not rolenode type");
+        }
+    },
+    
+    checkBom: function (idx,type,callback) {
         var rolenode = this._map[idx];
         //return true;
         if (rolenode || type) {
@@ -75,6 +84,8 @@ var MapLayoutHandle = cc.Class({
                 var ctype = ctnode?ctnode.type:type;
                 var backtype = [this.samenum - 1];
                 var bBom = true;
+                var linerole = [];
+                var leftnum = 0;
                 for (var index = 0; index < this.samenum - 1; index++) {
                     backtype[index] = this._map[idx - index - 1]?
                     (this._map[idx - index - 1].type):0;
@@ -82,11 +93,14 @@ var MapLayoutHandle = cc.Class({
                         bBom = false;
                         break;
                     }
+                    leftnum ++;
+                    linerole[linerole.length+1] = this._map[idx - index - 1];
                 }
-                if (bBom) {
-                    return true;
-                }
-                bBom = true
+                // if (bBom) {
+                //     return true;
+                // }
+                // bBom = true
+                var rightnum = 0
                 for (var index = 0; index < this.samenum - 1; index++) {
                     backtype[index] = this._map[idx + index + 1]?
                     (this._map[idx + index + 1].type):0;
@@ -94,11 +108,14 @@ var MapLayoutHandle = cc.Class({
                         bBom = false;
                         break;
                     }
+                    rightnum ++;
+                    linerole[linerole.length+1] = this._map[idx + index + 1];
                 }
-                if (bBom) {
-                    return true;
-                }
-                bBom = true
+                // if (bBom) {
+                //     return true;
+                // }
+                // bBom = true
+                var upnum = 0;
                 for (var index = 0; index < this.samenum - 1; index++) {
                     backtype[index] = this._map[idx - this.mapWidth *(index + 1)]?
                     (this._map[idx - this.mapWidth *(index + 1)].type):0;
@@ -106,11 +123,14 @@ var MapLayoutHandle = cc.Class({
                         bBom = false;
                         break;
                     }
+                    upnum ++;
+                    linerole[linerole.length+1] = this._map[idx - this.mapWidth *(index + 1)];
                 }
-                if (bBom) {
-                    return true;
-                }
-                bBom = true
+                // if (bBom) {
+                //     return true;
+                // }
+                // bBom = true
+                var downnum = 0;
                 for (var index = 0; index < this.samenum - 1; index++) {
                     backtype[index] = this._map[idx + this.mapWidth *(index + 1)]?
                     (this._map[idx + this.mapWidth *(index + 1)].type):0;
@@ -118,8 +138,17 @@ var MapLayoutHandle = cc.Class({
                         bBom = false;
                         break;
                     }
+                    downnum ++;
+                    linerole[linerole.length+1] = this._map[idx + this.mapWidth *(index + 1)];
                 }
-                if (bBom) {
+                // if (bBom) {
+                //     return true;
+                // }
+                
+                if (leftnum + rightnum >= this.samenum) {
+                    return true;
+                }
+                if (upnum + downnum >= this.samenum) {
                     return true;
                 }
             }
@@ -158,8 +187,7 @@ var MapLayoutHandle = cc.Class({
                 nd.y = pos.y;
                 var rolenode = nd.getComponent(require("RoleNode"));
                 rolenode.type = type;
-                rolenode.pos = i;
-                this._map[rolenode.pos] = rolenode;
+                this.setRoleInIdx(rolenode,i);
             }
         }   
     },

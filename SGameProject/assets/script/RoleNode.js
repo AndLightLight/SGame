@@ -1,6 +1,13 @@
 
 var MapLayoutHandle = require("MapLayoutHandle");
 
+var StateType = cc.Enum({
+    IDLE: 0,
+    CHANGE: 1,
+    SHAKE: 2,
+    BOOM: 3,
+});
+
 var RoleNode = cc.Class({
     extends: cc.Component,
 
@@ -15,15 +22,24 @@ var RoleNode = cc.Class({
         // },
         // ...
         type: 0,
+        boomEffect: {
+          default: null,
+          type: cc.Prefab,  
+        },
         
-        pos:{
+        idx:{
             default: -1,
             visible: false,
         },
         
         
-        bdown: {
+        bDown: {
             default: false,
+            visible: false,
+        },
+        
+        stateType: {
+            default: StateType.IDLE,
             visible: false,
         },
         
@@ -36,10 +52,10 @@ var RoleNode = cc.Class({
         if (event.type == cc.Node.EventType.TOUCH_END) {
             var node = event.currentTarget;
             var rolenode = node.getComponent(RoleNode);
-            rolenode.bdown = false;
+            rolenode.bDown = false;
             if (rolenode._maphandle) {
                 if (rolenode._maphandle.selectRole) {
-                    rolenode._maphandle.selectRole.bdown = false;
+                    rolenode._maphandle.selectRole.bDown = false;
                 }
             }
         }
@@ -48,34 +64,33 @@ var RoleNode = cc.Class({
             var rolenode = node.getComponent(RoleNode);
             if (rolenode._maphandle) {
                 if (rolenode._maphandle.selectRole) {
-                    rolenode._maphandle.selectRole.bdown = false;
+                    rolenode._maphandle.selectRole.bDown = false;
                 }
                 rolenode._maphandle.selectRole = rolenode;
-                rolenode._maphandle.selectRole.bdown = true;
+                rolenode._maphandle.selectRole.bDown = true;
             }
         }
         else if (event.type == cc.Node.EventType.TOUCH_MOVE) {
             var node = event.currentTarget;
             var rolenode = node.getComponent(RoleNode);
-            if (rolenode.bdown) {
+            if (rolenode.bDown) {
                 var mx = event.getLocation().x;
                 var my = event.getLocation().y;
                 var width = node.width;
                 var height = node.height;
-                var newpos = node.parent.convertToNodeSpace(cc.v2(mx,my)); 
-                // node.x = newpos.x;
-                // node.y = newpos.y;
+                var newppos = node.parent.convertToNodeSpace(cc.v2(mx,my)); 
                 if (rolenode._maphandle) {
                     if (rolenode._maphandle.selectRole) {
-                        var topos = rolenode._maphandle.getPosByPixelPos(newpos);
+                        var topos = rolenode._maphandle.getPosByPixelPos(newppos);
                         var torole = rolenode._maphandle.getRoleByPos(topos);
                         if (torole) {
                             var can = rolenode._maphandle.selectRole.checkCanChangePos(torole);
                             if (can) {
                                 var can2 = rolenode._maphandle.selectRole.checkCanChangePos(torole);
-                                rolenode.startChange(torole.pos);
-                                torole.startChange(rolenode.pos);
-                                rolenode._maphandle.selectRole.bdown = false;
+                                rolenode.startChange(torole.idx);
+                                torole.startChange(rolenode.idx);
+                                rolenode.node.zIndex = 1;
+                                rolenode._maphandle.selectRole.bDown = false;
                                 rolenode._maphandle.selectRole = null;
                             }
                         }
@@ -85,16 +100,55 @@ var RoleNode = cc.Class({
         }
     },
     
-    startChange: function (topos) {
-        var pos = this._layer.getPositionAt(this._maphandle.getPosByIndex(topos));
-        var action = cc.moveTo(0.5, pos);
-        this.node.runAction(action);
+    startIdle: function () {
+        this.stateType = StateType.IDLE;
+        this.node.stopAllActions();
     },
     
+    startChange: function (toidx) {
+        this.stateType = StateType.CHANGE;
+        this.node.stopAllActions();
+        var ppos = this._layer.getPositionAt(this._maphandle.getPosByIndex(toidx));
+        var action = cc.moveTo(0.5, ppos);
+        var callfun = cc.callFunc(function (params) {
+            this.stateType = StateType.IDLE;
+            this._maphandle.setRoleInIdx(this,toidx);
+            this.node.zIndex = 0;
+            this._maphandle.checkBom(toidx);
+        },this);
+        var sqe = cc.sequence(action,callfun);
+        this.node.runAction(sqe);
+    },
+    
+    startShake: function () {
+        this.stateType = StateType.SHAKE;
+        this.node.stopAllActions();
+        var right = cc.moveBy(0.1, 2);
+        var left = cc.moveBy(0.1, 2);
+        var sqerl = cc.sequence(right,left);
+        var rep = cc.repeat(sqe,10);
+        
+        var callfun = cc.callFunc(function (params) {
+            this.startBoom();
+        },this);
+        var sqe = cc.sequence(rep,callfun);
+        this.node.runAction(sqe);
+    },
+    
+    startBoom: function () {
+        this.stateType = StateType.BOOM;
+        this.node.stopAllActions();
+        var be = cc.instantiate(this.boomEffect);
+        var bea = be.getComponent(cc.Animation);
+        bea.play();
+        this.node.addChild(be);
+    },
+    
+    
     checkCanChangePos: function (role) {
-        if (role instanceof RoleNode && this._maphandle && role != this) {
-            var rpos = this._maphandle.getPosByIndex(role.pos);
-            var cpos = this._maphandle.getPosByIndex(this.pos);
+        if (role instanceof RoleNode && this._maphandle && role != this && role.stateType == StateType.IDLE && this.stateType == StateType.IDLE) {
+            var rpos = this._maphandle.getPosByIndex(role.idx);
+            var cpos = this._maphandle.getPosByIndex(this.idx);
             
             if (rpos.x == cpos.x) {
                 if (Math.abs(rpos.y - cpos.y) == 1) {
@@ -125,3 +179,6 @@ var RoleNode = cc.Class({
 
     // },
 });
+
+
+RoleNode.StateType = StateType;

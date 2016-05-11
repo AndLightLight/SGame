@@ -57,6 +57,12 @@ var DataMgr = cc.Class({
             resArray[i] = this.jsonPath + this.jsonConfig[i] + this.jsonHz;
         }
         cc.loader.load(resArray,this._loadCallBack);
+        
+        cc.loader.loadRes("ef_destroy",function (err,re) {
+            cc.log(err);
+            var res = re;
+            cc.log(re);
+        })
     },
     
     
