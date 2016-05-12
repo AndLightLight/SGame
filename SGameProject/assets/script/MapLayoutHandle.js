@@ -78,6 +78,76 @@ var MapLayoutHandle = cc.Class({
         }
     },
     
+    GetOneLineRole: function (idx,type,linerole) {
+        var rolenode = this._map[idx];
+        if (rolenode || type) {
+            var ctnode = rolenode;
+            if (ctnode|| type) {
+                var ctype = ctnode?ctnode.type:type;
+                var lefttype = this._map[idx - 1]?this._map[idx - 1].type:0;
+                var righttype = this._map[idx + 1]?this._map[idx + 1].type:0;
+                var uptype = this._map[idx - this.mapWidth]?this._map[idx - this.mapWidth].type:0;
+                var downtype = this._map[idx + this.mapWidth]?this._map[idx + this.mapWidth].type:0;
+                if (lefttype == ctype) {
+                    var bhave = false;
+                    for (var index = 0; index < linerole.length; index++) {
+                        var element = linerole[index];
+                        if (element.idx == (idx-1)) {
+                            bhave = true;
+                            break;
+                        }
+                    }
+                    if (!bhave) {
+                        linerole[linerole.length] = this._map[idx - 1];
+                        this.GetOneLineRole(idx-1,type,linerole);
+                    }
+                }
+                if (righttype == ctype) {
+                    var bhave = false;
+                    for (var index = 0; index < linerole.length; index++) {
+                        var element = linerole[index];
+                        if (element.idx == (idx+1)) {
+                            bhave = true;
+                            break;
+                        }
+                    }
+                    if (!bhave) {
+                        linerole[linerole.length] = this._map[idx + 1];
+                        this.GetOneLineRole(idx+1,type,linerole);
+                    }
+                }
+                if (uptype == ctype) {
+                    var bhave = false;
+                    for (var index = 0; index < linerole.length; index++) {
+                        var element = linerole[index];
+                        if (element.idx == (idx - this.mapWidth)) {
+                            bhave = true;
+                            break;
+                        }
+                    }
+                    if (!bhave) {
+                        linerole[linerole.length] = this._map[idx - this.mapWidth];
+                        this.GetOneLineRole(idx - this.mapWidth,type,linerole);
+                    }
+                }
+                if (downtype == ctype) {
+                    var bhave = false;
+                    for (var index = 0; index < linerole.length; index++) {
+                        var element = linerole[index];
+                        if (element.idx == (idx + this.mapWidth)) {
+                            bhave = true;
+                            break;
+                        }
+                    }
+                    if (!bhave) {
+                        linerole[linerole.length] = this._map[idx + this.mapWidth];
+                        this.GetOneLineRole(idx + this.mapWidth,type,linerole);
+                    }
+                }
+            }
+        }
+    },
+    
     checkBom: function (idx,type,callback) {
         var rolenode = this._map[idx];
         var linerole = [];
@@ -85,87 +155,100 @@ var MapLayoutHandle = cc.Class({
         if (rolenode) {
             linerole[0] = rolenode;
         }
-        //return true;
-        if (rolenode || type) {
-            var ctnode = rolenode;
-            if (ctnode|| type) {
-                var ctype = ctnode?ctnode.type:type;
-                var backtype = [this.samenum - 1];
-                var bBom = true;
-                var leftnum = 0;
-                for (var index = 0; index < this.samenum - 1; index++) {
-                    backtype[index] = this._map[idx - index - 1]?
-                    (this._map[idx - index - 1].type):0;
-                    if (backtype[index] != ctype) {
-                        bBom = false;
-                        break;
-                    }
-                    leftnum ++;
-                    linerole[linerole.length] = this._map[idx - index - 1];
-                }
-                // if (bBom) {
-                //     return true;
-                // }
-                // bBom = true
-                var rightnum = 0
-                for (var index = 0; index < this.samenum - 1; index++) {
-                    backtype[index] = this._map[idx + index + 1]?
-                    (this._map[idx + index + 1].type):0;
-                    if (backtype[index] != ctype) {
-                        bBom = false;
-                        break;
-                    }
-                    rightnum ++;
-                    linerole[linerole.length] = this._map[idx + index + 1];
-                }
-                // if (bBom) {
-                //     return true;
-                // }
-                // bBom = true
-                var upnum = 0;
-                for (var index = 0; index < this.samenum - 1; index++) {
-                    backtype[index] = this._map[idx - this.mapWidth *(index + 1)]?
-                    (this._map[idx - this.mapWidth *(index + 1)].type):0;
-                    if (backtype[index] != ctype) {
-                        bBom = false;
-                        break;
-                    }
-                    upnum ++;
-                    linerole[linerole.length] = this._map[idx - this.mapWidth *(index + 1)];
-                }
-                // if (bBom) {
-                //     return true;
-                // }
-                // bBom = true
-                var downnum = 0;
-                for (var index = 0; index < this.samenum - 1; index++) {
-                    backtype[index] = this._map[idx + this.mapWidth *(index + 1)]?
-                    (this._map[idx + this.mapWidth *(index + 1)].type):0;
-                    if (backtype[index] != ctype) {
-                        bBom = false;
-                        break;
-                    }
-                    downnum ++;
-                    linerole[linerole.length] = this._map[idx + this.mapWidth *(index + 1)];
-                }
-                // if (bBom) {
-                //     return true;
-                // }
-                
-                if (leftnum + rightnum >= this.samenum-1) {
-                    result = true;
-                }
-                if (upnum + downnum >= this.samenum-1) {
-                    result = true;
-                }
-            }
+        
+        var DirType = cc.Enum({
+           N: 0,
+           U: 1,
+           D: 2,
+           L: 3,
+           R: 4,
+        });
+        
+
+        this.GetOneLineRole(idx,type,linerole);
+        
+        var log = "idx:"+idx+"linerole:";
+        for (var index = 0; index < linerole.length; index++) {
+            var element = linerole[index];
+            log = log + "  " + element.idx;
         }
-        cc.log("idx:"+idx+"leftnum:"+leftnum+"rightnum:"+rightnum+"upnum:"+upnum+"downnum:"+downnum)
+        
+        cc.log(log);
+        
+        var offset = 1;
+        if (rolenode) {
+            offset = 0;
+        }
+        
+        if (linerole.length + offset >= this.samenum) {
+            result = true;
+        }
+        
         if (callback) {
             callback(result,linerole);
         }
         
         return result;
+        
+        // if (rolenode || type) {
+        //     var ctnode = rolenode;
+        //     if (ctnode|| type) {
+        //         var ctype = ctnode?ctnode.type:type;
+        //         var backtype = [this.samenum - 1];
+        //         var leftnum = 0;
+        //         for (var index = 0; index < this.samenum - 1; index++) {
+        //             backtype[index] = this._map[idx - index - 1]?
+        //             (this._map[idx - index - 1].type):0;
+        //             if (backtype[index] != ctype) {
+        //                 bBom = false;
+        //                 break;
+        //             }
+        //             leftnum ++;
+        //         }
+        //         var rightnum = 0
+        //         for (var index = 0; index < this.samenum - 1; index++) {
+        //             backtype[index] = this._map[idx + index + 1]?
+        //             (this._map[idx + index + 1].type):0;
+        //             if (backtype[index] != ctype) {
+        //                 bBom = false;
+        //                 break;
+        //             }
+        //             rightnum ++;
+        //         }
+        //         var upnum = 0;
+        //         for (var index = 0; index < this.samenum - 1; index++) {
+        //             backtype[index] = this._map[idx - this.mapWidth *(index + 1)]?
+        //             (this._map[idx - this.mapWidth *(index + 1)].type):0;
+        //             if (backtype[index] != ctype) {
+        //                 bBom = false;
+        //                 break;
+        //             }
+        //             upnum ++;
+        //         }
+        //         var downnum = 0;
+        //         for (var index = 0; index < this.samenum - 1; index++) {
+        //             backtype[index] = this._map[idx + this.mapWidth *(index + 1)]?
+        //             (this._map[idx + this.mapWidth *(index + 1)].type):0;
+        //             if (backtype[index] != ctype) {
+        //                 bBom = false;
+        //                 break;
+        //             }
+        //             downnum ++;
+        //         }
+        //         if (leftnum + rightnum >= this.samenum-1) {
+        //             result = true;
+        //         }
+        //         if (upnum + downnum >= this.samenum-1) {
+        //             result = true;
+        //         }
+        //     }
+        // }
+        //cc.log("idx:"+idx+"leftnum:"+leftnum+"rightnum:"+rightnum+"upnum:"+upnum+"downnum:"+downnum)
+        // if (callback) {
+        //     callback(result,linerole);
+        // }
+        
+        // return result;
     },
     
     
