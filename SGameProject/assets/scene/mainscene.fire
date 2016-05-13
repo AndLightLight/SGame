@@ -602,7 +602,8 @@
     "node": {
       "__id__": 4
     },
-    "_enabled": true
+    "_enabled": true,
+    "world": null
   },
   {
     "__type__": "da3fbqFPMlJcIpxeMJRVqxz",

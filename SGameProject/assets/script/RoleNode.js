@@ -1,5 +1,7 @@
 
 var MapLayoutHandle = require("MapLayoutHandle");
+var Box2d = require("box2dweb-commonjs");
+var Game = require("Game");
 
 var StateType = cc.Enum({
     IDLE: 0,
@@ -53,6 +55,7 @@ var RoleNode = cc.Class({
             var node = event.currentTarget;
             var rolenode = node.getComponent(RoleNode);
             rolenode.bDown = false;
+            rolenode.buildBox2d();
             if (rolenode._maphandle) {
                 if (rolenode._maphandle.selectRole) {
                     rolenode._maphandle.selectRole.bDown = false;
@@ -109,7 +112,7 @@ var RoleNode = cc.Class({
         this.stateType = StateType.CHANGE;
         this.node.stopAllActions();
         this._maphandle.setRoleInIdx(null,this.idx);
-        var ppos = this._layer.getPositionAt(this._maphandle.getPosByIndex(toidx));
+        var ppos = this._maphandle.getPixelPosByPos(this._maphandle.getPosByIndex(toidx));
         var action = cc.moveTo(0.5, ppos);
         var callfun = cc.callFunc(function (params) {
             this.stateType = StateType.IDLE;
@@ -149,8 +152,8 @@ var RoleNode = cc.Class({
         var be = cc.instantiate(this.boomEffect);
         var bea = be.getComponent(cc.Animation);
         be.parent = this.node;
-        be.x = this.node.width/2;
-        be.y = this.node.height/2;
+        be.x = 0;
+        be.y = 0;
     },
     
     
@@ -173,6 +176,54 @@ var RoleNode = cc.Class({
         
         return false;
     },
+    
+    convertToWorld:function(){
+        var leftDownPos = this.node.parent.convertToWorldSpaceAR(this.node.position);
+        return cc.v2(leftDownPos.x/this.SCALE,(this.visibleSize.height-leftDownPos.y)/this.SCALE);
+    },
+    
+    convertToNode:function(worldPoint){
+        var leftUpPos = cc.pMult(worldPoint,this.SCALE);
+        var leftDownPosInWorldPixel = cc.v2(leftUpPos.x,(this.visibleSize.height-leftUpPos.y));
+        var leftDownPos =  this.node.parent.convertToNodeSpaceAR(leftDownPosInWorldPixel);
+        return leftDownPos;
+    },
+    
+    buildBox2d: function () {
+        if (!this.bodyA) {
+            var visibleSize = cc.director.getVisibleSize();
+            this.visibleSize = visibleSize;
+            
+            var SCALE = 30;
+            this.SCALE = SCALE;
+            
+            var DEGTORAD = Math.PI/180;
+            
+            var RADTODEG = 180/Math.PI;
+            this.RADTODEG = RADTODEG;
+            
+            var worldPoint = this.convertToWorld();
+            
+            var bodyDef = new Box2d.b2BodyDef();
+                bodyDef.type = Box2d.b2Body.b2_dynamicBody;
+                bodyDef.position.Set(worldPoint.x,worldPoint.y);
+                bodyDef.angle = 0*DEGTORAD;
+                //bodyDef.linearVelocity = new Box2d.b2Vec2(1,0);
+                //bodyDef.angularVelocity = -10;
+                
+                var bodyA = Game.instance.world.CreateBody(bodyDef);
+                this.bodyA = bodyA;
+                
+            var fixDef = new Box2d.b2FixtureDef();
+                fixDef.shape = new Box2d.b2PolygonShape();
+                fixDef.shape.SetAsBox(this.node.width/2/SCALE,this.node.height/2/SCALE);
+                fixDef.density = 1.0;
+                fixDef.friction = 0.5;
+                fixDef.restitution = 0.8;
+                
+                bodyA.CreateFixture(fixDef);    
+        }    
+    },
 
     // use this for initialization
     onLoad: function () {
@@ -181,12 +232,17 @@ var RoleNode = cc.Class({
         this.node.on(cc.Node.EventType.TOUCH_MOVE,this._touchCallBack);
         this._layer = this.node.parent.getComponent(cc.TiledLayer);
         this._maphandle = this.node.parent.getComponent(MapLayoutHandle);
+        
+        this.buildBox2d();
     },
 
     // called every frame, uncomment this function to activate update callback
-    // update: function (dt) {
-
-    // },
+    update: function (dt) {
+        if (this.bodyA) {
+            this.node.position = this.convertToNode(this.bodyA.GetPosition());
+            this.node.rotation = this.bodyA.GetAngle()*this.RADTODEG%360;
+        }
+    },
 });
 
 

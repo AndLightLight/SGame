@@ -62,6 +62,15 @@ var MapLayoutHandle = cc.Class({
         return cc.v2(widx,hidx);
     },
     
+    
+    getPixelPosByPos:  function (pos) {
+        var map = this.node.getComponent(cc.TiledLayer)
+        var ppos = map.getPositionAt(pos);
+        ppos.x = ppos.x + this.tileWidth/2;
+        ppos.y = ppos.y + this.tileHeight/2;
+        return ppos;
+    },
+    
     getRoleByPos:  function (pos) {
         return this._map[this.getIndexByPos(pos)];
     },
@@ -173,7 +182,7 @@ var MapLayoutHandle = cc.Class({
             log = log + "  " + element.idx;
         }
         
-        cc.log(log);
+        //cc.log(log);
         
         var offset = 1;
         if (rolenode) {
@@ -259,10 +268,16 @@ var MapLayoutHandle = cc.Class({
         this.tileWidth = this.node.parent.getComponent(cc.TiledMap).getTileSize().width;
         this.tileHeight = this.node.parent.getComponent(cc.TiledMap).getTileSize().height;
         var tiles = map.getTiles();
+        var test = 10;
         for (var i in tiles) {
             var bnot = tiles[i];
             if (bnot == 0) {
-                var pos = map.getPositionAt(this.getPosByIndex(i))
+                if (test <= 0) {
+                    break;
+                }
+                test --;
+                cc.director.getScheduler().schedule(function () {
+                                    var ppos = this.getPixelPosByPos(this.getPosByIndex(i))
                 var num = this.pre.length;
                 var type = 0;
                 var canRTimes = 10000;
@@ -274,14 +289,17 @@ var MapLayoutHandle = cc.Class({
                     var r = Math.ceil(Math.random()*(num-1)+1);
                     var pre = this.pre[r-1];
                     type = r;
+                    cc.log("canRTimes:"+canRTimes+"r:"+r+"idx:"+i);
                 }while(this.checkBom(i,r));
                 var nd = cc.instantiate(pre);
                 nd.parent = this.node;
-                nd.x = pos.x;
-                nd.y = pos.y;
+                nd.x = ppos.x;
+                nd.y = ppos.y;
                 var rolenode = nd.getComponent(require("RoleNode"));
                 rolenode.type = type;
                 this.setRoleInIdx(rolenode,i);
+                }, this, 3*(i-15));
+
             }
         }   
     },

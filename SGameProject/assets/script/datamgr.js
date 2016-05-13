@@ -50,7 +50,9 @@ var DataMgr = cc.Class({
         return this.m_table[tablename][id.toString()];
     },
     
-    Init: function () {
+        // use this for initialization
+    onLoad: function () {
+        DataMgr.instance = this;
         this.m_table = {};
         var resArray = [];
         for (var i = 0;i < this.jsonConfig.length;i ++) {
@@ -61,12 +63,3 @@ var DataMgr = cc.Class({
     
     
 });
-
-
-DataMgr._instance;
-DataMgr.GetInstance = function (){
-    if (DataMgr._instance == null) {
-        DataMgr._instance = new DataMgr;
-    }
-    return DataMgr._instance;
-};

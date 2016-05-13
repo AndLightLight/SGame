@@ -1,5 +1,5 @@
 var Box2d = require("box2dweb-commonjs");
-cc.Class({
+var Game = cc.Class({
     extends: cc.Component,
 
     properties: {
@@ -13,7 +13,7 @@ cc.Class({
         // },
         // ...
         
-        word: {
+        world: {
             default: null,
             visible: false,
         }
@@ -21,14 +21,22 @@ cc.Class({
     
     // use this for initialization
     onLoad: function () {
-        require("Datamgr").GetInstance().Init();
-        this.word = new Box2d.b2Word(new Box2d.b2Vec2(0,9.8),true);
+        Game.instance = this;
+        this.world = new Box2d.b2World(new Box2d.b2Vec2(0,0),true);
+        var debugDraw = new Box2d.b2DebugDraw();
+        debugDraw.SetSprite(cc.game.config.id.getContext("2d"));
+        debugDraw.SetDrawScale(30.0);
+        debugDraw.SetFillAlpha(0.3);
+        debugDraw.SetLineThickness(1.0);
+        debugDraw.SetFlags(Box2d.b2DebugDraw.e_shapeBit | Box2d.b2DebugDraw.e_jointBit);
+        this.world.SetDebugDraw(debugDraw);
+
     },
 
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
-        this.word.Step(dt,10,10);
+        this.world.Step(dt,10,10);
         this.world.DrawDebugData();
-        this.word.ClearForces();
+        this.world.ClearForces();
     },
 });
