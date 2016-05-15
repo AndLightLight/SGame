@@ -205,7 +205,10 @@ var RoleNode = cc.Class({
             var worldPoint = this.convertToWorld();
             
             var bodyDef = new Box2d.b2BodyDef();
-                bodyDef.type = Box2d.b2Body.b2_dynamicBody;
+                bodyDef.type = Box2d.b2Body.b2_dynimacBod;
+                if (this.type == 0) {
+                    bodyDef.type = Box2d.b2Body.b2_staticBody;
+                }
                 bodyDef.position.Set(worldPoint.x,worldPoint.y);
                 bodyDef.angle = 0*DEGTORAD;
                 //bodyDef.linearVelocity = new Box2d.b2Vec2(1,0);

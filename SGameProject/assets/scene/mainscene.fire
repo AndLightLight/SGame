@@ -97,7 +97,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 19
+        "__id__": 18
       }
     ],
     "_prefab": null
@@ -205,9 +205,6 @@
       },
       {
         "__id__": 17
-      },
-      {
-        "__id__": 18
       }
     ],
     "_prefab": null
@@ -493,7 +490,7 @@
     "node": {
       "__id__": 10
     },
-    "_enabled": true
+    "_enabled": false
   },
   {
     "__type__": "fca57s5NKRE5o/qUuPBMXrQ",
@@ -520,6 +517,9 @@
         "__uuid__": "556f856b-a22f-4b7a-afd2-9409eb42f517"
       }
     ],
+    "stone": {
+      "__uuid__": "3e4226b5-0971-4e81-b1d9-0bbdf2135115"
+    },
     "samenum": 3,
     "selectRole": null,
     "_map": [],
@@ -604,20 +604,6 @@
     },
     "_enabled": true,
     "world": null
-  },
-  {
-    "__type__": "da3fbqFPMlJcIpxeMJRVqxz",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 4
-    },
-    "_enabled": true,
-    "jsonPath": "project/assets/resources/json/",
-    "jsonHz": ".json",
-    "jsonConfig": [
-      "Action"
-    ]
   },
   {
     "__type__": "cc.Canvas",

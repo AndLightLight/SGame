@@ -12,6 +12,10 @@ var MapLayoutHandle = cc.Class({
         // },
         // ...
         pre: [cc.Prefab],
+        stone: {
+          default: null,
+          type: cc.Prefab,  
+        },
         samenum: 3,
         
         selectRole: {
@@ -46,8 +50,7 @@ var MapLayoutHandle = cc.Class({
     },
     
     getPosByIndex:  function (idx) {
-        idx ++;
-        var pos = cc.v2(idx%this.mapWidth-1,Math.floor(idx/this.mapWidth));
+        var pos = cc.v2(idx%this.mapWidth,Math.floor(idx/this.mapWidth));
         return pos;
     },
     
@@ -173,6 +176,7 @@ var MapLayoutHandle = cc.Class({
            R: 4,
         });
         
+        var retype = rolenode?rolenode.type:type;
 
         this.GetOneLineRole(idx,type,linerole);
         
@@ -182,14 +186,14 @@ var MapLayoutHandle = cc.Class({
             log = log + "  " + element.idx;
         }
         
-        //cc.log(log);
+        cc.log(log);
         
         var offset = 1;
         if (rolenode) {
             offset = 0;
         }
         
-        if (linerole.length + offset >= this.samenum) {
+        if (linerole.length + offset >= this.samenum && retype != 0) {
             result = true;
         }
         
@@ -263,44 +267,46 @@ var MapLayoutHandle = cc.Class({
     
     loadMap: function () {
         var map = this.node.getComponent(cc.TiledLayer);
+        map.enabled = false;
         this.mapWidth = this.node.parent.getComponent(cc.TiledMap).getMapSize().width;
         this.mapHeight = this.node.parent.getComponent(cc.TiledMap).getMapSize().height;
         this.tileWidth = this.node.parent.getComponent(cc.TiledMap).getTileSize().width;
         this.tileHeight = this.node.parent.getComponent(cc.TiledMap).getTileSize().height;
         var tiles = map.getTiles();
-        var test = 10;
+        var test = 20;
         for (var i in tiles) {
+            i = Number(i);
             var bnot = tiles[i];
-            if (bnot == 0) {
-                if (test <= 0) {
-                    break;
+                // if (test <= 0) {
+                //     break;
+                // }
+                //test --;
+                var ppos = this.getPixelPosByPos(this.getPosByIndex(i))
+                var pre = null;
+                if (bnot == 0) {
+                    var num = this.pre.length;
+                    var canRTimes = 10000;
+                    do{
+                        canRTimes --;
+                        if (canRTimes <= 0) {
+                            break;
+                        }
+                        var r = Math.ceil(Math.random()*(num-1)+1);
+                        pre = this.pre[r-1];
+                        var prerolenode = pre.getComponent(require("RoleNode"));
+                    }while(this.checkBom(i,prerolenode.type));
+                }else{
+                    pre = this.stone;
                 }
-                test --;
-                cc.director.getScheduler().schedule(function () {
-                                    var ppos = this.getPixelPosByPos(this.getPosByIndex(i))
-                var num = this.pre.length;
-                var type = 0;
-                var canRTimes = 10000;
-                do{
-                    canRTimes --;
-                    if (canRTimes <= 0) {
-                        break;
-                    }
-                    var r = Math.ceil(Math.random()*(num-1)+1);
-                    var pre = this.pre[r-1];
-                    type = r;
-                    cc.log("canRTimes:"+canRTimes+"r:"+r+"idx:"+i);
-                }while(this.checkBom(i,r));
+                if (!pre) {
+                    continue;
+                }
                 var nd = cc.instantiate(pre);
-                nd.parent = this.node;
                 nd.x = ppos.x;
                 nd.y = ppos.y;
+                nd.parent = this.node;
                 var rolenode = nd.getComponent(require("RoleNode"));
-                rolenode.type = type;
                 this.setRoleInIdx(rolenode,i);
-                }, this, 3*(i-15));
-
-            }
         }   
     },
 

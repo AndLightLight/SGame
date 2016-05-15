@@ -22,12 +22,12 @@ var Game = cc.Class({
     // use this for initialization
     onLoad: function () {
         Game.instance = this;
-        this.world = new Box2d.b2World(new Box2d.b2Vec2(0,0),true);
+        this.world = new Box2d.b2World(new Box2d.b2Vec2(0,5),true);
         var debugDraw = new Box2d.b2DebugDraw();
         debugDraw.SetSprite(cc.game.config.id.getContext("2d"));
-        debugDraw.SetDrawScale(30.0);
-        debugDraw.SetFillAlpha(0.3);
-        debugDraw.SetLineThickness(1.0);
+        debugDraw.SetDrawScale(1.0);
+        debugDraw.SetFillAlpha(1.3);
+        debugDraw.SetLineThickness(2.0);
         debugDraw.SetFlags(Box2d.b2DebugDraw.e_shapeBit | Box2d.b2DebugDraw.e_jointBit);
         this.world.SetDebugDraw(debugDraw);
 
