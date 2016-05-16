@@ -7,7 +7,7 @@
     "height": 190
   },
   "type": "Texture Packer",
-  "rawTextureUrl": "db://assets/map/bag_panel_ui@2x.png",
+  "rawTextureUrl": "db://assets/resources/map/bag_panel_ui@2x.png",
   "subMetas": {
     "img-bagPanel_blueDot0000": {
       "ver": "1.0.2",

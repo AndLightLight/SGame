@@ -7,7 +7,7 @@
     "height": 504
   },
   "type": "Texture Packer",
-  "rawTextureUrl": "db://assets/pic/bear.png",
+  "rawTextureUrl": "db://assets/resources/pic/bear.png",
   "subMetas": {
     "bear_click_0.png": {
       "ver": "1.0.2",

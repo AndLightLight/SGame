@@ -7,7 +7,7 @@
     "height": 512
   },
   "type": "Texture Packer",
-  "rawTextureUrl": "db://assets/pic/destroy_effect.png",
+  "rawTextureUrl": "db://assets/resources/pic/destroy_effect.png",
   "subMetas": {
     "destroy_effect_0.png": {
       "ver": "1.0.2",

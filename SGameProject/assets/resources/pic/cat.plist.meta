@@ -7,7 +7,7 @@
     "height": 420
   },
   "type": "Texture Packer",
-  "rawTextureUrl": "db://assets/pic/cat.png",
+  "rawTextureUrl": "db://assets/resources/pic/cat.png",
   "subMetas": {
     "cat_click_0.png": {
       "ver": "1.0.2",

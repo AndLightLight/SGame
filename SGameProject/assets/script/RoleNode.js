@@ -8,6 +8,7 @@ var StateType = cc.Enum({
     CHANGE: 1,
     SHAKE: 2,
     BOOM: 3,
+    DOWN: 4,
 });
 
 var RoleNode = cc.Class({
@@ -111,17 +112,21 @@ var RoleNode = cc.Class({
     startChange: function (toidx) {
         this.stateType = StateType.CHANGE;
         this.node.stopAllActions();
-        this.bodyA.SetActive(false);
-        var wppos = this.convertToWorld();
-        this.bodyA.SetPosition(wppos);
+        if (this.bodyA) {
+             this.bodyA.SetActive(false);
+            var wppos = this.convertToWorld();
+            this.bodyA.SetPosition(wppos);
+        }
         this._maphandle.setRoleInIdx(null,this.idx);
         var ppos = this._maphandle.getPixelPosByPos(this._maphandle.getPosByIndex(toidx));
         var action = cc.moveTo(0.5, ppos);
         var callfun = cc.callFunc(function (params) {
             this.stateType = StateType.IDLE;
-            this.bodyA.SetActive(true);
-            var wppos = this.convertToWorld();
-            this.bodyA.SetPosition(wppos);
+            if (this.bodyA) {
+                this.bodyA.SetActive(true);
+                var wppos = this.convertToWorld();
+                this.bodyA.SetPosition(wppos);
+            }
             this._maphandle.setRoleInIdx(this,toidx);
             this.node.zIndex = 0;
             this._maphandle.checkBom(this.idx,null,function (re,linerole) {
@@ -158,11 +163,42 @@ var RoleNode = cc.Class({
         var be = cc.instantiate(this.boomEffect);
         var bea = be.getComponent(require("AnimationCallBack"));
         bea.callBack = function () {
-          this.node.parent.destroy();  
+          var node = this.node.parent;
+          node.destroy();
+          var rolenode = node.getComponent(RoleNode);
+          rolenode._maphandle.setRoleInIdx(null,rolenode.idx);
         };
         be.parent = this.node;
         be.x = 0;
         be.y = 0;
+    },
+    
+    startDown: function (toidx) {
+        this.stateType = StateType.DOWN;
+        this.node.stopAllActions();
+        this._maphandle.setRoleInIdx(null,this.idx);
+        var ppos = this._maphandle.getPixelPosByPos(this._maphandle.getPosByIndex(toidx));
+        var action = cc.moveTo(0.5, ppos);
+        action.easing(cc.easeIn(3.0));
+        var callfun = cc.callFunc(function (params) {
+            this.stateType = StateType.IDLE;
+            if (this.bodyA) {
+                this.bodyA.SetActive(true);
+                var wppos = this.convertToWorld();
+                this.bodyA.SetPosition(wppos);
+            }
+            this._maphandle.setRoleInIdx(this,toidx);
+            this._maphandle.checkBom(this.idx,null,function (re,linerole) {
+                if (re) {
+                    for (var index = 0; index < linerole.length; index++) {
+                        var element = linerole[index];
+                        element.startShake();
+                    }
+                }
+            });
+        },this);
+        var sqe = cc.sequence(action,callfun);
+        this.node.runAction(sqe);
     },
     
     
@@ -214,14 +250,14 @@ var RoleNode = cc.Class({
             var worldPoint = this.convertToWorld();
             
             var bodyDef = new Box2d.b2BodyDef();
-                bodyDef.type = Box2d.b2Body.b2_dynimacBod;
-                // if (this.type == 0) {
-                //     bodyDef.type = Box2d.b2Body.b2_staticBody;
-                // }
+                bodyDef.type = Box2d.b2Body.b2_dynamicBody;
+                if (this.type == 0) {
+                    bodyDef.type = Box2d.b2Body.b2_staticBody;
+                }
                 bodyDef.position.Set(worldPoint.x,worldPoint.y);
                 bodyDef.angle = 0*DEGTORAD;
-                bodyDef.linearVelocity = new Box2d.b2Vec2(1,0);
-                bodyDef.angularVelocity = -10;
+                // bodyDef.linearVelocity = new Box2d.b2Vec2(1,0);
+                // bodyDef.angularVelocity = -10;
                 
                 var bodyA = Game.instance.world.CreateBody(bodyDef);
                 this.bodyA = bodyA;
@@ -230,8 +266,8 @@ var RoleNode = cc.Class({
                 fixDef.shape = new Box2d.b2PolygonShape();
                 fixDef.shape.SetAsBox(this.node.width/2/SCALE,this.node.height/2/SCALE);
                 fixDef.density = 1.0;
-                fixDef.friction = 0.5;
-                fixDef.restitution = 0.8;
+                fixDef.friction = 0.0;
+                fixDef.restitution = 0.0;
                 
                 bodyA.CreateFixture(fixDef);    
         }    
@@ -245,7 +281,7 @@ var RoleNode = cc.Class({
         this._layer = this.node.parent.getComponent(cc.TiledLayer);
         this._maphandle = this.node.parent.getComponent(MapLayoutHandle);
         
-        this.buildBox2d();
+        //this.buildBox2d();
     },
 
     // called every frame, uncomment this function to activate update callback
@@ -257,7 +293,9 @@ var RoleNode = cc.Class({
     },
     
     onDestroy: function () {
-        Game.instance.world.DestroyBody(this.bodyA);
+        if (this.bodyA) {
+            Game.instance.world.DestroyBody(this.bodyA);
+        }
     },
 });
 

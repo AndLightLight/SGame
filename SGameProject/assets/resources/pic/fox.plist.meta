@@ -7,7 +7,7 @@
     "height": 1022
   },
   "type": "Texture Packer",
-  "rawTextureUrl": "db://assets/pic/fox.png",
+  "rawTextureUrl": "db://assets/resources/pic/fox.png",
   "subMetas": {
     "fox_click_0.png": {
       "ver": "1.0.2",

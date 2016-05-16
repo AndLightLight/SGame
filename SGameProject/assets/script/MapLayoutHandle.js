@@ -266,6 +266,20 @@ var MapLayoutHandle = cc.Class({
     },
     
     
+    checkDown: function (idx,callback) {
+        if (!this._map[idx]) {
+            var cpos = this.getPosByIndex(idx);
+            var urolenode = this.getRoleByPos(this.getIndexByPos(cc.v2(cpos.x,cpos.y-1)));
+            if (urolenode) {
+                
+            }
+            else {
+                
+            }
+        }
+    },
+    
+    
     loadMap: function () {
         var map = this.node.getComponent(cc.TiledLayer);
         map.enabled = false;
@@ -278,10 +292,10 @@ var MapLayoutHandle = cc.Class({
         for (var i in tiles) {
             i = Number(i);
             var bnot = tiles[i];
-                if (test <= 0) {
-                    break;
-                }
-                test --;
+                // if (test <= 0) {
+                //     break;
+                // }
+                // test --;
                 var ppos = this.getPixelPosByPos(this.getPosByIndex(i))
                 var pre = null;
                 var type = 0;
