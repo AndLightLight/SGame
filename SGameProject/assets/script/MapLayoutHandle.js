@@ -1,3 +1,4 @@
+var DataMgr = require("DataMgr");
 var MapLayoutHandle = cc.Class({
     extends: cc.Component,
 
@@ -11,7 +12,7 @@ var MapLayoutHandle = cc.Class({
         //    readonly: false,    // optional, default is false
         // },
         // ...
-        pre: [cc.Prefab],
+        pre: [cc.Integer],
         stone: {
           default: null,
           type: cc.Prefab,  
@@ -273,16 +274,17 @@ var MapLayoutHandle = cc.Class({
         this.tileWidth = this.node.parent.getComponent(cc.TiledMap).getTileSize().width;
         this.tileHeight = this.node.parent.getComponent(cc.TiledMap).getTileSize().height;
         var tiles = map.getTiles();
-        var test = 20;
+        var test = 1;
         for (var i in tiles) {
             i = Number(i);
             var bnot = tiles[i];
-                // if (test <= 0) {
-                //     break;
-                // }
-                //test --;
+                if (test <= 0) {
+                    break;
+                }
+                test --;
                 var ppos = this.getPixelPosByPos(this.getPosByIndex(i))
                 var pre = null;
+                var type = 0;
                 if (bnot == 0) {
                     var num = this.pre.length;
                     var canRTimes = 10000;
@@ -292,9 +294,11 @@ var MapLayoutHandle = cc.Class({
                             break;
                         }
                         var r = Math.ceil(Math.random()*(num-1)+1);
-                        pre = this.pre[r-1];
-                        var prerolenode = pre.getComponent(require("RoleNode"));
-                    }while(this.checkBom(i,prerolenode.type));
+                        var roleid = this.pre[r-1];
+                        var roleinfo = DataMgr.instance.GetInfoByTalbeNameAndId("role",roleid);
+                        type = roleinfo.id;
+                    }while(this.checkBom(i,type));
+                    pre = DataMgr.instance.GetPrefabById(roleinfo.prefabid);
                 }else{
                     pre = this.stone;
                 }
@@ -306,6 +310,7 @@ var MapLayoutHandle = cc.Class({
                 nd.y = ppos.y;
                 nd.parent = this.node;
                 var rolenode = nd.getComponent(require("RoleNode"));
+                rolenode.type = type;
                 this.setRoleInIdx(rolenode,i);
         }   
     },

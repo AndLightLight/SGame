@@ -141,5 +141,13 @@
     },
     "props": {}
   },
-  "events": []
+  "events": [
+    {
+      "frame": 0.6666666666666666,
+      "func": "animationCallBack",
+      "params": [
+        "over"
+      ]
+    }
+  ]
 }

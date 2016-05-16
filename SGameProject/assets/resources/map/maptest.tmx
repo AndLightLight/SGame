@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="48" tileheight="48">
+ <tileset firstgid="1" name="havetile" tilewidth="48" tileheight="48">
+  <image source="bag_panel_ui@2x.png" width="152" height="190"/>
+ </tileset>
+ <layer name="havetile" width="15" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYmBgYKIA4wKE5Eb1MjCwU9ledixyg8m/w10vuRgAEXsAmQ==
+  </data>
+ </layer>
+ <objectgroup name="123">
+  <object x="139" y="100" width="101" height="77"/>
+  <object x="499" y="120" width="72" height="101"/>
+ </objectgroup>
+</map>

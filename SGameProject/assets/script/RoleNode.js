@@ -111,11 +111,17 @@ var RoleNode = cc.Class({
     startChange: function (toidx) {
         this.stateType = StateType.CHANGE;
         this.node.stopAllActions();
+        this.bodyA.SetActive(false);
+        var wppos = this.convertToWorld();
+        this.bodyA.SetPosition(wppos);
         this._maphandle.setRoleInIdx(null,this.idx);
         var ppos = this._maphandle.getPixelPosByPos(this._maphandle.getPosByIndex(toidx));
         var action = cc.moveTo(0.5, ppos);
         var callfun = cc.callFunc(function (params) {
             this.stateType = StateType.IDLE;
+            this.bodyA.SetActive(true);
+            var wppos = this.convertToWorld();
+            this.bodyA.SetPosition(wppos);
             this._maphandle.setRoleInIdx(this,toidx);
             this.node.zIndex = 0;
             this._maphandle.checkBom(this.idx,null,function (re,linerole) {
@@ -150,7 +156,10 @@ var RoleNode = cc.Class({
         this.stateType = StateType.BOOM;
         this.node.stopAllActions();
         var be = cc.instantiate(this.boomEffect);
-        var bea = be.getComponent(cc.Animation);
+        var bea = be.getComponent(require("AnimationCallBack"));
+        bea.callBack = function () {
+          this.node.parent.destroy();  
+        };
         be.parent = this.node;
         be.x = 0;
         be.y = 0;
@@ -206,13 +215,13 @@ var RoleNode = cc.Class({
             
             var bodyDef = new Box2d.b2BodyDef();
                 bodyDef.type = Box2d.b2Body.b2_dynimacBod;
-                if (this.type == 0) {
-                    bodyDef.type = Box2d.b2Body.b2_staticBody;
-                }
+                // if (this.type == 0) {
+                //     bodyDef.type = Box2d.b2Body.b2_staticBody;
+                // }
                 bodyDef.position.Set(worldPoint.x,worldPoint.y);
                 bodyDef.angle = 0*DEGTORAD;
-                //bodyDef.linearVelocity = new Box2d.b2Vec2(1,0);
-                //bodyDef.angularVelocity = -10;
+                bodyDef.linearVelocity = new Box2d.b2Vec2(1,0);
+                bodyDef.angularVelocity = -10;
                 
                 var bodyA = Game.instance.world.CreateBody(bodyDef);
                 this.bodyA = bodyA;
@@ -241,10 +250,14 @@ var RoleNode = cc.Class({
 
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
-        if (this.bodyA) {
+        if (this.bodyA && this.bodyA.IsActive()) {
             this.node.position = this.convertToNode(this.bodyA.GetPosition());
             this.node.rotation = this.bodyA.GetAngle()*this.RADTODEG%360;
         }
+    },
+    
+    onDestroy: function () {
+        Game.instance.world.DestroyBody(this.bodyA);
     },
 });
 

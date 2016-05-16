@@ -1,0 +1,30 @@
+{
+  "1": {
+    "id": 1,
+    "prefabpath": "pre/bear"
+  },
+  "2": {
+    "id": 2,
+    "prefabpath": "pre/cat"
+  },
+  "3": {
+    "id": 3,
+    "prefabpath": "pre/chicken"
+  },
+  "4": {
+    "id": 4,
+    "prefabpath": "pre/fox"
+  },
+  "5": {
+    "id": 5,
+    "prefabpath": "pre/frog"
+  },
+  "6": {
+    "id": 6,
+    "prefabpath": "pre/stone"
+  },
+  "7": {
+    "id": 7,
+    "prefabpath": "pre/stage1"
+  }
+}
