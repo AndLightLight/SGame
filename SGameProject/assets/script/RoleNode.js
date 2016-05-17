@@ -36,7 +36,7 @@ var RoleNode = cc.Class({
         },
         
         
-        bDown: {
+        bPress: {
             default: false,
             visible: false,
         },
@@ -55,11 +55,11 @@ var RoleNode = cc.Class({
         if (event.type == cc.Node.EventType.TOUCH_END) {
             var node = event.currentTarget;
             var rolenode = node.getComponent(RoleNode);
-            rolenode.bDown = false;
+            rolenode.bPress = false;
             rolenode.buildBox2d();
             if (rolenode._maphandle) {
                 if (rolenode._maphandle.selectRole) {
-                    rolenode._maphandle.selectRole.bDown = false;
+                    rolenode._maphandle.selectRole.bPress = false;
                 }
             }
         }
@@ -68,16 +68,16 @@ var RoleNode = cc.Class({
             var rolenode = node.getComponent(RoleNode);
             if (rolenode._maphandle) {
                 if (rolenode._maphandle.selectRole) {
-                    rolenode._maphandle.selectRole.bDown = false;
+                    rolenode._maphandle.selectRole.bPress = false;
                 }
                 rolenode._maphandle.selectRole = rolenode;
-                rolenode._maphandle.selectRole.bDown = true;
+                rolenode._maphandle.selectRole.bPress = true;
             }
         }
         else if (event.type == cc.Node.EventType.TOUCH_MOVE) {
             var node = event.currentTarget;
             var rolenode = node.getComponent(RoleNode);
-            if (rolenode.bDown) {
+            if (rolenode.bPress) {
                 var mx = event.getLocation().x;
                 var my = event.getLocation().y;
                 var width = node.width;
@@ -94,7 +94,7 @@ var RoleNode = cc.Class({
                                 rolenode.startChange(torole.idx);
                                 torole.startChange(rolenode.idx);
                                 rolenode.node.zIndex = 1;
-                                rolenode._maphandle.selectRole.bDown = false;
+                                rolenode._maphandle.selectRole.bPress = false;
                                 rolenode._maphandle.selectRole = null;
                             }
                         }
@@ -173,10 +173,7 @@ var RoleNode = cc.Class({
           node.destroy();
           var rolenode = node.getComponent(RoleNode);
           rolenode._maphandle.setRoleInIdx(null,rolenode.idx);
-          var downrole = rolenode._maphandle.checkDown(rolenode.idx);
-          if (downrole) {
-              downrole.startDown(rolenode.idx);
-          }
+
         };
         be.parent = this.node;
         be.x = 0;

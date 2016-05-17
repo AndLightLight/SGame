@@ -284,27 +284,33 @@ var MapLayoutHandle = cc.Class({
     },
     
     
-    checkDown: function (idx,callback) {
-        if (!this._map[idx]) {
-            var cpos = this.getPosByIndex(idx);
-            var urolenode = this.getRoleByPos(cc.v2(cpos.x,cpos.y-1));
-            if (urolenode) {
-                return urolenode;
-            }
-            else {
+    checkDown: function (role) {
+        if (!role) {
+            return null;
+        }
+        var cpos = this.getPosByIndex(role.idx);
+        var drole = this.getRoleByPos(cc.v2(cpos.x,cpos.y-1));
+        if (drole) {
+            var ldidx = this.getIndexByPos(cc.v2(cpos.x-1,cpos.y-1));
+            var rdidx = this.getIndexByPos(cc.v2(cpos.x+1,cpos.y-1));
+            
+            if (!this._map[ldidx]) {
                 var r = Math.ceil(Math.random()*1+0);
-                var lurolenode = this.getRoleByPos(cc.v2(cpos.x-1,cpos.y-1));
-                var rurolenode = this.getRoleByPos(cc.v2(cpos.x+1,cpos.y-1));
-                if (r && rurolenode) {
-                    return rurolenode;
+                if (r) {
+                    return ldidx;
                 }
-                if (!r && lurolenode) {
-                    return lurolenode;
+            }
+            if (!this._map[rdidx]) {
+                var r = Math.ceil(Math.random()*1+0);
+                if (!r) {
+                    return rdidx;
                 }
-                return lurolenode?lurolenode:rurolenode;
             }
         }
-        
+        else {
+            return this.getIndexByPos(cc.v2(cpos.x,cpos.y-1));
+        }
+
         return null;
     },
     
