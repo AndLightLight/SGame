@@ -26,6 +26,7 @@ var MapLayoutHandle = cc.Class({
         
         
         _map: [],
+        _refreshMap: [],
         mapWidth: {
             default: 0,
             visible: false,
@@ -43,6 +44,15 @@ var MapLayoutHandle = cc.Class({
             visible: false,  
         },
         
+    },
+    
+    
+    pushRefreshMap: function (role) {
+        _refreshMap[role] = 1;
+    },
+    
+    removeRefreshMap: function (role) {
+        _refreshMap[role] = null;
     },
 
     // use this for initialization
@@ -194,12 +204,20 @@ var MapLayoutHandle = cc.Class({
             offset = 0;
         }
         
+        var relinerole = [];
+        for (var index = 0; index < linerole.length; index++) {
+            var element = linerole[index];
+            if (element.checkCanBoom()) {
+                relinerole.push(element);
+            }
+        }
+        
         if (linerole.length + offset >= this.samenum && retype != 0) {
             result = true;
         }
         
         if (callback) {
-            callback(result,linerole);
+            callback(result,relinerole);
         }
         
         return result;
@@ -269,14 +287,25 @@ var MapLayoutHandle = cc.Class({
     checkDown: function (idx,callback) {
         if (!this._map[idx]) {
             var cpos = this.getPosByIndex(idx);
-            var urolenode = this.getRoleByPos(this.getIndexByPos(cc.v2(cpos.x,cpos.y-1)));
+            var urolenode = this.getRoleByPos(cc.v2(cpos.x,cpos.y-1));
             if (urolenode) {
-                
+                return urolenode;
             }
             else {
-                
+                var r = Math.ceil(Math.random()*1+0);
+                var lurolenode = this.getRoleByPos(cc.v2(cpos.x-1,cpos.y-1));
+                var rurolenode = this.getRoleByPos(cc.v2(cpos.x+1,cpos.y-1));
+                if (r && rurolenode) {
+                    return rurolenode;
+                }
+                if (!r && lurolenode) {
+                    return lurolenode;
+                }
+                return lurolenode?lurolenode:rurolenode;
             }
         }
+        
+        return null;
     },
     
     

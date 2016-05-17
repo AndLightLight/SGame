@@ -104,6 +104,12 @@ var RoleNode = cc.Class({
         }
     },
     
+    refreshState: function () {
+        if (this.stateType == StateType.IDLE) {
+            
+        }
+    },
+    
     startIdle: function () {
         this.stateType = StateType.IDLE;
         this.node.stopAllActions();
@@ -117,7 +123,7 @@ var RoleNode = cc.Class({
             var wppos = this.convertToWorld();
             this.bodyA.SetPosition(wppos);
         }
-        this._maphandle.setRoleInIdx(null,this.idx);
+        //this._maphandle.setRoleInIdx(null,this.idx);
         var ppos = this._maphandle.getPixelPosByPos(this._maphandle.getPosByIndex(toidx));
         var action = cc.moveTo(0.5, ppos);
         var callfun = cc.callFunc(function (params) {
@@ -167,6 +173,10 @@ var RoleNode = cc.Class({
           node.destroy();
           var rolenode = node.getComponent(RoleNode);
           rolenode._maphandle.setRoleInIdx(null,rolenode.idx);
+          var downrole = rolenode._maphandle.checkDown(rolenode.idx);
+          if (downrole) {
+              downrole.startDown(rolenode.idx);
+          }
         };
         be.parent = this.node;
         be.x = 0;
@@ -220,6 +230,17 @@ var RoleNode = cc.Class({
         }
         
         return false;
+    },
+    
+    checkCanBoom: function () {
+        if (this.stateType != StateType.DOWN && this.stateType != StateType.CHANGE) {
+            return true;
+        }
+        return false;
+    },
+    
+    checkCanDown: function () {
+        
     },
     
     convertToWorld:function(){
