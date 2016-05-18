@@ -48,11 +48,25 @@ var MapLayoutHandle = cc.Class({
     
     
     pushRefreshMap: function (role) {
-        _refreshMap[role] = 1;
+        if (role) {
+            this._refreshMap[role.__instanceId] = role;
+        }
     },
     
     removeRefreshMap: function (role) {
-        _refreshMap[role] = null;
+        if (role) {
+            var idx = 0;
+            for (var key in this._refreshMap) {
+                if (this._refreshMap.hasOwnProperty(key)) {
+                    if (key == role.__instanceId) {
+                        break;
+                    }
+                }
+                idx ++;
+            }
+            this._refreshMap[role.__instanceId] = null;
+            this._refreshMap.splice(idx,role.__instanceId-2);
+        }
     },
 
     // use this for initialization
@@ -107,6 +121,9 @@ var MapLayoutHandle = cc.Class({
             var ctnode = rolenode;
             if (ctnode|| type) {
                 var ctype = ctnode?ctnode.type:type;
+                if (ctype == 0) {
+                    return ;
+                }
                 var lefttype = this._map[idx - 1]?this._map[idx - 1].type:0;
                 var righttype = this._map[idx + 1]?this._map[idx + 1].type:0;
                 var uptype = this._map[idx - this.mapWidth]?this._map[idx - this.mapWidth].type:0;
@@ -171,7 +188,7 @@ var MapLayoutHandle = cc.Class({
         }
     },
     
-    checkBom: function (idx,type,callback) {
+    checkCanShake: function (idx,type,callback) {
         var rolenode = this._map[idx];
         var linerole = [];
         var result = false;
@@ -207,7 +224,7 @@ var MapLayoutHandle = cc.Class({
         var relinerole = [];
         for (var index = 0; index < linerole.length; index++) {
             var element = linerole[index];
-            if (element.checkCanBoom()) {
+            if (element.isShakeStateRequire()) {
                 relinerole.push(element);
             }
         }
@@ -284,15 +301,15 @@ var MapLayoutHandle = cc.Class({
     },
     
     
-    checkDown: function (role) {
+    checkCanDown: function (role) {
         if (!role) {
             return null;
         }
         var cpos = this.getPosByIndex(role.idx);
-        var drole = this.getRoleByPos(cc.v2(cpos.x,cpos.y-1));
+        var drole = this.getRoleByPos(cc.v2(cpos.x,cpos.y+1));
         if (drole) {
-            var ldidx = this.getIndexByPos(cc.v2(cpos.x-1,cpos.y-1));
-            var rdidx = this.getIndexByPos(cc.v2(cpos.x+1,cpos.y-1));
+            var ldidx = this.getIndexByPos(cc.v2(cpos.x-1,cpos.y+1));
+            var rdidx = this.getIndexByPos(cc.v2(cpos.x+1,cpos.y+1));
             
             if (!this._map[ldidx]) {
                 var r = Math.ceil(Math.random()*1+0);
@@ -308,7 +325,7 @@ var MapLayoutHandle = cc.Class({
             }
         }
         else {
-            return this.getIndexByPos(cc.v2(cpos.x,cpos.y-1));
+            return this.getIndexByPos(cc.v2(cpos.x,cpos.y+1));
         }
 
         return null;
@@ -346,7 +363,7 @@ var MapLayoutHandle = cc.Class({
                         var roleid = this.pre[r-1];
                         var roleinfo = DataMgr.instance.GetInfoByTalbeNameAndId("role",roleid);
                         type = roleinfo.id;
-                    }while(this.checkBom(i,type));
+                    }while(this.checkCanShake(i,type));
                     pre = DataMgr.instance.GetPrefabById(roleinfo.prefabid);
                 }else{
                     pre = this.stone;
@@ -366,6 +383,11 @@ var MapLayoutHandle = cc.Class({
 
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
-
+        for (var key in this._refreshMap) {
+            if (this._refreshMap.hasOwnProperty(key)) {
+                var element = this._refreshMap[key];
+                element.refreshState();
+            }
+        }
     },
 });
