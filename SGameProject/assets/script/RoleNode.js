@@ -56,7 +56,7 @@ var RoleNode = cc.Class({
             var node = event.currentTarget;
             var rolenode = node.getComponent(RoleNode);
             rolenode.bPress = false;
-            rolenode.buildBox2d();
+            //rolenode.buildBox2d();
             if (rolenode._maphandle) {
                 if (rolenode._maphandle.selectRole) {
                     rolenode._maphandle.selectRole.bPress = false;
@@ -126,10 +126,12 @@ var RoleNode = cc.Class({
                     break;
                 }
                 var re = this.checkCanShake(function (re,linerole) {
-                    for (var key in linerole) {
-                        if (linerole.hasOwnProperty(key)) {
-                            var element = linerole[key];
-                            node._maphandle.pushRefreshMap(element);
+                    if (re) {
+                         for (var key in linerole) {
+                            if (linerole.hasOwnProperty(key)) {
+                                var element = linerole[key];
+                                node._maphandle.pushRefreshMap(element);
+                            }
                         }
                     }
                 });
@@ -193,9 +195,9 @@ var RoleNode = cc.Class({
     },
     
     startShake: function () {
-        if (this.stateType == StateType.SHAKE) {
-            return ;
-        }
+        // if (this.stateType == StateType.SHAKE) {
+        //     return ;
+        // }
         this.stateType = StateType.SHAKE;
         this.node.stopAllActions();
         var right = cc.moveBy(0.1, 2, 0);
@@ -230,7 +232,7 @@ var RoleNode = cc.Class({
             rolenode._maphandle.pushRefreshMap(urole);
             rolenode._maphandle.pushRefreshMap(lurole);
             rolenode._maphandle.pushRefreshMap(rurole);
-            rolenode._maphandle.removeRefreshMap(this);
+            rolenode._maphandle.removeRefreshMap(rolenode);
         };
         be.parent = this.node;
         be.x = 0;

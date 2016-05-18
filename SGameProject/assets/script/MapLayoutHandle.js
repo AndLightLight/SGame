@@ -26,7 +26,10 @@ var MapLayoutHandle = cc.Class({
         
         
         _map: [],
-        _refreshMap: [],
+        _refreshMap: {
+            default: {},
+            visible: false,
+        },
         mapWidth: {
             default: 0,
             visible: false,
@@ -55,17 +58,7 @@ var MapLayoutHandle = cc.Class({
     
     removeRefreshMap: function (role) {
         if (role) {
-            var idx = 0;
-            for (var key in this._refreshMap) {
-                if (this._refreshMap.hasOwnProperty(key)) {
-                    if (key == role.__instanceId) {
-                        break;
-                    }
-                }
-                idx ++;
-            }
-            this._refreshMap[role.__instanceId] = null;
-            this._refreshMap.splice(idx,role.__instanceId-2);
+            delete this._refreshMap[role.__instanceId];
         }
     },
 
@@ -310,17 +303,18 @@ var MapLayoutHandle = cc.Class({
         if (drole) {
             var ldidx = this.getIndexByPos(cc.v2(cpos.x-1,cpos.y+1));
             var rdidx = this.getIndexByPos(cc.v2(cpos.x+1,cpos.y+1));
-            
-            if (!this._map[ldidx]) {
+            var rrole = this.getRoleByPos(cc.v2(cpos.x+1,cpos.y));
+            var lrole = this.getRoleByPos(cc.v2(cpos.x-1,cpos.y));
+            if (!this._map[ldidx] && !lrole) {
                 var r = Math.ceil(Math.random()*1+0);
                 if (r) {
-                    return ldidx;
+                    //return ldidx;
                 }
             }
-            if (!this._map[rdidx]) {
+            if (!this._map[rdidx] && !rrole) {
                 var r = Math.ceil(Math.random()*1+0);
                 if (!r) {
-                    return rdidx;
+                   //return rdidx;
                 }
             }
         }
