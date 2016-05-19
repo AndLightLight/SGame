@@ -334,7 +334,7 @@ var MapLayoutHandle = cc.Class({
         this.tileWidth = this.node.parent.getComponent(cc.TiledMap).getTileSize().width;
         this.tileHeight = this.node.parent.getComponent(cc.TiledMap).getTileSize().height;
         var tiles = map.getTiles();
-        var test = 1;
+        var test = 2;
         for (var i in tiles) {
             i = Number(i);
             var bnot = tiles[i];

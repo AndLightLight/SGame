@@ -70,6 +70,7 @@ var RoleNode = cc.Class({
         else if (event.type == cc.Node.EventType.TOUCH_START) {
             var node = event.currentTarget;
             var rolenode = node.getComponent(RoleNode);
+            rolenode.Log.string = "good2";
             if (rolenode._maphandle) {
                 if (rolenode._maphandle.selectRole) {
                     rolenode._maphandle.selectRole.bPress = false;
@@ -84,9 +85,12 @@ var RoleNode = cc.Class({
             if (rolenode.bPress) {
                 var mx = event.getLocation().x;
                 var my = event.getLocation().y;
+                rolenode.Log.string = "mx:"+mx+"my:"+my;
                 var width = node.width;
                 var height = node.height;
                 var newppos = node.parent.convertToNodeSpace(cc.v2(mx,my)); 
+                // rolenode.node.position = newppos;
+                // return;
                 if (rolenode._maphandle) {
                     if (rolenode._maphandle.selectRole) {
                         var topos = rolenode._maphandle.getPosByPixelPos(newppos);
@@ -286,6 +290,7 @@ var RoleNode = cc.Class({
                 }
                 else {
                     this._downToIdx = null;
+                    this._downfinish = true;
                     this.stateType = StateType.IDLE;
                     this.resetPosition();
                     this.refreshState();
@@ -446,7 +451,8 @@ var RoleNode = cc.Class({
         this.node.on(cc.Node.EventType.TOUCH_MOVE,this._touchCallBack);
         this._layer = this.node.parent.getComponent(cc.TiledLayer);
         this._maphandle = this.node.parent.getComponent(MapLayoutHandle);
-        
+        this.Log = cc.find("Canvas/Game/stage1/Log").getComponent(cc.Label);
+        this.Log.string = "good1";
         //this.buildBox2d();
     },
 
