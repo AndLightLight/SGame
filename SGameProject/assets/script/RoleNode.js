@@ -46,6 +46,10 @@ var RoleNode = cc.Class({
             visible: false,
         },
         
+        _shakeLineRole: [],
+        _downToIdx: null,
+        _downfinish: true,
+        
         
         _layer: null,
         _maphandle: null,
@@ -93,6 +97,8 @@ var RoleNode = cc.Class({
                                 var can2 = rolenode._maphandle.selectRole.checkCanChangePos(torole);
                                 var toidx1= torole.idx;
                                 var toidx2 = rolenode.idx;
+                                rolenode.resetPosition();
+                                torole.resetPosition();
                                 rolenode._maphandle.setRoleInIdx(rolenode,toidx1);
                                 rolenode._maphandle.setRoleInIdx(torole,toidx2);
                                 rolenode.startChange(toidx1);
@@ -108,23 +114,39 @@ var RoleNode = cc.Class({
         }
     },
     
+    resetPosition: function () {
+        var ppos = this._maphandle.getPixelPosByPos(this._maphandle.getPosByIndex(this.idx));  
+        this.node.position = ppos;
+    },
+    
+    compareShakeLineRole: function (linerole) {
+          if (this._shakeLineRole.length != linerole.length) {
+              this._shakeLineRole = linerole.slice(0);
+              return false;
+          }
+          return true;
+    },
+    
     refreshState: function () {
         if (this.stateType == StateType.IDLE || this.stateType == StateType.SHAKE) {
             var beforestate = this.stateType;
             var node = this;
             do {
                 var toidx = this.checkCanDown();
-                if (toidx) {
-                    var cpos = this._maphandle.getPosByIndex(this.idx);
-                    var urole = this._maphandle.getRoleByPos(cc.v2(cpos.x,cpos.y-1));
-                    var lurole = this._maphandle.getRoleByPos(cc.v2(cpos.x-1,cpos.y-1));
-                    var rurole = this._maphandle.getRoleByPos(cc.v2(cpos.x+1,cpos.y-1));
-                    this._maphandle.pushRefreshMap(urole);
-                    this._maphandle.pushRefreshMap(lurole);
-                    this._maphandle.pushRefreshMap(rurole);
-                    this.startDown(toidx);
+                if (toidx || this._downfinish == false) {
+                    if (this._downfinish == true) {
+                        var cpos = this._maphandle.getPosByIndex(this.idx);
+                        var urole = this._maphandle.getRoleByPos(cc.v2(cpos.x,cpos.y-1));
+                        var lurole = this._maphandle.getRoleByPos(cc.v2(cpos.x-1,cpos.y-1));
+                        var rurole = this._maphandle.getRoleByPos(cc.v2(cpos.x+1,cpos.y-1));
+                        this._maphandle.pushRefreshMap(urole);
+                        this._maphandle.pushRefreshMap(lurole);
+                        this._maphandle.pushRefreshMap(rurole);
+                        this.startDown(toidx);
+                    }
                     break;
                 }
+                var cpre = true;
                 var re = this.checkCanShake(function (re,linerole) {
                     if (re) {
                          for (var key in linerole) {
@@ -133,10 +155,13 @@ var RoleNode = cc.Class({
                                 node._maphandle.pushRefreshMap(element);
                             }
                         }
+                        cpre = node.compareShakeLineRole(linerole);
                     }
                 });
                 if (re) {
-                    this.startShake();
+                    if (!cpre) {
+                        this.startShake();
+                    }
                     break;
                 }
                 this.startIdle();
@@ -145,6 +170,8 @@ var RoleNode = cc.Class({
             var afterstate = this.stateType;
             if (beforestate == StateType.IDLE && StateType.IDLE == afterstate) {
                 this._maphandle.removeRefreshMap(this);
+                this._downToIdx = null;
+                this._shakeLineRole = [];
             }
         }
         else if (this.stateType == StateType.CHANGE) {
@@ -162,14 +189,20 @@ var RoleNode = cc.Class({
         
     },
     startIdle: function () {
+        if (this.stateType == StateType.IDLE) {
+            return ;
+        }
         this.stateType = StateType.IDLE;
         this.node.stopAllActions();
+        this._shakeLineRole = [];
+        this.resetPosition();
     },
     
     startChange: function (toidx) {
         if (this.stateType == StateType.CHANGE) {
             return ;
         }
+        this._shakeLineRole = [];
         this.stateType = StateType.CHANGE;
         this.node.stopAllActions();
         if (this.bodyA) {
@@ -216,6 +249,8 @@ var RoleNode = cc.Class({
         if (this.stateType == StateType.BOOM) {
             return ;
         }
+        this.resetPosition();
+        this._shakeLineRole = [];
         this.stateType = StateType.BOOM;
         this.node.stopAllActions();
         var be = cc.instantiate(this.boomEffect);
@@ -239,40 +274,66 @@ var RoleNode = cc.Class({
         be.y = 0;
     },
     
-    startDown: function (toidx) {
-        if (this.stateType == StateType.DOWN) {
-            return ;
+    RefreshDown: function (dt) {
+        if (this._downToIdx && this._downToIdx >= 0) {
+            var toppos = this._maphandle.getPixelPosByPos(this._maphandle.getPosByIndex(this._downToIdx));
+            if (this.node.y <= toppos.y) { //到达才开始继续检查
+                var toidx = this.checkCanDown();
+                if (toidx && toidx != this._downToIdx) {
+                    this._maphandle.setRoleInIdx(null,this.idx);
+                    this._maphandle.setRoleInIdx(this,toidx);
+                    this._downToIdx = toidx;
+                }
+                else {
+                    this._downToIdx = null;
+                    this.stateType = StateType.IDLE;
+                    this.resetPosition();
+                    this.refreshState();
+                    return;
+                }
+            }
+            this.node.y -= dt * 300;
         }
+
+    },
+    
+    startDown: function (toidx) {
+        // if (this.stateType == StateType.DOWN) {
+        //     return ;
+        // }
+        //this.resetPosition();
+        this._downfinish = false;
+        this._shakeLineRole = [];
         this.stateType = StateType.DOWN;
         this.node.stopAllActions();
         this._maphandle.setRoleInIdx(null,this.idx);
         this._maphandle.setRoleInIdx(this,toidx);
-        var ppos = this._maphandle.getPixelPosByPos(this._maphandle.getPosByIndex(toidx));
-        var action = cc.moveTo(0.2, ppos);
-        //action.easing(cc.easeIn(3.0));
-        var callfun = cc.callFunc(function (params) {
-            this.stateType = StateType.IDLE;
-            if (this.bodyA) {
-                this.bodyA.SetActive(true);
-                var wppos = this.convertToWorld();
-                this.bodyA.SetPosition(wppos);
-            }
-            this._maphandle.checkCanShake(this.idx,null,function (re,linerole) {
-                if (re) {
-                    for (var index = 0; index < linerole.length; index++) {
-                        var element = linerole[index];
-                        element.startShake();
-                    }
-                }
-            });
-        },this);
-        var sqe = cc.sequence(action,callfun);
-        this.node.runAction(sqe);
+        this._downToIdx = toidx;
+        // var ppos = this._maphandle.getPixelPosByPos(this._maphandle.getPosByIndex(toidx));
+        // // var length = this.node.position.y - ppos.y;
+        // // var time = length/10;
+        // var action = cc.moveTo(0.2, ppos);
+        // //action.easing(cc.easeIn(3.0));
+        // var callfun = cc.callFunc(function (params) {
+        //     this.stateType = StateType.IDLE;
+        //     if (this.bodyA) {
+        //         this.bodyA.SetActive(true);
+        //         var wppos = this.convertToWorld();
+        //         this.bodyA.SetPosition(wppos);
+        //     }
+        //     this._downfinish = true;
+        //     this.refreshState();
+        // },this);
+        // var sqe = cc.sequence(action,callfun);
+        // this.node.runAction(sqe);
     },
     
     
     checkCanChangePos: function (role) {
-        if (role instanceof RoleNode && this._maphandle && role != this && role.stateType == StateType.IDLE && this.stateType == StateType.IDLE) {
+        if (role instanceof RoleNode && this._maphandle && role != this 
+        && (role.stateType == StateType.IDLE || role.stateType == StateType.SHAKE) 
+        && (this.stateType == StateType.IDLE || this.stateType == StateType.SHAKE)
+        ) {
             var rpos = this._maphandle.getPosByIndex(role.idx);
             var cpos = this._maphandle.getPosByIndex(this.idx);
             
@@ -395,6 +456,7 @@ var RoleNode = cc.Class({
             this.node.position = this.convertToNode(this.bodyA.GetPosition());
             this.node.rotation = this.bodyA.GetAngle()*this.RADTODEG%360;
         }
+        this.RefreshDown(dt);
     },
     
     onDestroy: function () {

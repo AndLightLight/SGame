@@ -38,7 +38,12 @@ var DataMgr = cc.Class({
     
         // use this for initialization
     onLoad: function () {
-        DataMgr.instance = this;
+        if (!DataMgr.instance) {
+            DataMgr.instance = this;
+        }
+        else {
+            cc.log("error: singlon class creat more then onece!")
+        }
         this.m_table = {};
         this.m_preLoadTable = {};
         var resArray = [];

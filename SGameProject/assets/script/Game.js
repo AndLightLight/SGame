@@ -30,7 +30,12 @@ var Game = cc.Class({
     
     // use this for initialization
     onLoad: function () {
-        Game.instance = this;
+        if (!Game.instance) {
+            Game.instance = this;
+        }
+        else {
+            cc.log("error: singlon class creat more then onece!")
+        }
         this.world = new Box2d.b2World(new Box2d.b2Vec2(0,9.8),true);
         // var debugDraw = new Box2d.b2DebugDraw();
         // debugDraw.SetSprite(cc.game.config.id.getContext("2d"));
