@@ -181,6 +181,64 @@ var MapLayoutHandle = cc.Class({
         }
     },
     
+    findNearestNull: function (ppos,role) {
+        var cpos = this.getPosByPixelPos(ppos);
+        var urole = this.getRoleByPos(cc.v2(cpos.x,cpos.y-1));
+        var drole = this.getRoleByPos(cc.v2(cpos.x,cpos.y+1));
+        var lrole = this.getRoleByPos(cc.v2(cpos.x-1,cpos.y));
+        var rrole = this.getRoleByPos(cc.v2(cpos.x+1,cpos.y));
+        var lurole = this.getRoleByPos(cc.v2(cpos.x-1,cpos.y-1));
+        var rurole = this.getRoleByPos(cc.v2(cpos.x+1,cpos.y-1));
+        var ldrole = this.getRoleByPos(cc.v2(cpos.x-1,cpos.y+1));
+        var rdrole = this.getRoleByPos(cc.v2(cpos.x+1,cpos.y+1));
+        var ulen,dlen,llen,rlen,lulen,rulen,ldlen,rdlen,lest,reppos;
+        if (!urole || urole == role) {
+            var uppos = this.getPixelPosByPos(cc.v2(cpos.x,cpos.y-1));
+            ulen = uppos.sub(ppos).mag();
+        }
+        if (!drole || drole == role) {
+            var dppos = this.getPixelPosByPos(cc.v2(cpos.x,cpos.y+1));
+            dlen = dppos.sub(ppos).mag();
+        }
+        if (!lrole || lrole == role) {
+            var lppos = this.getPixelPosByPos(cc.v2(cpos.x-1,cpos.y));
+            llen = lppos.sub(ppos).mag();
+        }
+        if (!rrole || rrole == role) {
+            var rppos = this.getPixelPosByPos(cc.v2(cpos.x+1,cpos.y));
+            rlen = rppos.sub(ppos).mag();
+        }
+        if (!lurole || lurole == role) {
+            var luppos = this.getPixelPosByPos(cc.v2(cpos.x-1,cpos.y-1));
+            lulen = luppos.sub(ppos).mag();
+        }
+        if (!rurole || rurole == role) {
+            var ldppos = this.getPixelPosByPos(cc.v2(cpos.x+1,cpos.y-1));
+            rulen = ldppos.sub(ppos).mag();
+        }
+        if (!ldrole || ldrole == role) {
+            var ruppos = this.getPixelPosByPos(cc.v2(cpos.x-1,cpos.y+1));
+            ldlen = ruppos.sub(ppos).mag();
+        }
+        if (!rdrole || rdrole == role) {
+            var rdppos = this.getPixelPosByPos(cc.v2(cpos.x+1,cpos.y+1));
+            rdlen = rdppos.sub(ppos).mag();
+        }
+        ulen?(lest = ulen,reppos = uppos):null;
+        dlen?(lest?(dlen < lest?(lest = dlen,reppos = dppos):null):(lest = dlen,reppos = dppos)):null;
+        llen?(lest?(llen < lest?(lest = llen,reppos = lppos):null):(lest = llen,reppos = lppos)):null;
+        rlen?(lest?(rlen < lest?(lest = rlen,reppos = rppos):null):(lest = rlen,reppos = rppos)):null;
+        lulen?(lest?(lulen < lest?(lest = lulen,reppos = luppos):null):(lest = lulen,reppos = luppos)):null;
+        rulen?(lest?(rulen < lest?(lest = rulen,reppos = ruppos):null):(lest = rulen,reppos = ruppos)):null;
+        ldlen?(lest?(ldlen < lest?(lest = ldlen,reppos = ldppos):null):(lest = ldlen,reppos = ldppos)):null;
+        rdlen?(lest?(rdlen < lest?(lest = rdlen,reppos = ruppos):null):(lest = rdlen,reppos = ruppos)):null;
+        if (reppos) {
+        cc.log(this.getPosByPixelPos(reppos));
+            
+        }
+        return reppos;
+    },
+    
     checkCanShake: function (idx,type,callback) {
         var rolenode = this._map[idx];
         var linerole = [];
