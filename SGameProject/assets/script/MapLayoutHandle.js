@@ -232,10 +232,7 @@ var MapLayoutHandle = cc.Class({
         rulen?(lest?(rulen < lest?(lest = rulen,reppos = ruppos):null):(lest = rulen,reppos = ruppos)):null;
         ldlen?(lest?(ldlen < lest?(lest = ldlen,reppos = ldppos):null):(lest = ldlen,reppos = ldppos)):null;
         rdlen?(lest?(rdlen < lest?(lest = rdlen,reppos = ruppos):null):(lest = rdlen,reppos = ruppos)):null;
-        if (reppos) {
-        cc.log(this.getPosByPixelPos(reppos));
-            
-        }
+        
         return reppos;
     },
     
@@ -265,7 +262,7 @@ var MapLayoutHandle = cc.Class({
             log = log + "  " + element.idx;
         }
         
-        cc.log(log);
+        //cc.log(log);
         
         var offset = 1;
         if (rolenode) {
@@ -430,6 +427,7 @@ var MapLayoutHandle = cc.Class({
                 var rolenode = nd.getComponent(require("RoleNode"));
                 rolenode.type = type;
                 this.setRoleInIdx(rolenode,i);
+                rolenode.changeState(require("RoleNode").StateType.IDLE);
         }   
     },
 

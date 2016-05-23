@@ -1,29 +1,14 @@
 var StateMgr = cc.Class({
-    //extends: cc.Component,
 
     properties: {
-        // foo: {
-        //    default: null,
-        //    url: cc.Texture2D,  // optional, default is typeof default
-        //    serializable: true, // optional, default is true
-        //    visible: true,      // optional, default is true
-        //    displayName: 'Foo', // optional
-        //    readonly: false,    // optional, default is false
-        // },
-        // ...
         currentState: null,
-        stateList: null,
+        stateList: [],
         temp: null,
     },
     
-    ctor: function (temp) {
-        this.temp = temp;
-    },
+    ctor: function () {
 
-    // use this for initialization
-    // onLoad: function () {
-        
-    // },
+    },
     
     changeState: function (state,param,isSub) {
         if (state) {
@@ -34,9 +19,9 @@ var StateMgr = cc.Class({
             }
             else {
                 if (this.currentState != state) {
-                    var state = this.stateList.pop();
-                    if (state) {
-                        state.onExit(this.temp);
+                    var oldstate = this.stateList.pop();
+                    if (oldstate) {
+                        oldstate.onExit(this.temp);
                     }
                     this.stateList.push(state);
                     this.currentState = state;
@@ -45,9 +30,9 @@ var StateMgr = cc.Class({
             }
         }
         else {
-            var state = this.stateList.pop();
+            var oldstate = this.stateList.pop();
             if (state) {
-                state.onExit(this.temp);
+                oldstate.onExit(this.temp);
             }
             if (this.stateList.length > 0) {
                 this.currentState = this.stateList[this.stateList.length - 1];
@@ -61,15 +46,10 @@ var StateMgr = cc.Class({
     onTick: function (dt) {
         for (var index = 0; index < this.stateList.length; index++) {
             var element = this.stateList[index];
-            element.onTick(this.temp);
+            element.onTick(this.temp,dt);
         }
     }
-
-    // called every frame, uncomment this function to activate update callback
-    // update: function (dt) {
-
-    // },
 });
 
 
-module.export = StateMgr;
+module.exports = StateMgr;

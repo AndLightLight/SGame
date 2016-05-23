@@ -1,6 +1,4 @@
 var StateMgr = require("StateMgr");
-var NodeRole = require("NodeRole");
-var StateType = NodeRole.StateType;
 var NSStateIdle = cc.Class({
     //extends: cc.Component,
 
@@ -9,7 +7,7 @@ var NSStateIdle = cc.Class({
     },
 
     onEnter: function (temp,param) {
-        temp.stateType = StateType.IDLE;
+        temp.stateType = require("RoleNode").StateType.IDLE;
         temp.node.stopAllActions();
         temp.resetPosition();
     },
@@ -41,11 +39,12 @@ var NSStateChange = cc.Class({
 
     onEnter: function (temp,param) {
         var toidx = param;
-        temp.stateType = StateType.CHANGE;
+        temp.stateType = require("RoleNode").StateType.CHANGE;
         temp.node.stopAllActions();
         var ppos = temp._maphandle.getPixelPosByPos(temp._maphandle.getPosByIndex(toidx));
         var action = cc.moveTo(0.5, ppos);
         var callfun = cc.callFunc(function (params) {
+            temp.changeState(require("RoleNode").StateType.IDLE);
             temp.node.zIndex = 0;
             temp.refreshState();
         },temp);
@@ -79,7 +78,7 @@ var NSStateShake = cc.Class({
     },
 
     onEnter: function (temp,param) {
-        temp.stateType = StateType.SHAKE;
+        temp.stateType = require("RoleNode").StateType.SHAKE;
         temp.node.stopAllActions();
         temp.resetPosition();
         var right = cc.moveBy(0.1, 2, 0);
@@ -88,7 +87,7 @@ var NSStateShake = cc.Class({
         var rep = cc.repeat(sqerl,10);
         
         var callfun = cc.callFunc(function (params) {
-            temp.changeState(StateType.BOOM);
+            temp.changeState(require("RoleNode").StateType.BOOM);
         },temp);
         var sqe = cc.sequence(rep,callfun);
         temp.node.runAction(sqe);
@@ -122,14 +121,14 @@ var NSStateBoom = cc.Class({
 
     onEnter: function (temp,param) {
         temp.resetPosition();
-        temp.stateType = StateType.BOOM;
+        temp.stateType = require("RoleNode").StateType.BOOM;
         temp.node.stopAllActions();
         var be = cc.instantiate(temp.boomEffect);
         var bea = be.getComponent(require("AnimationCallBack"));
         bea.callBack = function () {
-            var node = temp.node.parent;
+            var node = this.node.parent;
             node.destroy();
-            var rolenode = node.getComponent(RoleNode);
+            var rolenode = node.getComponent(require("RoleNode"));
             rolenode._maphandle.setRoleInIdx(null,rolenode.idx);
             var cpos = rolenode._maphandle.getPosByIndex(rolenode.idx);
             var urole = rolenode._maphandle.getRoleByPos(cc.v2(cpos.x,cpos.y-1));
@@ -171,7 +170,8 @@ var NSStateDown = cc.Class({
     },
 
     onEnter: function (temp,param) {
-        temp.stateType = StateType.DOWN;
+        var toidx = param;
+        temp.stateType = require("RoleNode").StateType.DOWN;
         temp.node.stopAllActions();
         temp._maphandle.setRoleInIdx(null,temp.idx);
         temp._maphandle.setRoleInIdx(temp,toidx);
@@ -183,7 +183,7 @@ var NSStateDown = cc.Class({
     },
     
     onTick: function (temp,dt) {
-        if (temp._downToIdx && temp._downToIdx >= 0 && temp.stateType == StateType.DOWN) {
+        if (temp._downToIdx && temp._downToIdx >= 0 && temp.stateType == require("RoleNode").StateType.DOWN) {
             var toppos = temp._maphandle.getPixelPosByPos(temp._maphandle.getPosByIndex(temp._downToIdx));
             if (temp.node.y <= toppos.y) { //到达才开始继续检查
                 var toidx = temp.checkCanDown();
@@ -201,7 +201,7 @@ var NSStateDown = cc.Class({
                 else {
                     var toidx = temp.checkCanDown();
                     temp._downToIdx = null;
-                    temp.stateType = StateType.IDLE;
+                    temp.stateType = require("RoleNode").StateType.IDLE;
                     temp.resetPosition();
                     temp.refreshState();
                     return;
@@ -230,7 +230,7 @@ var NSStateFloat = cc.Class({
     },
 
     onEnter: function (temp,param) {
-        temp.stateType = StateType.FLOAT;
+        temp.stateType = require("RoleNode").StateType.FLOAT;
     },
     
     onExit: function (temp) {
@@ -252,13 +252,15 @@ NSStateFloat.GetInstance = function () {
 
 
 
-var NodeRoleState = {}
-NodeRoleState.NSStateIdle = NSStateIdle;
-NodeRoleState.NSStateChange = NSStateChange;
-NodeRoleState.NSStateShake = NSStateShake;
-NodeRoleState.NSStateBoom = NSStateBoom;
-NodeRoleState.NSStateDown = NSStateDown;
-NodeRoleState.NSStateFloat = NSStateFloat;
+var RoleNodeState = {
+    NSStateIdle: NSStateIdle,
+    NSStateChange: NSStateChange,
+    NSStateShake: NSStateShake,
+    NSStateBoom: NSStateBoom,
+    NSStateDown: NSStateDown,
+    NSStateFloat: NSStateFloat,
+}
 
 
-module.export = NodeRoleState;
+
+module.exports = RoleNodeState;
