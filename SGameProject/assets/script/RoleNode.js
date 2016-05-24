@@ -418,6 +418,7 @@ var RoleNode = cc.Class({
         lognode.x = 0;
         lognode.y = 0;
         this.selflog = logcp;
+        this.selflog.string = this.stateType;
         //this.buildBox2d();
     },
 
@@ -429,7 +430,7 @@ var RoleNode = cc.Class({
         }
         
         if (this.stateMgr) {
-            if (this._brefresh == true) {
+            if (this._brefresh == true && this.type != 0) {
                 this.selflog.string = this.stateType;
                 this.stateMgr.onTick(dt);
             }

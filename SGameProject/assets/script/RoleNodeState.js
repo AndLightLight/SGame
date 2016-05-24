@@ -10,6 +10,7 @@ var NSStateIdle = cc.Class({
         temp.stateType = require("RoleNode").StateType.IDLE;
         temp.node.stopAllActions();
         temp.resetPosition();
+        temp._brefresh = true;
     },
     
     onExit: function (temp) {
@@ -118,14 +119,19 @@ var NSStateShake = cc.Class({
         var rep = cc.repeat(sqerl,10);
         
         var callfun = cc.callFunc(function (params) {
-            temp.changeState(require("RoleNode").StateType.BOOM);
+            for (var key in temp._shakeLineRole) {
+                if (temp._shakeLineRole.hasOwnProperty(key)) {
+                    var element = temp._shakeLineRole[key];
+                    element.changeState(require("RoleNode").StateType.BOOM);
+                }
+            }
         },temp);
         var sqe = cc.sequence(rep,callfun);
         temp.node.runAction(sqe);
     },
     
     onExit: function (temp) {
-        this._shakeLineRole = [];
+        temp._shakeLineRole = [];
     },
     
     onTick: function (temp,dt) {
@@ -152,6 +158,7 @@ var NSStateShake = cc.Class({
                     for (var key in temp._shakeLineRole) {
                         if (temp._shakeLineRole.hasOwnProperty(key)) {
                             var element = temp._shakeLineRole[key];
+                            element.changeState(null);
                             element.changeState(require("RoleNode").StateType.SHAKE);
                         }
                     }
