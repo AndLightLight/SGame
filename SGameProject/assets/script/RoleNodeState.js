@@ -17,7 +17,38 @@ var NSStateIdle = cc.Class({
     },
     
     onTick: function (temp,dt) {
-        
+        do {
+            var toidx = temp.checkCanDown();
+            if (toidx) {
+                temp.changeState(require("RoleNode").StateType.DOWN,toidx);  
+                break;
+            }
+            var cpre = true;
+            var result = temp.checkCanShake();
+            var re = result.result;
+            var linerole = result.linerole;
+            if (re) {
+                for (var key in linerole) {
+                    if (linerole.hasOwnProperty(key)) {
+                        var element = linerole[key];
+                        element._brefresh = true;
+                    }
+                }
+                cpre = temp.compareShakeLineRole(linerole);
+                if (!cpre) {
+                    temp.changeState(require("RoleNode").StateType.SHAKE);
+                    for (var key in temp._shakeLineRole) {
+                        if (temp._shakeLineRole.hasOwnProperty(key)) {
+                            var element = temp._shakeLineRole[key];
+                            element.changeState(require("RoleNode").StateType.SHAKE);
+                        }
+                    }
+                }
+                break;
+            }
+            temp._brefresh = false;
+            break;
+        }while (true)
     },
 });
 
@@ -46,7 +77,7 @@ var NSStateChange = cc.Class({
         var callfun = cc.callFunc(function (params) {
             temp.changeState(require("RoleNode").StateType.IDLE);
             temp.node.zIndex = 0;
-            temp.refreshState();
+            temp._brefresh = true;
         },temp);
         var sqe = cc.sequence(action,callfun);
         temp.node.runAction(sqe);
@@ -98,7 +129,38 @@ var NSStateShake = cc.Class({
     },
     
     onTick: function (temp,dt) {
-        
+        do {
+            var toidx = temp.checkCanDown();
+            if (toidx) {
+                temp.changeState(require("RoleNode").StateType.DOWN,toidx);  
+                break;
+            }
+            var cpre = true;
+            var result = temp.checkCanShake();
+            var re = result.result;
+            var linerole = result.linerole;
+            if (re) {
+                for (var key in linerole) {
+                    if (linerole.hasOwnProperty(key)) {
+                        var element = linerole[key];
+                        element._brefresh = true;
+                    }
+                }
+                cpre = temp.compareShakeLineRole(linerole);
+                if (!cpre) {
+                    temp.changeState(require("RoleNode").StateType.SHAKE);
+                    for (var key in temp._shakeLineRole) {
+                        if (temp._shakeLineRole.hasOwnProperty(key)) {
+                            var element = temp._shakeLineRole[key];
+                            element.changeState(require("RoleNode").StateType.SHAKE);
+                        }
+                    }
+                }
+                break;
+            }
+            temp.changeState(require("RoleNode").StateType.IDLE);
+            break;
+        }while (true)
     },
 });
 
@@ -130,14 +192,7 @@ var NSStateBoom = cc.Class({
             node.destroy();
             var rolenode = node.getComponent(require("RoleNode"));
             rolenode._maphandle.setRoleInIdx(null,rolenode.idx);
-            var cpos = rolenode._maphandle.getPosByIndex(rolenode.idx);
-            var urole = rolenode._maphandle.getRoleByPos(cc.v2(cpos.x,cpos.y-1));
-            var lurole = rolenode._maphandle.getRoleByPos(cc.v2(cpos.x-1,cpos.y-1));
-            var rurole = rolenode._maphandle.getRoleByPos(cc.v2(cpos.x+1,cpos.y-1));
-            rolenode._maphandle.pushRefreshMap(urole);
-            rolenode._maphandle.pushRefreshMap(lurole);
-            rolenode._maphandle.pushRefreshMap(rurole);
-            rolenode._maphandle.removeRefreshMap(rolenode);
+            rolenode.refreshRound();
         };
         be.parent = temp.node;
         be.x = 0;
@@ -176,6 +231,7 @@ var NSStateDown = cc.Class({
         temp._maphandle.setRoleInIdx(null,temp.idx);
         temp._maphandle.setRoleInIdx(temp,toidx);
         temp._downToIdx = toidx;
+        temp.refreshRound();
     },
     
     onExit: function (temp) {
@@ -183,7 +239,7 @@ var NSStateDown = cc.Class({
     },
     
     onTick: function (temp,dt) {
-        if (temp._downToIdx && temp._downToIdx >= 0 && temp.stateType == require("RoleNode").StateType.DOWN) {
+        if (temp._downToIdx && temp._downToIdx >= 0) {
             var toppos = temp._maphandle.getPixelPosByPos(temp._maphandle.getPosByIndex(temp._downToIdx));
             if (temp.node.y <= toppos.y) { //到达才开始继续检查
                 var toidx = temp.checkCanDown();
@@ -192,18 +248,15 @@ var NSStateDown = cc.Class({
                     temp._maphandle.setRoleInIdx(temp,toidx);
                     temp._downToIdx = toidx;
                     var pos = temp._maphandle.getPosByIndex(temp.idx);
-                    var urole = temp._maphandle.getRoleByPos(cc.v2(pos.x,pos.y-2));
-                    temp._maphandle.pushRefreshMap(urole);
-                    if (urole) {
-                        urole.refreshState();
+                    var uurole = temp._maphandle.getRoleByPos(cc.v2(pos.x,pos.y-2));
+                    if (uurole) {
+                        uurole._brefresh = true;
                     }
                 }
                 else {
                     var toidx = temp.checkCanDown();
                     temp._downToIdx = null;
-                    temp.stateType = require("RoleNode").StateType.IDLE;
-                    temp.resetPosition();
-                    temp.refreshState();
+                    temp.changeState(require("RoleNode").StateType.IDLE);
                     return;
                 }
             }
@@ -231,6 +284,8 @@ var NSStateFloat = cc.Class({
 
     onEnter: function (temp,param) {
         temp.stateType = require("RoleNode").StateType.FLOAT;
+        temp.node.stopAllActions();
+        temp.resetPosition();
     },
     
     onExit: function (temp) {

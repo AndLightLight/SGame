@@ -26,10 +26,6 @@ var MapLayoutHandle = cc.Class({
         
         
         _map: [],
-        _refreshMap: {
-            default: {},
-            visible: false,
-        },
         mapWidth: {
             default: 0,
             visible: false,
@@ -48,19 +44,7 @@ var MapLayoutHandle = cc.Class({
         },
         
     },
-    
-    
-    pushRefreshMap: function (role) {
-        if (role) {
-            this._refreshMap[role.__instanceId] = role;
-        }
-    },
-    
-    removeRefreshMap: function (role) {
-        if (role) {
-            delete this._refreshMap[role.__instanceId];
-        }
-    },
+   
 
     // use this for initialization
     onLoad: function () {
@@ -285,7 +269,7 @@ var MapLayoutHandle = cc.Class({
             callback(result,relinerole);
         }
         
-        return result;
+        return {"result":result,"linerole":relinerole};
         
         // if (rolenode || type) {
         //     var ctnode = rolenode;
@@ -412,7 +396,7 @@ var MapLayoutHandle = cc.Class({
                         var roleid = this.pre[r-1];
                         var roleinfo = DataMgr.instance.GetInfoByTalbeNameAndId("role",roleid);
                         type = roleinfo.id;
-                    }while(this.checkCanShake(i,type));
+                    }while(this.checkCanShake(i,type).result);
                     pre = DataMgr.instance.GetPrefabById(roleinfo.prefabid);
                 }else{
                     pre = this.stone;
@@ -433,11 +417,6 @@ var MapLayoutHandle = cc.Class({
 
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
-        for (var key in this._refreshMap) {
-            if (this._refreshMap.hasOwnProperty(key)) {
-                var element = this._refreshMap[key];
-                element.refreshState();
-            }
-        }
+
     },
 });
