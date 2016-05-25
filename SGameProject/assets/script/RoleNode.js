@@ -232,63 +232,6 @@ var RoleNode = cc.Class({
           return true;
     },
     
-    refreshState: function () {
-        if (this.stateType == StateType.IDLE || this.stateType == StateType.SHAKE) {
-            var beforestate = this.stateType;
-            var node = this;
-            do {
-                var toidx = this.checkCanDown();
-                if (toidx) {
-                    this.changeState(StateType.DOWN,toidx);  
-                    break;
-                }
-                var cpre = true;
-                var result = this.checkCanShake();
-                var re = result.result;
-                var linerole = result.linerole;
-                for (var key in linerole) {
-                    if (linerole.hasOwnProperty(key)) {
-                        var element = linerole[key];
-                        element._brefresh = true;
-                    }
-                }
-                cpre = this.compareShakeLineRole(linerole);
-                if (re) {
-                    if (!cpre) {
-                        this.changeState(StateType.SHAKE);
-                        for (var key in this._shakeLineRole) {
-                            if (this._shakeLineRole.hasOwnProperty(key)) {
-                                var element = this._shakeLineRole[key];
-                                element.changeState(StateType.SHAKE);
-                            }
-                        }
-                    }
-                    break;
-                }
-                this.changeState(StateType.IDLE);
-                break;
-            }while (true)
-            var afterstate = this.stateType;
-            if (beforestate == StateType.IDLE && StateType.IDLE == afterstate) {
-                this._brefresh = false;
-            }
-        }
-        else if (this.stateType == StateType.CHANGE) {
-            
-        }
-        else if (this.stateType == StateType.SHAKE) {
-            
-        }
-        else if (this.stateType == StateType.BOOM) {
-            
-        }
-        else if (this.stateType == StateType.DOWN) {
-            
-        }
-        
-    },
-    
-    
     checkCanChangePos: function (role) {
         if (role instanceof RoleNode && this._maphandle && role != this 
         && (role.stateType == StateType.IDLE || role.stateType == StateType.SHAKE) 
@@ -419,6 +362,7 @@ var RoleNode = cc.Class({
         lognode.y = 0;
         this.selflog = logcp;
         this.selflog.string = this.stateType;
+        this.selflog.node.active = false;
         //this.buildBox2d();
     },
 

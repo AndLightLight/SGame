@@ -270,66 +270,6 @@ var MapLayoutHandle = cc.Class({
         }
         
         return {"result":result,"linerole":relinerole};
-        
-        // if (rolenode || type) {
-        //     var ctnode = rolenode;
-        //     if (ctnode|| type) {
-        //         var ctype = ctnode?ctnode.type:type;
-        //         var backtype = [this.samenum - 1];
-        //         var leftnum = 0;
-        //         for (var index = 0; index < this.samenum - 1; index++) {
-        //             backtype[index] = this._map[idx - index - 1]?
-        //             (this._map[idx - index - 1].type):0;
-        //             if (backtype[index] != ctype) {
-        //                 bBom = false;
-        //                 break;
-        //             }
-        //             leftnum ++;
-        //         }
-        //         var rightnum = 0
-        //         for (var index = 0; index < this.samenum - 1; index++) {
-        //             backtype[index] = this._map[idx + index + 1]?
-        //             (this._map[idx + index + 1].type):0;
-        //             if (backtype[index] != ctype) {
-        //                 bBom = false;
-        //                 break;
-        //             }
-        //             rightnum ++;
-        //         }
-        //         var upnum = 0;
-        //         for (var index = 0; index < this.samenum - 1; index++) {
-        //             backtype[index] = this._map[idx - this.mapWidth *(index + 1)]?
-        //             (this._map[idx - this.mapWidth *(index + 1)].type):0;
-        //             if (backtype[index] != ctype) {
-        //                 bBom = false;
-        //                 break;
-        //             }
-        //             upnum ++;
-        //         }
-        //         var downnum = 0;
-        //         for (var index = 0; index < this.samenum - 1; index++) {
-        //             backtype[index] = this._map[idx + this.mapWidth *(index + 1)]?
-        //             (this._map[idx + this.mapWidth *(index + 1)].type):0;
-        //             if (backtype[index] != ctype) {
-        //                 bBom = false;
-        //                 break;
-        //             }
-        //             downnum ++;
-        //         }
-        //         if (leftnum + rightnum >= this.samenum-1) {
-        //             result = true;
-        //         }
-        //         if (upnum + downnum >= this.samenum-1) {
-        //             result = true;
-        //         }
-        //     }
-        // }
-        //cc.log("idx:"+idx+"leftnum:"+leftnum+"rightnum:"+rightnum+"upnum:"+upnum+"downnum:"+downnum)
-        // if (callback) {
-        //     callback(result,linerole);
-        // }
-        
-        // return result;
     },
     
     
@@ -368,11 +308,15 @@ var MapLayoutHandle = cc.Class({
     loadMap: function () {
         var map = this.node.getComponent(cc.TiledLayer);
         map.enabled = false;
+        var mapparent = this.node.parent.getComponent(cc.TiledMap);
         this.mapWidth = this.node.parent.getComponent(cc.TiledMap).getMapSize().width;
         this.mapHeight = this.node.parent.getComponent(cc.TiledMap).getMapSize().height;
         this.tileWidth = this.node.parent.getComponent(cc.TiledMap).getTileSize().width;
         this.tileHeight = this.node.parent.getComponent(cc.TiledMap).getTileSize().height;
         var tiles = map.getTiles();
+        // var tileset = map.getTileset();
+        // var pro = map.getProperties();
+        // var mappro = mapparent.getProperties();
         var test = 2;
         for (var i in tiles) {
             i = Number(i);
