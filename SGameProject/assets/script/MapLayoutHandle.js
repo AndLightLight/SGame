@@ -3,20 +3,7 @@ var MapLayoutHandle = cc.Class({
     extends: cc.Component,
 
     properties: {
-        // foo: {
-        //    default: null,
-        //    url: cc.Texture2D,  // optional, default is typeof default
-        //    serializable: true, // optional, default is true
-        //    visible: true,      // optional, default is true
-        //    displayName: 'Foo', // optional
-        //    readonly: false,    // optional, default is false
-        // },
-        // ...
         pre: [cc.Integer],
-        stone: {
-          default: null,
-          type: cc.Prefab,  
-        },
         samenum: 3,
         
         selectRole: {
@@ -97,14 +84,11 @@ var MapLayoutHandle = cc.Class({
         if (rolenode || type) {
             var ctnode = rolenode;
             if (ctnode|| type) {
-                var ctype = ctnode?ctnode.type:type;
-                if (ctype == 0) {
-                    return ;
-                }
-                var lefttype = this._map[idx - 1]?this._map[idx - 1].type:0;
-                var righttype = this._map[idx + 1]?this._map[idx + 1].type:0;
-                var uptype = this._map[idx - this.mapWidth]?this._map[idx - this.mapWidth].type:0;
-                var downtype = this._map[idx + this.mapWidth]?this._map[idx + this.mapWidth].type:0;
+                var ctype = ctnode?ctnode.info.type:type;
+                var lefttype = this._map[idx - 1]?this._map[idx - 1].info.type:0;
+                var righttype = this._map[idx + 1]?this._map[idx + 1].info.type:0;
+                var uptype = this._map[idx - this.mapWidth]?this._map[idx - this.mapWidth].info.type:0;
+                var downtype = this._map[idx + this.mapWidth]?this._map[idx + this.mapWidth].info.type:0;
                 if (lefttype == ctype) {
                     var bhave = false;
                     for (var index = 0; index < linerole.length; index++) {
@@ -236,7 +220,7 @@ var MapLayoutHandle = cc.Class({
            R: 4,
         });
         
-        var retype = rolenode?rolenode.type:type;
+        var retype = rolenode?rolenode.info.type:type;
 
         this.GetOneLineRole(idx,type,linerole);
         
@@ -316,7 +300,6 @@ var MapLayoutHandle = cc.Class({
         var tiles = map.getTiles();
         // var tileset = map.getTileset();
         // var pro = map.getProperties();
-        // var mappro = mapparent.getProperties();
         var test = 2;
         for (var i in tiles) {
             i = Number(i);
@@ -328,6 +311,8 @@ var MapLayoutHandle = cc.Class({
                 var ppos = this.getPixelPosByPos(this.getPosByIndex(i))
                 var pre = null;
                 var type = 0;
+                var roleid = 1;
+                var roleinfo = null;
                 if (bnot == 0) {
                     var num = this.pre.length;
                     var canRTimes = 10000;
@@ -337,13 +322,18 @@ var MapLayoutHandle = cc.Class({
                             break;
                         }
                         var r = Math.ceil(Math.random()*(num-1)+1);
-                        var roleid = this.pre[r-1];
-                        var roleinfo = DataMgr.instance.GetInfoByTalbeNameAndId("role",roleid);
+                        roleid = this.pre[r-1];
+                        roleinfo = DataMgr.instance.GetInfoByTalbeNameAndId("role",roleid);
                         type = roleinfo.id;
                     }while(this.checkCanShake(i,type).result);
                     pre = DataMgr.instance.GetPrefabById(roleinfo.prefabid);
                 }else{
-                    pre = this.stone;
+                    var tilepro = mapparent.getPropertiesForGID(bnot);
+                    if (tilepro) {
+                        roleid = Number(tilepro.id);
+                        roleinfo = DataMgr.instance.GetInfoByTalbeNameAndId("role",roleid);
+                    }
+                    pre = DataMgr.instance.GetPrefabById(roleinfo.prefabid);
                 }
                 if (!pre) {
                     continue;
@@ -353,7 +343,7 @@ var MapLayoutHandle = cc.Class({
                 nd.y = ppos.y;
                 nd.parent = this.node;
                 var rolenode = nd.getComponent(require("RoleNode"));
-                rolenode.type = type;
+                rolenode.info = roleinfo;
                 this.setRoleInIdx(rolenode,i);
                 rolenode.changeState(require("RoleNode").StateType.IDLE);
         }   

@@ -2,31 +2,55 @@
   "1": {
     "id": 1,
     "type": 1,
-    "prefabid": 1
+    "prefabid": 1,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1
   },
   "2": {
     "id": 2,
     "type": 2,
-    "prefabid": 2
+    "prefabid": 2,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1
   },
   "3": {
     "id": 3,
     "type": 3,
-    "prefabid": 3
+    "prefabid": 3,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1
   },
   "4": {
     "id": 4,
     "type": 4,
-    "prefabid": 4
+    "prefabid": 4,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1
   },
   "5": {
     "id": 5,
     "type": 5,
-    "prefabid": 5
+    "prefabid": 5,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1
   },
   "6": {
     "id": 6,
-    "type": 0,
-    "prefabid": 6
+    "type": 6,
+    "prefabid": 6,
+    "bChange": 0,
+    "bDown": 0,
+    "bShake": 0,
+    "bFloat": 0
   }
 }

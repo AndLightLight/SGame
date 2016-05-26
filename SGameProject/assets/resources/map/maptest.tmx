@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="15" height="15" tilewidth="48" tileheight="48">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="48" tileheight="48">
  <tileset firstgid="1" name="havetile" tilewidth="48" tileheight="48">
   <image source="bag_panel_ui@2x.png" width="152" height="190"/>
   <tile id="0">
    <properties>
-    <property name="id" value="0"/>
+    <property name="id" value="6"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
-    <property name="id" value="2"/>
+    <property name="id" value="6"/>
    </properties>
   </tile>
   <tile id="2">
    <properties>
-    <property name="id" value="3"/>
+    <property name="id" value="6"/>
    </properties>
   </tile>
   <tile id="6">
    <properties>
-    <property name="id" value="x"/>
+    <property name="id" value="2"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="id" value="3"/>
    </properties>
   </tile>
  </tileset>
  <layer name="havetile" width="15" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjYmBgYKIA4wKE5AaDXnS19HYzO5XtZcciRy03M1Oglxh7mZHkBkPaIEcvuRgAHZMAoQ==
+   eJxjZ2BgYMKB2YmQwwUIyY0kvZxQTG97qamXGU2ekH9ItZcZSW4w+JccveRiAFgTALU=
   </data>
  </layer>
- <objectgroup name="123" width="0" height="0">
-  <object x="139" y="100" width="101" height="77"/>
-  <object x="499" y="120" width="72" height="101"/>
- </objectgroup>
 </map>

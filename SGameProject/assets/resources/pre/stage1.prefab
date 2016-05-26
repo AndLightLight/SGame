@@ -324,13 +324,9 @@
       4,
       5
     ],
-    "stone": {
-      "__uuid__": "3e4226b5-0971-4e81-b1d9-0bbdf2135115"
-    },
     "samenum": 3,
     "selectRole": null,
     "_map": [],
-    "_refreshMap": {},
     "mapWidth": 0,
     "mapHeight": 0,
     "tileWidth": 0,

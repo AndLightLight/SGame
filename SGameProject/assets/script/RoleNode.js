@@ -18,10 +18,14 @@ var RoleNode = cc.Class({
     extends: cc.Component,
 
     properties: {
-        type: 0,
+        info: {
+            default: null,
+            visible: false,
+        },
+        
         boomEffect: {
-          default: null,
-          type: cc.Prefab,  
+           default: null,
+           type: cc.Prefab,  
         },
         
         idx:{
@@ -127,28 +131,30 @@ var RoleNode = cc.Class({
                             }
                         }
                         else{
-                            rolenode.changeState(StateType.FLOAT);
-                            if (torole && torole != rolenode) {
-                                var ppos = rolenode._maphandle.findNearestNull(newppos,rolenode);
-                                if (ppos) {
-                                    rolenode.node.position = ppos;
-                                    var newidx = rolenode._maphandle.getIndexByPos(rolenode._maphandle.getPosByPixelPos(ppos));
+                            if (rolenode.isFloatStateRequire()) {
+                                rolenode.changeState(StateType.FLOAT);
+                                if (torole && torole != rolenode) {
+                                    var ppos = rolenode._maphandle.findNearestNull(newppos,rolenode);
+                                    if (ppos) {
+                                        rolenode.node.position = ppos;
+                                        var newidx = rolenode._maphandle.getIndexByPos(rolenode._maphandle.getPosByPixelPos(ppos));
+                                        if (newidx != rolenode.idx) {
+                                            rolenode._maphandle.setRoleInIdx(null,rolenode.idx);
+                                            rolenode._maphandle.setRoleInIdx(rolenode,newidx);
+                                            rolenode.refreshRound();
+                                        }
+                                    }
+                                }
+                                else {
+                                    rolenode.stateType = StateType.FLOAT;
+                                    rolenode.node.position = newppos;
+                                    var newidx = rolenode._maphandle.getIndexByPos(rolenode._maphandle.getPosByPixelPos(newppos));
                                     if (newidx != rolenode.idx) {
                                         rolenode._maphandle.setRoleInIdx(null,rolenode.idx);
                                         rolenode._maphandle.setRoleInIdx(rolenode,newidx);
                                         rolenode.refreshRound();
                                     }
-                                }
-                            }
-                            else {
-                                rolenode.stateType = StateType.FLOAT;
-                                rolenode.node.position = newppos;
-                                var newidx = rolenode._maphandle.getIndexByPos(rolenode._maphandle.getPosByPixelPos(newppos));
-                                if (newidx != rolenode.idx) {
-                                    rolenode._maphandle.setRoleInIdx(null,rolenode.idx);
-                                    rolenode._maphandle.setRoleInIdx(rolenode,newidx);
-                                    rolenode.refreshRound();
-                                }
+                                }                               
                             }
                         }
                     }
@@ -234,8 +240,8 @@ var RoleNode = cc.Class({
     
     checkCanChangePos: function (role) {
         if (role instanceof RoleNode && this._maphandle && role != this 
-        && (role.stateType == StateType.IDLE || role.stateType == StateType.SHAKE) 
-        && (this.stateType == StateType.IDLE || this.stateType == StateType.SHAKE)
+        && this.isChangeStateRequire()
+        && role.isChangeStateRequire()
         ) {
             var rpos = this._maphandle.getPosByIndex(role.idx);
             var cpos = this._maphandle.getPosByIndex(this.idx);
@@ -258,7 +264,7 @@ var RoleNode = cc.Class({
     
     checkCanShake: function (callback) {
         if (this.isShakeStateRequire()) {
-            return this._maphandle.checkCanShake(this.idx,this.type,function (re,linerole) {
+            return this._maphandle.checkCanShake(this.idx,this.info.type,function (re,linerole) {
                 if (callback) {
                     callback(re,linerole);
                 }
@@ -280,14 +286,31 @@ var RoleNode = cc.Class({
     },
     
     isShakeStateRequire: function () {
-        if (this.stateType != StateType.DOWN && this.stateType != StateType.CHANGE && this.stateType != StateType.BOOM) {
+        if (this.info.bShake == true && this.stateType != StateType.DOWN && this.stateType != StateType.CHANGE 
+        && this.stateType != StateType.BOOM) {
+            return true;
+        }
+        return false;
+    },
+    
+    isFloatStateRequire: function () {
+        if (this.info.bFloat == true && this.stateType != StateType.CHANGE && this.stateType != StateType.BOOM) {
+            return true;
+        }
+        return false;
+    },
+    
+    isChangeStateRequire: function () {
+        if (this.info.bChange == true && this.stateType != StateType.BOOM && this.stateType != StateType.CHANGE
+        && this.stateType != StateType.FLOAT) {
             return true;
         }
         return false;
     },
     
     isDownStateRequire: function () {
-        if (this.stateType != StateType.BOOM && this.stateType != StateType.CHANGE) {
+        if (this.info.bDown == true && this.stateType != StateType.BOOM && this.stateType != StateType.CHANGE
+        && this.stateType != StateType.FLOAT) {
             return true;
         }
         return false;
@@ -322,9 +345,9 @@ var RoleNode = cc.Class({
             
             var bodyDef = new Box2d.b2BodyDef();
                 bodyDef.type = Box2d.b2Body.b2_dynamicBody;
-                if (this.type == 0) {
-                    bodyDef.type = Box2d.b2Body.b2_staticBody;
-                }
+                // if (this.info.type == 0) {
+                //     bodyDef.type = Box2d.b2Body.b2_staticBody;
+                // }
                 bodyDef.position.Set(worldPoint.x,worldPoint.y);
                 bodyDef.angle = 0*DEGTORAD;
                 // bodyDef.linearVelocity = new Box2d.b2Vec2(1,0);
@@ -374,7 +397,7 @@ var RoleNode = cc.Class({
         }
         
         if (this.stateMgr) {
-            if (this._brefresh == true && this.type != 0) {
+            if (this._brefresh == true) {
                 this.selflog.string = this.stateType;
                 this.stateMgr.onTick(dt);
             }
