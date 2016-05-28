@@ -1,0 +1,64 @@
+[
+  {
+    "id": 1,
+    "name": "bear",
+    "mergeNeedNum": [
+      4
+    ],
+    "mergeToRole": [
+      0
+    ]
+  },
+  {
+    "id": 2,
+    "name": "cat",
+    "mergeNeedNum": [
+      3,
+      4
+    ],
+    "mergeToRole": [
+      0,
+      7
+    ]
+  },
+  {
+    "id": 3,
+    "name": "chicken",
+    "mergeNeedNum": [
+      3
+    ],
+    "mergeToRole": [
+      0
+    ]
+  },
+  {
+    "id": 4,
+    "name": "fox",
+    "mergeNeedNum": [
+      3
+    ],
+    "mergeToRole": [
+      0
+    ]
+  },
+  {
+    "id": 5,
+    "name": "frog",
+    "mergeNeedNum": [
+      3
+    ],
+    "mergeToRole": [
+      0
+    ]
+  },
+  {
+    "id": 6,
+    "name": "stone",
+    "mergeNeedNum": [
+      999
+    ],
+    "mergeToRole": [
+      0
+    ]
+  }
+]

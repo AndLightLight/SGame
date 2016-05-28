@@ -12,6 +12,7 @@ var StateType = cc.Enum({
     BOOM: 3,
     DOWN: 4,
     FLOAT: 5,
+    MERGE: 6,
 });
 
 var RoleNode = cc.Class({
@@ -49,7 +50,11 @@ var RoleNode = cc.Class({
             visible: false,  
         },
         
+        //shakeparam
         _shakeLineRole: [],
+        _mergetoroleid: 0,
+        
+        //downparam
         _downToIdx: null,
         
         
@@ -197,29 +202,32 @@ var RoleNode = cc.Class({
         if (this.stateMgr) {
             switch (state) {
                 case StateType.IDLE:
-                    this.stateMgr.changeState(RoleNodeState.NSStateIdle.GetInstance(),param,isSub);
+                    this.stateMgr.changeState(RoleNodeState.RNStateIdle.GetInstance(),param,isSub);
                     break;
                 case StateType.CHANGE:
-                    this.stateMgr.changeState(RoleNodeState.NSStateChange.GetInstance(),param,isSub);
+                    this.stateMgr.changeState(RoleNodeState.RNStateChange.GetInstance(),param,isSub);
                     break;
                 case StateType.SHAKE:
-                    this.stateMgr.changeState(RoleNodeState.NSStateShake.GetInstance(),param,isSub);
+                    this.stateMgr.changeState(RoleNodeState.RNStateShake.GetInstance(),param,isSub);
                     break;
                 case StateType.BOOM:
-                    this.stateMgr.changeState(RoleNodeState.NSStateBoom.GetInstance(),param,isSub);
+                    this.stateMgr.changeState(RoleNodeState.RNStateBoom.GetInstance(),param,isSub);
                     break;
                 case StateType.DOWN:
-                    this.stateMgr.changeState(RoleNodeState.NSStateDown.GetInstance(),param,isSub);
+                    this.stateMgr.changeState(RoleNodeState.RNStateDown.GetInstance(),param,isSub);
                     break;
                 case StateType.FLOAT:
-                    this.stateMgr.changeState(RoleNodeState.NSStateFloat.GetInstance(),param,isSub);
+                    this.stateMgr.changeState(RoleNodeState.RNStateFloat.GetInstance(),param,isSub);
+                    break;
+                case StateType.MERGE:
+                    this.stateMgr.changeState(RoleNodeState.RNStateMerge.GetInstance(),param,isSub);
                     break;
                 case null:
                     this.stateMgr.changeState(null,param,isSub);
                     break;
             
                 default:
-                    this.stateMgr.changeState(RoleNodeState.NSStateIdle.GetInstance(),param,isSub);                
+                    this.stateMgr.changeState(RoleNodeState.RNStateIdle.GetInstance(),param,isSub);                
                     break;
             }
         }
@@ -230,9 +238,10 @@ var RoleNode = cc.Class({
         this.node.position = ppos;
     },
     
-    compareShakeLineRole: function (linerole) {
+    compareShakeLineRole: function (linerole,mergetoroleid) {
           if (this._shakeLineRole.length != linerole.length) {
               this._shakeLineRole = linerole.slice(0);
+              this._mergetoroleid = mergetoroleid;
               return false;
           }
           return true;
@@ -287,14 +296,16 @@ var RoleNode = cc.Class({
     
     isShakeStateRequire: function () {
         if (this.info.bShake == true && this.stateType != StateType.DOWN && this.stateType != StateType.CHANGE 
-        && this.stateType != StateType.BOOM) {
+        && this.stateType != StateType.BOOM
+        && this.stateType != StateType.MERGE) {
             return true;
         }
         return false;
     },
     
     isFloatStateRequire: function () {
-        if (this.info.bFloat == true && this.stateType != StateType.CHANGE && this.stateType != StateType.BOOM) {
+        if (this.info.bFloat == true && this.stateType != StateType.CHANGE && this.stateType != StateType.BOOM
+        && this.stateType != StateType.MERGE) {
             return true;
         }
         return false;
@@ -302,7 +313,8 @@ var RoleNode = cc.Class({
     
     isChangeStateRequire: function () {
         if (this.info.bChange == true && this.stateType != StateType.BOOM && this.stateType != StateType.CHANGE
-        && this.stateType != StateType.FLOAT) {
+        && this.stateType != StateType.FLOAT
+        && this.stateType != StateType.MERGE) {
             return true;
         }
         return false;
@@ -310,11 +322,13 @@ var RoleNode = cc.Class({
     
     isDownStateRequire: function () {
         if (this.info.bDown == true && this.stateType != StateType.BOOM && this.stateType != StateType.CHANGE
-        && this.stateType != StateType.FLOAT) {
+        && this.stateType != StateType.FLOAT
+        && this.stateType != StateType.MERGE) {
             return true;
         }
         return false;
     },
+   
     
     convertToWorld:function(){
         var leftDownPos = this.node.parent.convertToWorldSpaceAR(this.node.position);
@@ -410,6 +424,20 @@ var RoleNode = cc.Class({
         }
     },
 });
+
+
+RoleNode.findLowestRole = function (rolelist) {
+    var rrole;
+    if (rolelist) {
+        for (var key in rolelist) {
+            if (rolelist.hasOwnProperty(key)) {
+                var element = rolelist[key];
+                rrole?((rrole.idx < element.idx)?rrole = element:null):rrole = element;
+            }
+        }
+    }
+    return rrole;
+},
 
 
 RoleNode.StateType = StateType;

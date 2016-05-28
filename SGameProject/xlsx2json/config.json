@@ -1,0 +1,8 @@
+{
+    "xlsx": {
+        "head": 2,
+        "src": "../assets/xlsx/**/[^~$]*.xlsx",
+        "dest": "../assets/resources/json",
+        "arraySeparator":","
+    }
+}

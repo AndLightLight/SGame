@@ -29,11 +29,11 @@ var DataMgr = cc.Class({
             cc.log("table is not load: " + tablename + ".json");
             return null;
         }
-        if (this.m_table[tablename][id.toString()] == null) {
+        if (this.m_table[tablename][id-1] == null) {
             cc.log("table have no id: " + tablename + ".json" + "id" + id);
             return null;
         }
-        return this.m_table[tablename][id.toString()];
+        return this.m_table[tablename][id-1];
     },
     
         // use this for initialization

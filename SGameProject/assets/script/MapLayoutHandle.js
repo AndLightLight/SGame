@@ -4,7 +4,6 @@ var MapLayoutHandle = cc.Class({
 
     properties: {
         pre: [cc.Integer],
-        samenum: 3,
         
         selectRole: {
             default: null,
@@ -245,7 +244,19 @@ var MapLayoutHandle = cc.Class({
             }
         }
         
-        if (linerole.length + offset >= this.samenum && retype != 0) {
+        var typeinfo = DataMgr.instance.GetInfoByTalbeNameAndId("roletype",retype);
+        var bneednum = false
+        var mergeroleid = 0;
+        for (var i = 0;i < typeinfo.mergeNeedNum.length;i ++) {
+            if (typeinfo.mergeNeedNum[i]) {
+                if (linerole.length + offset >= typeinfo.mergeNeedNum[i]) {
+                    bneednum = true;
+                    mergeroleid = typeinfo.mergeToRole[i];
+                }
+            }
+        }
+        
+        if (bneednum && retype != 0) {
             result = true;
         }
         
@@ -253,7 +264,7 @@ var MapLayoutHandle = cc.Class({
             callback(result,relinerole);
         }
         
-        return {"result":result,"linerole":relinerole};
+        return {"result":result,"linerole":relinerole,"mergeroleid":mergeroleid};
     },
     
     

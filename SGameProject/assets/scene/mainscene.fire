@@ -477,7 +477,8 @@
     "jsonPath": "json/",
     "jsonHz": ".json",
     "jsonConfig": [
-      "role"
+      "role",
+      "roletype"
     ]
   },
   {

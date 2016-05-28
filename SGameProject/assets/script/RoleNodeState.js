@@ -1,5 +1,6 @@
 var StateMgr = require("StateMgr");
-var NSStateIdle = cc.Class({
+var DataMgr = require("DataMgr");
+var RNStateIdle = cc.Class({
     //extends: cc.Component,
 
     properties: {
@@ -28,6 +29,7 @@ var NSStateIdle = cc.Class({
             var result = temp.checkCanShake();
             var re = result.result;
             var linerole = result.linerole;
+            var mergettoroleid = result.mergeroleid;
             if (re) {
                 for (var key in linerole) {
                     if (linerole.hasOwnProperty(key)) {
@@ -35,7 +37,7 @@ var NSStateIdle = cc.Class({
                         element._brefresh = true;
                     }
                 }
-                cpre = temp.compareShakeLineRole(linerole);
+                cpre = temp.compareShakeLineRole(linerole,mergettoroleid);
                 if (!cpre) {
                     temp.changeState(require("RoleNode").StateType.SHAKE);
                     for (var key in temp._shakeLineRole) {
@@ -53,16 +55,16 @@ var NSStateIdle = cc.Class({
     },
 });
 
-NSStateIdle.instance = null;
-NSStateIdle.GetInstance = function () {
-    if (!NSStateIdle.instance) {
-        NSStateIdle.instance = new NSStateIdle;
+RNStateIdle.instance = null;
+RNStateIdle.GetInstance = function () {
+    if (!RNStateIdle.instance) {
+        RNStateIdle.instance = new RNStateIdle;
     }
-    return NSStateIdle.instance;
+    return RNStateIdle.instance;
 }
 
 //////////////////////////////////////////////////////////////////////////
-var NSStateChange = cc.Class({
+var RNStateChange = cc.Class({
     //extends: cc.Component,
 
     properties: {
@@ -93,16 +95,16 @@ var NSStateChange = cc.Class({
     },
 });
 
-NSStateChange.instance = null;
-NSStateChange.GetInstance = function () {
-    if (!NSStateChange.instance) {
-        NSStateChange.instance = new NSStateChange;
+RNStateChange.instance = null;
+RNStateChange.GetInstance = function () {
+    if (!RNStateChange.instance) {
+        RNStateChange.instance = new RNStateChange;
     }
-    return NSStateChange.instance;
+    return RNStateChange.instance;
 }
 
 ///////////////////////////////////////////////////////////////////////////
-var NSStateShake = cc.Class({
+var RNStateShake = cc.Class({
     //extends: cc.Component,
 
     properties: {
@@ -119,10 +121,44 @@ var NSStateShake = cc.Class({
         var rep = cc.repeat(sqerl,10);
         
         var callfun = cc.callFunc(function (params) {
-            for (var key in temp._shakeLineRole) {
-                if (temp._shakeLineRole.hasOwnProperty(key)) {
-                    var element = temp._shakeLineRole[key];
-                    element.changeState(require("RoleNode").StateType.BOOM);
+            if (temp.stateType == require("RoleNode").StateType.SHAKE) {
+                if (temp._mergetoroleid > 0) {
+                    var torole = require("RoleNode").findLowestRole(temp._shakeLineRole);
+                    if (torole) {
+                        var tempshakeLineRole = temp._shakeLineRole.slice(0);
+                        for (var key in tempshakeLineRole) {
+                            if (tempshakeLineRole.hasOwnProperty(key)) {
+                                var element = tempshakeLineRole[key];
+                                if (torole != element) {
+                                    element.changeState(require("RoleNode").StateType.MERGE,torole.idx);
+                                    element._brefresh = false;
+                                }
+                            }
+                        }
+                        var mergetoroleinfo = DataMgr.instance.GetInfoByTalbeNameAndId("role",temp._mergetoroleid);
+                        var pre = DataMgr.instance.GetPrefabById(mergetoroleinfo.prefabid);
+                        var nd = cc.instantiate(pre);
+                        nd.x = torole.node.x;
+                        nd.y = torole.node.y;
+                        nd.parent = torole.node.parent;
+                        var rolenode = nd.getComponent(require("RoleNode"));
+                        rolenode.info = mergetoroleinfo;
+                        torole._maphandle.setRoleInIdx(rolenode,torole.idx);
+                        rolenode.changeState(require("RoleNode").StateType.IDLE);
+                        torole.changeState(require("RoleNode").StateType.IDLE);
+                        torole._brefresh = false;
+                        torole.node.destroy();
+                    }
+                }
+                else {
+                    var tempshakeLineRole = temp._shakeLineRole.slice(0);
+                    for (var key in tempshakeLineRole) {
+                        if (tempshakeLineRole.hasOwnProperty(key)) {
+                            var element = tempshakeLineRole[key];
+                            element.changeState(require("RoleNode").StateType.BOOM);
+                            element._brefresh = false;
+                        }
+                    }
                 }
             }
         },temp);
@@ -145,6 +181,7 @@ var NSStateShake = cc.Class({
             var result = temp.checkCanShake();
             var re = result.result;
             var linerole = result.linerole;
+            var mergettoroleid = result.mergeroleid;
             if (re) {
                 for (var key in linerole) {
                     if (linerole.hasOwnProperty(key)) {
@@ -152,7 +189,7 @@ var NSStateShake = cc.Class({
                         element._brefresh = true;
                     }
                 }
-                cpre = temp.compareShakeLineRole(linerole);
+                cpre = temp.compareShakeLineRole(linerole,mergettoroleid);
                 if (!cpre) {
                     temp.changeState(require("RoleNode").StateType.SHAKE);
                     for (var key in temp._shakeLineRole) {
@@ -171,17 +208,17 @@ var NSStateShake = cc.Class({
     },
 });
 
-NSStateShake.instance = null;
-NSStateShake.GetInstance = function () {
-    if (!NSStateShake.instance) {
-        NSStateShake.instance = new NSStateShake;
+RNStateShake.instance = null;
+RNStateShake.GetInstance = function () {
+    if (!RNStateShake.instance) {
+        RNStateShake.instance = new RNStateShake;
     }
-    return NSStateShake.instance;
+    return RNStateShake.instance;
 }
 
 
 //////////////////////////////////////////////////////////////////////
-var NSStateBoom = cc.Class({
+var RNStateBoom = cc.Class({
     //extends: cc.Component,
 
     properties: {
@@ -215,16 +252,16 @@ var NSStateBoom = cc.Class({
     },
 });
 
-NSStateBoom.instance = null;
-NSStateBoom.GetInstance = function () {
-    if (!NSStateBoom.instance) {
-        NSStateBoom.instance = new NSStateBoom;
+RNStateBoom.instance = null;
+RNStateBoom.GetInstance = function () {
+    if (!RNStateBoom.instance) {
+        RNStateBoom.instance = new RNStateBoom;
     }
-    return NSStateBoom.instance;
+    return RNStateBoom.instance;
 }
 
 /////////////////////////////////////////////////////////////////////////
-var NSStateDown = cc.Class({
+var RNStateDown = cc.Class({
     //extends: cc.Component,
 
     properties: {
@@ -272,17 +309,17 @@ var NSStateDown = cc.Class({
     },
 });
 
-NSStateDown.instance = null;
-NSStateDown.GetInstance = function () {
-    if (!NSStateDown.instance) {
-        NSStateDown.instance = new NSStateDown;
+RNStateDown.instance = null;
+RNStateDown.GetInstance = function () {
+    if (!RNStateDown.instance) {
+        RNStateDown.instance = new RNStateDown;
     }
-    return NSStateDown.instance;
+    return RNStateDown.instance;
 }
 
 
 ////////////////////////////////////////////////////////////////////////
-var NSStateFloat = cc.Class({
+var RNStateFloat = cc.Class({
     //extends: cc.Component,
 
     properties: {
@@ -304,23 +341,70 @@ var NSStateFloat = cc.Class({
     },
 });
 
-NSStateFloat.instance = null;
-NSStateFloat.GetInstance = function () {
-    if (!NSStateFloat.instance) {
-        NSStateFloat.instance = new NSStateFloat;
+RNStateFloat.instance = null;
+RNStateFloat.GetInstance = function () {
+    if (!RNStateFloat.instance) {
+        RNStateFloat.instance = new RNStateFloat;
     }
-    return NSStateFloat.instance;
+    return RNStateFloat.instance;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+var RNStateMerge = cc.Class({
+    //extends: cc.Component,
+
+    properties: {
+
+    },
+
+    onEnter: function (temp,param) {
+        var toidx = param
+        temp.resetPosition();
+        temp.stateType = require("RoleNode").StateType.MERGE;
+        temp.node.stopAllActions();
+        var ppos = temp._maphandle.getPixelPosByPos(temp._maphandle.getPosByIndex(toidx));
+        var mt = cc.moveTo(0.2,ppos);
+        var ft = cc.fadeTo(0.2,0);
+        var swp = cc.spawn(mt,ft);
+        var callfun = cc.callFunc(function (params) {
+            var node = temp.node;
+            node.destroy();
+            var rolenode = temp;
+            rolenode._maphandle.setRoleInIdx(null,rolenode.idx);
+            rolenode.refreshRound();
+        },temp);
+        var sqe = cc.sequence(swp,callfun);
+        temp.node.runAction(sqe);
+    },
+    
+    onExit: function (temp) {
+        
+    },
+    
+    onTick: function (temp,dt) {
+        
+    },
+});
+
+RNStateMerge.instance = null;
+RNStateMerge.GetInstance = function () {
+    if (!RNStateMerge.instance) {
+        RNStateMerge.instance = new RNStateMerge;
+    }
+    return RNStateMerge.instance;
 }
 
 
 
 var RoleNodeState = {
-    NSStateIdle: NSStateIdle,
-    NSStateChange: NSStateChange,
-    NSStateShake: NSStateShake,
-    NSStateBoom: NSStateBoom,
-    NSStateDown: NSStateDown,
-    NSStateFloat: NSStateFloat,
+    RNStateIdle: RNStateIdle,
+    RNStateChange: RNStateChange,
+    RNStateShake: RNStateShake,
+    RNStateBoom: RNStateBoom,
+    RNStateDown: RNStateDown,
+    RNStateFloat: RNStateFloat,
+    RNStateMerge: RNStateMerge,
 }
 
 
