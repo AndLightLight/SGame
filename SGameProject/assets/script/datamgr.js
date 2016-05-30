@@ -4,6 +4,14 @@ var DataMgr = cc.Class({
         jsonPath: "json/",
         jsonHz: ".json",
         jsonConfig: [cc.String],
+        
+        _totalLoadNum: 0,
+        _currentLoadNum: 0,
+        
+        loadUI: {
+            default: null,
+            type: cc.Node,  
+        },
     },
     
     
@@ -52,7 +60,9 @@ var DataMgr = cc.Class({
         this.preLoadLength = 0;
         for (var i = 0;i < this.jsonConfig.length;i ++) {
             resArray[i] = this.jsonPath + this.jsonConfig[i] + this.jsonHz;
+            DataMgr.instance._totalLoadNum ++;
             cc.loader.loadRes(resArray[i],function (err,res) {
+                DataMgr.instance._currentLoadNum ++;
                 if (err) {
                         cc.log("json load error : " + err);
                         DataMgr.instance.loadNum++
@@ -70,40 +80,45 @@ var DataMgr = cc.Class({
                 }
             },);
         }
-        
+        DataMgr.instance._totalLoadNum ++;
         cc.loader.loadRes(this.jsonPath + "preload" + this.jsonHz,function (err,res) {
-                if (err) {
-                        cc.log("json load error : " + err);
-                }
-                else{
-                    var m_table = DataMgr.instance.m_table;
-                    m_table["preload"] = res;
-                    for (var key in res) {
-                        if (res.hasOwnProperty(key)) {
-                            var element = res[key];
-                            DataMgr.instance.preLoadLength ++;
-                            cc.loader.loadRes(element.prefabpath,function (err,prefab) {
-                                if (err) {
-                                    cc.log("prefab load error: " + err);
-                                    DataMgr.instance.preLoadNum ++;
-                                }
-                                else {
-                                    DataMgr.instance.preLoadNum ++;
-                                }
-                                if (DataMgr.instance.preLoadNum >= DataMgr.instance.preLoadLength) {
-                                    var object = DataMgr.instance.m_table["preload"];
-                                    for (var key in object) {
-                                        if (object.hasOwnProperty(key)) {
-                                            var element = object[key];
-                                            DataMgr.instance.m_preLoadTable[Number(element.id)] = cc.loader.getRes(element.prefabpath);
-                                        }
+            DataMgr.instance._currentLoadNum ++;
+            if (err) {
+                    cc.log("json load error : " + err);
+            }
+            else{
+                var m_table = DataMgr.instance.m_table;
+                m_table["preload"] = res;
+                for (var key in res) {
+                    if (res.hasOwnProperty(key)) {
+                        var element = res[key];
+                        DataMgr.instance.preLoadLength ++;
+                        DataMgr.instance._totalLoadNum ++;
+                        cc.loader.loadRes(element.prefabpath,function (err,prefab) {
+                            DataMgr.instance._currentLoadNum ++;
+                            if (err) {
+                                cc.log("prefab load error: " + err);
+                                DataMgr.instance.preLoadNum ++;
+                            }
+                            else {
+                                DataMgr.instance.preLoadNum ++;
+                            }
+                            if (DataMgr.instance.preLoadNum >= DataMgr.instance.preLoadLength) {
+                                var object = DataMgr.instance.m_table["preload"];
+                                for (var key in object) {
+                                    if (object.hasOwnProperty(key)) {
+                                        var element = object[key];
+                                        DataMgr.instance.m_preLoadTable[Number(element.id)] = cc.loader.getRes(element.prefabpath);
                                     }
                                 }
-                            })
-                        }
-                    } 
-                }
-            });
+                            }
+                        })
+                    }
+                } 
+            }
+        });
+        
+        this.loadUI.getComponent(require("LoadUI")).StartLoading = true;
     },
     
     

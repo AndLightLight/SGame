@@ -26,6 +26,8 @@ var Game = cc.Class({
         stage1n.parent = this.node;
         stage1n.x = 0;
         stage1n.y = 0;
+        
+        var bt = cc.find("Canvas/UI/Start").active = false;
     },
     
     // use this for initialization
