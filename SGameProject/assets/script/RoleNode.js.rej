@@ -1,0 +1,9 @@
+diff a/SGameProject/assets/script/RoleNode.js b/SGameProject/assets/script/RoleNode.js	(rejected hunks)
+@@ -412,6 +412,7 @@
+         this.createStateMgr();
+         this.Log = cc.find("Canvas/Game/stage1/Log").getComponent(cc.Label);
+         this.Log.string = "good1";
++        var lognode = new cc.Node('log2');
+         var logcp = lognode.addComponent(cc.Label);
+         lognode.parent = this.node;
+         lognode.x = 0;

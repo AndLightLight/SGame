@@ -412,7 +412,7 @@ var RoleNode = cc.Class({
         
         if (this.stateMgr) {
             if (this._brefresh == true) {
-                this.selflog.string = this.stateType;
+                //this.selflog.string = this.stateType;
                 this.stateMgr.onTick(dt);
             }
         }

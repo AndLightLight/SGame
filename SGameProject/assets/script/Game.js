@@ -39,6 +39,7 @@ var Game = cc.Class({
             cc.log("error: singlon class creat more then onece!")
         }
         this.world = new Box2d.b2World(new Box2d.b2Vec2(0,9.8),true);
+        cc.director.setDisplayStats(true);
         // var debugDraw = new Box2d.b2DebugDraw();
         // debugDraw.SetSprite(cc.game.config.id.getContext("2d"));
         // debugDraw.SetDrawScale(1.0);
