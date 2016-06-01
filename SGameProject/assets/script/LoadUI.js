@@ -1,4 +1,5 @@
 var DataMgr = require("DataMgr");
+var Game = require("Game");
 cc.Class({
     extends: cc.Component,
 
@@ -30,6 +31,7 @@ cc.Class({
             if (DataMgr.instance._totalLoadNum <= DataMgr.instance._currentLoadNum) {
                 this.node.active = false;
                 this.StartLoading = false;
+                Game.instance.StartGame();
             }
         }
     },

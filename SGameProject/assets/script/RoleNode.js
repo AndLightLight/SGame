@@ -108,7 +108,7 @@ var RoleNode = cc.Class({
             if (rolenode.bPress) {
                 var mx = event.getLocation().x;
                 var my = event.getLocation().y;
-                rolenode.Log.string = "mx:"+mx+"my:"+my;
+                //rolenode.Log.string = "mx:"+mx+"my:"+my;
                 var width = node.width;
                 var height = node.height;
                 var newppos = node.parent.convertToNodeSpace(cc.v2(mx,my)); 
@@ -391,7 +391,7 @@ var RoleNode = cc.Class({
         this._maphandle = this.node.parent.getComponent(MapLayoutHandle);
         this.createStateMgr();
         this.Log = cc.find("Canvas/Game/stage1/Log").getComponent(cc.Label);
-        this.Log.string = "good1";
+        this.Log.string = "log";
         var lognode = new cc.Node('log2');
         var logcp = lognode.addComponent(cc.Label);
         lognode.parent = this.node;
