@@ -68,5 +68,85 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1
+  },
+  {
+    "id": 8,
+    "name": "char20",
+    "type": 7,
+    "prefabid": 9,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1
+  },
+  {
+    "id": 9,
+    "name": "char25",
+    "type": 8,
+    "prefabid": 10,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1
+  },
+  {
+    "id": 10,
+    "name": "char27",
+    "type": 9,
+    "prefabid": 11,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1
+  },
+  {
+    "id": 11,
+    "name": "char29",
+    "type": 10,
+    "prefabid": 12,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1
+  },
+  {
+    "id": 12,
+    "name": "char35",
+    "type": 11,
+    "prefabid": 13,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1
+  },
+  {
+    "id": 13,
+    "name": "char38",
+    "type": 13,
+    "prefabid": 14,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1
+  },
+  {
+    "id": 14,
+    "name": "stone2",
+    "type": 12,
+    "prefabid": 15,
+    "bChange": 0,
+    "bDown": 0,
+    "bShake": 0,
+    "bFloat": 0
+  },
+  {
+    "id": 15,
+    "name": "char39",
+    "type": 13,
+    "prefabid": 17,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1
   }
 ]

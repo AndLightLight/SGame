@@ -6,7 +6,7 @@
   "filterMode": "bilinear",
   "subMetas": {
     "bag_panel_ui@2x": {
-      "ver": "1.0.2",
+      "ver": "1.0.3",
       "uuid": "dd4e45cd-d01c-46aa-8b27-9f3734b9fb7d",
       "rawTextureUuid": "58345232-e368-40da-91cc-c69cd3ff836a",
       "trimType": "auto",
@@ -18,6 +18,8 @@
       "trimY": 0,
       "width": 152,
       "height": 190,
+      "rawWidth": 152,
+      "rawHeight": 190,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,

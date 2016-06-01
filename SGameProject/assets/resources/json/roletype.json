@@ -60,5 +60,77 @@
     "mergeToRole": [
       0
     ]
+  },
+  {
+    "id": 7,
+    "name": "char20",
+    "mergeNeedNum": [
+      3
+    ],
+    "mergeToRole": [
+      0
+    ]
+  },
+  {
+    "id": 8,
+    "name": "char25",
+    "mergeNeedNum": [
+      3
+    ],
+    "mergeToRole": [
+      0
+    ]
+  },
+  {
+    "id": 9,
+    "name": "char27",
+    "mergeNeedNum": [
+      3
+    ],
+    "mergeToRole": [
+      0
+    ]
+  },
+  {
+    "id": 10,
+    "name": "char29",
+    "mergeNeedNum": [
+      3
+    ],
+    "mergeToRole": [
+      0
+    ]
+  },
+  {
+    "id": 11,
+    "name": "char35",
+    "mergeNeedNum": [
+      3
+    ],
+    "mergeToRole": [
+      0
+    ]
+  },
+  {
+    "id": 12,
+    "name": "stone2",
+    "mergeNeedNum": [
+      999
+    ],
+    "mergeToRole": [
+      0
+    ]
+  },
+  {
+    "id": 13,
+    "name": "char38",
+    "mergeNeedNum": [
+      3,
+      4
+    ],
+    "mergeToRole": [
+      0,
+      15
+    ]
   }
 ]

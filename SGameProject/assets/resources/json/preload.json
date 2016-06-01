@@ -30,5 +30,41 @@
   {
     "id": 8,
     "prefabpath": "pre/cat2"
+  },
+  {
+    "id": 9,
+    "prefabpath": "pre/char20"
+  },
+  {
+    "id": 10,
+    "prefabpath": "pre/char25"
+  },
+  {
+    "id": 11,
+    "prefabpath": "pre/char27"
+  },
+  {
+    "id": 12,
+    "prefabpath": "pre/char29"
+  },
+  {
+    "id": 13,
+    "prefabpath": "pre/char35"
+  },
+  {
+    "id": 14,
+    "prefabpath": "pre/char38"
+  },
+  {
+    "id": 15,
+    "prefabpath": "pre/stone2"
+  },
+  {
+    "id": 16,
+    "prefabpath": "pre/stage2"
+  },
+  {
+    "id": 17,
+    "prefabpath": "pre/char39"
   }
 ]

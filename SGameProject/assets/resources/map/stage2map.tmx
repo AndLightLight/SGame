@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="left-down" width="8" height="10" tilewidth="96" tileheight="96">
+ <tileset firstgid="1" name="bag_panel_ui@2x" tilewidth="96" tileheight="96">
+  <image source="bag_panel_ui@2x.png" width="152" height="190"/>
+  <tile id="0">
+   <properties>
+    <property name="id" value="14"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="havetile" width="8" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjZMANGKGYlvKUAkrNJ8b9+DAACygAFQ==
+  </data>
+ </layer>
+</map>

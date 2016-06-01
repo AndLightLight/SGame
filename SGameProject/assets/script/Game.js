@@ -21,7 +21,7 @@ var Game = cc.Class({
     },
     
     StartGame: function () {
-        var stage1p = DataMgr.instance.GetPrefabById(7);
+        var stage1p = DataMgr.instance.GetPrefabById(16);
         var stage1n = cc.instantiate(stage1p);
         stage1n.parent = this.node;
         stage1n.x = 0;
@@ -38,7 +38,7 @@ var Game = cc.Class({
         else {
             cc.log("error: singlon class creat more then onece!")
         }
-        this.world = new Box2d.b2World(new Box2d.b2Vec2(0,9.8),true);
+        //this.world = new Box2d.b2World(new Box2d.b2Vec2(0,9.8),true);
         cc.director.setDisplayStats(true);
         // var debugDraw = new Box2d.b2DebugDraw();
         // debugDraw.SetSprite(cc.game.config.id.getContext("2d"));
@@ -52,8 +52,10 @@ var Game = cc.Class({
 
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
-        this.world.Step(dt,10,10);
-        this.world.DrawDebugData();
-        this.world.ClearForces();
+        if (this.world) {
+            this.world.Step(dt,10,10);
+            this.world.DrawDebugData();
+            this.world.ClearForces();
+        }
     },
 });

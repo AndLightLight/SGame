@@ -34,7 +34,7 @@ var MapLayoutHandle = cc.Class({
 
     // use this for initialization
     onLoad: function () {
-
+        this.loadMap();
     },
     
     getPosByIndex:  function (idx) {
@@ -335,7 +335,7 @@ var MapLayoutHandle = cc.Class({
                         var r = Math.ceil(Math.random()*(num-1)+1);
                         roleid = this.pre[r-1];
                         roleinfo = DataMgr.instance.GetInfoByTalbeNameAndId("role",roleid);
-                        type = roleinfo.id;
+                        type = roleinfo.type;
                     }while(this.checkCanShake(i,type).result);
                     pre = DataMgr.instance.GetPrefabById(roleinfo.prefabid);
                 }else{

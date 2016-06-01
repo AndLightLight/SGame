@@ -155,6 +155,7 @@ var RoleNode = cc.Class({
                                     rolenode.node.position = newppos;
                                     var newidx = rolenode._maphandle.getIndexByPos(rolenode._maphandle.getPosByPixelPos(newppos));
                                     if (newidx != rolenode.idx) {
+                                        rolenode.refreshRound();
                                         rolenode._maphandle.setRoleInIdx(null,rolenode.idx);
                                         rolenode._maphandle.setRoleInIdx(rolenode,newidx);
                                         rolenode.refreshRound();
@@ -390,7 +391,7 @@ var RoleNode = cc.Class({
         this._layer = this.node.parent.getComponent(cc.TiledLayer);
         this._maphandle = this.node.parent.getComponent(MapLayoutHandle);
         this.createStateMgr();
-        this.Log = cc.find("Canvas/Game/stage1/Log").getComponent(cc.Label);
+        this.Log = this.node.parent.parent.parent.getChildByName("Log").getComponent(cc.Label);
         this.Log.string = "log";
         var lognode = new cc.Node('log2');
         var logcp = lognode.addComponent(cc.Label);
@@ -400,6 +401,20 @@ var RoleNode = cc.Class({
         this.selflog = logcp;
         this.selflog.string = this.stateType;
         this.selflog.node.active = false;
+        if (cc.game.config.renderMode == 1) {
+            this.Log.string = "CanvasMode";
+        }
+        else if (cc.game.config.renderMode == 2) {
+            this.Log.string = "WebGLMode";
+        }
+        else {
+            if (cc._renderType == 0) {
+                this.Log.string = "CanvasMode";
+            }
+            else if (cc._renderType == 1) {
+                this.Log.string = "WebGLMode";
+            }
+        }
         //this.buildBox2d();
     },
 

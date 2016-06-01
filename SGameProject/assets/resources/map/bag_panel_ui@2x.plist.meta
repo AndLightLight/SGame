@@ -1,5 +1,5 @@
 {
-  "ver": "1.2.0",
+  "ver": "1.2.4",
   "uuid": "07d0e69c-c5cb-4a80-99c4-79b6b61c4d5e",
   "rawTextureUuid": "58345232-e368-40da-91cc-c69cd3ff836a",
   "size": {
@@ -7,10 +7,9 @@
     "height": 190
   },
   "type": "Texture Packer",
-  "rawTextureUrl": "db://assets/resources/map/bag_panel_ui@2x.png",
   "subMetas": {
     "img-bagPanel_blueDot0000": {
-      "ver": "1.0.2",
+      "ver": "1.0.3",
       "uuid": "6a752c1a-1582-4c38-93bd-38b6b3ee7997",
       "rawTextureUuid": "58345232-e368-40da-91cc-c69cd3ff836a",
       "trimType": "auto",
@@ -22,6 +21,8 @@
       "trimY": 144,
       "width": 31,
       "height": 30,
+      "rawWidth": 31,
+      "rawHeight": 30,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,
@@ -30,7 +31,7 @@
       "subMetas": {}
     },
     "img-bagPanel_item_bg0000": {
-      "ver": "1.0.2",
+      "ver": "1.0.3",
       "uuid": "5b98cbb2-4a46-4fe3-8767-a75fe731d34c",
       "rawTextureUuid": "58345232-e368-40da-91cc-c69cd3ff836a",
       "trimType": "auto",
@@ -42,6 +43,8 @@
       "trimY": 72,
       "width": 71,
       "height": 70,
+      "rawWidth": 71,
+      "rawHeight": 70,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,
@@ -50,7 +53,7 @@
       "subMetas": {}
     },
     "img-bagPanel_line10000": {
-      "ver": "1.0.2",
+      "ver": "1.0.3",
       "uuid": "ee384212-5896-4b38-a39b-6e829d506bd8",
       "rawTextureUuid": "58345232-e368-40da-91cc-c69cd3ff836a",
       "trimType": "auto",
@@ -62,6 +65,8 @@
       "trimY": 132,
       "width": 5,
       "height": 5,
+      "rawWidth": 5,
+      "rawHeight": 5,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,
@@ -70,7 +75,7 @@
       "subMetas": {}
     },
     "img-bagPanel_line20000": {
-      "ver": "1.0.2",
+      "ver": "1.0.3",
       "uuid": "08879737-6394-4953-b047-646c0d08509c",
       "rawTextureUuid": "58345232-e368-40da-91cc-c69cd3ff836a",
       "trimType": "auto",
@@ -82,6 +87,8 @@
       "trimY": 72,
       "width": 17,
       "height": 58,
+      "rawWidth": 17,
+      "rawHeight": 58,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,
@@ -90,7 +97,7 @@
       "subMetas": {}
     },
     "img-bagPanel_line30000": {
-      "ver": "1.0.2",
+      "ver": "1.0.3",
       "uuid": "695e634b-c3a3-42e6-97dc-2794b878f38e",
       "rawTextureUuid": "58345232-e368-40da-91cc-c69cd3ff836a",
       "trimType": "auto",
@@ -102,6 +109,8 @@
       "trimY": 144,
       "width": 2,
       "height": 44,
+      "rawWidth": 2,
+      "rawHeight": 44,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,
@@ -110,7 +119,7 @@
       "subMetas": {}
     },
     "img-bagPanel_topbg0000": {
-      "ver": "1.0.2",
+      "ver": "1.0.3",
       "uuid": "592fd23b-9b75-49c6-a1c4-711cd88c811b",
       "rawTextureUuid": "58345232-e368-40da-91cc-c69cd3ff836a",
       "trimType": "auto",
@@ -122,6 +131,8 @@
       "trimY": 141,
       "width": 57,
       "height": 47,
+      "rawWidth": 57,
+      "rawHeight": 47,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,
@@ -130,7 +141,7 @@
       "subMetas": {}
     },
     "img-bagPanel_topduration0000": {
-      "ver": "1.0.2",
+      "ver": "1.0.3",
       "uuid": "26521bd3-a600-4e89-9757-350de05d8249",
       "rawTextureUuid": "58345232-e368-40da-91cc-c69cd3ff836a",
       "trimType": "auto",
@@ -142,6 +153,8 @@
       "trimY": 132,
       "width": 5,
       "height": 31,
+      "rawWidth": 5,
+      "rawHeight": 31,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,
@@ -150,7 +163,7 @@
       "subMetas": {}
     },
     "img-bagPanel_unlockBg0000": {
-      "ver": "1.0.2",
+      "ver": "1.0.3",
       "uuid": "e8e3435a-3cb3-4977-a42f-f2ce5ba4448e",
       "rawTextureUuid": "58345232-e368-40da-91cc-c69cd3ff836a",
       "trimType": "auto",
@@ -162,6 +175,8 @@
       "trimY": 0,
       "width": 152,
       "height": 70,
+      "rawWidth": 152,
+      "rawHeight": 70,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,
@@ -170,7 +185,7 @@
       "subMetas": {}
     },
     "img-bagPanel_unlockButtonWithShadow0000": {
-      "ver": "1.0.2",
+      "ver": "1.0.3",
       "uuid": "b0006575-6f94-47c9-9a27-926404c277a2",
       "rawTextureUuid": "58345232-e368-40da-91cc-c69cd3ff836a",
       "trimType": "auto",
@@ -182,6 +197,8 @@
       "trimY": 72,
       "width": 58,
       "height": 67,
+      "rawWidth": 58,
+      "rawHeight": 67,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,

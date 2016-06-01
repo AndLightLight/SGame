@@ -2,7 +2,7 @@ var DataMgr = cc.Class({
     extends: cc.Component,
     properties: {
         jsonPath: "json/",
-        jsonHz: ".json",
+        jsonHz: "",
         jsonConfig: [cc.String],
         
         _totalLoadNum: 0,

@@ -3,6 +3,7 @@
     "__type__": "cc.SceneAsset",
     "_name": "",
     "_objFlags": 0,
+    "_rawFiles": null,
     "scene": {
       "__id__": 1
     }
@@ -103,7 +104,8 @@
         "__id__": 21
       }
     ],
-    "_prefab": null
+    "_prefab": null,
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Node",
@@ -155,7 +157,8 @@
     "_id": "86f043EijZDOrc5Q7Siq9gD",
     "_active": true,
     "_components": [],
-    "_prefab": null
+    "_prefab": null,
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Node",
@@ -214,7 +217,8 @@
         "__id__": 8
       }
     ],
-    "_prefab": null
+    "_prefab": null,
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Node",
@@ -266,7 +270,8 @@
         "__id__": 6
       }
     ],
-    "_prefab": null
+    "_prefab": null,
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Label",
@@ -280,6 +285,7 @@
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": false,
+    "_N$file": null,
     "_isSystemFontUsed": true,
     "_N$string": "Start",
     "_N$horizontalAlign": 1,
@@ -436,7 +442,8 @@
         "__id__": 13
       }
     ],
-    "_prefab": null
+    "_prefab": null,
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Widget",
@@ -478,7 +485,7 @@
     },
     "_enabled": true,
     "jsonPath": "json/",
-    "jsonHz": ".json",
+    "jsonHz": "",
     "jsonConfig": [
       "role",
       "roletype"
@@ -552,7 +559,8 @@
         "__id__": 20
       }
     ],
-    "_prefab": null
+    "_prefab": null,
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Node",
@@ -604,7 +612,8 @@
         "__id__": 16
       }
     ],
-    "_prefab": null
+    "_prefab": null,
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Label",
@@ -618,6 +627,7 @@
     "_fontSize": 70,
     "_lineHeight": 100,
     "_enableWrapText": true,
+    "_N$file": null,
     "_isSystemFontUsed": true,
     "_N$string": "Loading....",
     "_N$horizontalAlign": 1,
@@ -732,7 +742,7 @@
   {
     "__type__": "cc.Canvas",
     "_name": "",
-    "_objFlags": 1835008,
+    "_objFlags": 3932160,
     "node": {
       "__id__": 2
     },
