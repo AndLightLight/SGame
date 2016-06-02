@@ -4,15 +4,11 @@ var Game = cc.Class({
     extends: cc.Component,
 
     properties: {
-        // foo: {
-        //    default: null,
-        //    url: cc.Texture2D,  // optional, default is typeof default
-        //    serializable: true, // optional, default is true
-        //    visible: true,      // optional, default is true
-        //    displayName: 'Foo', // optional
-        //    readonly: false,    // optional, default is false
-        // },
-        // ...
+        
+        LogCP: {
+            default: null,
+            type: cc.Label,  
+        },
         
         world: {
             default: null,
@@ -21,13 +17,37 @@ var Game = cc.Class({
     },
     
     StartGame: function () {
-        var stage1p = DataMgr.instance.GetPrefabById(16);
+        var stage1p = DataMgr.instance.GetPrefabById(7);
         var stage1n = cc.instantiate(stage1p);
         stage1n.parent = this.node;
         stage1n.x = 0;
         stage1n.y = 0;
         
         var bt = cc.find("Canvas/UI/Start").active = false;
+        Game.instance.Log("Log");
+        if (cc.game.config.renderMode == 1) {
+            Game.instance.Log("CanvasMode");
+        }
+        else if (cc.game.config.renderMode == 2) {
+            Game.instance.Log("WebGLMode");
+        }
+        else {
+            if (cc._renderType == 0) {
+                Game.instance.Log("CanvasMode");
+            }
+            else if (cc._renderType == 1) {
+                Game.instance.Log("WebGLMode");
+            }
+        }
+    },
+    
+    Log: function (logtext,autoline) {
+        if (autoline == false) {
+            this.LogCP.string = this.LogCP.string + logtext;
+        }
+        else {
+            this.LogCP.string = this.LogCP.string + logtext + "\n";
+        }
     },
     
     // use this for initialization

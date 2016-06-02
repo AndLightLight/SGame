@@ -312,7 +312,7 @@ var MapLayoutHandle = cc.Class({
         // var tileset = map.getTileset();
         // var pro = map.getProperties();
         var test = 2;
-        for (var i in tiles) {
+        for (var i = 0;i < tiles.length;i ++) {
             i = Number(i);
             var bnot = tiles[i];
                 // if (test <= 0) {
