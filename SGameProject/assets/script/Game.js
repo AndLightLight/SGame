@@ -4,6 +4,10 @@ var Game = cc.Class({
     extends: cc.Component,
 
     properties: {
+        LogPane: {
+            default: null,
+            type: cc.Node,  
+        },
         
         LogCP: {
             default: null,
@@ -47,6 +51,18 @@ var Game = cc.Class({
         }
         else {
             this.LogCP.string = this.LogCP.string + logtext + "\n";
+        }
+    },
+    
+    OpenLog: function (bopen) {
+        if (bopen == true) {
+            this.LogPane.active = true;
+        }
+        else if (bopen == false) {
+            this.LogPane.active = false;
+        }
+        else {
+            this.LogPane.active = !this.LogPane.active;
         }
     },
     
