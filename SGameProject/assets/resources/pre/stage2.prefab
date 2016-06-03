@@ -70,7 +70,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "game_bg",
+    "_name": "bg",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
@@ -185,7 +185,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "stage2map",
+    "_name": "map",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
@@ -244,7 +244,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "havetile",
+    "_name": "layout",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
@@ -317,20 +317,13 @@
       "__id__": 7
     },
     "_enabled": true,
-    "pre": [
-      8,
-      9,
-      10,
-      11,
-      12,
-      13
-    ],
     "selectRole": null,
     "_map": [],
     "mapWidth": 0,
     "mapHeight": 0,
     "tileWidth": 0,
-    "tileHeight": 0
+    "tileHeight": 0,
+    "info": null
   },
   {
     "__type__": "cc.PrefabInfo",

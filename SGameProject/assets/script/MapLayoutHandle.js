@@ -3,7 +3,6 @@ var MapLayoutHandle = cc.Class({
     extends: cc.Component,
 
     properties: {
-        pre: [cc.Integer],
         
         selectRole: {
             default: null,
@@ -28,6 +27,8 @@ var MapLayoutHandle = cc.Class({
             default: 0,
             visible: false,  
         },
+        
+        info: null,
         
     },
    
@@ -325,7 +326,7 @@ var MapLayoutHandle = cc.Class({
                 var roleid = 1;
                 var roleinfo = null;
                 if (bnot == 0) {
-                    var num = this.pre.length;
+                    var num = this.info.roleid.length;
                     var canRTimes = 10000;
                     do{
                         canRTimes --;
@@ -333,7 +334,7 @@ var MapLayoutHandle = cc.Class({
                             break;
                         }
                         var r = Math.ceil(Math.random()*(num-1)+1);
-                        roleid = this.pre[r-1];
+                        roleid = this.info.roleid[r-1];
                         roleinfo = DataMgr.instance.GetInfoByTalbeNameAndId("role",roleid);
                         type = roleinfo.type;
                     }while(this.checkCanShake(i,type).result);

@@ -5,21 +5,40 @@ var DataMgr = cc.Class({
         jsonHz: "",
         jsonConfig: [cc.String],
         
-        _totalLoadNum: 0,
-        _currentLoadNum: 0,
         
         loadUI: {
             default: null,
-            type: cc.Node,  
+            type: require("LoadUI"),  
         },
     },
     
     
-    GetPrefabById: function (id) {
-        if (this.m_preLoadTable) {
+    GetPrefabById: function (id,callback) {
+        if (this.m_preLoadTable && this.m_preLoadTable[id]) {
+            if (callback) {
+                callback(this.m_preLoadTable[id])
+            }
             return this.m_preLoadTable[id];
         }
+        this.loadPrefabById(id,callback);
         return null;
+    },
+    
+    
+    loadPrefabById: function (id,callback) {
+        var prepath = this.GetInfoByTalbeNameAndId("preload" , id);
+        cc.loader.loadRes(prepath.prefabpath,function (err,prefab) {
+            if (err) {
+                cc.log("prefab load error: " + err);
+            }
+            else {
+                DataMgr.instance.m_preLoadTable[Number(id)] = cc.loader.getRes(prepath.prefabpath);
+                if (callback) {
+                    callback(prefab);
+                }
+            }
+            
+        })
     },
     
     
@@ -60,9 +79,9 @@ var DataMgr = cc.Class({
         this.preLoadLength = 0;
         for (var i = 0;i < this.jsonConfig.length;i ++) {
             resArray[i] = this.jsonPath + this.jsonConfig[i] + this.jsonHz;
-            DataMgr.instance._totalLoadNum ++;
+            DataMgr.instance.loadUI.totalLoadNum ++;
             cc.loader.loadRes(resArray[i],function (err,res) {
-                DataMgr.instance._currentLoadNum ++;
+                DataMgr.instance.loadUI.currentLoadNum ++;
                 if (err) {
                         cc.log("json load error : " + err);
                         DataMgr.instance.loadNum++
@@ -80,45 +99,45 @@ var DataMgr = cc.Class({
                 }
             },);
         }
-        DataMgr.instance._totalLoadNum ++;
-        cc.loader.loadRes(this.jsonPath + "preload" + this.jsonHz,function (err,res) {
-            DataMgr.instance._currentLoadNum ++;
-            if (err) {
-                    cc.log("json load error : " + err);
-            }
-            else{
-                var m_table = DataMgr.instance.m_table;
-                m_table["preload"] = res;
-                for (var key in res) {
-                    if (res.hasOwnProperty(key)) {
-                        var element = res[key];
-                        DataMgr.instance.preLoadLength ++;
-                        DataMgr.instance._totalLoadNum ++;
-                        cc.loader.loadRes(element.prefabpath,function (err,prefab) {
-                            DataMgr.instance._currentLoadNum ++;
-                            if (err) {
-                                cc.log("prefab load error: " + err);
-                                DataMgr.instance.preLoadNum ++;
-                            }
-                            else {
-                                DataMgr.instance.preLoadNum ++;
-                            }
-                            if (DataMgr.instance.preLoadNum >= DataMgr.instance.preLoadLength) {
-                                var object = DataMgr.instance.m_table["preload"];
-                                for (var key in object) {
-                                    if (object.hasOwnProperty(key)) {
-                                        var element = object[key];
-                                        DataMgr.instance.m_preLoadTable[Number(element.id)] = cc.loader.getRes(element.prefabpath);
-                                    }
-                                }
-                            }
-                        })
-                    }
-                } 
-            }
-        });
+        // this.loadUI.totalLoadNum ++;
+        // cc.loader.loadRes(this.jsonPath + "preload" + this.jsonHz,function (err,res) {
+        //     this.loadUI.currentLoadNum ++;
+        //     if (err) {
+        //             cc.log("json load error : " + err);
+        //     }
+        //     else{
+        //         var m_table = DataMgr.instance.m_table;
+        //         m_table["preload"] = res;
+        //         for (var key in res) {
+        //             if (res.hasOwnProperty(key)) {
+        //                 var element = res[key];
+        //                 DataMgr.instance.preLoadLength ++;
+        //                 this.loadUI.totalLoadNum ++;
+        //                 cc.loader.loadRes(element.prefabpath,function (err,prefab) {
+        //                     this.loadUI.currentLoadNum ++;
+        //                     if (err) {
+        //                         cc.log("prefab load error: " + err);
+        //                         DataMgr.instance.preLoadNum ++;
+        //                     }
+        //                     else {
+        //                         DataMgr.instance.preLoadNum ++;
+        //                     }
+        //                     if (DataMgr.instance.preLoadNum >= DataMgr.instance.preLoadLength) {
+        //                         var object = DataMgr.instance.m_table["preload"];
+        //                         for (var key in object) {
+        //                             if (object.hasOwnProperty(key)) {
+        //                                 var element = object[key];
+        //                                 DataMgr.instance.m_preLoadTable[Number(element.id)] = cc.loader.getRes(element.prefabpath);
+        //                             }
+        //                         }
+        //                     }
+        //                 })
+        //             }
+        //         } 
+        //     }
+        // });
         
-        this.loadUI.getComponent(require("LoadUI")).StartLoading = true;
+        this.loadUI.StartLoading = true;
     },
     
     

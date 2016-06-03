@@ -1,5 +1,6 @@
 var Box2d = require("box2dweb-commonjs");
 var DataMgr = require("DataMgr");
+var LoadUI = require("LoadUI");
 var Game = cc.Class({
     extends: cc.Component,
 
@@ -20,14 +21,50 @@ var Game = cc.Class({
         }
     },
     
-    StartGame: function () {
-        var stage1p = DataMgr.instance.GetPrefabById(7);
-        var stage1n = cc.instantiate(stage1p);
-        stage1n.parent = this.node;
-        stage1n.x = 0;
-        stage1n.y = 0;
+    StartGame: function (event) {
+        var node = event.target;
+        var stageid = 1;
+        if (node.name == "stage1bt") {
+            stageid = 1;
+        }
+        else if (node.name == "stage2bt") {
+            stageid = 2;
+        }
         
-        var bt = cc.find("Canvas/UI/Start").active = false;
+        var stageinfo = DataMgr.instance.GetInfoByTalbeNameAndId("stage" , stageid);
+        if (stageinfo) {
+            var mappre = stageinfo.prefabid;
+            var preinfo = DataMgr.instance.GetInfoByTalbeNameAndId("preload" , mappre);
+            var stage1p;
+            LoadUI.instance.totalLoadNum ++;
+            DataMgr.instance.GetPrefabById(mappre,function (prefab) {
+                LoadUI.instance.currentLoadNum ++;
+            });
+            var roleid = stageinfo.roleid;
+            for (var key in roleid) {
+                if (roleid.hasOwnProperty(key)) {
+                    var element = roleid[key];
+                    LoadUI.instance.totalLoadNum ++;
+                    DataMgr.instance.GetPrefabById(element,function (prefab) {
+                        LoadUI.instance.currentLoadNum ++;
+                    });
+                }
+            }
+            LoadUI.instance.StartLoading = true;
+            LoadUI.instance.callBack = function () {
+                stage1p = DataMgr.instance.GetPrefabById(mappre);
+                var stage1n = cc.instantiate(stage1p);
+                stage1n.getChildByName("map").getChildByName("layout").getComponent(require("MapLayoutHandle")).info = stageinfo;
+                stage1n.parent = Game.instance.node;
+                stage1n.x = 0;
+                stage1n.y = 0;
+            }
+        }
+        
+        
+
+        
+        //var bt = cc.find("Canvas/UI/Start").active = false;
         Game.instance.Log("Log");
         if (cc.game.config.renderMode == 1) {
             Game.instance.Log("CanvasMode");

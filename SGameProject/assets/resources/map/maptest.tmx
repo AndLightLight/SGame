@@ -28,7 +28,7 @@
    </properties>
   </tile>
  </tileset>
- <layer name="havetile" width="15" height="15">
+ <layer name="layout" width="15" height="15">
   <data encoding="base64" compression="zlib">
    eJxjZ2BgYMKB2YmQwwUIyY0kvZxQTG97qamXGU2ekH9ItZcZSW4w+JccveRiAFgTALU=
   </data>

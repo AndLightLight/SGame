@@ -1,37 +1,47 @@
-var DataMgr = require("DataMgr");
-var Game = require("Game");
-cc.Class({
+var LoadUI = cc.Class({
     extends: cc.Component,
 
     properties: {
-        // foo: {
-        //    default: null,
-        //    url: cc.Texture2D,  // optional, default is typeof default
-        //    serializable: true, // optional, default is true
-        //    visible: true,      // optional, default is true
-        //    displayName: 'Foo', // optional
-        //    readonly: false,    // optional, default is false
-        // },
-        // ...
-        
         StartLoading: {
-            default: false,
             visible: false,  
+            get: function () {
+                return this._isLoading;
+            },
+            set: function (v) {
+                this._isLoading = v;
+                this.node.active = v;
+            },
         },
+        
+        _isLoading: false,
+        
+        totalLoadNum: 0,
+        currentLoadNum: 0,
+        callBack: null,
     },
 
     // use this for initialization
     onLoad: function () {
-
+        if (!LoadUI.instance) {
+            LoadUI.instance = this;
+        }
+        else {
+            cc.log("error: singlon class creat more then onece!")
+        }
     },
 
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
         if (this.StartLoading) {
-            if (DataMgr.instance._totalLoadNum <= DataMgr.instance._currentLoadNum) {
+            if (this.totalLoadNum <= this.currentLoadNum) {
                 this.node.active = false;
                 this.StartLoading = false;
-                //Game.instance.StartGame();
+                this.totalLoadNum = 0;
+                this.currentLoadNum = 0;
+                if (this.callBack) {
+                    this.callBack();
+                }
+                this.callBack = null;
             }
         }
     },

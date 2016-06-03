@@ -70,7 +70,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "game_bg",
+    "_name": "bg",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
@@ -187,7 +187,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "maptest",
+    "_name": "map",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
@@ -246,7 +246,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "havetile",
+    "_name": "layout",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
@@ -319,19 +319,13 @@
       "__id__": 7
     },
     "_enabled": true,
-    "pre": [
-      1,
-      2,
-      3,
-      4,
-      5
-    ],
     "selectRole": null,
     "_map": [],
     "mapWidth": 0,
     "mapHeight": 0,
     "tileWidth": 0,
-    "tileHeight": 0
+    "tileHeight": 0,
+    "info": null
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -341,7 +335,7 @@
     "asset": {
       "__uuid__": "b9e531cc-a3e2-4591-95ef-785d59022447"
     },
-    "fileId": "3e125Zv4NRKTqX2BlGn6ha9"
+    "fileId": ""
   },
   {
     "__type__": "cc.TiledMap",
