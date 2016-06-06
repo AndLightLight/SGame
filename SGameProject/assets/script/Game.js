@@ -40,7 +40,7 @@ var Game = cc.Class({
             DataMgr.instance.GetPrefabById(mappre,function (prefab) {
                 LoadUI.instance.currentLoadNum ++;
             });
-            var roleid = stageinfo.roleid;
+            var roleid = stageinfo.loadprefabid;
             for (var key in roleid) {
                 if (roleid.hasOwnProperty(key)) {
                     var element = roleid[key];

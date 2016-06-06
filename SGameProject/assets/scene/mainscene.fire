@@ -107,7 +107,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 46
+        "__id__": 47
       }
     ],
     "_prefab": null,
@@ -1481,8 +1481,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -260,
-      "y": -418
+      "x": 286,
+      "y": -474
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1499,6 +1499,9 @@
       },
       {
         "__id__": 44
+      },
+      {
+        "__id__": 46
       }
     ],
     "_prefab": null,
@@ -1669,6 +1672,27 @@
     },
     "component": "Game",
     "handler": "OpenLog"
+  },
+  {
+    "__type__": "cc.Widget",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 40
+    },
+    "_enabled": true,
+    "isAlignOnce": false,
+    "_alignFlags": 36,
+    "_left": 0,
+    "_right": 48,
+    "_top": 0,
+    "_bottom": 18,
+    "_isAbsLeft": true,
+    "_isAbsRight": true,
+    "_isAbsTop": true,
+    "_isAbsBottom": true,
+    "_originalWidth": 0,
+    "_originalHeight": 0
   },
   {
     "__type__": "cc.Canvas",
