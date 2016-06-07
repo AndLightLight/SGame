@@ -3,6 +3,7 @@
     "__type__": "cc.Prefab",
     "_name": "",
     "_objFlags": 0,
+    "_rawFiles": null,
     "data": {
       "__id__": 1
     }
@@ -60,7 +61,8 @@
     ],
     "_prefab": {
       "__id__": 4
-    }
+    },
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Sprite",
@@ -71,7 +73,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "87e8abac-2364-400d-bbce-22999ee8cfac"
+      "__uuid__": "7671cb5b-29d9-4728-920f-67df90547255"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -87,7 +89,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_atlas": {
-      "__uuid__": "b4cc0a43-3220-4c3a-8796-07044d919a83"
+      "__uuid__": "1ddbe180-8e68-487c-b40b-3ce28f04314d"
     }
   },
   {
@@ -98,22 +100,29 @@
       "__id__": 1
     },
     "_enabled": true,
-    "type": 0,
+    "info": null,
     "boomEffect": {
       "__uuid__": "38866650-a00b-4ed0-b231-77a266cd125f"
     },
     "idx": -1,
-    "bDown": false,
+    "bPress": false,
     "stateType": 0,
+    "stateMgr": null,
+    "_shakeLineRole": [],
+    "_mergetoroleid": 0,
+    "_downToIdx": null,
     "_layer": null,
-    "_maphandle": null
+    "_maphandle": null,
+    "_brefresh": false
   },
   {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 1
     },
-    "asset": null,
+    "asset": {
+      "__uuid__": "3e4226b5-0971-4e81-b1d9-0bbdf2135115"
+    },
     "fileId": "2e1b6ycBbRIxr/ICT12cLgA"
   }
 ]

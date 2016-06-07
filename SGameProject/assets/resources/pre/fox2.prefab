@@ -10,7 +10,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "frog",
+    "_name": "fox",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
@@ -39,8 +39,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 384,
-      "y": 512
+      "x": 0,
+      "y": 0
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -73,7 +73,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "5e5cacf9-1f4b-453c-957b-e9c439f1a183"
+      "__uuid__": "5c02215b-a5d2-4743-9896-97945e5e5f2c"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -121,8 +121,8 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "068081c5-4456-4388-8418-20f3436753a6"
+      "__uuid__": "2370aec3-4ed7-41f1-9d17-1ea5a156db94"
     },
-    "fileId": "23ecaO5EGtG2bvIle7XDbs8"
+    "fileId": "c6f7e2VBXZE4JM0UTeoi1DX"
   }
 ]

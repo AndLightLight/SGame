@@ -66,5 +66,21 @@
   {
     "id": 17,
     "prefabpath": "pre/char39"
+  },
+  {
+    "id": 18,
+    "prefabpath": "pre/bear2"
+  },
+  {
+    "id": 19,
+    "prefabpath": "pre/chicken2"
+  },
+  {
+    "id": 20,
+    "prefabpath": "pre/fox2"
+  },
+  {
+    "id": 21,
+    "prefabpath": "pre/frog2"
   }
 ]

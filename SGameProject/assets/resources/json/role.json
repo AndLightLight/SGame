@@ -148,5 +148,45 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1
+  },
+  {
+    "id": 16,
+    "name": "bear2",
+    "type": 1,
+    "prefabid": 18,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1
+  },
+  {
+    "id": 17,
+    "name": "chicken2",
+    "type": 3,
+    "prefabid": 19,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1
+  },
+  {
+    "id": 18,
+    "name": "fox2",
+    "type": 4,
+    "prefabid": 20,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1
+  },
+  {
+    "id": 19,
+    "name": "frog2",
+    "type": 5,
+    "prefabid": 21,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1
   }
 ]

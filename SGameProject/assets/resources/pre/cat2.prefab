@@ -3,6 +3,7 @@
     "__type__": "cc.Prefab",
     "_name": "",
     "_objFlags": 0,
+    "_rawFiles": null,
     "data": {
       "__id__": 1
     }
@@ -56,14 +57,12 @@
       },
       {
         "__id__": 3
-      },
-      {
-        "__id__": 4
       }
     ],
     "_prefab": {
-      "__id__": 5
-    }
+      "__id__": 4
+    },
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Sprite",
@@ -74,7 +73,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "e3e4fab4-f590-483c-8854-73d7d61e920a"
+      "__uuid__": "6c18085f-14b2-4cb8-ab13-d5d6a807e8d5"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -90,26 +89,8 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_atlas": {
-      "__uuid__": "916db2d3-8cc2-46f9-8c51-047fa8ab9258"
+      "__uuid__": "1ddbe180-8e68-487c-b40b-3ce28f04314d"
     }
-  },
-  {
-    "__type__": "cc.Animation",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "_defaultClip": {
-      "__uuid__": "e8e4d040-6cc1-4a38-b4a2-b5c723207248"
-    },
-    "_clips": [
-      {
-        "__uuid__": "e8e4d040-6cc1-4a38-b4a2-b5c723207248"
-      }
-    ],
-    "playOnLoad": true
   },
   {
     "__type__": "ed4793gIjxLBqzKN9J5QxPK",
@@ -128,6 +109,7 @@
     "stateType": 0,
     "stateMgr": null,
     "_shakeLineRole": [],
+    "_mergetoroleid": 0,
     "_downToIdx": null,
     "_layer": null,
     "_maphandle": null,

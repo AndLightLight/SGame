@@ -305,6 +305,9 @@ var RNStateDown = cc.Class({
                 }
             }
             temp.node.y -= dt * 300;
+            if (temp.node.y <= toppos.y) {
+                temp.node.y = toppos.y;
+            }
         }
     },
 });
