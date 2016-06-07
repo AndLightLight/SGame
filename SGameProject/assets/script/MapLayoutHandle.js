@@ -299,6 +299,24 @@ var MapLayoutHandle = cc.Class({
 
         return null;
     },
+
+
+    createRole: function (roleid,idx,state) {
+        var roleinfo = DataMgr.instance.GetInfoByTalbeNameAndId("role",roleid);
+        var ppos = this.getPixelPosByPos(this.getPosByIndex(idx));
+        var pre = DataMgr.instance.GetPrefabById(roleid);
+        if (!pre) {
+            return;
+        }
+        var nd = cc.instantiate(pre);
+        nd.x = ppos.x;
+        nd.y = ppos.y;
+        nd.parent = this.node;
+        var rolenode = nd.getComponent(require("RoleNode"));
+        rolenode.info = roleinfo;
+        this.setRoleInIdx(rolenode,idx);
+        rolenode.changeState(state);
+    },
     
     
     loadMap: function () {
@@ -320,8 +338,7 @@ var MapLayoutHandle = cc.Class({
                 //     break;
                 // }
                 // test --;
-                var ppos = this.getPixelPosByPos(this.getPosByIndex(i))
-                var pre = null;
+                
                 var type = 0;
                 var roleid = 1;
                 var roleinfo = null;
@@ -338,26 +355,16 @@ var MapLayoutHandle = cc.Class({
                         roleinfo = DataMgr.instance.GetInfoByTalbeNameAndId("role",roleid);
                         type = roleinfo.type;
                     }while(this.checkCanShake(i,type).result);
-                    pre = DataMgr.instance.GetPrefabById(roleinfo.prefabid);
+                    
                 }else{
                     var tilepro = mapparent.getPropertiesForGID(bnot);
                     if (tilepro) {
                         roleid = Number(tilepro.id);
                         roleinfo = DataMgr.instance.GetInfoByTalbeNameAndId("role",roleid);
                     }
-                    pre = DataMgr.instance.GetPrefabById(roleinfo.prefabid);
+                    
                 }
-                if (!pre) {
-                    continue;
-                }
-                var nd = cc.instantiate(pre);
-                nd.x = ppos.x;
-                nd.y = ppos.y;
-                nd.parent = this.node;
-                var rolenode = nd.getComponent(require("RoleNode"));
-                rolenode.info = roleinfo;
-                this.setRoleInIdx(rolenode,i);
-                rolenode.changeState(require("RoleNode").StateType.IDLE);
+                this.createRole(roleid,i,require("RoleNode").StateType.IDLE);
         }   
     },
 

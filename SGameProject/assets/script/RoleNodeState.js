@@ -136,15 +136,8 @@ var RNStateShake = cc.Class({
                             }
                         }
                         var mergetoroleinfo = DataMgr.instance.GetInfoByTalbeNameAndId("role",temp._mergetoroleid);
-                        var pre = DataMgr.instance.GetPrefabById(mergetoroleinfo.prefabid);
-                        var nd = cc.instantiate(pre);
-                        nd.x = torole.node.x;
-                        nd.y = torole.node.y;
-                        nd.parent = torole.node.parent;
-                        var rolenode = nd.getComponent(require("RoleNode"));
-                        rolenode.info = mergetoroleinfo;
-                        torole._maphandle.setRoleInIdx(rolenode,torole.idx);
-                        rolenode.changeState(require("RoleNode").StateType.IDLE);
+                        torole._maphandle.createRole(temp._mergetoroleid,torole.idx,require("RoleNode").StateType.IDLE);
+                        
                         torole.changeState(require("RoleNode").StateType.IDLE);
                         torole._brefresh = false;
                         torole.node.destroy();

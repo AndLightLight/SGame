@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "name": "cat2",
+    "duration": 1,
+    "triggercd": 1,
+    "animationpre": [
+      24
+    ]
+  }
+]

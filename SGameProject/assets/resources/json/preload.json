@@ -82,5 +82,17 @@
   {
     "id": 21,
     "prefabpath": "pre/frog2"
+  },
+  {
+    "id": 22,
+    "prefabpath": "pre/hengskill"
+  },
+  {
+    "id": 23,
+    "prefabpath": "pre/shuskill"
+  },
+  {
+    "id": 24,
+    "prefabpath": "pre/cat2buff"
   }
 ]
