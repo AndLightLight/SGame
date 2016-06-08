@@ -33,7 +33,11 @@ var RoleNode = cc.Class({
             default: -1,
             visible: false,
         },
-        
+
+        guid: {
+            default: 0,
+            visible: false,
+        },
         
         bPress: {
             default: false,
@@ -62,6 +66,7 @@ var RoleNode = cc.Class({
         _maphandle: null,
         
         _brefresh: false,
+        
     },
     
     _touchCallBack: function (event) {
@@ -168,6 +173,7 @@ var RoleNode = cc.Class({
             }
         }
     },
+
     
     refreshRound: function () {
         var cpos = this._maphandle.getPosByIndex(this.idx);

@@ -94,5 +94,9 @@
   {
     "id": 24,
     "prefabpath": "pre/cat2buff"
+  },
+  {
+    "id": 25,
+    "prefabpath": "pre/ef_destroy"
   }
 ]

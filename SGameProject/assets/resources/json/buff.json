@@ -2,10 +2,27 @@
   {
     "id": 1,
     "name": "cat2",
-    "duration": 1,
-    "triggercd": 1,
+    "duration": 0.5,
+    "triggercd": 0.5,
     "animationpre": [
       24
+    ],
+    "triggertype": 1,
+    "param": [
+      0
+    ]
+  },
+  {
+    "id": 2,
+    "name": "normalboom",
+    "duration": 0.5,
+    "triggercd": 0.5,
+    "animationpre": [
+      25
+    ],
+    "triggertype": 1,
+    "param": [
+      0
     ]
   }
 ]

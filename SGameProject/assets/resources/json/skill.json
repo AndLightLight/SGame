@@ -9,12 +9,28 @@
       22,
       23
     ],
-    "onlyX": [
+    "useX": [
       0,
       1
     ],
-    "onlyY": [
+    "useY": [
       1,
+      0
+    ]
+  },
+  {
+    "id": 2,
+    "skillname": "normalboom",
+    "targettype": 2,
+    "targetnum": 0,
+    "givebuffid": 2,
+    "animationprefab": [
+      0
+    ],
+    "useX": [
+      0
+    ],
+    "useY": [
       0
     ]
   }

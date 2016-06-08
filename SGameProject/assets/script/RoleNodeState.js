@@ -139,8 +139,7 @@ var RNStateShake = cc.Class({
                         torole._maphandle.createRole(temp._mergetoroleid,torole.idx,require("RoleNode").StateType.IDLE);
                         
                         torole.changeState(require("RoleNode").StateType.IDLE);
-                        torole._brefresh = false;
-                        torole.node.destroy();
+                        torole._maphandle.removeRole(torole);
                     }
                 }
                 else {
@@ -222,18 +221,18 @@ var RNStateBoom = cc.Class({
         temp.resetPosition();
         temp.stateType = require("RoleNode").StateType.BOOM;
         temp.node.stopAllActions();
-        var be = cc.instantiate(temp.boomEffect);
-        var bea = be.getComponent(require("AnimationCallBack"));
-        bea.callBack = function () {
-            var node = this.node.parent;
-            node.destroy();
-            var rolenode = node.getComponent(require("RoleNode"));
-            rolenode._maphandle.setRoleInIdx(null,rolenode.idx);
-            rolenode.refreshRound();
-        };
-        be.parent = temp.node;
-        be.x = 0;
-        be.y = 0;
+        require("SkillMgr").instance.useSkill(temp,temp.info.boomskill);
+        // var be = cc.instantiate(temp.boomEffect);
+        // var bea = be.getComponent(require("AnimationCallBack"));
+        // bea.callBack = function () {
+        //     var node = this.node.parent;
+        //     var rolenode = node.getComponent(require("RoleNode"));
+        //     rolenode._maphandle.removeRole(rolenode);
+        //     rolenode.refreshRound();
+        // };
+        // be.parent = temp.node;
+        // be.x = 0;
+        // be.y = 0;
     },
     
     onExit: function (temp) {
@@ -298,9 +297,9 @@ var RNStateDown = cc.Class({
                 }
             }
             temp.node.y -= dt * 300;
-            if (temp.node.y <= toppos.y) {
-                temp.node.y = toppos.y;
-            }
+            // if (temp.node.y <= toppos.y) {
+            //     temp.node.y = toppos.y;
+            // }
         }
     },
 });
@@ -365,9 +364,8 @@ var RNStateMerge = cc.Class({
         var swp = cc.spawn(mt,ft);
         var callfun = cc.callFunc(function (params) {
             var node = temp.node;
-            node.destroy();
-            var rolenode = temp;
-            rolenode._maphandle.setRoleInIdx(null,rolenode.idx);
+            var rolenode = node.getComponent(require("RoleNode"));
+            rolenode._maphandle.removeRole(rolenode);
             rolenode.refreshRound();
         },temp);
         var sqe = cc.sequence(swp,callfun);

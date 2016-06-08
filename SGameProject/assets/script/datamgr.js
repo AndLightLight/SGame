@@ -27,18 +27,20 @@ var DataMgr = cc.Class({
     
     loadPrefabById: function (id,callback) {
         var prepath = this.GetInfoByTalbeNameAndId("preload" , id);
-        cc.loader.loadRes(prepath.prefabpath,function (err,prefab) {
-            if (err) {
-                cc.log("prefab load error: " + err);
-            }
-            else {
-                DataMgr.instance.m_preLoadTable[Number(id)] = cc.loader.getRes(prepath.prefabpath);
-                if (callback) {
-                    callback(prefab);
+        if (prepath) {
+             cc.loader.loadRes(prepath.prefabpath,function (err,prefab) {
+                if (err) {
+                    cc.log("prefab load error: " + err);
                 }
-            }
-            
-        })
+                else {
+                    DataMgr.instance.m_preLoadTable[Number(id)] = cc.loader.getRes(prepath.prefabpath);
+                    if (callback) {
+                        callback(prefab);
+                    }
+                }
+                
+            })
+        }
     },
     
     

@@ -9,6 +9,10 @@ var MapLayoutHandle = cc.Class({
             visible: false,
         },
         
+        guid: {
+            default: 0,
+            visible: false,
+        },
         
         _map: [],
         mapWidth: {
@@ -35,6 +39,7 @@ var MapLayoutHandle = cc.Class({
 
     // use this for initialization
     onLoad: function () {
+        this.guid = 0;
         this.loadMap();
     },
     
@@ -147,6 +152,29 @@ var MapLayoutHandle = cc.Class({
                 }
             }
         }
+    },
+
+    getMapCenterPPos: function () {
+        return cc.v2(this.mapWidth*this.tileWidth/2,this.mapHeight*this.tileHeight/2);
+    },
+
+    findTenWordRole: function (idx) {
+        var rolelist = [];
+        var pos = this.getPosByIndex(idx);
+        for (var i = 0;i < this.mapWidth;i ++) {
+            var role = this.getRoleByPos(cc.v2(i,pos.y));
+            if (role) {
+                rolelist[rolelist.length] = role;
+            }
+        }
+        for (var i = 0;i < this.mapHeight;i ++) {
+            var role = this.getRoleByPos(cc.v2(pos.x,i));
+            if (role) {
+                rolelist[rolelist.length] = role;                
+            }
+        }
+
+        return rolelist;
     },
     
     findNearestNull: function (ppos,role) {
@@ -302,9 +330,10 @@ var MapLayoutHandle = cc.Class({
 
 
     createRole: function (roleid,idx,state) {
+        this.guid ++;
         var roleinfo = DataMgr.instance.GetInfoByTalbeNameAndId("role",roleid);
         var ppos = this.getPixelPosByPos(this.getPosByIndex(idx));
-        var pre = DataMgr.instance.GetPrefabById(roleid);
+        var pre = DataMgr.instance.GetPrefabById(roleinfo.prefabid);
         if (!pre) {
             return;
         }
@@ -314,8 +343,19 @@ var MapLayoutHandle = cc.Class({
         nd.parent = this.node;
         var rolenode = nd.getComponent(require("RoleNode"));
         rolenode.info = roleinfo;
+        rolenode.guid = this.guid;
         this.setRoleInIdx(rolenode,idx);
         rolenode.changeState(state);
+    },
+
+
+    removeRole: function (role) {
+        role.node.destroy();
+        role._brefresh = false;
+        var oldrole = this.getRoleByPos(this.getPosByIndex(role.idx));
+        if (oldrole && oldrole.guid == role.guid) {
+            this.setRoleInIdx(null,role.idx);
+        }
     },
     
     

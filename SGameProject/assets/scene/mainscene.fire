@@ -84,7 +84,7 @@
         "__id__": 13
       },
       {
-        "__id__": 40
+        "__id__": 42
       }
     ],
     "_rotationX": 0,
@@ -107,7 +107,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 47
+        "__id__": 49
       }
     ],
     "_prefab": null,
@@ -144,7 +144,7 @@
         "__id__": 4
       },
       {
-        "__id__": 34
+        "__id__": 36
       }
     ],
     "_rotationX": 0,
@@ -449,6 +449,12 @@
       },
       {
         "__id__": 26
+      },
+      {
+        "__id__": 34
+      },
+      {
+        "__id__": 35
       }
     ],
     "_prefab": null,
@@ -966,7 +972,9 @@
       "role",
       "roletype",
       "preload",
-      "stage"
+      "stage",
+      "skill",
+      "buff"
     ],
     "loadUI": {
       "__id__": 27
@@ -1219,6 +1227,26 @@
     }
   },
   {
+    "__type__": "18b75oLLTpMl5ZpV/+7CBwQ",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 10
+    },
+    "_enabled": true
+  },
+  {
+    "__type__": "5c3a3AVQoBHeKy9i748aAcL",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 10
+    },
+    "_enabled": true,
+    "guid": 0,
+    "buffList": {}
+  },
+  {
     "__type__": "cc.Node",
     "_name": "stage2bt",
     "_objFlags": 0,
@@ -1246,7 +1274,7 @@
     },
     "_children": [
       {
-        "__id__": 35
+        "__id__": 37
       }
     ],
     "_rotationX": 0,
@@ -1269,10 +1297,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 37
+        "__id__": 39
       },
       {
-        "__id__": 38
+        "__id__": 40
       }
     ],
     "_prefab": null,
@@ -1292,7 +1320,7 @@
     },
     "_cascadeOpacityEnabled": true,
     "_parent": {
-      "__id__": 34
+      "__id__": 36
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1325,7 +1353,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 36
+        "__id__": 38
       }
     ],
     "_prefab": null,
@@ -1336,7 +1364,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 35
+      "__id__": 37
     },
     "_enabled": true,
     "_useOriginalSize": false,
@@ -1355,7 +1383,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 34
+      "__id__": 36
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -1381,7 +1409,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 34
+      "__id__": 36
     },
     "_enabled": true,
     "transition": 2,
@@ -1408,7 +1436,7 @@
     },
     "clickEvents": [
       {
-        "__id__": 39
+        "__id__": 41
       }
     ],
     "_N$interactable": true,
@@ -1433,7 +1461,7 @@
       "__uuid__": "29158224-f8dd-4661-a796-1ffab537140e"
     },
     "_N$target": {
-      "__id__": 34
+      "__id__": 36
     }
   },
   {
@@ -1472,7 +1500,7 @@
     },
     "_children": [
       {
-        "__id__": 41
+        "__id__": 43
       }
     ],
     "_rotationX": 0,
@@ -1495,13 +1523,13 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 43
-      },
-      {
-        "__id__": 44
+        "__id__": 45
       },
       {
         "__id__": 46
+      },
+      {
+        "__id__": 48
       }
     ],
     "_prefab": null,
@@ -1521,7 +1549,7 @@
     },
     "_cascadeOpacityEnabled": true,
     "_parent": {
-      "__id__": 40
+      "__id__": 42
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1554,7 +1582,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 42
+        "__id__": 44
       }
     ],
     "_prefab": null,
@@ -1565,7 +1593,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 41
+      "__id__": 43
     },
     "_enabled": true,
     "_useOriginalSize": false,
@@ -1584,7 +1612,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 40
+      "__id__": 42
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -1610,7 +1638,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 40
+      "__id__": 42
     },
     "_enabled": true,
     "transition": 2,
@@ -1637,7 +1665,7 @@
     },
     "clickEvents": [
       {
-        "__id__": 45
+        "__id__": 47
       }
     ],
     "_N$interactable": true,
@@ -1662,7 +1690,7 @@
       "__uuid__": "29158224-f8dd-4661-a796-1ffab537140e"
     },
     "_N$target": {
-      "__id__": 40
+      "__id__": 42
     }
   },
   {
@@ -1678,7 +1706,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 40
+      "__id__": 42
     },
     "_enabled": true,
     "isAlignOnce": false,
