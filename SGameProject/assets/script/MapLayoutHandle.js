@@ -361,6 +361,9 @@ var MapLayoutHandle = cc.Class({
             rolenode.guid = this.guid;
             this.setRoleInIdx(rolenode,idx);
             rolenode.changeState(state);
+            if (roleinfo.bornBuff) {
+                require("BuffMgr").instance.addBuff(rolenode,rolenode,roleinfo.bornBuff);
+            }
         }
     },
 

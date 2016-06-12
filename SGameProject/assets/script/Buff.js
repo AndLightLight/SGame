@@ -26,6 +26,18 @@ var Buff = cc.Class({
                 this.torole._maphandle.removeRole(this.torole);
                 this.torole.refreshRound();
             }
+            else if (this.info.triggertype == 2) {
+                var num = this.torole._maphandle.info.roleid.length;
+                var r = Math.ceil(Math.random()*(num-1)+1);
+                var roleid = this.torole._maphandle.info.roleid[r-1];
+                var cpos = this.torole._maphandle.getPosByIndex(this.torole.idx);
+                var drole = this.torole._maphandle.getRoleByPos(cc.v2(cpos.x,cpos.y+1));
+                if (!drole) {
+                    var didx = this.torole._maphandle.getIndexByPos(cc.v2(cpos.x,cpos.y+1));                    
+                    this.torole._maphandle.createRole(roleid,didx,require("RoleNode").StateType.DOWN);
+                }
+                
+            }
         }
     },
 
@@ -42,7 +54,7 @@ var Buff = cc.Class({
                 this.trigger();
             }
 
-            if (this._currenttime >= this.info.duration) {
+            if (this._currenttime >= this.info.duration && this.info.duration != -1) {
                 this.isActive = false;
                 return;
             }

@@ -41,11 +41,13 @@ var BuffMgr = cc.Class({
             for (var i = 0;i < buffinfo.animationpre.length;i ++) {
                 var preid = buffinfo.animationpre[i];
                 var pre = DataMgr.instance.GetPrefabById(preid);
-                var aninode = cc.instantiate(pre);
+                if (pre) {
+                    var aninode = cc.instantiate(pre);
 
-                aninode.x = 0;
-                aninode.y = 0;
-                aninode.parent = torole.node;
+                    aninode.x = 0;
+                    aninode.y = 0;
+                    aninode.parent = torole.node;
+                }
             }
         }
     },

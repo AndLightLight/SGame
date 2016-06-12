@@ -8,7 +8,8 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomskill": 2
+    "boomSkill": 2,
+    "bornBuff": 0
   },
   {
     "id": 2,
@@ -19,7 +20,8 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomskill": 2
+    "boomSkill": 2,
+    "bornBuff": 0
   },
   {
     "id": 3,
@@ -30,7 +32,8 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomskill": 2
+    "boomSkill": 2,
+    "bornBuff": 0
   },
   {
     "id": 4,
@@ -41,7 +44,8 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomskill": 2
+    "boomSkill": 2,
+    "bornBuff": 0
   },
   {
     "id": 5,
@@ -52,7 +56,8 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomskill": 2
+    "boomSkill": 2,
+    "bornBuff": 0
   },
   {
     "id": 6,
@@ -63,7 +68,8 @@
     "bDown": 0,
     "bShake": 0,
     "bFloat": 0,
-    "boomskill": 0
+    "boomSkill": 0,
+    "bornBuff": 0
   },
   {
     "id": 7,
@@ -74,7 +80,8 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomskill": 1
+    "boomSkill": 1,
+    "bornBuff": 0
   },
   {
     "id": 8,
@@ -85,7 +92,8 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomskill": 2
+    "boomSkill": 2,
+    "bornBuff": 0
   },
   {
     "id": 9,
@@ -96,7 +104,8 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomskill": 2
+    "boomSkill": 2,
+    "bornBuff": 0
   },
   {
     "id": 10,
@@ -107,7 +116,8 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomskill": 2
+    "boomSkill": 2,
+    "bornBuff": 0
   },
   {
     "id": 11,
@@ -118,7 +128,8 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomskill": 2
+    "boomSkill": 2,
+    "bornBuff": 0
   },
   {
     "id": 12,
@@ -129,7 +140,8 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomskill": 2
+    "boomSkill": 2,
+    "bornBuff": 0
   },
   {
     "id": 13,
@@ -140,7 +152,8 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomskill": 2
+    "boomSkill": 2,
+    "bornBuff": 0
   },
   {
     "id": 14,
@@ -151,7 +164,8 @@
     "bDown": 0,
     "bShake": 0,
     "bFloat": 0,
-    "boomskill": 0
+    "boomSkill": 0,
+    "bornBuff": 0
   },
   {
     "id": 15,
@@ -162,7 +176,8 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomskill": 2
+    "boomSkill": 2,
+    "bornBuff": 0
   },
   {
     "id": 16,
@@ -173,7 +188,8 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomskill": 1
+    "boomSkill": 1,
+    "bornBuff": 0
   },
   {
     "id": 17,
@@ -184,7 +200,8 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomskill": 1
+    "boomSkill": 1,
+    "bornBuff": 0
   },
   {
     "id": 18,
@@ -195,7 +212,8 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomskill": 1
+    "boomSkill": 1,
+    "bornBuff": 0
   },
   {
     "id": 19,
@@ -206,6 +224,19 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomskill": 1
+    "boomSkill": 1,
+    "bornBuff": 0
+  },
+  {
+    "id": 20,
+    "name": "downrole",
+    "type": 14,
+    "prefabid": 26,
+    "bChange": 0,
+    "bDown": 0,
+    "bShake": 0,
+    "bFloat": 0,
+    "boomSkill": 0,
+    "bornBuff": 3
   }
 ]

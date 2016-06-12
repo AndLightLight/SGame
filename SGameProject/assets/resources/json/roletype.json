@@ -140,5 +140,15 @@
       0,
       15
     ]
+  },
+  {
+    "id": 14,
+    "name": "downrole",
+    "mergeNeedNum": [
+      999
+    ],
+    "mergeToRole": [
+      0
+    ]
   }
 ]

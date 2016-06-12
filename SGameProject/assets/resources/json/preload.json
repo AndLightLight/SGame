@@ -98,5 +98,9 @@
   {
     "id": 25,
     "prefabpath": "pre/ef_destroy"
+  },
+  {
+    "id": 26,
+    "prefabpath": "pre/downrole"
   }
 ]

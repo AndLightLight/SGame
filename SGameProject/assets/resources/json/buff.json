@@ -24,5 +24,18 @@
     "param": [
       0
     ]
+  },
+  {
+    "id": 3,
+    "name": "downrole",
+    "duration": -1,
+    "triggercd": 3,
+    "animationpre": [
+      0
+    ],
+    "triggertype": 2,
+    "param": [
+      0
+    ]
   }
 ]

@@ -33,5 +33,21 @@
     "useY": [
       0
     ]
+  },
+  {
+    "id": 3,
+    "skillname": "downrole",
+    "targettype": 2,
+    "targetnum": 0,
+    "givebuffid": 3,
+    "animationprefab": [
+      0
+    ],
+    "useX": [
+      0
+    ],
+    "useY": [
+      0
+    ]
   }
 ]

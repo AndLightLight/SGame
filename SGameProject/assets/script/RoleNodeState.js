@@ -222,7 +222,7 @@ var RNStateBoom = cc.Class({
         temp.resetPosition();
         temp.stateType = require("RoleNode").StateType.BOOM;
         temp.node.stopAllActions();
-        require("SkillMgr").instance.useSkill(temp,temp.info.boomskill);
+        require("SkillMgr").instance.useSkill(temp,temp.info.boomSkill);
         // var be = cc.instantiate(temp.boomEffect);
         // var bea = be.getComponent(require("AnimationCallBack"));
         // bea.callBack = function () {
@@ -262,12 +262,21 @@ var RNStateDown = cc.Class({
     },
 
     onEnter: function (temp,param) {
+        if (!param) {
+            param = temp.checkCanDown();
+        }
+        if (!param) {
+            temp.changeState(require("RoleNode").StateType.IDLE);
+            return;
+        }
+        temp._brefresh = true;
         var toidx = param;
         temp.stateType = require("RoleNode").StateType.DOWN;
         temp.node.stopAllActions();
         temp._maphandle.setRoleInIdx(null,temp.idx);
         temp._maphandle.setRoleInIdx(temp,toidx);
         temp._downToIdx = toidx;
+
         temp.refreshRound();
     },
     
@@ -361,7 +370,7 @@ var RNStateMerge = cc.Class({
         var mt = cc.moveTo(0.2,ppos);
         var ft = cc.fadeTo(0.2,0);
         var swp = cc.spawn(mt,ft);
-        require("SkillMgr").instance.useSkill(temp,temp.info.boomskill);
+        require("SkillMgr").instance.useSkill(temp,temp.info.boomSkill);
         var callfun = cc.callFunc(function (params) {
             // var node = temp.node;
             // var rolenode = node.getComponent(require("RoleNode"));
