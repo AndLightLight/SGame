@@ -9,6 +9,10 @@
       4,
       5
     ],
+    "borderX": 0,
+    "borderY": 3,
+    "borderWidth": 15,
+    "borderHeight": 12,
     "loadprefabid": [
       1,
       2,
@@ -38,6 +42,10 @@
       12,
       13
     ],
+    "borderX": "-1,-1",
+    "borderY": "-1,-1",
+    "borderWidth": "-1,-1",
+    "borderHeight": "-1,-1",
     "loadprefabid": [
       8,
       9,

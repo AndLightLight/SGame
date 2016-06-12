@@ -17,6 +17,11 @@
     <property name="id" value="6"/>
    </properties>
   </tile>
+  <tile id="5">
+   <properties>
+    <property name="id" value="-1"/>
+   </properties>
+  </tile>
   <tile id="6">
    <properties>
     <property name="id" value="2"/>
@@ -30,7 +35,7 @@
  </tileset>
  <layer name="layout" width="15" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjZ2BgYMKB2YmQwwUIyY0kvZxQTG97qamXGU2ekH9ItZcZSW4w+JccveRiAFgTALU=
+   eJxjY2BgYBtimIkBNyAkNxB6OaGY3vZSUy8zmjwh/5BqLzOS3GDwLzl6ycUA8qkBig==
   </data>
  </layer>
 </map>

@@ -143,29 +143,32 @@ var RoleNode = cc.Class({
                         else{
                             if (rolenode.isFloatStateRequire()) {
                                 rolenode.changeState(StateType.FLOAT);
-                                if (torole && torole != rolenode) {
-                                    var ppos = rolenode._maphandle.findNearestNull(newppos,rolenode);
-                                    if (ppos) {
-                                        rolenode.node.position = ppos;
-                                        var newidx = rolenode._maphandle.getIndexByPos(rolenode._maphandle.getPosByPixelPos(ppos));
+                                var binboder = rolenode._maphandle.checkInBorder(newppos);
+                                if (binboder) {
+                                    if ((torole && torole != rolenode) ) {
+                                        var ppos = rolenode._maphandle.findNearestNull(newppos,rolenode);
+                                        if (ppos) {
+                                            rolenode.node.position = ppos;
+                                            var newidx = rolenode._maphandle.getIndexByPos(rolenode._maphandle.getPosByPixelPos(ppos));
+                                            if (newidx != rolenode.idx) {
+                                                rolenode._maphandle.setRoleInIdx(null,rolenode.idx);
+                                                rolenode._maphandle.setRoleInIdx(rolenode,newidx);
+                                                rolenode.refreshRound();
+                                            }
+                                        }
+                                    }
+                                    else {
+                                        rolenode.stateType = StateType.FLOAT;
+                                        rolenode.node.position = newppos;
+                                        var newidx = rolenode._maphandle.getIndexByPos(rolenode._maphandle.getPosByPixelPos(newppos));
                                         if (newidx != rolenode.idx) {
+                                            rolenode.refreshRound();
                                             rolenode._maphandle.setRoleInIdx(null,rolenode.idx);
                                             rolenode._maphandle.setRoleInIdx(rolenode,newidx);
                                             rolenode.refreshRound();
                                         }
-                                    }
+                                    } 
                                 }
-                                else {
-                                    rolenode.stateType = StateType.FLOAT;
-                                    rolenode.node.position = newppos;
-                                    var newidx = rolenode._maphandle.getIndexByPos(rolenode._maphandle.getPosByPixelPos(newppos));
-                                    if (newidx != rolenode.idx) {
-                                        rolenode.refreshRound();
-                                        rolenode._maphandle.setRoleInIdx(null,rolenode.idx);
-                                        rolenode._maphandle.setRoleInIdx(rolenode,newidx);
-                                        rolenode.refreshRound();
-                                    }
-                                }                               
                             }
                         }
                     }

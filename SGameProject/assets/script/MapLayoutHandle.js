@@ -176,6 +176,17 @@ var MapLayoutHandle = cc.Class({
 
         return rolelist;
     },
+
+    checkInBorder: function (ppos) {
+        var cpos = this.getPosByPixelPos(ppos);
+        var borderRect = new cc.rect(this.info.borderX == -1?0:this.info.borderX, 
+        this.info.borderY == -1?0:this.info.borderY, 
+        this.info.borderWidth == -1?this.mapWidth:this.info.borderWidth-1, 
+        this.info.borderHeight == -1?this.mapHeight:this.info.borderHeight-1);
+        cc.log(cpos)
+        cc.log(borderRect)
+        return cc.rectContainsPoint(borderRect, cpos);
+    },
     
     findNearestNull: function (ppos,role) {
         var cpos = this.getPosByPixelPos(ppos);
@@ -190,35 +201,38 @@ var MapLayoutHandle = cc.Class({
         var ulen,dlen,llen,rlen,lulen,rulen,ldlen,rdlen,lest,reppos;
         if (!urole || urole == role) {
             var uppos = this.getPixelPosByPos(cc.v2(cpos.x,cpos.y-1));
-            ulen = uppos.sub(ppos).mag();
+            if (this.checkInBorder(uppos)) {
+                ulen = uppos.sub(ppos).mag();
+            }
+            
         }
         if (!drole || drole == role) {
             var dppos = this.getPixelPosByPos(cc.v2(cpos.x,cpos.y+1));
-            dlen = dppos.sub(ppos).mag();
+                        if (this.checkInBorder(dppos)) {                 dlen = dppos.sub(ppos).mag();             }
         }
         if (!lrole || lrole == role) {
             var lppos = this.getPixelPosByPos(cc.v2(cpos.x-1,cpos.y));
-            llen = lppos.sub(ppos).mag();
+                        if (this.checkInBorder(lppos)) {                 llen = lppos.sub(ppos).mag();             }
         }
         if (!rrole || rrole == role) {
             var rppos = this.getPixelPosByPos(cc.v2(cpos.x+1,cpos.y));
-            rlen = rppos.sub(ppos).mag();
+                        if (this.checkInBorder(rppos)) {                 rlen = rppos.sub(ppos).mag();             }
         }
         if (!lurole || lurole == role) {
             var luppos = this.getPixelPosByPos(cc.v2(cpos.x-1,cpos.y-1));
-            lulen = luppos.sub(ppos).mag();
+                        if (this.checkInBorder(luppos)) {                 lulen = luppos.sub(ppos).mag();             }
         }
         if (!rurole || rurole == role) {
-            var ldppos = this.getPixelPosByPos(cc.v2(cpos.x+1,cpos.y-1));
-            rulen = ldppos.sub(ppos).mag();
+            var ruppos = this.getPixelPosByPos(cc.v2(cpos.x+1,cpos.y-1));
+                        if (this.checkInBorder(ruppos)) {                 rulen = ruppos.sub(ppos).mag();             }
         }
         if (!ldrole || ldrole == role) {
-            var ruppos = this.getPixelPosByPos(cc.v2(cpos.x-1,cpos.y+1));
-            ldlen = ruppos.sub(ppos).mag();
+            var ldppos = this.getPixelPosByPos(cc.v2(cpos.x-1,cpos.y+1));
+                        if (this.checkInBorder(ldppos)) {                 ldlen = ldppos.sub(ppos).mag();             }
         }
         if (!rdrole || rdrole == role) {
             var rdppos = this.getPixelPosByPos(cc.v2(cpos.x+1,cpos.y+1));
-            rdlen = rdppos.sub(ppos).mag();
+                        if (this.checkInBorder(rdppos)) {                 rdlen = rdppos.sub(ppos).mag();             }
         }
         ulen?(lest = ulen,reppos = uppos):null;
         dlen?(lest?(dlen < lest?(lest = dlen,reppos = dppos):null):(lest = dlen,reppos = dppos)):null;
@@ -330,22 +344,24 @@ var MapLayoutHandle = cc.Class({
 
 
     createRole: function (roleid,idx,state) {
-        this.guid ++;
         var roleinfo = DataMgr.instance.GetInfoByTalbeNameAndId("role",roleid);
-        var ppos = this.getPixelPosByPos(this.getPosByIndex(idx));
-        var pre = DataMgr.instance.GetPrefabById(roleinfo.prefabid);
-        if (!pre) {
-            return;
+        if (roleinfo) {
+            this.guid ++;
+            var ppos = this.getPixelPosByPos(this.getPosByIndex(idx));
+            var pre = DataMgr.instance.GetPrefabById(roleinfo.prefabid);
+            if (!pre) {
+                return;
+            }
+            var nd = cc.instantiate(pre);
+            nd.x = ppos.x;
+            nd.y = ppos.y;
+            nd.parent = this.node;
+            var rolenode = nd.getComponent(require("RoleNode"));
+            rolenode.info = roleinfo;
+            rolenode.guid = this.guid;
+            this.setRoleInIdx(rolenode,idx);
+            rolenode.changeState(state);
         }
-        var nd = cc.instantiate(pre);
-        nd.x = ppos.x;
-        nd.y = ppos.y;
-        nd.parent = this.node;
-        var rolenode = nd.getComponent(require("RoleNode"));
-        rolenode.info = roleinfo;
-        rolenode.guid = this.guid;
-        this.setRoleInIdx(rolenode,idx);
-        rolenode.changeState(state);
     },
 
 

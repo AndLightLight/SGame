@@ -22,6 +22,7 @@ var Buff = cc.Class({
     trigger: function () {
         if (this.info) {
             if (this.info.triggertype == 1) {
+                this.torole.changeState(require("RoleNode").StateType.BOOM);
                 this.torole._maphandle.removeRole(this.torole);
                 this.torole.refreshRound();
             }

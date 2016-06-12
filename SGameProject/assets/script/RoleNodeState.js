@@ -1,5 +1,6 @@
 var StateMgr = require("StateMgr");
 var DataMgr = require("DataMgr");
+var Game = require("Game");
 var RNStateIdle = cc.Class({
     //extends: cc.Component,
 
@@ -276,7 +277,10 @@ var RNStateDown = cc.Class({
     
     onTick: function (temp,dt) {
         if (temp._downToIdx && temp._downToIdx >= 0) {
-            var toppos = temp._maphandle.getPixelPosByPos(temp._maphandle.getPosByIndex(temp._downToIdx));
+            temp.node.y -= dt * 300;            
+            var topos = temp._maphandle.getPosByIndex(temp._downToIdx);
+            var torole = temp._maphandle.getRoleByPos(topos);
+            var toppos = temp._maphandle.getPixelPosByPos(topos);
             if (temp.node.y <= toppos.y) { //到达才开始继续检查
                 var toidx = temp.checkCanDown();
                 if (toidx && toidx != temp._downToIdx) {
@@ -290,16 +294,11 @@ var RNStateDown = cc.Class({
                     }
                 }
                 else {
-                    var toidx = temp.checkCanDown();
                     temp._downToIdx = null;
                     temp.changeState(require("RoleNode").StateType.IDLE);
                     return;
                 }
             }
-            temp.node.y -= dt * 300;
-            // if (temp.node.y <= toppos.y) {
-            //     temp.node.y = toppos.y;
-            // }
         }
     },
 });
@@ -362,11 +361,12 @@ var RNStateMerge = cc.Class({
         var mt = cc.moveTo(0.2,ppos);
         var ft = cc.fadeTo(0.2,0);
         var swp = cc.spawn(mt,ft);
+        require("SkillMgr").instance.useSkill(temp,temp.info.boomskill);
         var callfun = cc.callFunc(function (params) {
-            var node = temp.node;
-            var rolenode = node.getComponent(require("RoleNode"));
-            rolenode._maphandle.removeRole(rolenode);
-            rolenode.refreshRound();
+            // var node = temp.node;
+            // var rolenode = node.getComponent(require("RoleNode"));
+            // rolenode._maphandle.removeRole(rolenode);
+            // rolenode.refreshRound();
         },temp);
         var sqe = cc.sequence(swp,callfun);
         temp.node.runAction(sqe);

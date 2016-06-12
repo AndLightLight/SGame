@@ -30,7 +30,7 @@ var Game = cc.Class({
         else if (node.name == "stage2bt") {
             stageid = 2;
         }
-        
+        this.OpenLog();
         var stageinfo = DataMgr.instance.GetInfoByTalbeNameAndId("stage" , stageid);
         if (stageinfo) {
             var mappre = stageinfo.prefabid;
