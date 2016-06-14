@@ -10,6 +10,16 @@ var DataMgr = cc.Class({
             default: null,
             type: require("LoadUI"),  
         },
+
+        m_table: {
+            default: {},
+            visible: false,
+        },
+
+        m_preLoadTable: {
+            default: {},
+            visible: false,
+        },
     },
     
     
@@ -73,8 +83,7 @@ var DataMgr = cc.Class({
         else {
             cc.log("error: singlon class creat more then onece!")
         }
-        this.m_table = {};
-        this.m_preLoadTable = {};
+
         var resArray = [];
         this.loadNum = 0;
         this.preLoadNum = 0;
@@ -140,6 +149,12 @@ var DataMgr = cc.Class({
         // });
         
         this.loadUI.StartLoading = true;
+    },
+
+
+    onDestroy: function () {
+        this.m_preLoadTable = null;
+        this.m_table = null;
     },
     
     

@@ -1,4 +1,5 @@
 var DataMgr = require("DataMgr");
+var Game = require("Game");
 var BuffMgr = cc.Class({
     extends: cc.Component,
 
@@ -52,16 +53,25 @@ var BuffMgr = cc.Class({
         }
     },
 
+    clearBuff: function () {
+        this.buffList = {};
+        this.guid = 0;
+    },
+
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
-        for (var key in this.buffList) {
-            if (this.buffList.hasOwnProperty(key)) {
-                var element = this.buffList[key];
-                if (element.isActive) {
-                    element.update(dt);
-                }
-                else {
-                    delete this.buffList[key];
+        if (Game.instance.currentMap) {
+            if (!Game.instance.currentMap.pause) {
+                for (var key in this.buffList) {
+                    if (this.buffList.hasOwnProperty(key)) {
+                        var element = this.buffList[key];
+                        if (element.isActive) {
+                            element.update(dt);
+                        }
+                        else {
+                            delete this.buffList[key];
+                        }
+                    }
                 }
             }
         }

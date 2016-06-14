@@ -130,17 +130,17 @@ var RNStateShake = cc.Class({
                         for (var key in tempshakeLineRole) {
                             if (tempshakeLineRole.hasOwnProperty(key)) {
                                 var element = tempshakeLineRole[key];
-                                if (torole != element) {
+                                //if (torole != element) {
                                     element.changeState(require("RoleNode").StateType.MERGE,torole.idx);
                                     element._brefresh = false;
-                                }
+                                //}
                             }
                         }
                         var mergetoroleinfo = DataMgr.instance.GetInfoByTalbeNameAndId("role",temp._mergetoroleid);
                         torole._maphandle.createRole(temp._mergetoroleid,torole.idx,require("RoleNode").StateType.IDLE);
                         
-                        torole.changeState(require("RoleNode").StateType.IDLE);
-                        torole._maphandle.removeRole(torole);
+                        // torole.changeState(require("RoleNode").StateType.IDLE);
+                        // torole._maphandle.removeRole(torole);
                     }
                 }
                 else {
@@ -223,6 +223,7 @@ var RNStateBoom = cc.Class({
         temp.stateType = require("RoleNode").StateType.BOOM;
         temp.node.stopAllActions();
         require("SkillMgr").instance.useSkill(temp,temp.info.boomSkill);
+        temp._maphandle.addScore(temp.info.score);
         // var be = cc.instantiate(temp.boomEffect);
         // var bea = be.getComponent(require("AnimationCallBack"));
         // bea.callBack = function () {
@@ -370,12 +371,11 @@ var RNStateMerge = cc.Class({
         var mt = cc.moveTo(0.2,ppos);
         var ft = cc.fadeTo(0.2,0);
         var swp = cc.spawn(mt,ft);
-        require("SkillMgr").instance.useSkill(temp,temp.info.boomSkill);
+        //require("SkillMgr").instance.useSkill(temp,temp.info.boomSkill);
         var callfun = cc.callFunc(function (params) {
-            // var node = temp.node;
-            // var rolenode = node.getComponent(require("RoleNode"));
-            // rolenode._maphandle.removeRole(rolenode);
-            // rolenode.refreshRound();
+            var node = temp.node;
+            var rolenode = node.getComponent(require("RoleNode"));
+            rolenode.changeState(require("RoleNode").StateType.BOOM);
         },temp);
         var sqe = cc.sequence(swp,callfun);
         temp.node.runAction(sqe);

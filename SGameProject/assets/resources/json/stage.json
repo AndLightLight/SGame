@@ -43,10 +43,10 @@
       12,
       13
     ],
-    "borderX": "-1,-1",
-    "borderY": "-1,-1",
-    "borderWidth": "-1,-1",
-    "borderHeight": "-1,-1",
+    "borderX": -1,
+    "borderY": -1,
+    "borderWidth": -1,
+    "borderHeight": -1,
     "loadprefabid": [
       8,
       9,

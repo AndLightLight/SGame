@@ -18,7 +18,12 @@ var Game = cc.Class({
         world: {
             default: null,
             visible: false,
-        }
+        },
+
+        currentMap: {
+            default: null,
+            visible: false,
+        },
     },
     
     StartGame: function (event) {
@@ -30,6 +35,7 @@ var Game = cc.Class({
         else if (node.name == "stage2bt") {
             stageid = 2;
         }
+        require("StageCommon").Show();
         this.OpenLog();
         var stageinfo = DataMgr.instance.GetInfoByTalbeNameAndId("stage" , stageid);
         if (stageinfo) {
@@ -54,7 +60,9 @@ var Game = cc.Class({
             LoadUI.instance.callBack = function () {
                 stage1p = DataMgr.instance.GetPrefabById(mappre);
                 var stage1n = cc.instantiate(stage1p);
-                stage1n.getChildByName("map").getChildByName("layout").getComponent(require("MapLayoutHandle")).info = stageinfo;
+                var maphandle = stage1n.getChildByName("map").getChildByName("layout").getComponent(require("MapLayoutHandle"));
+                maphandle.info = stageinfo;
+                Game.instance.currentMap = maphandle;
                 stage1n.parent = Game.instance.node;
                 stage1n.x = 0;
                 stage1n.y = 0;
@@ -64,7 +72,7 @@ var Game = cc.Class({
         
 
         
-        //var bt = cc.find("Canvas/UI/Start").active = false;
+        var bt = cc.find("Canvas/UI/Start").active = false;
         Game.instance.Log("Log");
         if (cc.game.config.renderMode == 1) {
             Game.instance.Log("CanvasMode");
@@ -130,5 +138,10 @@ var Game = cc.Class({
             this.world.DrawDebugData();
             this.world.ClearForces();
         }
+    },
+
+    onDestroy: function () {
+        this.world = null;
+        this.currentMap = null;
     },
 });

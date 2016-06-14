@@ -14,7 +14,6 @@ var MapLayoutHandle = cc.Class({
             visible: false,
         },
         
-        _map: [],
         mapWidth: {
             default: 0,
             visible: false,
@@ -31,8 +30,25 @@ var MapLayoutHandle = cc.Class({
             default: 0,
             visible: false,  
         },
+
+        score: {
+            default: 0,
+            visible: false,
+        },
+
+        pause: {
+            default: false,
+            visible: false,
+        },
+
+        stage: {
+            default: null,
+            visible: false,
+        },
         
         info: null,
+
+        _map: [],
         
     },
    
@@ -154,6 +170,14 @@ var MapLayoutHandle = cc.Class({
         }
     },
 
+    out: function () {
+        this.stage.destroy();
+    },
+
+    addScore: function (score) {
+        this.score += score;
+    },
+
     getMapCenterPPos: function () {
         return cc.v2(this.mapWidth*this.tileWidth/2,this.mapHeight*this.tileHeight/2);
     },
@@ -183,8 +207,6 @@ var MapLayoutHandle = cc.Class({
         this.info.borderY == -1?0:this.info.borderY, 
         this.info.borderWidth == -1?this.mapWidth:this.info.borderWidth-1, 
         this.info.borderHeight == -1?this.mapHeight:this.info.borderHeight-1);
-        cc.log(cpos)
-        cc.log(borderRect)
         return cc.rectContainsPoint(borderRect, cpos);
     },
     
@@ -382,6 +404,7 @@ var MapLayoutHandle = cc.Class({
         var map = this.node.getComponent(cc.TiledLayer);
         map.enabled = false;
         var mapparent = this.node.parent.getComponent(cc.TiledMap);
+        this.stage = mapparent.node.parent;
         this.mapWidth = this.node.parent.getComponent(cc.TiledMap).getMapSize().width;
         this.mapHeight = this.node.parent.getComponent(cc.TiledMap).getMapSize().height;
         this.tileWidth = this.node.parent.getComponent(cc.TiledMap).getTileSize().width;
@@ -431,4 +454,23 @@ var MapLayoutHandle = cc.Class({
     update: function (dt) {
 
     },
+
+    onDestroy: function () {
+        this.selectRole = null;
+        
+        this.guid = 0;
+        
+        this.mapWidth = 0;
+        this.mapHeight = 0;
+        this.tileWidth = 0;
+        this.tileHeight = 0;
+
+        this.score = 0;
+        
+        this.info = null;
+
+        this._map = null;
+
+        require("BuffMgr").instance.clearBuff();
+    }
 });

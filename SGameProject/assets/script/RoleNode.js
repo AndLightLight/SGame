@@ -415,15 +415,19 @@ var RoleNode = cc.Class({
 
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
-        if (this.bodyA && this.bodyA.IsActive()) {
-            this.node.position = this.convertToNode(this.bodyA.GetPosition());
-            this.node.rotation = this.bodyA.GetAngle()*this.RADTODEG%360;
-        }
-        
-        if (this.stateMgr) {
-            if (this._brefresh == true) {
-                //this.selflog.string = this.stateType;
-                this.stateMgr.onTick(dt);
+        if (this._maphandle) {
+            if (!this._maphandle.pause) {
+                if (this.bodyA && this.bodyA.IsActive()) {
+                    this.node.position = this.convertToNode(this.bodyA.GetPosition());
+                    this.node.rotation = this.bodyA.GetAngle()*this.RADTODEG%360;
+                }
+                
+                if (this.stateMgr) {
+                    if (this._brefresh == true) {
+                        //this.selflog.string = this.stateType;
+                        this.stateMgr.onTick(dt);
+                    }
+                }
             }
         }
     },
@@ -432,6 +436,8 @@ var RoleNode = cc.Class({
         if (this.bodyA) {
             Game.instance.world.DestroyBody(this.bodyA);
         }
+
+
     },
 });
 
