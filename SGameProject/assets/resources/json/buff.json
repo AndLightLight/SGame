@@ -4,6 +4,7 @@
     "name": "cat2",
     "duration": 0.5,
     "triggercd": 0.5,
+    "triggernum": 0,
     "animationpre": [
       24
     ],
@@ -17,6 +18,7 @@
     "name": "normalboom",
     "duration": 0.5,
     "triggercd": 0.5,
+    "triggernum": 0,
     "animationpre": [
       25
     ],
@@ -30,10 +32,39 @@
     "name": "downrole",
     "duration": -1,
     "triggercd": 3,
+    "triggernum": 0,
     "animationpre": [
       0
     ],
     "triggertype": 2,
+    "param": [
+      0
+    ]
+  },
+  {
+    "id": 4,
+    "name": "downboom",
+    "duration": 0,
+    "triggercd": 0,
+    "triggernum": 1,
+    "animationpre": [
+      0
+    ],
+    "triggertype": 3,
+    "param": [
+      0
+    ]
+  },
+  {
+    "id": 5,
+    "name": "roundboom",
+    "duration": 0.5,
+    "triggercd": 0.5,
+    "triggernum": 0,
+    "animationpre": [
+      33
+    ],
+    "triggertype": 1,
     "param": [
       0
     ]

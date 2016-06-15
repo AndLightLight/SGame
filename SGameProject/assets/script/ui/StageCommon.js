@@ -17,7 +17,7 @@ var StageCommon = cc.Class({
         require("PauseDlg").Show();
     },
 
-    show: function (params) {
+    onShow: function (params) {
         
     },
 
@@ -58,7 +58,7 @@ StageCommon.Show = function (params) {
                 uinode.y = 0;
             }
             StageCommon.instance.active = true;
-            StageCommon.instance.show(params);
+            StageCommon.instance.onShow(params);
         }
     });
 };

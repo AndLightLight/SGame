@@ -30,12 +30,12 @@ var DataMgr = cc.Class({
             }
             return this.m_preLoadTable[id];
         }
-        this.loadPrefabById(id,callback);
+        this.LoadPrefabById(id,callback);
         return null;
     },
     
     
-    loadPrefabById: function (id,callback) {
+    LoadPrefabById: function (id,callback) {
         var prepath = this.GetInfoByTalbeNameAndId("preload" , id);
         if (prepath) {
              cc.loader.loadRes(prepath.prefabpath,function (err,prefab) {

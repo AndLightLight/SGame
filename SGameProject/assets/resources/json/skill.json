@@ -36,10 +36,26 @@
   },
   {
     "id": 3,
-    "skillname": "downrole",
+    "skillname": "downboom",
     "targettype": 2,
     "targetnum": 0,
-    "givebuffid": 3,
+    "givebuffid": 4,
+    "animationprefab": [
+      32
+    ],
+    "useX": [
+      1
+    ],
+    "useY": [
+      1
+    ]
+  },
+  {
+    "id": 4,
+    "skillname": "roundboom",
+    "targettype": 3,
+    "targetnum": 0,
+    "givebuffid": 5,
     "animationprefab": [
       0
     ],

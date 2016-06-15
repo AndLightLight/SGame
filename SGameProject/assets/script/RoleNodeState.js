@@ -11,7 +11,7 @@ var RNStateIdle = cc.Class({
     onEnter: function (temp,param) {
         temp.stateType = require("RoleNode").StateType.IDLE;
         temp.node.stopAllActions();
-        temp.resetPosition();
+        temp.ResetPosition();
         temp._brefresh = true;
     },
     
@@ -21,13 +21,13 @@ var RNStateIdle = cc.Class({
     
     onTick: function (temp,dt) {
         do {
-            var toidx = temp.checkCanDown();
+            var toidx = temp.CheckCanDown();
             if (toidx) {
-                temp.changeState(require("RoleNode").StateType.DOWN,toidx);  
+                temp.ChangeState(require("RoleNode").StateType.DOWN,toidx);
                 break;
             }
             var cpre = true;
-            var result = temp.checkCanShake();
+            var result = temp.CheckCanShake();
             var re = result.result;
             var linerole = result.linerole;
             var mergettoroleid = result.mergeroleid;
@@ -38,13 +38,13 @@ var RNStateIdle = cc.Class({
                         element._brefresh = true;
                     }
                 }
-                cpre = temp.compareShakeLineRole(linerole,mergettoroleid);
+                cpre = temp.CompareShakeLineRole(linerole,mergettoroleid);
                 if (!cpre) {
-                    temp.changeState(require("RoleNode").StateType.SHAKE);
+                    temp.ChangeState(require("RoleNode").StateType.SHAKE);
                     for (var key in temp._shakeLineRole) {
                         if (temp._shakeLineRole.hasOwnProperty(key)) {
                             var element = temp._shakeLineRole[key];
-                            element.changeState(require("RoleNode").StateType.SHAKE);
+                            element.ChangeState(require("RoleNode").StateType.SHAKE);
                         }
                     }
                 }
@@ -76,10 +76,10 @@ var RNStateChange = cc.Class({
         var toidx = param;
         temp.stateType = require("RoleNode").StateType.CHANGE;
         temp.node.stopAllActions();
-        var ppos = temp._maphandle.getPixelPosByPos(temp._maphandle.getPosByIndex(toidx));
+        var ppos = temp._maphandle.GetPixelPosByPos(temp._maphandle.GetPosByIndex(toidx));
         var action = cc.moveTo(0.5, ppos);
         var callfun = cc.callFunc(function (params) {
-            temp.changeState(require("RoleNode").StateType.IDLE);
+            temp.ChangeState(require("RoleNode").StateType.IDLE);
             temp.node.zIndex = 0;
             temp._brefresh = true;
         },temp);
@@ -115,7 +115,7 @@ var RNStateShake = cc.Class({
     onEnter: function (temp,param) {
         temp.stateType = require("RoleNode").StateType.SHAKE;
         temp.node.stopAllActions();
-        temp.resetPosition();
+        temp.ResetPosition();
         var right = cc.moveBy(0.1, 2, 0);
         var left = cc.moveBy(0.1, -2, 0);
         var sqerl = cc.sequence(right,left);
@@ -124,23 +124,23 @@ var RNStateShake = cc.Class({
         var callfun = cc.callFunc(function (params) {
             if (temp.stateType == require("RoleNode").StateType.SHAKE) {
                 if (temp._mergetoroleid > 0) {
-                    var torole = require("RoleNode").findLowestRole(temp._shakeLineRole);
+                    var torole = require("RoleNode").FindLowestRole(temp._shakeLineRole);
                     if (torole) {
                         var tempshakeLineRole = temp._shakeLineRole.slice(0);
                         for (var key in tempshakeLineRole) {
                             if (tempshakeLineRole.hasOwnProperty(key)) {
                                 var element = tempshakeLineRole[key];
                                 //if (torole != element) {
-                                    element.changeState(require("RoleNode").StateType.MERGE,torole.idx);
+                                    element.ChangeState(require("RoleNode").StateType.MERGE,torole.idx);
                                     element._brefresh = false;
                                 //}
                             }
                         }
                         var mergetoroleinfo = DataMgr.instance.GetInfoByTalbeNameAndId("role",temp._mergetoroleid);
-                        torole._maphandle.createRole(temp._mergetoroleid,torole.idx,require("RoleNode").StateType.IDLE);
+                        torole._maphandle.CreateRole(temp._mergetoroleid,torole.idx,require("RoleNode").StateType.IDLE);
                         
-                        // torole.changeState(require("RoleNode").StateType.IDLE);
-                        // torole._maphandle.removeRole(torole);
+                        // torole.ChangeState(require("RoleNode").StateType.IDLE);
+                        // torole._maphandle.RemoveRole(torole);
                     }
                 }
                 else {
@@ -148,7 +148,7 @@ var RNStateShake = cc.Class({
                     for (var key in tempshakeLineRole) {
                         if (tempshakeLineRole.hasOwnProperty(key)) {
                             var element = tempshakeLineRole[key];
-                            element.changeState(require("RoleNode").StateType.BOOM);
+                            element.ChangeState(require("RoleNode").StateType.BOOM);
                             element._brefresh = false;
                         }
                     }
@@ -165,13 +165,13 @@ var RNStateShake = cc.Class({
     
     onTick: function (temp,dt) {
         do {
-            var toidx = temp.checkCanDown();
+            var toidx = temp.CheckCanDown();
             if (toidx) {
-                temp.changeState(require("RoleNode").StateType.DOWN,toidx);  
+                temp.ChangeState(require("RoleNode").StateType.DOWN,toidx);
                 break;
             }
             var cpre = true;
-            var result = temp.checkCanShake();
+            var result = temp.CheckCanShake();
             var re = result.result;
             var linerole = result.linerole;
             var mergettoroleid = result.mergeroleid;
@@ -182,20 +182,20 @@ var RNStateShake = cc.Class({
                         element._brefresh = true;
                     }
                 }
-                cpre = temp.compareShakeLineRole(linerole,mergettoroleid);
+                cpre = temp.CompareShakeLineRole(linerole,mergettoroleid);
                 if (!cpre) {
-                    temp.changeState(require("RoleNode").StateType.SHAKE);
+                    temp.ChangeState(require("RoleNode").StateType.SHAKE);
                     for (var key in temp._shakeLineRole) {
                         if (temp._shakeLineRole.hasOwnProperty(key)) {
                             var element = temp._shakeLineRole[key];
-                            element.changeState(null);
-                            element.changeState(require("RoleNode").StateType.SHAKE);
+                            element.ChangeState(null);
+                            element.ChangeState(require("RoleNode").StateType.SHAKE);
                         }
                     }
                 }
                 break;
             }
-            temp.changeState(require("RoleNode").StateType.IDLE);
+            temp.ChangeState(require("RoleNode").StateType.IDLE);
             break;
         }while (true)
     },
@@ -219,18 +219,18 @@ var RNStateBoom = cc.Class({
     },
 
     onEnter: function (temp,param) {
-        temp.resetPosition();
+        temp.ResetPosition();
         temp.stateType = require("RoleNode").StateType.BOOM;
         temp.node.stopAllActions();
-        require("SkillMgr").instance.useSkill(temp,temp.info.boomSkill);
-        temp._maphandle.addScore(temp.info.score);
+        require("SkillMgr").instance.UseSkill(temp,temp.info.boomSkill);
+        temp._maphandle.AddScore(temp.info.score);
         // var be = cc.instantiate(temp.boomEffect);
         // var bea = be.getComponent(require("AnimationCallBack"));
         // bea.callBack = function () {
         //     var node = this.node.parent;
         //     var rolenode = node.getComponent(require("RoleNode"));
-        //     rolenode._maphandle.removeRole(rolenode);
-        //     rolenode.refreshRound();
+        //     rolenode._maphandle.RemoveRole(rolenode);
+        //     rolenode.RefreshRound();
         // };
         // be.parent = temp.node;
         // be.x = 0;
@@ -264,21 +264,21 @@ var RNStateDown = cc.Class({
 
     onEnter: function (temp,param) {
         if (!param) {
-            param = temp.checkCanDown();
+            param = temp.CheckCanDown();
         }
         if (!param) {
-            temp.changeState(require("RoleNode").StateType.IDLE);
+            temp.ChangeState(require("RoleNode").StateType.IDLE);
             return;
         }
         temp._brefresh = true;
         var toidx = param;
         temp.stateType = require("RoleNode").StateType.DOWN;
         temp.node.stopAllActions();
-        temp._maphandle.setRoleInIdx(null,temp.idx);
-        temp._maphandle.setRoleInIdx(temp,toidx);
+        temp._maphandle.SetRoleInIdx(null,temp.idx);
+        temp._maphandle.SetRoleInIdx(temp,toidx);
         temp._downToIdx = toidx;
 
-        temp.refreshRound();
+        temp.RefreshRound();
     },
     
     onExit: function (temp) {
@@ -288,24 +288,24 @@ var RNStateDown = cc.Class({
     onTick: function (temp,dt) {
         if (temp._downToIdx && temp._downToIdx >= 0) {
             temp.node.y -= dt * 300;            
-            var topos = temp._maphandle.getPosByIndex(temp._downToIdx);
-            var torole = temp._maphandle.getRoleByPos(topos);
-            var toppos = temp._maphandle.getPixelPosByPos(topos);
+            var topos = temp._maphandle.GetPosByIndex(temp._downToIdx);
+            var torole = temp._maphandle.GetRoleByPos(topos);
+            var toppos = temp._maphandle.GetPixelPosByPos(topos);
             if (temp.node.y <= toppos.y) { //到达才开始继续检查
-                var toidx = temp.checkCanDown();
+                var toidx = temp.CheckCanDown();
                 if (toidx && toidx != temp._downToIdx) {
-                    temp._maphandle.setRoleInIdx(null,temp.idx);
-                    temp._maphandle.setRoleInIdx(temp,toidx);
+                    temp._maphandle.SetRoleInIdx(null,temp.idx);
+                    temp._maphandle.SetRoleInIdx(temp,toidx);
                     temp._downToIdx = toidx;
-                    var pos = temp._maphandle.getPosByIndex(temp.idx);
-                    var uurole = temp._maphandle.getRoleByPos(cc.v2(pos.x,pos.y-2));
+                    var pos = temp._maphandle.GetPosByIndex(temp.idx);
+                    var uurole = temp._maphandle.GetRoleByPos(cc.v2(pos.x,pos.y-2));
                     if (uurole) {
                         uurole._brefresh = true;
                     }
                 }
                 else {
                     temp._downToIdx = null;
-                    temp.changeState(require("RoleNode").StateType.IDLE);
+                    temp.ChangeState(require("RoleNode").StateType.IDLE);
                     return;
                 }
             }
@@ -333,7 +333,7 @@ var RNStateFloat = cc.Class({
     onEnter: function (temp,param) {
         temp.stateType = require("RoleNode").StateType.FLOAT;
         temp.node.stopAllActions();
-        temp.resetPosition();
+        temp.ResetPosition();
     },
     
     onExit: function (temp) {
@@ -364,18 +364,18 @@ var RNStateMerge = cc.Class({
 
     onEnter: function (temp,param) {
         var toidx = param
-        temp.resetPosition();
+        temp.ResetPosition();
         temp.stateType = require("RoleNode").StateType.MERGE;
         temp.node.stopAllActions();
-        var ppos = temp._maphandle.getPixelPosByPos(temp._maphandle.getPosByIndex(toidx));
+        var ppos = temp._maphandle.GetPixelPosByPos(temp._maphandle.GetPosByIndex(toidx));
         var mt = cc.moveTo(0.2,ppos);
         var ft = cc.fadeTo(0.2,0);
         var swp = cc.spawn(mt,ft);
-        //require("SkillMgr").instance.useSkill(temp,temp.info.boomSkill);
+        //require("SkillMgr").instance.UseSkill(temp,temp.info.boomSkill);
         var callfun = cc.callFunc(function (params) {
             var node = temp.node;
             var rolenode = node.getComponent(require("RoleNode"));
-            rolenode.changeState(require("RoleNode").StateType.BOOM);
+            rolenode.ChangeState(require("RoleNode").StateType.BOOM);
         },temp);
         var sqe = cc.sequence(swp,callfun);
         temp.node.runAction(sqe);

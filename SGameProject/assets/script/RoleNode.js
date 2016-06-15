@@ -13,6 +13,7 @@ var StateType = cc.Enum({
     DOWN: 4,
     FLOAT: 5,
     MERGE: 6,
+    BOOMDOWN: 7,
 });
 
 var RoleNode = cc.Class({
@@ -53,6 +54,9 @@ var RoleNode = cc.Class({
             default: null,
             visible: false,  
         },
+
+        //downboomparam
+        _boomdownToIdx: null,
         
         //shakeparam
         _shakeLineRole: [],
@@ -78,7 +82,7 @@ var RoleNode = cc.Class({
                 if (rolenode._maphandle.selectRole) {
                     rolenode._maphandle.selectRole.bPress = false;
                     if (rolenode.stateType == StateType.FLOAT) {
-                        rolenode.changeState(StateType.IDLE);
+                        rolenode.ChangeState(StateType.IDLE);
                     }
                 }
             }
@@ -91,7 +95,7 @@ var RoleNode = cc.Class({
                 if (rolenode._maphandle.selectRole) {
                     rolenode._maphandle.selectRole.bPress = false;
                     if (rolenode.stateType == StateType.FLOAT) {
-                        rolenode.changeState(StateType.IDLE);
+                        rolenode.ChangeState(StateType.IDLE);
                     }
                 }
             }
@@ -121,51 +125,51 @@ var RoleNode = cc.Class({
                 // return;
                 if (rolenode._maphandle) {
                     if (rolenode._maphandle.selectRole) {
-                        var topos = rolenode._maphandle.getPosByPixelPos(newppos);
-                        var torole = rolenode._maphandle.getRoleByPos(topos);
+                        var topos = rolenode._maphandle.GetPosByPixelPos(newppos);
+                        var torole = rolenode._maphandle.GetRoleByPos(topos);
                         if (torole && rolenode.stateType != StateType.FLOAT) {
-                            var can = rolenode._maphandle.selectRole.checkCanChangePos(torole);
+                            var can = rolenode._maphandle.selectRole.CheckCanChangePos(torole);
                             if (can) {
-                                var can2 = rolenode._maphandle.selectRole.checkCanChangePos(torole);
+                                var can2 = rolenode._maphandle.selectRole.CheckCanChangePos(torole);
                                 var toidx1= torole.idx;
                                 var toidx2 = rolenode.idx;
-                                rolenode.resetPosition();
-                                torole.resetPosition();
-                                rolenode._maphandle.setRoleInIdx(rolenode,toidx1);
-                                rolenode._maphandle.setRoleInIdx(torole,toidx2);
-                                rolenode.changeState(StateType.CHANGE,toidx1);
-                                torole.changeState(StateType.CHANGE,toidx2);
+                                rolenode.ResetPosition();
+                                torole.ResetPosition();
+                                rolenode._maphandle.SetRoleInIdx(rolenode,toidx1);
+                                rolenode._maphandle.SetRoleInIdx(torole,toidx2);
+                                rolenode.ChangeState(StateType.CHANGE,toidx1);
+                                torole.ChangeState(StateType.CHANGE,toidx2);
                                 rolenode.node.zIndex = 1;
                                 rolenode._maphandle.selectRole.bPress = false;
                                 rolenode._maphandle.selectRole = null;
                             }
                         }
                         else{
-                            if (rolenode.isFloatStateRequire()) {
-                                rolenode.changeState(StateType.FLOAT);
-                                var binboder = rolenode._maphandle.checkInBorder(newppos);
+                            if (rolenode.IsFloatStateRequire()) {
+                                rolenode.ChangeState(StateType.FLOAT);
+                                var binboder = rolenode._maphandle.CheckInBorder(newppos);
                                 if (binboder) {
                                     if ((torole && torole != rolenode) ) {
-                                        var ppos = rolenode._maphandle.findNearestNull(newppos,rolenode);
+                                        var ppos = rolenode._maphandle.FindNearestNull(newppos,rolenode);
                                         if (ppos) {
                                             rolenode.node.position = ppos;
-                                            var newidx = rolenode._maphandle.getIndexByPos(rolenode._maphandle.getPosByPixelPos(ppos));
+                                            var newidx = rolenode._maphandle.GetIndexByPos(rolenode._maphandle.GetPosByPixelPos(ppos));
                                             if (newidx != rolenode.idx) {
-                                                rolenode._maphandle.setRoleInIdx(null,rolenode.idx);
-                                                rolenode._maphandle.setRoleInIdx(rolenode,newidx);
-                                                rolenode.refreshRound();
+                                                rolenode._maphandle.SetRoleInIdx(null,rolenode.idx);
+                                                rolenode._maphandle.SetRoleInIdx(rolenode,newidx);
+                                                rolenode.RefreshRound();
                                             }
                                         }
                                     }
                                     else {
                                         rolenode.stateType = StateType.FLOAT;
                                         rolenode.node.position = newppos;
-                                        var newidx = rolenode._maphandle.getIndexByPos(rolenode._maphandle.getPosByPixelPos(newppos));
+                                        var newidx = rolenode._maphandle.GetIndexByPos(rolenode._maphandle.GetPosByPixelPos(newppos));
                                         if (newidx != rolenode.idx) {
-                                            rolenode.refreshRound();
-                                            rolenode._maphandle.setRoleInIdx(null,rolenode.idx);
-                                            rolenode._maphandle.setRoleInIdx(rolenode,newidx);
-                                            rolenode.refreshRound();
+                                            rolenode.RefreshRound();
+                                            rolenode._maphandle.SetRoleInIdx(null,rolenode.idx);
+                                            rolenode._maphandle.SetRoleInIdx(rolenode,newidx);
+                                            rolenode.RefreshRound();
                                         }
                                     } 
                                 }
@@ -178,17 +182,17 @@ var RoleNode = cc.Class({
     },
 
     
-    refreshRound: function () {
-        var cpos = this._maphandle.getPosByIndex(this.idx);
-        var urole = this._maphandle.getRoleByPos(cc.v2(cpos.x,cpos.y-1));
-        var uurole = this._maphandle.getRoleByPos(cc.v2(cpos.x,cpos.y-2));
-        var drole = this._maphandle.getRoleByPos(cc.v2(cpos.x,cpos.y+1));
-        var lrole = this._maphandle.getRoleByPos(cc.v2(cpos.x-1,cpos.y));
-        var rrole = this._maphandle.getRoleByPos(cc.v2(cpos.x+1,cpos.y));
-        var lurole = this._maphandle.getRoleByPos(cc.v2(cpos.x-1,cpos.y-1));
-        var rurole = this._maphandle.getRoleByPos(cc.v2(cpos.x+1,cpos.y-1));
-        var ldrole = this._maphandle.getRoleByPos(cc.v2(cpos.x-1,cpos.y+1));
-        var rdrole = this._maphandle.getRoleByPos(cc.v2(cpos.x+1,cpos.y+1));
+    RefreshRound: function () {
+        var cpos = this._maphandle.GetPosByIndex(this.idx);
+        var urole = this._maphandle.GetRoleByPos(cc.v2(cpos.x,cpos.y-1));
+        var uurole = this._maphandle.GetRoleByPos(cc.v2(cpos.x,cpos.y-2));
+        var drole = this._maphandle.GetRoleByPos(cc.v2(cpos.x,cpos.y+1));
+        var lrole = this._maphandle.GetRoleByPos(cc.v2(cpos.x-1,cpos.y));
+        var rrole = this._maphandle.GetRoleByPos(cc.v2(cpos.x+1,cpos.y));
+        var lurole = this._maphandle.GetRoleByPos(cc.v2(cpos.x-1,cpos.y-1));
+        var rurole = this._maphandle.GetRoleByPos(cc.v2(cpos.x+1,cpos.y-1));
+        var ldrole = this._maphandle.GetRoleByPos(cc.v2(cpos.x-1,cpos.y+1));
+        var rdrole = this._maphandle.GetRoleByPos(cc.v2(cpos.x+1,cpos.y+1));
         urole?urole._brefresh = true:null;
         uurole?uurole._brefresh = true:null;
         drole?drole._brefresh = true:null;
@@ -207,48 +211,48 @@ var RoleNode = cc.Class({
         }
     },
     
-    changeState: function (state,param,isSub) {
+    ChangeState: function (state,param,isSub) {
         this.stateType = state;
         if (this.stateMgr) {
             switch (state) {
                 case StateType.IDLE:
-                    this.stateMgr.changeState(RoleNodeState.RNStateIdle.GetInstance(),param,isSub);
+                    this.stateMgr.ChangeState(RoleNodeState.RNStateIdle.GetInstance(),param,isSub);
                     break;
                 case StateType.CHANGE:
-                    this.stateMgr.changeState(RoleNodeState.RNStateChange.GetInstance(),param,isSub);
+                    this.stateMgr.ChangeState(RoleNodeState.RNStateChange.GetInstance(),param,isSub);
                     break;
                 case StateType.SHAKE:
-                    this.stateMgr.changeState(RoleNodeState.RNStateShake.GetInstance(),param,isSub);
+                    this.stateMgr.ChangeState(RoleNodeState.RNStateShake.GetInstance(),param,isSub);
                     break;
                 case StateType.BOOM:
-                    this.stateMgr.changeState(RoleNodeState.RNStateBoom.GetInstance(),param,isSub);
+                    this.stateMgr.ChangeState(RoleNodeState.RNStateBoom.GetInstance(),param,isSub);
                     break;
                 case StateType.DOWN:
-                    this.stateMgr.changeState(RoleNodeState.RNStateDown.GetInstance(),param,isSub);
+                    this.stateMgr.ChangeState(RoleNodeState.RNStateDown.GetInstance(),param,isSub);
                     break;
                 case StateType.FLOAT:
-                    this.stateMgr.changeState(RoleNodeState.RNStateFloat.GetInstance(),param,isSub);
+                    this.stateMgr.ChangeState(RoleNodeState.RNStateFloat.GetInstance(),param,isSub);
                     break;
                 case StateType.MERGE:
-                    this.stateMgr.changeState(RoleNodeState.RNStateMerge.GetInstance(),param,isSub);
+                    this.stateMgr.ChangeState(RoleNodeState.RNStateMerge.GetInstance(),param,isSub);
                     break;
                 case null:
-                    this.stateMgr.changeState(null,param,isSub);
+                    this.stateMgr.ChangeState(null,param,isSub);
                     break;
             
                 default:
-                    this.stateMgr.changeState(RoleNodeState.RNStateIdle.GetInstance(),param,isSub);                
+                    this.stateMgr.ChangeState(RoleNodeState.RNStateIdle.GetInstance(),param,isSub);
                     break;
             }
         }
     },
     
-    resetPosition: function () {
-        var ppos = this._maphandle.getPixelPosByPos(this._maphandle.getPosByIndex(this.idx));  
+    ResetPosition: function () {
+        var ppos = this._maphandle.GetPixelPosByPos(this._maphandle.GetPosByIndex(this.idx));
         this.node.position = ppos;
     },
     
-    compareShakeLineRole: function (linerole,mergetoroleid) {
+    CompareShakeLineRole: function (linerole,mergetoroleid) {
           if (this._shakeLineRole.length != linerole.length) {
               this._shakeLineRole = linerole.slice(0);
               this._mergetoroleid = mergetoroleid;
@@ -257,13 +261,13 @@ var RoleNode = cc.Class({
           return true;
     },
     
-    checkCanChangePos: function (role) {
+    CheckCanChangePos: function (role) {
         if (role instanceof RoleNode && this._maphandle && role != this 
-        && this.isChangeStateRequire()
-        && role.isChangeStateRequire()
+        && this.IsChangeStateRequire()
+        && role.IsChangeStateRequire()
         ) {
-            var rpos = this._maphandle.getPosByIndex(role.idx);
-            var cpos = this._maphandle.getPosByIndex(this.idx);
+            var rpos = this._maphandle.GetPosByIndex(role.idx);
+            var cpos = this._maphandle.GetPosByIndex(this.idx);
             
             if (rpos.x == cpos.x) {
                 if (Math.abs(rpos.y - cpos.y) == 1) {
@@ -281,9 +285,9 @@ var RoleNode = cc.Class({
     },
     
     
-    checkCanShake: function (callback) {
-        if (this.isShakeStateRequire()) {
-            return this._maphandle.checkCanShake(this.idx,this.info.type,function (re,linerole) {
+    CheckCanShake: function (callback) {
+        if (this.IsShakeStateRequire()) {
+            return this._maphandle.CheckCanShake(this.idx,this.info.type,function (re,linerole) {
                 if (callback) {
                     callback(re,linerole);
                 }
@@ -293,9 +297,9 @@ var RoleNode = cc.Class({
         return {"result":false,"linerole":[]};
     },
     
-    checkCanDown: function (callback) {
-        if (this.isDownStateRequire()) {
-            var toidx = this._maphandle.checkCanDown(this);
+    CheckCanDown: function (callback) {
+        if (this.IsDownStateRequire()) {
+            var toidx = this._maphandle.CheckCanDown(this);
             if (toidx) {
                 return toidx;
             }
@@ -303,8 +307,16 @@ var RoleNode = cc.Class({
         
         return null;
     },
+
+    IsBoomDownStateRequire: function () {
+        if (this.info.bShake == true && this.stateType != StateType.CHANGE 
+        && this.stateType != StateType.MERGE) {
+            return true;
+        }
+        return false;
+    },
     
-    isShakeStateRequire: function () {
+    IsShakeStateRequire: function () {
         if (this.info.bShake == true && this.stateType != StateType.DOWN && this.stateType != StateType.CHANGE 
         && this.stateType != StateType.BOOM
         && this.stateType != StateType.MERGE) {
@@ -313,7 +325,7 @@ var RoleNode = cc.Class({
         return false;
     },
     
-    isFloatStateRequire: function () {
+    IsFloatStateRequire: function () {
         if (this.info.bFloat == true && this.stateType != StateType.CHANGE && this.stateType != StateType.BOOM
         && this.stateType != StateType.MERGE) {
             return true;
@@ -321,7 +333,7 @@ var RoleNode = cc.Class({
         return false;
     },
     
-    isChangeStateRequire: function () {
+    IsChangeStateRequire: function () {
         if (this.info.bChange == true && this.stateType != StateType.BOOM && this.stateType != StateType.CHANGE
         && this.stateType != StateType.FLOAT
         && this.stateType != StateType.MERGE) {
@@ -330,7 +342,7 @@ var RoleNode = cc.Class({
         return false;
     },
     
-    isDownStateRequire: function () {
+    IsDownStateRequire: function () {
         if (this.info.bDown == true && this.stateType != StateType.BOOM && this.stateType != StateType.CHANGE
         && this.stateType != StateType.FLOAT
         && this.stateType != StateType.MERGE) {
@@ -442,7 +454,7 @@ var RoleNode = cc.Class({
 });
 
 
-RoleNode.findLowestRole = function (rolelist) {
+RoleNode.FindLowestRole = function (rolelist) {
     var rrole;
     if (rolelist) {
         for (var key in rolelist) {

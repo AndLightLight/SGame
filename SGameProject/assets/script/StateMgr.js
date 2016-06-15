@@ -10,7 +10,7 @@ var StateMgr = cc.Class({
 
     },
     
-    changeState: function (state,param,isSub) {
+    ChangeState: function (state,param,isSub) {
         if (state) {
             if (isSub == true) {
                 this.stateList.push(state);

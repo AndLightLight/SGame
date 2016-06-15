@@ -26,15 +26,7 @@ var Game = cc.Class({
         },
     },
     
-    StartGame: function (event) {
-        var node = event.target;
-        var stageid = 1;
-        if (node.name == "stage1bt") {
-            stageid = 1;
-        }
-        else if (node.name == "stage2bt") {
-            stageid = 2;
-        }
+    StartGame: function (stageid) {
         require("StageCommon").Show();
         this.OpenLog();
         var stageinfo = DataMgr.instance.GetInfoByTalbeNameAndId("stage" , stageid);
@@ -72,7 +64,6 @@ var Game = cc.Class({
         
 
         
-        var bt = cc.find("Canvas/UI/Start").active = false;
         Game.instance.Log("Log");
         if (cc.game.config.renderMode == 1) {
             Game.instance.Log("CanvasMode");

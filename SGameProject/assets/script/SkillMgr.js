@@ -16,12 +16,12 @@ var SkillMgr = cc.Class({
         }
     },
 
-    useSkill: function (role,skillid) {
+    UseSkill: function (role,skillid) {
         var skillinfo = DataMgr.instance.GetInfoByTalbeNameAndId("skill",skillid);
         if (skillinfo) {
             var torolelist = [];
             if (skillinfo.targettype == 1) {
-                torolelist = role._maphandle.findTenWordRole(role.idx);
+                torolelist = role._maphandle.FindTenWordRole(role.idx);
             }
             else if (skillinfo.targettype == 2) {
                 torolelist[0] = role;
@@ -31,7 +31,7 @@ var SkillMgr = cc.Class({
                 if (torolelist.hasOwnProperty(key)) {
                     var element = torolelist[key];
                     if (element.info.bShake) {
-                        require("BuffMgr").instance.addBuff(role,element,skillinfo.givebuffid);                        
+                        require("BuffMgr").instance.AddBuff(role,element,skillinfo.givebuffid);                        
                     }
                 }
             }
@@ -46,8 +46,8 @@ var SkillMgr = cc.Class({
                 var useX = skillinfo.useX[i];
                 var useY = skillinfo.useY[i];
                 var aninode = cc.instantiate(pre);
-                var fpos = role._maphandle.getPixelPosByPos(role._maphandle.getPosByIndex(role.idx));
-                var apos = role._maphandle.getMapCenterPPos();
+                var fpos = role._maphandle.GetPixelPosByPos(role._maphandle.GetPosByIndex(role.idx));
+                var apos = role._maphandle.GetMapCenterPPos();
                 if (useX) {
                     apos.x = fpos.x;
                 }

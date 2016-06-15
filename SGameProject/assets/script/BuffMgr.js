@@ -26,18 +26,19 @@ var BuffMgr = cc.Class({
     },
 
 
-    addBuff: function (fromrole,torole,buffid) {
+    AddBuff: function (fromrole,torole,buffid) {
         var buffinfo = DataMgr.instance.GetInfoByTalbeNameAndId("buff",buffid);
         if (buffinfo) {
             this.guid ++;
             var Buff = require("Buff")
             var buff = new Buff();
-            buff.onLoad();
+            
             buff.guid = this.guid;
             buff.info = buffinfo;
             buff.fromrole = fromrole;
             buff.torole = torole;
             this.buffList[buff.guid] = buff;
+            buff.onLoad();
 
             for (var i = 0;i < buffinfo.animationpre.length;i ++) {
                 var preid = buffinfo.animationpre[i];
@@ -53,7 +54,7 @@ var BuffMgr = cc.Class({
         }
     },
 
-    clearBuff: function () {
+    ClearBuff: function () {
         this.buffList = {};
         this.guid = 0;
     },

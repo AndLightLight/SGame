@@ -59,16 +59,16 @@ var MapLayoutHandle = cc.Class({
         this.loadMap();
     },
     
-    getPosByIndex:  function (idx) {
+    GetPosByIndex:  function (idx) {
         var pos = cc.v2(idx%this.mapWidth,Math.floor(idx/this.mapWidth));
         return pos;
     },
     
-    getIndexByPos:  function (pos) {
+    GetIndexByPos:  function (pos) {
         return pos.x + pos.y * this.mapWidth;
     },
     
-    getPosByPixelPos:  function (ppos) {
+    GetPosByPixelPos:  function (ppos) {
         var widx = Math.floor(ppos.x/this.tileWidth);
         var hidx = this.mapHeight - 1 - Math.floor(ppos.y/this.tileHeight);
         
@@ -76,7 +76,7 @@ var MapLayoutHandle = cc.Class({
     },
     
     
-    getPixelPosByPos:  function (pos) {
+    GetPixelPosByPos:  function (pos) {
         var map = this.node.getComponent(cc.TiledLayer)
         var ppos = map.getPositionAt(pos);
         ppos.x = ppos.x + this.tileWidth/2;
@@ -84,11 +84,11 @@ var MapLayoutHandle = cc.Class({
         return ppos;
     },
     
-    getRoleByPos:  function (pos) {
-        return this._map[this.getIndexByPos(pos)];
+    GetRoleByPos:  function (pos) {
+        return this._map[this.GetIndexByPos(pos)];
     },
     
-    setRoleInIdx: function (role,idx) {
+    SetRoleInIdx: function (role,idx) {
         if (role instanceof require("RoleNode") || role == null) {
             idx = Number(idx);
             this._map[idx] = role;
@@ -170,29 +170,29 @@ var MapLayoutHandle = cc.Class({
         }
     },
 
-    out: function () {
+    Out: function () {
         this.stage.destroy();
     },
 
-    addScore: function (score) {
+    AddScore: function (score) {
         this.score += score;
     },
 
-    getMapCenterPPos: function () {
+    GetMapCenterPPos: function () {
         return cc.v2(this.mapWidth*this.tileWidth/2,this.mapHeight*this.tileHeight/2);
     },
 
-    findTenWordRole: function (idx) {
+    FindTenWordRole: function (idx) {
         var rolelist = [];
-        var pos = this.getPosByIndex(idx);
+        var pos = this.GetPosByIndex(idx);
         for (var i = 0;i < this.mapWidth;i ++) {
-            var role = this.getRoleByPos(cc.v2(i,pos.y));
+            var role = this.GetRoleByPos(cc.v2(i,pos.y));
             if (role) {
                 rolelist[rolelist.length] = role;
             }
         }
         for (var i = 0;i < this.mapHeight;i ++) {
-            var role = this.getRoleByPos(cc.v2(pos.x,i));
+            var role = this.GetRoleByPos(cc.v2(pos.x,i));
             if (role) {
                 rolelist[rolelist.length] = role;                
             }
@@ -201,8 +201,8 @@ var MapLayoutHandle = cc.Class({
         return rolelist;
     },
 
-    checkInBorder: function (ppos) {
-        var cpos = this.getPosByPixelPos(ppos);
+    CheckInBorder: function (ppos) {
+        var cpos = this.GetPosByPixelPos(ppos);
         var borderRect = new cc.rect(this.info.borderX == -1?0:this.info.borderX, 
         this.info.borderY == -1?0:this.info.borderY, 
         this.info.borderWidth == -1?this.mapWidth:this.info.borderWidth-1, 
@@ -210,51 +210,51 @@ var MapLayoutHandle = cc.Class({
         return cc.rectContainsPoint(borderRect, cpos);
     },
     
-    findNearestNull: function (ppos,role) {
-        var cpos = this.getPosByPixelPos(ppos);
-        var urole = this.getRoleByPos(cc.v2(cpos.x,cpos.y-1));
-        var drole = this.getRoleByPos(cc.v2(cpos.x,cpos.y+1));
-        var lrole = this.getRoleByPos(cc.v2(cpos.x-1,cpos.y));
-        var rrole = this.getRoleByPos(cc.v2(cpos.x+1,cpos.y));
-        var lurole = this.getRoleByPos(cc.v2(cpos.x-1,cpos.y-1));
-        var rurole = this.getRoleByPos(cc.v2(cpos.x+1,cpos.y-1));
-        var ldrole = this.getRoleByPos(cc.v2(cpos.x-1,cpos.y+1));
-        var rdrole = this.getRoleByPos(cc.v2(cpos.x+1,cpos.y+1));
+    FindNearestNull: function (ppos,role) {
+        var cpos = this.GetPosByPixelPos(ppos);
+        var urole = this.GetRoleByPos(cc.v2(cpos.x,cpos.y-1));
+        var drole = this.GetRoleByPos(cc.v2(cpos.x,cpos.y+1));
+        var lrole = this.GetRoleByPos(cc.v2(cpos.x-1,cpos.y));
+        var rrole = this.GetRoleByPos(cc.v2(cpos.x+1,cpos.y));
+        var lurole = this.GetRoleByPos(cc.v2(cpos.x-1,cpos.y-1));
+        var rurole = this.GetRoleByPos(cc.v2(cpos.x+1,cpos.y-1));
+        var ldrole = this.GetRoleByPos(cc.v2(cpos.x-1,cpos.y+1));
+        var rdrole = this.GetRoleByPos(cc.v2(cpos.x+1,cpos.y+1));
         var ulen,dlen,llen,rlen,lulen,rulen,ldlen,rdlen,lest,reppos;
         if (!urole || urole == role) {
-            var uppos = this.getPixelPosByPos(cc.v2(cpos.x,cpos.y-1));
-            if (this.checkInBorder(uppos)) {
+            var uppos = this.GetPixelPosByPos(cc.v2(cpos.x,cpos.y-1));
+            if (this.CheckInBorder(uppos)) {
                 ulen = uppos.sub(ppos).mag();
             }
             
         }
         if (!drole || drole == role) {
-            var dppos = this.getPixelPosByPos(cc.v2(cpos.x,cpos.y+1));
-                        if (this.checkInBorder(dppos)) {                 dlen = dppos.sub(ppos).mag();             }
+            var dppos = this.GetPixelPosByPos(cc.v2(cpos.x,cpos.y+1));
+                        if (this.CheckInBorder(dppos)) {                 dlen = dppos.sub(ppos).mag();             }
         }
         if (!lrole || lrole == role) {
-            var lppos = this.getPixelPosByPos(cc.v2(cpos.x-1,cpos.y));
-                        if (this.checkInBorder(lppos)) {                 llen = lppos.sub(ppos).mag();             }
+            var lppos = this.GetPixelPosByPos(cc.v2(cpos.x-1,cpos.y));
+                        if (this.CheckInBorder(lppos)) {                 llen = lppos.sub(ppos).mag();             }
         }
         if (!rrole || rrole == role) {
-            var rppos = this.getPixelPosByPos(cc.v2(cpos.x+1,cpos.y));
-                        if (this.checkInBorder(rppos)) {                 rlen = rppos.sub(ppos).mag();             }
+            var rppos = this.GetPixelPosByPos(cc.v2(cpos.x+1,cpos.y));
+                        if (this.CheckInBorder(rppos)) {                 rlen = rppos.sub(ppos).mag();             }
         }
         if (!lurole || lurole == role) {
-            var luppos = this.getPixelPosByPos(cc.v2(cpos.x-1,cpos.y-1));
-                        if (this.checkInBorder(luppos)) {                 lulen = luppos.sub(ppos).mag();             }
+            var luppos = this.GetPixelPosByPos(cc.v2(cpos.x-1,cpos.y-1));
+                        if (this.CheckInBorder(luppos)) {                 lulen = luppos.sub(ppos).mag();             }
         }
         if (!rurole || rurole == role) {
-            var ruppos = this.getPixelPosByPos(cc.v2(cpos.x+1,cpos.y-1));
-                        if (this.checkInBorder(ruppos)) {                 rulen = ruppos.sub(ppos).mag();             }
+            var ruppos = this.GetPixelPosByPos(cc.v2(cpos.x+1,cpos.y-1));
+                        if (this.CheckInBorder(ruppos)) {                 rulen = ruppos.sub(ppos).mag();             }
         }
         if (!ldrole || ldrole == role) {
-            var ldppos = this.getPixelPosByPos(cc.v2(cpos.x-1,cpos.y+1));
-                        if (this.checkInBorder(ldppos)) {                 ldlen = ldppos.sub(ppos).mag();             }
+            var ldppos = this.GetPixelPosByPos(cc.v2(cpos.x-1,cpos.y+1));
+                        if (this.CheckInBorder(ldppos)) {                 ldlen = ldppos.sub(ppos).mag();             }
         }
         if (!rdrole || rdrole == role) {
-            var rdppos = this.getPixelPosByPos(cc.v2(cpos.x+1,cpos.y+1));
-                        if (this.checkInBorder(rdppos)) {                 rdlen = rdppos.sub(ppos).mag();             }
+            var rdppos = this.GetPixelPosByPos(cc.v2(cpos.x+1,cpos.y+1));
+                        if (this.CheckInBorder(rdppos)) {                 rdlen = rdppos.sub(ppos).mag();             }
         }
         ulen?(lest = ulen,reppos = uppos):null;
         dlen?(lest?(dlen < lest?(lest = dlen,reppos = dppos):null):(lest = dlen,reppos = dppos)):null;
@@ -268,7 +268,7 @@ var MapLayoutHandle = cc.Class({
         return reppos;
     },
     
-    checkCanShake: function (idx,type,callback) {
+    CheckCanShake: function (idx,type,callback) {
         var rolenode = this._map[idx];
         var linerole = [];
         var result = false;
@@ -304,7 +304,7 @@ var MapLayoutHandle = cc.Class({
         var relinerole = [];
         for (var index = 0; index < linerole.length; index++) {
             var element = linerole[index];
-            if (element.isShakeStateRequire()) {
+            if (element.IsShakeStateRequire()) {
                 relinerole.push(element);
             }
         }
@@ -333,17 +333,17 @@ var MapLayoutHandle = cc.Class({
     },
     
     
-    checkCanDown: function (role) {
+    CheckCanDown: function (role) {
         if (!role) {
             return null;
         }
-        var cpos = this.getPosByIndex(role.idx);
-        var drole = this.getRoleByPos(cc.v2(cpos.x,cpos.y+1));
+        var cpos = this.GetPosByIndex(role.idx);
+        var drole = this.GetRoleByPos(cc.v2(cpos.x,cpos.y+1));
         if (drole) {
-            var ldidx = this.getIndexByPos(cc.v2(cpos.x-1,cpos.y+1));
-            var rdidx = this.getIndexByPos(cc.v2(cpos.x+1,cpos.y+1));
-            var rrole = this.getRoleByPos(cc.v2(cpos.x+1,cpos.y));
-            var lrole = this.getRoleByPos(cc.v2(cpos.x-1,cpos.y));
+            var ldidx = this.GetIndexByPos(cc.v2(cpos.x-1,cpos.y+1));
+            var rdidx = this.GetIndexByPos(cc.v2(cpos.x+1,cpos.y+1));
+            var rrole = this.GetRoleByPos(cc.v2(cpos.x+1,cpos.y));
+            var lrole = this.GetRoleByPos(cc.v2(cpos.x-1,cpos.y));
             if (!this._map[ldidx] && !lrole) {
                 var r = Math.ceil(Math.random()*1+0);
                 if (r) {
@@ -358,18 +358,18 @@ var MapLayoutHandle = cc.Class({
             }
         }
         else {
-            return this.getIndexByPos(cc.v2(cpos.x,cpos.y+1));
+            return this.GetIndexByPos(cc.v2(cpos.x,cpos.y+1));
         }
 
         return null;
     },
 
 
-    createRole: function (roleid,idx,state) {
+    CreateRole: function (roleid,idx,state) {
         var roleinfo = DataMgr.instance.GetInfoByTalbeNameAndId("role",roleid);
         if (roleinfo) {
             this.guid ++;
-            var ppos = this.getPixelPosByPos(this.getPosByIndex(idx));
+            var ppos = this.GetPixelPosByPos(this.GetPosByIndex(idx));
             var pre = DataMgr.instance.GetPrefabById(roleinfo.prefabid);
             if (!pre) {
                 return;
@@ -381,21 +381,21 @@ var MapLayoutHandle = cc.Class({
             var rolenode = nd.getComponent(require("RoleNode"));
             rolenode.info = roleinfo;
             rolenode.guid = this.guid;
-            this.setRoleInIdx(rolenode,idx);
-            rolenode.changeState(state);
+            this.SetRoleInIdx(rolenode,idx);
+            rolenode.ChangeState(state);
             if (roleinfo.bornBuff) {
-                require("BuffMgr").instance.addBuff(rolenode,rolenode,roleinfo.bornBuff);
+                require("BuffMgr").instance.AddBuff(rolenode,rolenode,roleinfo.bornBuff);
             }
         }
     },
 
 
-    removeRole: function (role) {
+    RemoveRole: function (role) {
         role.node.destroy();
         role._brefresh = false;
-        var oldrole = this.getRoleByPos(this.getPosByIndex(role.idx));
+        var oldrole = this.GetRoleByPos(this.GetPosByIndex(role.idx));
         if (oldrole && oldrole.guid == role.guid) {
-            this.setRoleInIdx(null,role.idx);
+            this.SetRoleInIdx(null,role.idx);
         }
     },
     
@@ -436,7 +436,7 @@ var MapLayoutHandle = cc.Class({
                         roleid = this.info.roleid[r-1];
                         roleinfo = DataMgr.instance.GetInfoByTalbeNameAndId("role",roleid);
                         type = roleinfo.type;
-                    }while(this.checkCanShake(i,type).result);
+                    }while(this.CheckCanShake(i,type).result);
                     
                 }else{
                     var tilepro = mapparent.getPropertiesForGID(bnot);
@@ -446,7 +446,7 @@ var MapLayoutHandle = cc.Class({
                     }
                     
                 }
-                this.createRole(roleid,i,require("RoleNode").StateType.IDLE);
+                this.CreateRole(roleid,i,require("RoleNode").StateType.IDLE);
         }   
     },
 
@@ -471,6 +471,6 @@ var MapLayoutHandle = cc.Class({
 
         this._map = null;
 
-        require("BuffMgr").instance.clearBuff();
+        require("BuffMgr").instance.ClearBuff();
     }
 });

@@ -1,106 +1,134 @@
 [
   {
     "id": 1,
-    "prefabpath": "pre/bear"
+    "prefabpath": "pre/role/bear"
   },
   {
     "id": 2,
-    "prefabpath": "pre/cat"
+    "prefabpath": "pre/role/cat"
   },
   {
     "id": 3,
-    "prefabpath": "pre/chicken"
+    "prefabpath": "pre/role/chicken"
   },
   {
     "id": 4,
-    "prefabpath": "pre/fox"
+    "prefabpath": "pre/role/fox"
   },
   {
     "id": 5,
-    "prefabpath": "pre/frog"
+    "prefabpath": "pre/role/frog"
   },
   {
     "id": 6,
-    "prefabpath": "pre/stone"
+    "prefabpath": "pre/role/stone"
   },
   {
     "id": 7,
-    "prefabpath": "pre/stage1"
+    "prefabpath": "pre/stage/stage1"
   },
   {
     "id": 8,
-    "prefabpath": "pre/cat2"
+    "prefabpath": "pre/role/cat2"
   },
   {
     "id": 9,
-    "prefabpath": "pre/char20"
+    "prefabpath": "pre/role/char20"
   },
   {
     "id": 10,
-    "prefabpath": "pre/char25"
+    "prefabpath": "pre/role/char25"
   },
   {
     "id": 11,
-    "prefabpath": "pre/char27"
+    "prefabpath": "pre/role/char27"
   },
   {
     "id": 12,
-    "prefabpath": "pre/char29"
+    "prefabpath": "pre/role/char29"
   },
   {
     "id": 13,
-    "prefabpath": "pre/char35"
+    "prefabpath": "pre/role/char35"
   },
   {
     "id": 14,
-    "prefabpath": "pre/char38"
+    "prefabpath": "pre/role/char38"
   },
   {
     "id": 15,
-    "prefabpath": "pre/stone2"
+    "prefabpath": "pre/role/stone2"
   },
   {
     "id": 16,
-    "prefabpath": "pre/stage2"
+    "prefabpath": "pre/stage/stage2"
   },
   {
     "id": 17,
-    "prefabpath": "pre/char39"
+    "prefabpath": "pre/role/char39"
   },
   {
     "id": 18,
-    "prefabpath": "pre/bear2"
+    "prefabpath": "pre/role/bear2"
   },
   {
     "id": 19,
-    "prefabpath": "pre/chicken2"
+    "prefabpath": "pre/role/chicken2"
   },
   {
     "id": 20,
-    "prefabpath": "pre/fox2"
+    "prefabpath": "pre/role/fox2"
   },
   {
     "id": 21,
-    "prefabpath": "pre/frog2"
+    "prefabpath": "pre/role/frog2"
   },
   {
     "id": 22,
-    "prefabpath": "pre/hengskill"
+    "prefabpath": "pre/skill/hengskill"
   },
   {
     "id": 23,
-    "prefabpath": "pre/shuskill"
+    "prefabpath": "pre/skill/shuskill"
   },
   {
     "id": 24,
-    "prefabpath": "pre/cat2buff"
+    "prefabpath": "pre/skill/cat2buff"
   },
   {
     "id": 25,
-    "prefabpath": "pre/ef_destroy"
+    "prefabpath": "pre/skill/ef_destroy"
   },
   {
     "id": 26,
-    "prefabpath": "pre/downrole"
+    "prefabpath": "pre/role/downrole"
+  },
+  {
+    "id": 27,
+    "prefabpath": "pre/role/cat3"
+  },
+  {
+    "id": 28,
+    "prefabpath": "pre/role/bear3"
+  },
+  {
+    "id": 29,
+    "prefabpath": "pre/role/chicken3"
+  },
+  {
+    "id": 30,
+    "prefabpath": "pre/role/fox3"
+  },
+  {
+    "id": 31,
+    "prefabpath": "pre/role/frog3"
+  },
+  {
+    "id": 32,
+    "prefabpath": "pre/skill/downboombuff1"
+  },
+  {
+    "id": 33,
+    "prefabpath": "pre/skill/roundboombuff"
   }
 ]
