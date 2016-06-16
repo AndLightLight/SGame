@@ -41,13 +41,13 @@
     "targetnum": 0,
     "givebuffid": 4,
     "animationprefab": [
-      32
+      0
     ],
     "useX": [
-      1
+      0
     ],
     "useY": [
-      1
+      0
     ]
   },
   {

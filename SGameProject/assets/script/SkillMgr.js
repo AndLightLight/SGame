@@ -26,6 +26,10 @@ var SkillMgr = cc.Class({
             else if (skillinfo.targettype == 2) {
                 torolelist[0] = role;
             }
+            else if (skillinfo.targettype == 3) {
+                torolelist = role._maphandle.GetRoundRoleByIdx(role.idx);
+                torolelist[torolelist.length] = role;
+            }
 
             for (var key in torolelist) {
                 if (torolelist.hasOwnProperty(key)) {

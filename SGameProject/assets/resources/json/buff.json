@@ -31,7 +31,7 @@
     "id": 3,
     "name": "downrole",
     "duration": -1,
-    "triggercd": 3,
+    "triggercd": 10,
     "triggernum": 0,
     "animationpre": [
       0
@@ -44,11 +44,11 @@
   {
     "id": 4,
     "name": "downboom",
-    "duration": 0,
+    "duration": -1,
     "triggercd": 0,
     "triggernum": 1,
     "animationpre": [
-      0
+      32
     ],
     "triggertype": 3,
     "param": [

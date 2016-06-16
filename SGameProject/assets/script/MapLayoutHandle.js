@@ -209,6 +209,30 @@ var MapLayoutHandle = cc.Class({
         this.info.borderHeight == -1?this.mapHeight:this.info.borderHeight-1);
         return cc.rectContainsPoint(borderRect, cpos);
     },
+
+    GetRoundRoleByIdx: function (idx) {
+        var rolelist = [];
+        var cpos = this.GetPosByIndex(idx);
+        var urole = this.GetRoleByPos(cc.v2(cpos.x,cpos.y-1));
+        var drole = this.GetRoleByPos(cc.v2(cpos.x,cpos.y+1));
+        var lrole = this.GetRoleByPos(cc.v2(cpos.x-1,cpos.y));
+        var rrole = this.GetRoleByPos(cc.v2(cpos.x+1,cpos.y));
+        var lurole = this.GetRoleByPos(cc.v2(cpos.x-1,cpos.y-1));
+        var rurole = this.GetRoleByPos(cc.v2(cpos.x+1,cpos.y-1));
+        var ldrole = this.GetRoleByPos(cc.v2(cpos.x-1,cpos.y+1));
+        var rdrole = this.GetRoleByPos(cc.v2(cpos.x+1,cpos.y+1));
+
+        urole?rolelist[rolelist.length] = urole:null;
+        drole?rolelist[rolelist.length] = drole:null;
+        lrole?rolelist[rolelist.length] = lrole:null;
+        rrole?rolelist[rolelist.length] = rrole:null;
+        lurole?rolelist[rolelist.length] = lurole:null;
+        rurole?rolelist[rolelist.length] = rurole:null;
+        ldrole?rolelist[rolelist.length] = ldrole:null;
+        rdrole?rolelist[rolelist.length] = rdrole:null;    
+
+        return rolelist;    
+    },
     
     FindNearestNull: function (ppos,role) {
         var cpos = this.GetPosByPixelPos(ppos);

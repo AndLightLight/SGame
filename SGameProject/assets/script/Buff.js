@@ -39,6 +39,9 @@ var Buff = cc.Class({
                 }
                 
             }
+            else if (this.info.triggertype == 3) {
+                this.torole.ChangeState(require("RoleNode").StateType.DOWNBOOM);
+            }
         }
     },
 

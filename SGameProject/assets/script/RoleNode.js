@@ -236,6 +236,9 @@ var RoleNode = cc.Class({
                 case StateType.MERGE:
                     this.stateMgr.ChangeState(RoleNodeState.RNStateMerge.GetInstance(),param,isSub);
                     break;
+                case StateType.DOWNBOOM:
+                    this.stateMgr.ChangeState(RoleNodeState.RNStateDownBoom.GetInstance(),param,isSub);
+                    break;
                 case null:
                     this.stateMgr.ChangeState(null,param,isSub);
                     break;
