@@ -46,7 +46,7 @@ var StageCommon = cc.Class({
 
 
 StageCommon.Show = function (params) {
-    cc.loader.loadRes("pre/StageCommon",function (err,prefab) {
+    cc.loader.loadRes("pre/ui/StageCommon",function (err,prefab) {
         if (err) {
             cc.log("prefab load error: " + err);
         }

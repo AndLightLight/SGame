@@ -45,7 +45,7 @@ var MainDlg = cc.Class({
 
 
 MainDlg.Show = function (params) {
-    cc.loader.loadRes("pre/MainDlg",function (err,prefab) {
+    cc.loader.loadRes("pre/ui/MainDlg",function (err,prefab) {
         if (err) {
             cc.log("prefab load error: " + err);
         }

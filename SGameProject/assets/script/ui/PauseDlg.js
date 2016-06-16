@@ -48,7 +48,7 @@ var PauseDlg = cc.Class({
 
 
 PauseDlg.Show = function (params) {
-    cc.loader.loadRes("pre/PauseDlg",function (err,prefab) {
+    cc.loader.loadRes("pre/ui/PauseDlg",function (err,prefab) {
         if (err) {
             cc.log("prefab load error: " + err);
         }
