@@ -24,9 +24,6 @@ var SkillMgr = cc.Class({
                 torolelist = role._maphandle.FindTenWordRole(role.idx);
             }
             else if (skillinfo.targettype == 2) {
-                torolelist[0] = role;
-            }
-            else if (skillinfo.targettype == 3) {
                 torolelist = role._maphandle.GetRoundRoleByIdx(role.idx);
                 torolelist[torolelist.length] = role;
             }
@@ -34,10 +31,13 @@ var SkillMgr = cc.Class({
             for (var key in torolelist) {
                 if (torolelist.hasOwnProperty(key)) {
                     var element = torolelist[key];
-                    if (element.info.bShake) {
+                    if (element.info.bShake && element != role) {
                         require("BuffMgr").instance.AddBuff(role,element,skillinfo.givebuffid);                        
                     }
                 }
+            }
+            if (skillinfo.selfbuffid) {
+                require("BuffMgr").instance.AddBuff(role,role,skillinfo.selfbuffid);     
             }
             
 

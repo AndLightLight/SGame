@@ -25,6 +25,11 @@ var RNStateDownBoom = cc.Class({
             temp._boomdownToIdx = temp._maphandle.GetIndexByPos(cc.v2(cpos.x,cpos.y+1));
         }
         temp._maphandle.SetRoleInIdx(null,temp.idx);
+        if (!temp._boomdownToIdx|| temp._boomdownToIdx <= 0) {
+            temp._maphandle.SetRoleInIdx(temp,temp.idx);
+            temp._boomdownToIdx = null;
+            require("SkillMgr").instance.UseSkill(temp,4);
+        }
     },
     
     onExit: function (temp) {

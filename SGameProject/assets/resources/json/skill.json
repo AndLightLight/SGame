@@ -5,6 +5,7 @@
     "targettype": 1,
     "targetnum": 0,
     "givebuffid": 1,
+    "selfbuffid": 2,
     "animationprefab": [
       22,
       23
@@ -21,9 +22,10 @@
   {
     "id": 2,
     "skillname": "normalboom",
-    "targettype": 2,
+    "targettype": 0,
     "targetnum": 0,
     "givebuffid": 2,
+    "selfbuffid": 2,
     "animationprefab": [
       0
     ],
@@ -37,9 +39,10 @@
   {
     "id": 3,
     "skillname": "downboom",
-    "targettype": 2,
+    "targettype": 0,
     "targetnum": 0,
     "givebuffid": 4,
+    "selfbuffid": 4,
     "animationprefab": [
       0
     ],
@@ -53,9 +56,10 @@
   {
     "id": 4,
     "skillname": "roundboom",
-    "targettype": 3,
+    "targettype": 2,
     "targetnum": 0,
     "givebuffid": 5,
+    "selfbuffid": 2,
     "animationprefab": [
       0
     ],

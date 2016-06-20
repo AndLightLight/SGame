@@ -130,10 +130,13 @@ var RNStateShake = cc.Class({
                         for (var key in tempshakeLineRole) {
                             if (tempshakeLineRole.hasOwnProperty(key)) {
                                 var element = tempshakeLineRole[key];
-                                //if (torole != element) {
+                                if (element.info.level == 1) {
                                     element.ChangeState(require("RoleNode").StateType.MERGE,torole.idx);
-                                    element._brefresh = false;
-                                //}
+                                }
+                                else {
+                                    element.ChangeState(require("RoleNode").StateType.BOOM,torole.idx);
+                                }
+                                element._brefresh = false;
                             }
                         }
                         var mergetoroleinfo = DataMgr.instance.GetInfoByTalbeNameAndId("role",temp._mergetoroleid);
@@ -369,7 +372,7 @@ var RNStateMerge = cc.Class({
         temp.node.stopAllActions();
         var ppos = temp._maphandle.GetPixelPosByPos(temp._maphandle.GetPosByIndex(toidx));
         var mt = cc.moveTo(0.2,ppos);
-        var ft = cc.fadeTo(0.2,0);
+        var ft = cc.fadeTo(0.2,1);
         var swp = cc.spawn(mt,ft);
         //require("SkillMgr").instance.UseSkill(temp,temp.info.boomSkill);
         var callfun = cc.callFunc(function (params) {

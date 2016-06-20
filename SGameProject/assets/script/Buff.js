@@ -24,8 +24,6 @@ var Buff = cc.Class({
         if (this.info) {
             if (this.info.triggertype == 1) {
                 this.torole.ChangeState(require("RoleNode").StateType.BOOM);
-                this.torole._maphandle.RemoveRole(this.torole);
-                this.torole.RefreshRound();
             }
             else if (this.info.triggertype == 2) {
                 var num = this.torole._maphandle.info.roleid.length;
@@ -41,6 +39,10 @@ var Buff = cc.Class({
             }
             else if (this.info.triggertype == 3) {
                 this.torole.ChangeState(require("RoleNode").StateType.DOWNBOOM);
+            }
+            else if (this.info.triggertype == 4) {
+                this.torole._maphandle.RemoveRole(this.torole);
+                this.torole.RefreshRound();
             }
         }
     },
