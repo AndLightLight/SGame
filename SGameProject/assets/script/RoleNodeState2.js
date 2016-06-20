@@ -58,7 +58,7 @@ var RNStateDownBoom = cc.Class({
                     if (drole) {
                         drole.ChangeState(require("RoleNode").StateType.BOOM);
                     }
-                    temp._maphandle.SetRoleInIdx(null,temp.idx);
+                    //temp._maphandle.SetRoleInIdx(null,temp.idx);
                     temp._boomdownToIdx = toidx;
                     var pos = temp._maphandle.GetPosByIndex(temp.idx);
                     var uurole = temp._maphandle.GetRoleByPos(cc.v2(pos.x,pos.y-2));
