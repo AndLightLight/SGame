@@ -27,8 +27,11 @@ var Buff = cc.Class({
             }
             else if (this.info.triggertype == 2) {
                 var num = this.torole._maphandle.info.roleid.length;
-                var r = Math.ceil(Math.random()*(num-1)+1);
-                var roleid = this.torole._maphandle.info.roleid[r-1];
+                do {
+                    var r = Math.ceil(Math.random()*(num-1)+1);
+                    var roleid = this.torole._maphandle.info.roleid[r-1];
+                } while (roleid == this.lastroleid);
+                this.lastroleid = roleid;
                 var cpos = this.torole._maphandle.GetPosByIndex(this.torole.idx);
                 var drole = this.torole._maphandle.GetRoleByPos(cc.v2(cpos.x,cpos.y+1));
                 if (!drole) {

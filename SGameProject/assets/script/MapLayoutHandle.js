@@ -399,6 +399,7 @@ var MapLayoutHandle = cc.Class({
             this.guid ++;
             var ppos = this.GetPixelPosByPos(this.GetPosByIndex(idx));
             var pre = DataMgr.instance.GetPrefabById(roleinfo.prefabid);
+            cc.pool.putInPool(pre)
             if (!pre) {
                 return;
             }
