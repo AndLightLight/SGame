@@ -93,7 +93,7 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomSkill": 1,
+    "boomSkill": 4,
     "bornBuff": 0,
     "score": 2
   },
@@ -205,7 +205,7 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomSkill": 1,
+    "boomSkill": 3,
     "bornBuff": 0,
     "score": 1
   },
@@ -219,7 +219,7 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomSkill": 1,
+    "boomSkill": 4,
     "bornBuff": 0,
     "score": 2
   },
@@ -233,7 +233,7 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomSkill": 1,
+    "boomSkill": 4,
     "bornBuff": 0,
     "score": 2
   },
@@ -247,7 +247,7 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomSkill": 1,
+    "boomSkill": 4,
     "bornBuff": 0,
     "score": 2
   },
@@ -261,7 +261,7 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomSkill": 1,
+    "boomSkill": 4,
     "bornBuff": 0,
     "score": 2
   },
@@ -348,5 +348,75 @@
     "boomSkill": 3,
     "bornBuff": 0,
     "score": 4
+  },
+  {
+    "id": 26,
+    "name": "cat4",
+    "type": 2,
+    "level": 4,
+    "prefabid": 34,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1,
+    "boomSkill": 1,
+    "bornBuff": 0,
+    "score": 5
+  },
+  {
+    "id": 27,
+    "name": "bear4",
+    "type": 1,
+    "level": 4,
+    "prefabid": 35,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1,
+    "boomSkill": 1,
+    "bornBuff": 0,
+    "score": 5
+  },
+  {
+    "id": 28,
+    "name": "chicken4",
+    "type": 3,
+    "level": 4,
+    "prefabid": 36,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1,
+    "boomSkill": 1,
+    "bornBuff": 0,
+    "score": 5
+  },
+  {
+    "id": 29,
+    "name": "fox4",
+    "type": 4,
+    "level": 4,
+    "prefabid": 37,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1,
+    "boomSkill": 1,
+    "bornBuff": 0,
+    "score": 5
+  },
+  {
+    "id": 30,
+    "name": "frog4",
+    "type": 5,
+    "level": 4,
+    "prefabid": 38,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1,
+    "boomSkill": 1,
+    "bornBuff": 0,
+    "score": 5
   }
 ]

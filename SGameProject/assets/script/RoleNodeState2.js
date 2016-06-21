@@ -14,35 +14,47 @@ var RNStateDownBoom = cc.Class({
         temp.node.stopAllActions();
         temp.ResetPosition();
         temp._brefresh = true;
+        temp._boomdownCurrentNum = 0;
+        param?temp._boomdownNum = param:null;
         var cpos = temp._maphandle.GetPosByIndex(temp.idx);
         var drole = temp._maphandle.GetRoleByPos(cc.v2(cpos.x,cpos.y+1));
         if (drole) {
             if (drole.info.bShake == true) {
                 temp._boomdownToIdx = drole.idx;
+                drole.ChangeState(require("RoleNode").StateType.BOOM);
             }
         }
         else {
             temp._boomdownToIdx = temp._maphandle.GetIndexByPos(cc.v2(cpos.x,cpos.y+1));
         }
-        temp._maphandle.SetRoleInIdx(null,temp.idx);
+
+
+        
         if (!temp._boomdownToIdx|| temp._boomdownToIdx <= 0) {
-            temp._maphandle.SetRoleInIdx(temp,temp.idx);
-            temp._boomdownToIdx = null;
             require("SkillMgr").instance.UseSkill(temp,4);
+        }
+        else {
+            var oldrole = temp._maphandle.GetRoleByPos(cpos);
+            if (oldrole && oldrole.guid == temp.guid) {
+                temp._maphandle.SetRoleInIdx(null,temp.idx);
+            }
         }
     },
     
     onExit: function (temp) {
-        
+        temp._boomdownToIdx = null;
+        temp._boomdownNum = 0;
+        temp._boomdownCurrentNum = 0;
     },
     
     onTick: function (temp,dt) {
         if (temp._boomdownToIdx && temp._boomdownToIdx >= 0) {
-            temp.node.y -= dt * 300;            
+            temp.node.y -= dt * 200;            
             var topos = temp._maphandle.GetPosByIndex(temp._boomdownToIdx);
             var torole = temp._maphandle.GetRoleByPos(topos);
             var toppos = temp._maphandle.GetPixelPosByPos(topos);
             if (temp.node.y <= toppos.y) { //到达才开始继续检查
+                temp._boomdownCurrentNum ++;
                 var toidx;
                 var cpos = temp._maphandle.GetPosByIndex(temp._boomdownToIdx);
                 var drole = temp._maphandle.GetRoleByPos(cc.v2(cpos.x,cpos.y+1));
@@ -54,7 +66,7 @@ var RNStateDownBoom = cc.Class({
                 else {
                     toidx = temp._maphandle.GetIndexByPos(cc.v2(cpos.x,cpos.y+1));
                 }
-                if (toidx && toidx != temp._boomdownToIdx) {
+                if (toidx && toidx != temp._boomdownToIdx && (temp._boomdownNum == 0 || (temp._boomdownNum != 0 && temp._boomdownCurrentNum < temp._boomdownNum) )) {
                     if (drole) {
                         drole.ChangeState(require("RoleNode").StateType.BOOM);
                     }
@@ -67,7 +79,13 @@ var RNStateDownBoom = cc.Class({
                     }
                 }
                 else {
-                    temp._maphandle.SetRoleInIdx(temp,temp._boomdownToIdx);
+                    var oldrole = temp._maphandle.GetRoleByIndex(temp.idx);
+                    if (oldrole && oldrole.guid == temp.guid) {
+                        temp._maphandle.SetRoleInIdx(temp,temp._boomdownToIdx);
+                    }
+                    else {
+                        temp.idx = temp._boomdownToIdx
+                    }
                     temp._boomdownToIdx = null;
                     require("SkillMgr").instance.UseSkill(temp,4);
                     return;

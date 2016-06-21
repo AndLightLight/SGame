@@ -38,7 +38,7 @@ var Buff = cc.Class({
                 
             }
             else if (this.info.triggertype == 3) {
-                this.torole.ChangeState(require("RoleNode").StateType.DOWNBOOM);
+                this.torole.ChangeState(require("RoleNode").StateType.DOWNBOOM,this.info.param[0]);
             }
             else if (this.info.triggertype == 4) {
                 this.torole._maphandle.RemoveRole(this.torole);

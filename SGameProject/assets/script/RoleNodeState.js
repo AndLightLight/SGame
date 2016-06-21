@@ -119,7 +119,7 @@ var RNStateShake = cc.Class({
         var right = cc.moveBy(0.1, 2, 0);
         var left = cc.moveBy(0.1, -2, 0);
         var sqerl = cc.sequence(right,left);
-        var rep = cc.repeat(sqerl,10);
+        var rep = cc.repeat(sqerl,5);
         
         var callfun = cc.callFunc(function (params) {
             if (temp.stateType == require("RoleNode").StateType.SHAKE) {

@@ -130,5 +130,25 @@
   {
     "id": 33,
     "prefabpath": "pre/skill/roundboombuff"
+  },
+  {
+    "id": 34,
+    "prefabpath": "pre/role/cat4"
+  },
+  {
+    "id": 35,
+    "prefabpath": "pre/role/bear4"
+  },
+  {
+    "id": 36,
+    "prefabpath": "pre/role/chicken4"
+  },
+  {
+    "id": 37,
+    "prefabpath": "pre/role/fox4"
+  },
+  {
+    "id": 38,
+    "prefabpath": "pre/role/frog4"
   }
 ]

@@ -87,6 +87,10 @@ var MapLayoutHandle = cc.Class({
     GetRoleByPos:  function (pos) {
         return this._map[this.GetIndexByPos(pos)];
     },
+
+    GetRoleByIndex:  function (idx) {
+        return this._map[idx];
+    },
     
     SetRoleInIdx: function (role,idx) {
         if (role instanceof require("RoleNode") || role == null) {
@@ -417,7 +421,7 @@ var MapLayoutHandle = cc.Class({
     RemoveRole: function (role) {
         role.node.destroy();
         role._brefresh = false;
-        var oldrole = this.GetRoleByPos(this.GetPosByIndex(role.idx));
+        var oldrole = this.GetRoleByIndex(role.idx);
         if (oldrole && oldrole.guid == role.guid) {
             this.SetRoleInIdx(null,role.idx);
         }

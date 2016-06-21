@@ -25,11 +25,6 @@ var RoleNode = cc.Class({
             visible: false,
         },
         
-        boomEffect: {
-           default: null,
-           type: cc.Prefab,  
-        },
-        
         idx:{
             default: -1,
             visible: false,
@@ -57,6 +52,8 @@ var RoleNode = cc.Class({
 
         //downboomparam
         _boomdownToIdx: null,
+        _boomdownNum: 0,
+        _boomdownCurrentNum: 0,
         
         //shakeparam
         _shakeLineRole: [],
