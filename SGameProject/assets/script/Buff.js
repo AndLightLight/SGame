@@ -1,4 +1,5 @@
 var BuffMgr = require("BuffMgr");
+var PoolMgr = require("PoolMgr");
 var Buff = cc.Class({
     extends: cc.Component,
 
@@ -7,6 +8,7 @@ var Buff = cc.Class({
         info: null,
         fromrole: null,
         torole: null,
+        aninode: [],
 
         _currenttime: 0,
         _triggertime: 0,
@@ -18,6 +20,21 @@ var Buff = cc.Class({
     // use this for initialization
     onLoad: function () {
         this._triggernum = this.info.triggernum;
+    },
+
+    Clear: function () {
+        this.guid = 0;
+        this.info = null;
+        this.fromrole = null;
+        this.torole = null;
+        for (var index = 0; index < this.aninode.length; index++) {
+            var element = this.aninode[index];
+            PoolMgr.instance.RemoveNodeByPreId(element.prefabid,element);
+        }
+        this.aninode = [];
+        this._currenttime = 0;
+        this._triggertime = 0;
+        this._triggernum = 0;
     },
 
     trigger: function () {
@@ -64,7 +81,7 @@ var Buff = cc.Class({
                 this._triggernum --;
             }
 
-            if (this._currenttime >= this.info.duration && this.info.duration != -1) {
+            if ((this._currenttime >= this.info.duration && this.info.duration != -1) ) {
                 this.isActive = false;
                 return;
             }

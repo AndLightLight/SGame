@@ -1,4 +1,5 @@
 var DataMgr = require("DataMgr");
+var PoolMgr = require("PoolMgr");
 var MapLayoutHandle = cc.Class({
     extends: cc.Component,
 
@@ -398,16 +399,23 @@ var MapLayoutHandle = cc.Class({
         if (roleinfo) {
             this.guid ++;
             var ppos = this.GetPixelPosByPos(this.GetPosByIndex(idx));
-            var pre = DataMgr.instance.GetPrefabById(roleinfo.prefabid);
-            cc.pool.putInPool(pre)
-            if (!pre) {
-                return;
-            }
-            var nd = cc.instantiate(pre);
+            // var pre = DataMgr.instance.GetPrefabById(roleinfo.prefabid);
+            // if (!pre) {
+            //     return;
+            // }
+            // var nd = cc.instantiate(pre);
+            var nd = PoolMgr.instance.GetNodeByPreId(roleinfo.prefabid);
+            var rolenode = nd.getComponent(require("RoleNode"));
+            
             nd.x = ppos.x;
             nd.y = ppos.y;
             nd.parent = this.node;
-            var rolenode = nd.getComponent(require("RoleNode"));
+
+            if (rolenode.guid != 0) {
+                rolenode.Clear();
+                rolenode.onLoad();
+            }
+            
             rolenode.info = roleinfo;
             rolenode.guid = this.guid;
             this.SetRoleInIdx(rolenode,idx);
@@ -420,8 +428,10 @@ var MapLayoutHandle = cc.Class({
 
 
     RemoveRole: function (role) {
-        role.node.destroy();
+        //role.node.destroy();
+        PoolMgr.instance.RemoveNodeByPreId(role.info.prefabid,role.node);
         role._brefresh = false;
+        role.ClearBuff();
         var oldrole = this.GetRoleByIndex(role.idx);
         if (oldrole && oldrole.guid == role.guid) {
             this.SetRoleInIdx(null,role.idx);
@@ -430,6 +440,7 @@ var MapLayoutHandle = cc.Class({
     
     
     loadMap: function () {
+        PoolMgr.instance.InitPre();
         var map = this.node.getComponent(cc.TiledLayer);
         map.enabled = false;
         var mapparent = this.node.parent.getComponent(cc.TiledMap);
@@ -485,20 +496,7 @@ var MapLayoutHandle = cc.Class({
     },
 
     onDestroy: function () {
-        this.selectRole = null;
-        
-        this.guid = 0;
-        
-        this.mapWidth = 0;
-        this.mapHeight = 0;
-        this.tileWidth = 0;
-        this.tileHeight = 0;
-
-        this.score = 0;
-        
-        this.info = null;
-
-        this._map = null;
+        PoolMgr.instance.ClearPool();
 
         require("BuffMgr").instance.ClearBuff();
     }

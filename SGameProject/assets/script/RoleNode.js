@@ -50,6 +50,7 @@ var RoleNode = cc.Class({
             visible: false,  
         },
 
+
         //downboomparam
         _boomdownToIdx: null,
         _boomdownNum: 0,
@@ -176,6 +177,10 @@ var RoleNode = cc.Class({
                 }
             }
         }
+    },
+
+    ClearBuff: function () {
+        require("BuffMgr").instance.ClearBuffByRole(this);
     },
 
     
@@ -403,6 +408,45 @@ var RoleNode = cc.Class({
         }    
     },
 
+    Clear: function (params) {
+        this.info = null;
+        
+        this.idx = -1;
+
+        this.guid = 0;
+        
+        this.bPress = false;
+        
+        this.stateType = StateType.IDLE;
+        
+        this.stateMgr = null;
+
+        //downboomparam
+        this._boomdownToIdx = null;
+        this._boomdownNum = 0;
+        this._boomdownCurrentNum = 0;
+        
+        //shakeparam
+        this._shakeLineRole = [];
+        this._mergetoroleid = 0;
+        
+        //downparam
+        this._downToIdx = null;
+        
+        
+        this._layer = null;
+        this._maphandle = null;
+        
+        this._brefresh = false;
+
+        this.node.off(cc.Node.EventType.TOUCH_END,this._touchCallBack);
+        this.node.off(cc.Node.EventType.TOUCH_START,this._touchCallBack);
+        this.node.off(cc.Node.EventType.TOUCH_MOVE,this._touchCallBack);
+        this.node.off(cc.Node.EventType.TOUCH_CANCEL,this._touchCallBack);
+
+        this.node.opacity = 255;
+    },
+
     // use this for initialization
     onLoad: function () {
         this.node.on(cc.Node.EventType.TOUCH_END,this._touchCallBack);
@@ -448,8 +492,6 @@ var RoleNode = cc.Class({
         if (this.bodyA) {
             Game.instance.world.DestroyBody(this.bodyA);
         }
-
-
     },
 });
 

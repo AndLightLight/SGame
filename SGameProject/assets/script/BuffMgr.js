@@ -1,5 +1,6 @@
 var DataMgr = require("DataMgr");
 var Game = require("Game");
+var PoolMgr = require("PoolMgr");
 var BuffMgr = cc.Class({
     extends: cc.Component,
 
@@ -42,19 +43,43 @@ var BuffMgr = cc.Class({
 
             for (var i = 0;i < buffinfo.animationpre.length;i ++) {
                 var preid = buffinfo.animationpre[i];
-                var pre = DataMgr.instance.GetPrefabById(preid);
-                if (pre) {
-                    var aninode = cc.instantiate(pre);
+                var aninode = PoolMgr.instance.GetNodeByPreId(preid);
+                //var pre = DataMgr.instance.GetPrefabById(preid);
+                if (aninode) {
+                    //var aninode = cc.instantiate(pre);
 
                     aninode.x = 0;
                     aninode.y = 0;
                     aninode.parent = torole.node;
+                    aninode.prefabid = preid;
+                    var anic = aninode.getComponent(cc.Animation);
+                    if (anic) {
+                        anic.play();
+                    }
+                    buff.aninode.push(aninode);
                 }
             }
         }
     },
 
+    ClearBuffByRole: function (role) {
+         for (var key in this.buffList) {
+            if (this.buffList.hasOwnProperty(key)) {
+                var element = this.buffList[key];
+                if (element.torole == role) {
+                    element.isActive = false;
+                }
+            }
+        }   
+    },
+
     ClearBuff: function () {
+        for (var key in this.buffList) {
+            if (this.buffList.hasOwnProperty(key)) {
+                var element = this.buffList[key];
+                element.Clear();
+            }
+        }
         this.buffList = {};
         this.guid = 0;
     },
@@ -70,6 +95,7 @@ var BuffMgr = cc.Class({
                             element.update(dt);
                         }
                         else {
+                            this.buffList[key].Clear();
                             delete this.buffList[key];
                         }
                     }

@@ -21,6 +21,13 @@ var DataMgr = cc.Class({
             visible: false,
         },
     },
+
+    IsPrefabLoadById: function (id,callback) {
+        if (this.m_preLoadTable && this.m_preLoadTable[id]) {
+            return this.m_preLoadTable[id]?true:false;
+        }
+        return false;
+    },
     
     
     GetPrefabById: function (id,callback) {

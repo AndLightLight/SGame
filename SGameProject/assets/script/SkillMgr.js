@@ -1,4 +1,5 @@
 var DataMgr = require("DataMgr");
+var PoolMgr = require("PoolMgr");
 var SkillMgr = cc.Class({
     extends: cc.Component,
 
@@ -49,7 +50,17 @@ var SkillMgr = cc.Class({
                 }
                 var useX = skillinfo.useX[i];
                 var useY = skillinfo.useY[i];
-                var aninode = cc.instantiate(pre);
+
+                //var aninode = cc.instantiate(pre);
+                var aninode = PoolMgr.instance.GetNodeByPreId(preid);
+                var anic = aninode.getComponent(require("AnimationCallBack"));
+                var ani = aninode.getComponent(cc.Animation);
+                ani.play();
+                anic.preid = preid;
+                anic.callBack = function () {
+                    PoolMgr.instance.RemoveNodeByPreId(this.preid,this.node);
+                };
+
                 var fpos = role._maphandle.GetPixelPosByPos(role._maphandle.GetPosByIndex(role.idx));
                 var apos = role._maphandle.GetMapCenterPPos();
                 if (useX) {
