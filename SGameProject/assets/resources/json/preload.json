@@ -1,154 +1,192 @@
 [
   {
     "id": 1,
-    "prefabpath": "pre/role/bear"
+    "prefabpath": "pre/role/bear",
+    "poolnum": 40
   },
   {
     "id": 2,
-    "prefabpath": "pre/role/cat"
+    "prefabpath": "pre/role/cat",
+    "poolnum": 40
   },
   {
     "id": 3,
-    "prefabpath": "pre/role/chicken"
+    "prefabpath": "pre/role/chicken",
+    "poolnum": 40
   },
   {
     "id": 4,
-    "prefabpath": "pre/role/fox"
+    "prefabpath": "pre/role/fox",
+    "poolnum": 40
   },
   {
     "id": 5,
-    "prefabpath": "pre/role/frog"
+    "prefabpath": "pre/role/frog",
+    "poolnum": 40
   },
   {
     "id": 6,
-    "prefabpath": "pre/role/stone"
+    "prefabpath": "pre/role/stone",
+    "poolnum": 0
   },
   {
     "id": 7,
-    "prefabpath": "pre/stage/stage1"
+    "prefabpath": "pre/stage/stage1",
+    "poolnum": 0
   },
   {
     "id": 8,
-    "prefabpath": "pre/role/cat2"
+    "prefabpath": "pre/role/cat2",
+    "poolnum": 5
   },
   {
     "id": 9,
-    "prefabpath": "pre/role/char20"
+    "prefabpath": "pre/role/char20",
+    "poolnum": 0
   },
   {
     "id": 10,
-    "prefabpath": "pre/role/char25"
+    "prefabpath": "pre/role/char25",
+    "poolnum": 0
   },
   {
     "id": 11,
-    "prefabpath": "pre/role/char27"
+    "prefabpath": "pre/role/char27",
+    "poolnum": 0
   },
   {
     "id": 12,
-    "prefabpath": "pre/role/char29"
+    "prefabpath": "pre/role/char29",
+    "poolnum": 0
   },
   {
     "id": 13,
-    "prefabpath": "pre/role/char35"
+    "prefabpath": "pre/role/char35",
+    "poolnum": 0
   },
   {
     "id": 14,
-    "prefabpath": "pre/role/char38"
+    "prefabpath": "pre/role/char38",
+    "poolnum": 0
   },
   {
     "id": 15,
-    "prefabpath": "pre/role/stone2"
+    "prefabpath": "pre/role/stone2",
+    "poolnum": 0
   },
   {
     "id": 16,
-    "prefabpath": "pre/stage/stage2"
+    "prefabpath": "pre/stage/stage2",
+    "poolnum": 0
   },
   {
     "id": 17,
-    "prefabpath": "pre/role/char39"
+    "prefabpath": "pre/role/char39",
+    "poolnum": 0
   },
   {
     "id": 18,
-    "prefabpath": "pre/role/bear2"
+    "prefabpath": "pre/role/bear2",
+    "poolnum": 5
   },
   {
     "id": 19,
-    "prefabpath": "pre/role/chicken2"
+    "prefabpath": "pre/role/chicken2",
+    "poolnum": 5
   },
   {
     "id": 20,
-    "prefabpath": "pre/role/fox2"
+    "prefabpath": "pre/role/fox2",
+    "poolnum": 5
   },
   {
     "id": 21,
-    "prefabpath": "pre/role/frog2"
+    "prefabpath": "pre/role/frog2",
+    "poolnum": 5
   },
   {
     "id": 22,
-    "prefabpath": "pre/skill/hengskill"
+    "prefabpath": "pre/skill/hengskill",
+    "poolnum": 5
   },
   {
     "id": 23,
-    "prefabpath": "pre/skill/shuskill"
+    "prefabpath": "pre/skill/shuskill",
+    "poolnum": 5
   },
   {
     "id": 24,
-    "prefabpath": "pre/skill/cat2buff"
+    "prefabpath": "pre/skill/cat2buff",
+    "poolnum": 80
   },
   {
     "id": 25,
-    "prefabpath": "pre/skill/ef_destroy"
+    "prefabpath": "pre/skill/ef_destroy",
+    "poolnum": 50
   },
   {
     "id": 26,
-    "prefabpath": "pre/role/downrole"
+    "prefabpath": "pre/role/downrole",
+    "poolnum": 0
   },
   {
     "id": 27,
-    "prefabpath": "pre/role/cat3"
+    "prefabpath": "pre/role/cat3",
+    "poolnum": 3
   },
   {
     "id": 28,
-    "prefabpath": "pre/role/bear3"
+    "prefabpath": "pre/role/bear3",
+    "poolnum": 3
   },
   {
     "id": 29,
-    "prefabpath": "pre/role/chicken3"
+    "prefabpath": "pre/role/chicken3",
+    "poolnum": 3
   },
   {
     "id": 30,
-    "prefabpath": "pre/role/fox3"
+    "prefabpath": "pre/role/fox3",
+    "poolnum": 3
   },
   {
     "id": 31,
-    "prefabpath": "pre/role/frog3"
+    "prefabpath": "pre/role/frog3",
+    "poolnum": 3
   },
   {
     "id": 32,
-    "prefabpath": "pre/skill/downboombuff1"
+    "prefabpath": "pre/skill/downboombuff1",
+    "poolnum": 3
   },
   {
     "id": 33,
-    "prefabpath": "pre/skill/roundboombuff"
+    "prefabpath": "pre/skill/roundboombuff",
+    "poolnum": 11
   },
   {
     "id": 34,
-    "prefabpath": "pre/role/cat4"
+    "prefabpath": "pre/role/cat4",
+    "poolnum": 3
   },
   {
     "id": 35,
-    "prefabpath": "pre/role/bear4"
+    "prefabpath": "pre/role/bear4",
+    "poolnum": 3
   },
   {
     "id": 36,
-    "prefabpath": "pre/role/chicken4"
+    "prefabpath": "pre/role/chicken4",
+    "poolnum": 3
   },
   {
     "id": 37,
-    "prefabpath": "pre/role/fox4"
+    "prefabpath": "pre/role/fox4",
+    "poolnum": 3
   },
   {
     "id": 38,
-    "prefabpath": "pre/role/frog4"
+    "prefabpath": "pre/role/frog4",
+    "poolnum": 3
   }
 ]

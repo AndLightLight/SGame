@@ -130,7 +130,7 @@ var RNStateShake = cc.Class({
                         for (var key in tempshakeLineRole) {
                             if (tempshakeLineRole.hasOwnProperty(key)) {
                                 var element = tempshakeLineRole[key];
-                                if (element.info.level == 1) {
+                                if (element.info.boomSkill == 2) {
                                     element.ChangeState(require("RoleNode").StateType.MERGE,torole.idx);
                                 }
                                 else {

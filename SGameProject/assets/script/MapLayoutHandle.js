@@ -472,7 +472,7 @@ var MapLayoutHandle = cc.Class({
                         if (canRTimes <= 0) {
                             break;
                         }
-                        var r = Math.ceil(Math.random()*(num-1)+1);
+                        var r = Math.ceil(Math.random()*(num));
                         roleid = this.info.roleid[r-1];
                         roleinfo = DataMgr.instance.GetInfoByTalbeNameAndId("role",roleid);
                         type = roleinfo.type;

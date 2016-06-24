@@ -1,0 +1,125 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "lockboom2",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.2833333333333333,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "paths": {
+      "lock3": {
+        "props": {
+          "position": [
+            {
+              "frame": 0,
+              "value": [
+                -16.1,
+                -15
+              ]
+            },
+            {
+              "frame": 0.26666666666666666,
+              "value": [
+                -43.5,
+                -22.4
+              ]
+            }
+          ],
+          "rotation": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 0.26666666666666666,
+              "value": -21
+            }
+          ]
+        }
+      },
+      "lock2": {
+        "props": {
+          "position": [
+            {
+              "frame": 0,
+              "value": [
+                -1.7,
+                -16.3
+              ]
+            },
+            {
+              "frame": 0.2833333333333333,
+              "value": [
+                -14.8,
+                18.5
+              ]
+            }
+          ]
+        }
+      },
+      "lock1": {
+        "props": {
+          "position": [
+            {
+              "frame": 0,
+              "value": [
+                17.8,
+                -16.3
+              ]
+            },
+            {
+              "frame": 0.2833333333333333,
+              "value": [
+                36.1,
+                -2.4
+              ]
+            }
+          ],
+          "rotation": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 0.2833333333333333,
+              "value": 26
+            }
+          ]
+        }
+      },
+      "lock4": {
+        "props": {
+          "rotation": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 0.2833333333333333,
+              "value": 14
+            }
+          ],
+          "position": [
+            {
+              "frame": 0,
+              "value": [
+                0,
+                -15
+              ]
+            },
+            {
+              "frame": 0.2833333333333333,
+              "value": [
+                -5.7,
+                -24.6
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}

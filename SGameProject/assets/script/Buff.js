@@ -23,6 +23,7 @@ var Buff = cc.Class({
     },
 
     Clear: function () {
+        this.leaveTrigger();
         this.guid = 0;
         this.info = null;
         this.fromrole = null;
@@ -45,7 +46,7 @@ var Buff = cc.Class({
             else if (this.info.triggertype == 2) {
                 var num = this.torole._maphandle.info.roleid.length;
                 do {
-                    var r = Math.ceil(Math.random()*(num-1)+1);
+                    var r = Math.ceil(Math.random()*(num));
                     var roleid = this.torole._maphandle.info.roleid[r-1];
                 } while (roleid == this.lastroleid);
                 this.lastroleid = roleid;
@@ -65,6 +66,10 @@ var Buff = cc.Class({
                 this.torole.RefreshRound();
             }
         }
+    },
+
+    leaveTrigger: function () {
+        
     },
 
     // called every frame, uncomment this function to activate update callback

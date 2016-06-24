@@ -25,15 +25,16 @@ var PoolMgr = cc.Class({
     },
 
     InitPre: function () {
-        for (var index = 0; index < this.PreIdList.length; index++) {
-            var element = this.PreIdList[index];
-            var preid = element.preid;
-            var num = element.num;
+        var prelist = DataMgr.instance.GetTalbeByName("preload");
+        for (var index = 0; index < prelist.length; index++) {
+            var element = prelist[index];
+            var preid = element.id;
+            var num = element.poolnum;
 
             var haspre = DataMgr.instance.IsPrefabLoadById(preid);
             if (haspre) {
                 var pre = DataMgr.instance.GetPrefabById(preid);
-                for (var index = 0; index < num; index++) {
+                for (var i = 0; i < num; i++) {
                     var newnode = cc.instantiate(pre);
                     this.RemoveNodeByPreId(preid,newnode);                        
                 }
@@ -65,7 +66,20 @@ var PoolMgr = cc.Class({
             this._nodeList[preid] = [];
         }
         var pre_nodeList = this._nodeList[preid];
-        pre_nodeList.push(node);      
+        pre_nodeList.push(node);
+
+        if (!this.presizetest) {
+            this.presizetest = {};
+        }    
+
+        if (this.presizetest[preid]) {
+            if (this.presizetest[preid] < pre_nodeList.length) {
+                this.presizetest[preid] = pre_nodeList.length;
+            }
+        }
+        else {
+            this.presizetest[preid] = pre_nodeList.length;
+        }
     },
 
     ClearPool: function () {
