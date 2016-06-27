@@ -24,6 +24,8 @@ var Game = cc.Class({
             default: null,
             visible: false,
         },
+
+        _isdown: false,
     },
     
     StartGame: function (stageid) {
@@ -99,6 +101,18 @@ var Game = cc.Class({
         }
         else {
             this.LogPane.active = !this.LogPane.active;
+        }
+    },
+
+    Down: function (bopen) {
+        if (bopen == true) {
+            this._isdown = true;
+        }
+        else if (bopen == false) {
+            this._isdown = false;
+        }
+        else {
+            this._isdown = !this._isdown;
         }
     },
     

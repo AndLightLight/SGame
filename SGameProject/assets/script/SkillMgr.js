@@ -33,12 +33,18 @@ var SkillMgr = cc.Class({
                 if (torolelist.hasOwnProperty(key)) {
                     var element = torolelist[key];
                     if (element.info.bShake && element != role) {
-                        require("BuffMgr").instance.AddBuff(role,element,skillinfo.givebuffid);                        
+                        for (var index = 0; index < skillinfo.givebuffid.length; index++) {
+                            var buffid = skillinfo.givebuffid[index];
+                            require("BuffMgr").instance.AddBuff(role,element,buffid);   
+                        }                 
                     }
                 }
             }
             if (skillinfo.selfbuffid) {
-                require("BuffMgr").instance.AddBuff(role,role,skillinfo.selfbuffid);     
+                for (var index = 0; index < skillinfo.selfbuffid.length; index++) {
+                    var buffid = skillinfo.selfbuffid[index];
+                    require("BuffMgr").instance.AddBuff(role,role,buffid);     
+                }
             }
             
 

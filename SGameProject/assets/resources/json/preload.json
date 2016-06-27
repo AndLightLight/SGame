@@ -188,5 +188,25 @@
     "id": 38,
     "prefabpath": "pre/role/frog4",
     "poolnum": 3
+  },
+  {
+    "id": 39,
+    "prefabpath": "pre/skill/lock1",
+    "poolnum": 0
+  },
+  {
+    "id": 40,
+    "prefabpath": "pre/skill/lockboom1",
+    "poolnum": 0
+  },
+  {
+    "id": 41,
+    "prefabpath": "pre/skill/lock2",
+    "poolnum": 0
+  },
+  {
+    "id": 42,
+    "prefabpath": "pre/skill/lockboom2",
+    "poolnum": 0
   }
 ]

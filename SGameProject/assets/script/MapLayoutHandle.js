@@ -416,13 +416,10 @@ var MapLayoutHandle = cc.Class({
                 rolenode.onLoad();
             }
             
-            rolenode.info = roleinfo;
+            rolenode.InitInfo(roleinfo);
             rolenode.guid = this.guid;
             this.SetRoleInIdx(rolenode,idx);
             rolenode.ChangeState(state);
-            if (roleinfo.bornBuff) {
-                require("BuffMgr").instance.AddBuff(rolenode,rolenode,roleinfo.bornBuff);
-            }
         }
     },
 

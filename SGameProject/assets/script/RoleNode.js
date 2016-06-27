@@ -50,6 +50,17 @@ var RoleNode = cc.Class({
             visible: false,  
         },
 
+        //temp info
+        blood: {
+            default: 0,
+            visible: false,
+        },
+
+        boomSkill: {
+            default: 0,
+            visible: false,
+        },
+
 
         //downboomparam
         _boomdownToIdx: null,
@@ -175,6 +186,18 @@ var RoleNode = cc.Class({
                         }
                     }
                 }
+            }
+        }
+    },
+
+    InitInfo: function (info) {
+        this.info = info;
+        this.blood = info.blood;
+        this.boomSkill = info.boomSkill;
+        if (info.bornBuff) {
+            for (var index = 0; index < info.bornBuff.length; index++) {
+                var buffid = info.bornBuff[index];
+                require("BuffMgr").instance.AddBuff(this,this,buffid);
             }
         }
     },

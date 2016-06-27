@@ -10,8 +10,11 @@
     "bShake": 1,
     "bFloat": 1,
     "boomSkill": 2,
-    "bornBuff": 0,
-    "score": 1
+    "bornBuff": [
+      0
+    ],
+    "score": 1,
+    "blood": 1
   },
   {
     "id": 2,
@@ -24,8 +27,11 @@
     "bShake": 1,
     "bFloat": 1,
     "boomSkill": 2,
-    "bornBuff": 0,
-    "score": 1
+    "bornBuff": [
+      0
+    ],
+    "score": 1,
+    "blood": 1
   },
   {
     "id": 3,
@@ -38,8 +44,11 @@
     "bShake": 1,
     "bFloat": 1,
     "boomSkill": 2,
-    "bornBuff": 0,
-    "score": 1
+    "bornBuff": [
+      0
+    ],
+    "score": 1,
+    "blood": 1
   },
   {
     "id": 4,
@@ -52,8 +61,11 @@
     "bShake": 1,
     "bFloat": 1,
     "boomSkill": 2,
-    "bornBuff": 0,
-    "score": 1
+    "bornBuff": [
+      0
+    ],
+    "score": 1,
+    "blood": 1
   },
   {
     "id": 5,
@@ -66,8 +78,11 @@
     "bShake": 1,
     "bFloat": 1,
     "boomSkill": 2,
-    "bornBuff": 0,
-    "score": 1
+    "bornBuff": [
+      0
+    ],
+    "score": 1,
+    "blood": 1
   },
   {
     "id": 6,
@@ -80,8 +95,11 @@
     "bShake": 0,
     "bFloat": 0,
     "boomSkill": 0,
-    "bornBuff": 0,
-    "score": 0
+    "bornBuff": [
+      0
+    ],
+    "score": 0,
+    "blood": 1
   },
   {
     "id": 7,
@@ -93,9 +111,12 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomSkill": 1,
-    "bornBuff": 0,
-    "score": 2
+    "boomSkill": 4,
+    "bornBuff": [
+      0
+    ],
+    "score": 2,
+    "blood": 1
   },
   {
     "id": 8,
@@ -108,8 +129,11 @@
     "bShake": 1,
     "bFloat": 1,
     "boomSkill": 2,
-    "bornBuff": 0,
-    "score": 1
+    "bornBuff": [
+      0
+    ],
+    "score": 1,
+    "blood": 1
   },
   {
     "id": 9,
@@ -122,8 +146,11 @@
     "bShake": 1,
     "bFloat": 1,
     "boomSkill": 2,
-    "bornBuff": 0,
-    "score": 1
+    "bornBuff": [
+      0
+    ],
+    "score": 1,
+    "blood": 1
   },
   {
     "id": 10,
@@ -136,8 +163,11 @@
     "bShake": 1,
     "bFloat": 1,
     "boomSkill": 2,
-    "bornBuff": 0,
-    "score": 1
+    "bornBuff": [
+      0
+    ],
+    "score": 1,
+    "blood": 1
   },
   {
     "id": 11,
@@ -150,8 +180,11 @@
     "bShake": 1,
     "bFloat": 1,
     "boomSkill": 2,
-    "bornBuff": 0,
-    "score": 1
+    "bornBuff": [
+      0
+    ],
+    "score": 1,
+    "blood": 1
   },
   {
     "id": 12,
@@ -164,8 +197,11 @@
     "bShake": 1,
     "bFloat": 1,
     "boomSkill": 2,
-    "bornBuff": 0,
-    "score": 1
+    "bornBuff": [
+      0
+    ],
+    "score": 1,
+    "blood": 1
   },
   {
     "id": 13,
@@ -178,8 +214,11 @@
     "bShake": 1,
     "bFloat": 1,
     "boomSkill": 2,
-    "bornBuff": 0,
-    "score": 1
+    "bornBuff": [
+      0
+    ],
+    "score": 1,
+    "blood": 1
   },
   {
     "id": 14,
@@ -192,8 +231,11 @@
     "bShake": 0,
     "bFloat": 0,
     "boomSkill": 0,
-    "bornBuff": 0,
-    "score": 0
+    "bornBuff": [
+      0
+    ],
+    "score": 0,
+    "blood": 1
   },
   {
     "id": 15,
@@ -206,8 +248,11 @@
     "bShake": 1,
     "bFloat": 1,
     "boomSkill": 3,
-    "bornBuff": 0,
-    "score": 1
+    "bornBuff": [
+      0
+    ],
+    "score": 1,
+    "blood": 1
   },
   {
     "id": 16,
@@ -219,9 +264,12 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomSkill": 1,
-    "bornBuff": 0,
-    "score": 2
+    "boomSkill": 4,
+    "bornBuff": [
+      0
+    ],
+    "score": 2,
+    "blood": 1
   },
   {
     "id": 17,
@@ -233,9 +281,12 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomSkill": 1,
-    "bornBuff": 0,
-    "score": 2
+    "boomSkill": 4,
+    "bornBuff": [
+      0
+    ],
+    "score": 2,
+    "blood": 1
   },
   {
     "id": 18,
@@ -247,9 +298,12 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomSkill": 1,
-    "bornBuff": 0,
-    "score": 2
+    "boomSkill": 4,
+    "bornBuff": [
+      0
+    ],
+    "score": 2,
+    "blood": 1
   },
   {
     "id": 19,
@@ -261,9 +315,12 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomSkill": 1,
-    "bornBuff": 0,
-    "score": 2
+    "boomSkill": 4,
+    "bornBuff": [
+      0
+    ],
+    "score": 2,
+    "blood": 1
   },
   {
     "id": 20,
@@ -276,8 +333,11 @@
     "bShake": 0,
     "bFloat": 0,
     "boomSkill": 0,
-    "bornBuff": 3,
-    "score": 0
+    "bornBuff": [
+      3
+    ],
+    "score": 0,
+    "blood": 1
   },
   {
     "id": 21,
@@ -290,8 +350,11 @@
     "bShake": 1,
     "bFloat": 1,
     "boomSkill": 3,
-    "bornBuff": 0,
-    "score": 4
+    "bornBuff": [
+      0
+    ],
+    "score": 4,
+    "blood": 1
   },
   {
     "id": 22,
@@ -304,8 +367,11 @@
     "bShake": 1,
     "bFloat": 1,
     "boomSkill": 3,
-    "bornBuff": 0,
-    "score": 4
+    "bornBuff": [
+      0
+    ],
+    "score": 4,
+    "blood": 1
   },
   {
     "id": 23,
@@ -318,8 +384,11 @@
     "bShake": 1,
     "bFloat": 1,
     "boomSkill": 3,
-    "bornBuff": 0,
-    "score": 4
+    "bornBuff": [
+      0
+    ],
+    "score": 4,
+    "blood": 1
   },
   {
     "id": 24,
@@ -332,8 +401,11 @@
     "bShake": 1,
     "bFloat": 1,
     "boomSkill": 3,
-    "bornBuff": 0,
-    "score": 4
+    "bornBuff": [
+      0
+    ],
+    "score": 4,
+    "blood": 1
   },
   {
     "id": 25,
@@ -346,8 +418,11 @@
     "bShake": 1,
     "bFloat": 1,
     "boomSkill": 3,
-    "bornBuff": 0,
-    "score": 4
+    "bornBuff": [
+      0
+    ],
+    "score": 4,
+    "blood": 1
   },
   {
     "id": 26,
@@ -360,8 +435,11 @@
     "bShake": 1,
     "bFloat": 1,
     "boomSkill": 1,
-    "bornBuff": 0,
-    "score": 5
+    "bornBuff": [
+      0
+    ],
+    "score": 5,
+    "blood": 1
   },
   {
     "id": 27,
@@ -374,8 +452,11 @@
     "bShake": 1,
     "bFloat": 1,
     "boomSkill": 1,
-    "bornBuff": 0,
-    "score": 5
+    "bornBuff": [
+      0
+    ],
+    "score": 5,
+    "blood": 1
   },
   {
     "id": 28,
@@ -388,8 +469,11 @@
     "bShake": 1,
     "bFloat": 1,
     "boomSkill": 1,
-    "bornBuff": 0,
-    "score": 5
+    "bornBuff": [
+      0
+    ],
+    "score": 5,
+    "blood": 1
   },
   {
     "id": 29,
@@ -402,8 +486,11 @@
     "bShake": 1,
     "bFloat": 1,
     "boomSkill": 1,
-    "bornBuff": 0,
-    "score": 5
+    "bornBuff": [
+      0
+    ],
+    "score": 5,
+    "blood": 1
   },
   {
     "id": 30,
@@ -416,7 +503,190 @@
     "bShake": 1,
     "bFloat": 1,
     "boomSkill": 1,
-    "bornBuff": 0,
-    "score": 5
+    "bornBuff": [
+      0
+    ],
+    "score": 5,
+    "blood": 1
+  },
+  {
+    "id": 31,
+    "name": "catlock1",
+    "type": 2,
+    "level": 1,
+    "prefabid": 2,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1,
+    "boomSkill": 2,
+    "bornBuff": [
+      6,
+      10
+    ],
+    "score": 1,
+    "blood": 1
+  },
+  {
+    "id": 32,
+    "name": "bearlock1",
+    "type": 1,
+    "level": 1,
+    "prefabid": 1,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1,
+    "boomSkill": 2,
+    "bornBuff": [
+      6,
+      10
+    ],
+    "score": 1,
+    "blood": 1
+  },
+  {
+    "id": 33,
+    "name": "chickenlock1",
+    "type": 3,
+    "level": 1,
+    "prefabid": 3,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1,
+    "boomSkill": 2,
+    "bornBuff": [
+      6,
+      10
+    ],
+    "score": 1,
+    "blood": 1
+  },
+  {
+    "id": 34,
+    "name": "foxlock1",
+    "type": 4,
+    "level": 1,
+    "prefabid": 4,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1,
+    "boomSkill": 2,
+    "bornBuff": [
+      6,
+      10
+    ],
+    "score": 1,
+    "blood": 1
+  },
+  {
+    "id": 35,
+    "name": "froglock1",
+    "type": 5,
+    "level": 1,
+    "prefabid": 5,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1,
+    "boomSkill": 2,
+    "bornBuff": [
+      6,
+      10
+    ],
+    "score": 1,
+    "blood": 1
+  },
+  {
+    "id": 36,
+    "name": "catlock2",
+    "type": 2,
+    "level": 1,
+    "prefabid": 2,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1,
+    "boomSkill": 2,
+    "bornBuff": [
+      8,
+      11
+    ],
+    "score": 1,
+    "blood": 1
+  },
+  {
+    "id": 37,
+    "name": "bearlock2",
+    "type": 1,
+    "level": 1,
+    "prefabid": 1,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1,
+    "boomSkill": 2,
+    "bornBuff": [
+      8,
+      11
+    ],
+    "score": 1,
+    "blood": 1
+  },
+  {
+    "id": 38,
+    "name": "chickenlock2",
+    "type": 3,
+    "level": 1,
+    "prefabid": 3,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1,
+    "boomSkill": 2,
+    "bornBuff": [
+      8,
+      11
+    ],
+    "score": 1,
+    "blood": 1
+  },
+  {
+    "id": 39,
+    "name": "foxlock2",
+    "type": 4,
+    "level": 1,
+    "prefabid": 4,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1,
+    "boomSkill": 2,
+    "bornBuff": [
+      8,
+      11
+    ],
+    "score": 1,
+    "blood": 1
+  },
+  {
+    "id": 40,
+    "name": "froglock2",
+    "type": 5,
+    "level": 1,
+    "prefabid": 5,
+    "bChange": 1,
+    "bDown": 1,
+    "bShake": 1,
+    "bFloat": 1,
+    "boomSkill": 2,
+    "bornBuff": [
+      8,
+      11
+    ],
+    "score": 1,
+    "blood": 1
   }
 ]

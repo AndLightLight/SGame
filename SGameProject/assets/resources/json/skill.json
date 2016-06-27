@@ -4,8 +4,12 @@
     "skillname": "cat4",
     "targettype": 1,
     "targetnum": 0,
-    "givebuffid": 1,
-    "selfbuffid": 2,
+    "givebuffid": [
+      1
+    ],
+    "selfbuffid": [
+      2
+    ],
     "animationprefab": [
       22,
       23
@@ -24,8 +28,12 @@
     "skillname": "normalboom",
     "targettype": 0,
     "targetnum": 0,
-    "givebuffid": 2,
-    "selfbuffid": 2,
+    "givebuffid": [
+      0
+    ],
+    "selfbuffid": [
+      2
+    ],
     "animationprefab": [
       0
     ],
@@ -41,8 +49,12 @@
     "skillname": "downboom",
     "targettype": 0,
     "targetnum": 0,
-    "givebuffid": 4,
-    "selfbuffid": 4,
+    "givebuffid": [
+      4
+    ],
+    "selfbuffid": [
+      4
+    ],
     "animationprefab": [
       0
     ],
@@ -58,8 +70,56 @@
     "skillname": "roundboom",
     "targettype": 2,
     "targetnum": 0,
-    "givebuffid": 5,
-    "selfbuffid": 2,
+    "givebuffid": [
+      5
+    ],
+    "selfbuffid": [
+      2
+    ],
+    "animationprefab": [
+      0
+    ],
+    "useX": [
+      0
+    ],
+    "useY": [
+      0
+    ]
+  },
+  {
+    "id": 5,
+    "skillname": "lockboom1",
+    "targettype": 0,
+    "targetnum": 0,
+    "givebuffid": [
+      0
+    ],
+    "selfbuffid": [
+      7
+    ],
+    "animationprefab": [
+      0
+    ],
+    "useX": [
+      0
+    ],
+    "useY": [
+      0
+    ]
+  },
+  {
+    "id": 6,
+    "skillname": "lockboom2",
+    "targettype": 0,
+    "targetnum": 0,
+    "givebuffid": [
+      0
+    ],
+    "selfbuffid": [
+      9,
+      6,
+      10
+    ],
     "animationprefab": [
       0
     ],

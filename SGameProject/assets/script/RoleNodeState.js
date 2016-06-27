@@ -130,11 +130,12 @@ var RNStateShake = cc.Class({
                         for (var key in tempshakeLineRole) {
                             if (tempshakeLineRole.hasOwnProperty(key)) {
                                 var element = tempshakeLineRole[key];
-                                if (element.info.boomSkill == 2) {
+                                if (element.boomSkill == 2) {
                                     element.ChangeState(require("RoleNode").StateType.MERGE,torole.idx);
                                 }
                                 else {
                                     element.ChangeState(require("RoleNode").StateType.BOOM,torole.idx);
+                                    require("SkillMgr").instance.UseSkill(element,element.boomSkill);
                                 }
                                 element._brefresh = false;
                             }
@@ -152,6 +153,7 @@ var RNStateShake = cc.Class({
                         if (tempshakeLineRole.hasOwnProperty(key)) {
                             var element = tempshakeLineRole[key];
                             element.ChangeState(require("RoleNode").StateType.BOOM);
+                            require("SkillMgr").instance.UseSkill(element,element.boomSkill);
                             element._brefresh = false;
                         }
                     }
@@ -225,19 +227,8 @@ var RNStateBoom = cc.Class({
         temp.ResetPosition();
         temp.stateType = require("RoleNode").StateType.BOOM;
         temp.node.stopAllActions();
-        require("SkillMgr").instance.UseSkill(temp,temp.info.boomSkill);
+        //require("SkillMgr").instance.UseSkill(temp,temp.boomSkill);
         temp._maphandle.AddScore(temp.info.score);
-        // var be = cc.instantiate(temp.boomEffect);
-        // var bea = be.getComponent(require("AnimationCallBack"));
-        // bea.callBack = function () {
-        //     var node = this.node.parent;
-        //     var rolenode = node.getComponent(require("RoleNode"));
-        //     rolenode._maphandle.RemoveRole(rolenode);
-        //     rolenode.RefreshRound();
-        // };
-        // be.parent = temp.node;
-        // be.x = 0;
-        // be.y = 0;
     },
     
     onExit: function (temp) {
@@ -374,7 +365,7 @@ var RNStateMerge = cc.Class({
         var mt = cc.moveTo(0.2,ppos);
         var ft = cc.fadeTo(0.2,1);
         var swp = cc.spawn(mt,ft);
-        //require("SkillMgr").instance.UseSkill(temp,temp.info.boomSkill);
+        //require("SkillMgr").instance.UseSkill(temp,temp.boomSkill);
         var callfun = cc.callFunc(function (params) {
             var node = temp.node;
             var rolenode = node.getComponent(require("RoleNode"));
