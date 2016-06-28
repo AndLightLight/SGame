@@ -7,6 +7,10 @@ var StageCommon = cc.Class({
             default: null,
             type: cc.Label,
         },
+        timeLabel: {
+            default: null,
+            type: cc.Label,
+        },
         pausebt: {
             default: null,
             type: cc.Button,
@@ -36,6 +40,9 @@ var StageCommon = cc.Class({
         if (this.scoreLabel) {
             if (Game.instance.currentMap) {
                 this.scoreLabel.string = Game.instance.currentMap.score;
+                var moment = require('moment');
+                var day = moment.unix(Game.instance.currentMap.playTime);
+                this.timeLabel.string = day.format('mm:ss');                
             }
             else {
                 this.scoreLabel.string = 0;

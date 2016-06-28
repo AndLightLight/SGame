@@ -46,6 +46,11 @@ var MapLayoutHandle = cc.Class({
             default: null,
             visible: false,
         },
+
+        playTime: {
+            default: 0,
+            visible: false,
+        },
         
         info: null,
 
@@ -489,7 +494,9 @@ var MapLayoutHandle = cc.Class({
 
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
-
+        if (!this.pause) {
+            this.playTime += dt;
+        }
     },
 
     onDestroy: function () {
