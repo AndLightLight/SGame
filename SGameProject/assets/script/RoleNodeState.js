@@ -130,12 +130,12 @@ var RNStateShake = cc.Class({
                         for (var key in tempshakeLineRole) {
                             if (tempshakeLineRole.hasOwnProperty(key)) {
                                 var element = tempshakeLineRole[key];
+                                require("BuffMgr").instance.ClearBuffByRole(element);
                                 if (element.boomSkill == 2) {
                                     element.ChangeState(require("RoleNode").StateType.MERGE,torole.idx);
                                 }
                                 else {
                                     element.ChangeState(require("RoleNode").StateType.BOOM,torole.idx);
-                                    require("SkillMgr").instance.UseSkill(element,element.boomSkill);
                                 }
                                 element._brefresh = false;
                             }
@@ -153,7 +153,6 @@ var RNStateShake = cc.Class({
                         if (tempshakeLineRole.hasOwnProperty(key)) {
                             var element = tempshakeLineRole[key];
                             element.ChangeState(require("RoleNode").StateType.BOOM);
-                            require("SkillMgr").instance.UseSkill(element,element.boomSkill);
                             element._brefresh = false;
                         }
                     }
@@ -227,7 +226,7 @@ var RNStateBoom = cc.Class({
         temp.ResetPosition();
         temp.stateType = require("RoleNode").StateType.BOOM;
         temp.node.stopAllActions();
-        //require("SkillMgr").instance.UseSkill(temp,temp.boomSkill);
+        require("SkillMgr").instance.UseSkill(temp,temp.boomSkill);
         temp._maphandle.AddScore(temp.info.score);
     },
     

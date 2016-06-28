@@ -22,8 +22,14 @@ var Buff = cc.Class({
         this._triggernum = this.info.triggernum;
     },
 
+    BuffEnd: function (params) {
+        if (this.isActive) {
+            this.isActive = false;
+            this.trigger(0);
+        }
+    },
+
     Clear: function () {
-        this.trigger(0);
         this.guid = 0;
         this.info = null;
         this.fromrole = null;
@@ -50,7 +56,7 @@ var Buff = cc.Class({
         if (this.info) {
             if (this.info.triggertype == 1) {
                 if (isBegin) {
-                    require("SkillMgr").instance.UseSkill(this.torole,this.torole.boomSkill);
+                    this.torole.ChangeState(require("RoleNode").StateType.BOOM);
                 }
             }
             else if (this.info.triggertype == 2) {
@@ -76,8 +82,8 @@ var Buff = cc.Class({
             }
             else if (this.info.triggertype == 4) {
                 if (isBegin) {
-                    this.torole._maphandle.RemoveRole(this.torole);
                     this.torole.RefreshRound();
+                    this.torole._maphandle.RemoveRole(this.torole);
                 }
             }
             else if (this.info.triggertype == 5) {
@@ -115,9 +121,9 @@ var Buff = cc.Class({
 
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
-        if (this.info) {
+        if (this.info && this.isActive) {
             if (!this.torole || !this.torole.node || this.torole.node.isValid == false) {
-                this.isActive = false;
+                this.BuffEnd();
                 return;
             }
 
@@ -128,7 +134,7 @@ var Buff = cc.Class({
             }
 
             if ((this._currenttime >= this.info.duration && this.info.duration != -1) ) {
-                this.isActive = false;
+                this.BuffEnd();                
                 return;
             }
 

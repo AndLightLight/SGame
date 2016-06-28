@@ -111,7 +111,7 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomSkill": 4,
+    "boomSkill": 1,
     "bornBuff": [
       0
     ],
@@ -264,7 +264,7 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomSkill": 4,
+    "boomSkill": 1,
     "bornBuff": [
       0
     ],
@@ -281,7 +281,7 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomSkill": 4,
+    "boomSkill": 1,
     "bornBuff": [
       0
     ],
@@ -298,7 +298,7 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomSkill": 4,
+    "boomSkill": 1,
     "bornBuff": [
       0
     ],
@@ -315,7 +315,7 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomSkill": 4,
+    "boomSkill": 1,
     "bornBuff": [
       0
     ],

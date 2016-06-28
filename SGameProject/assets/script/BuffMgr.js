@@ -67,7 +67,7 @@ var BuffMgr = cc.Class({
             if (this.buffList.hasOwnProperty(key)) {
                 var element = this.buffList[key];
                 if (element.torole == role && (id == null || id == 0 || id == element.info.id)) {
-                    element.isActive = false;
+                element.BuffEnd();
                 }
             }
         }   
@@ -77,6 +77,7 @@ var BuffMgr = cc.Class({
         for (var key in this.buffList) {
             if (this.buffList.hasOwnProperty(key)) {
                 var element = this.buffList[key];
+                element.BuffEnd();
                 element.Clear();
             }
         }

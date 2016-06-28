@@ -343,7 +343,7 @@ var MapLayoutHandle = cc.Class({
         var mergeroleid = 0;
         for (var i = 0;i < typeinfo.mergeNeedNum.length;i ++) {
             if (typeinfo.mergeNeedNum[i]) {
-                if (linerole.length + offset >= typeinfo.mergeNeedNum[i]) {
+                if (relinerole.length + offset >= typeinfo.mergeNeedNum[i]) {
                     bneednum = true;
                     mergeroleid = typeinfo.mergeToRole[i];
                 }

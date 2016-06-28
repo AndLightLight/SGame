@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="15" height="15" tilewidth="48" tileheight="48">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="48" tileheight="48">
  <tileset firstgid="1" name="havetile" tilewidth="48" tileheight="48">
   <image source="bag_panel_ui@2x.png" width="152" height="190"/>
   <tile id="0">
@@ -40,7 +40,7 @@
  </tileset>
  <layer name="layout" width="15" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjY2Bg4CADsw0gZqJA30Do5YRiatjLQEJYYNPLQIReBjS9DGh6GaD+YWDANBtZL7oeZHlK9eKSY2LADQjJUaqXXAwAEpQDfA==
+   eJxjY2Bg4CADsw0gZqJA30Do5YRiatjLQEJYYNPLQIReBjS9DGh6GaD+YWDANBtZLy4Ak6NEL7JbyNGLTY5SveRiAAZ8A3A=
   </data>
  </layer>
 </map>
