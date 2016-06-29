@@ -441,9 +441,8 @@ var MapLayoutHandle = cc.Class({
                 rolenode.Clear();
                 rolenode.onLoad();
             }
-            
-            rolenode.InitInfo(roleinfo);
             rolenode.guid = this.guid;
+            rolenode.InitInfo(roleinfo);
             this.SetRoleInIdx(rolenode,idx);
             rolenode.ChangeState(state);
         }
