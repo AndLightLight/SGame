@@ -14,6 +14,7 @@ var StateType = cc.Enum({
     FLOAT: 5,
     MERGE: 6,
     BOOMDOWN: 7,
+    CREATE: 8,
 });
 
 var RoleNode = cc.Class({
@@ -52,7 +53,27 @@ var RoleNode = cc.Class({
 
         //temp info
         blood: {
-            default: 0,
+            default: true,
+            visible: false,
+        },
+
+        bChange: {
+            default: true,
+            visible: false,
+        },
+
+        bDown: {
+            default: true,
+            visible: false,
+        },
+
+        bShake: {
+            default: true,
+            visible: false,
+        },
+
+        bFloat: {
+            default: true,
             visible: false,
         },
 
@@ -60,7 +81,6 @@ var RoleNode = cc.Class({
             default: 0,
             visible: false,
         },
-
 
         //downboomparam
         _boomdownToIdx: null,
@@ -73,6 +93,11 @@ var RoleNode = cc.Class({
         
         //downparam
         _downToIdx: null,
+
+        //createparam
+        _lastroleid: 0,
+        _currentDownTime: 0,
+        _currentAllWeight: 0,
         
         
         _layer: null,
@@ -194,6 +219,10 @@ var RoleNode = cc.Class({
         this.info = info;
         this.blood = info.blood;
         this.boomSkill = info.boomSkill;
+        this.bDown = info.bDown;
+        this.bChange = info.bChange;
+        this.bFloat = info.bFloat;
+        this.bShake = info.bShake;
         if (info.bornBuff) {
             for (var index = 0; index < info.bornBuff.length; index++) {
                 var buffid = info.bornBuff[index];
@@ -263,6 +292,9 @@ var RoleNode = cc.Class({
                     break;
                 case StateType.DOWNBOOM:
                     this.stateMgr.ChangeState(RoleNodeState.RNStateDownBoom.GetInstance(),param,isSub);
+                    break;
+                case StateType.CREATE:
+                    this.stateMgr.ChangeState(RoleNodeState.RNStateCreate.GetInstance(),param,isSub);
                     break;
                 case null:
                     this.stateMgr.ChangeState(null,param,isSub);
@@ -337,7 +369,7 @@ var RoleNode = cc.Class({
     },
 
     IsBoomDownStateRequire: function () {
-        if (this.info.bShake == true && this.stateType != StateType.CHANGE 
+        if (this.bShake == true && this.stateType != StateType.CHANGE 
         && this.stateType != StateType.MERGE) {
             return true;
         }
@@ -345,7 +377,7 @@ var RoleNode = cc.Class({
     },
     
     IsShakeStateRequire: function () {
-        if (this.info.bShake == true && this.stateType != StateType.DOWN && this.stateType != StateType.CHANGE 
+        if (this.bShake == true && this.stateType != StateType.DOWN && this.stateType != StateType.CHANGE 
         && this.stateType != StateType.BOOM
         && this.stateType != StateType.MERGE) {
             return true;
@@ -354,7 +386,7 @@ var RoleNode = cc.Class({
     },
     
     IsFloatStateRequire: function () {
-        if (this.info.bFloat == true && this.stateType != StateType.CHANGE && this.stateType != StateType.BOOM
+        if (this.bFloat == true && this.stateType != StateType.CHANGE && this.stateType != StateType.BOOM
         && this.stateType != StateType.MERGE) {
             return true;
         }
@@ -362,7 +394,7 @@ var RoleNode = cc.Class({
     },
     
     IsChangeStateRequire: function () {
-        if (this.info.bChange == true && this.stateType != StateType.BOOM && this.stateType != StateType.CHANGE
+        if (this.bChange == true && this.stateType != StateType.BOOM && this.stateType != StateType.CHANGE
         && this.stateType != StateType.FLOAT
         && this.stateType != StateType.MERGE) {
             return true;
@@ -371,7 +403,7 @@ var RoleNode = cc.Class({
     },
     
     IsDownStateRequire: function () {
-        if (this.info.bDown == true && this.stateType != StateType.BOOM && this.stateType != StateType.CHANGE
+        if (this.bDown == true && this.stateType != StateType.BOOM && this.stateType != StateType.CHANGE
         && this.stateType != StateType.FLOAT
         && this.stateType != StateType.MERGE) {
             return true;

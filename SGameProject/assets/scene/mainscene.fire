@@ -221,7 +221,7 @@
     },
     "world": null,
     "currentMap": null,
-    "_isdown": false
+    "_isdown": true
   },
   {
     "__type__": "cc.Node",
@@ -700,7 +700,8 @@
       "roletype",
       "role",
       "skill",
-      "stage"
+      "stage",
+      "stageparam"
     ],
     "loadUI": {
       "__id__": 20

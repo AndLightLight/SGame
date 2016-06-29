@@ -32,7 +32,7 @@ var SkillMgr = cc.Class({
             for (var key in torolelist) {
                 if (torolelist.hasOwnProperty(key)) {
                     var element = torolelist[key];
-                    if (element.info.bShake && element != role) {
+                    if (element.bShake && element != role) {
                         for (var index = 0; index < skillinfo.givebuffid.length; index++) {
                             var buffid = skillinfo.givebuffid[index];
                             require("BuffMgr").instance.AddBuff(role,element,buffid);   

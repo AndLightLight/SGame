@@ -25,12 +25,11 @@ var Game = cc.Class({
             visible: false,
         },
 
-        _isdown: false,
+        _isdown: true,
     },
     
     StartGame: function (stageid) {
         require("StageCommon").Show();
-        this.OpenLog();
         var stageinfo = DataMgr.instance.GetInfoByTalbeNameAndId("stage" , stageid);
         if (stageinfo) {
             var mappre = stageinfo.prefabid;
@@ -124,6 +123,7 @@ var Game = cc.Class({
         else {
             cc.log("error: singlon class creat more then onece!")
         }
+        this.OpenLog();
         //this.world = new Box2d.b2World(new Box2d.b2Vec2(0,9.8),true);
         cc.director.setDisplayStats(true);
         // var debugDraw = new Box2d.b2DebugDraw();

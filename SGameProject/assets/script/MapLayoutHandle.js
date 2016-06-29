@@ -51,6 +51,16 @@ var MapLayoutHandle = cc.Class({
             default: 0,
             visible: false,
         },
+
+        CurrentStageParamInfo: {
+            default: null,
+            visible: false,
+        },
+
+        CurrentStageAllWeight: {
+            default: 0,
+            visible: false,
+        },
         
         info: null,
 
@@ -211,6 +221,16 @@ var MapLayoutHandle = cc.Class({
         return rolelist;
     },
 
+    CheckFailed: function () {
+        for (var index = 0; index < this._map.length; index++) {
+            var role = this._map[index];
+            if (!role) {
+                return false;
+            }
+        }
+        return true;
+    },
+
     CheckInBorder: function (ppos) {
         var cpos = this.GetPosByPixelPos(ppos);
         var borderRect = new cc.rect(this.info.borderX == -1?0:this.info.borderX, 
@@ -346,7 +366,8 @@ var MapLayoutHandle = cc.Class({
         var typeinfo = DataMgr.instance.GetInfoByTalbeNameAndId("roletype",retype);
         var bneednum = false
         var mergeroleid = 0;
-        for (var i = 0;i < typeinfo.mergeNeedNum.length;i ++) {
+        var length = typeinfo?typeinfo.mergeNeedNum.length:0;
+        for (var i = 0;i < length;i ++) {
             if (typeinfo.mergeNeedNum[i]) {
                 if (relinerole.length + offset >= typeinfo.mergeNeedNum[i]) {
                     bneednum = true;
@@ -464,7 +485,7 @@ var MapLayoutHandle = cc.Class({
                 // test --;
                 
                 var type = 0;
-                var roleid = 1;
+                var roleid = 0;
                 var roleinfo = null;
                 if (bnot == 0) {
                     var num = this.info.roleid.length;
@@ -477,7 +498,7 @@ var MapLayoutHandle = cc.Class({
                         var r = Math.ceil(Math.random()*(num));
                         roleid = this.info.roleid[r-1];
                         roleinfo = DataMgr.instance.GetInfoByTalbeNameAndId("role",roleid);
-                        type = roleinfo.type;
+                        type = roleinfo?roleinfo.type:0;
                     }while(this.CheckCanShake(i,type).result);
                     
                 }else{
@@ -495,7 +516,17 @@ var MapLayoutHandle = cc.Class({
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
         if (!this.pause) {
+            var oldtime = this.playTime;
             this.playTime += dt;
+            var nowtime = this.playTime;
+            
+            if (Math.floor(nowtime) - Math.floor(oldtime) >= 1) {
+                var bF = this.CheckFailed();
+                if (bF) {
+                    this.pause = true;
+                    require("FailedDlg").Show();
+                }
+            }
         }
     },
 

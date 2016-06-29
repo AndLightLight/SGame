@@ -111,7 +111,7 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomSkill": 1,
+    "boomSkill": 4,
     "bornBuff": [
       0
     ],
@@ -264,7 +264,7 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomSkill": 1,
+    "boomSkill": 4,
     "bornBuff": [
       0
     ],
@@ -281,7 +281,7 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomSkill": 1,
+    "boomSkill": 4,
     "bornBuff": [
       0
     ],
@@ -298,7 +298,7 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomSkill": 1,
+    "boomSkill": 4,
     "bornBuff": [
       0
     ],
@@ -315,7 +315,7 @@
     "bDown": 1,
     "bShake": 1,
     "bFloat": 1,
-    "boomSkill": 1,
+    "boomSkill": 4,
     "bornBuff": [
       0
     ],
@@ -522,7 +522,9 @@
     "boomSkill": 2,
     "bornBuff": [
       6,
-      10
+      10,
+      12,
+      13
     ],
     "score": 1,
     "blood": 1
@@ -540,7 +542,9 @@
     "boomSkill": 2,
     "bornBuff": [
       6,
-      10
+      10,
+      12,
+      13
     ],
     "score": 1,
     "blood": 1
@@ -558,7 +562,9 @@
     "boomSkill": 2,
     "bornBuff": [
       6,
-      10
+      10,
+      12,
+      13
     ],
     "score": 1,
     "blood": 1
@@ -576,7 +582,9 @@
     "boomSkill": 2,
     "bornBuff": [
       6,
-      10
+      10,
+      12,
+      13
     ],
     "score": 1,
     "blood": 1
@@ -594,7 +602,9 @@
     "boomSkill": 2,
     "bornBuff": [
       6,
-      10
+      10,
+      12,
+      13
     ],
     "score": 1,
     "blood": 1
@@ -612,7 +622,9 @@
     "boomSkill": 2,
     "bornBuff": [
       8,
-      11
+      11,
+      14,
+      15
     ],
     "score": 1,
     "blood": 1
@@ -630,7 +642,9 @@
     "boomSkill": 2,
     "bornBuff": [
       8,
-      11
+      11,
+      14,
+      15
     ],
     "score": 1,
     "blood": 1
@@ -648,7 +662,9 @@
     "boomSkill": 2,
     "bornBuff": [
       8,
-      11
+      11,
+      14,
+      15
     ],
     "score": 1,
     "blood": 1
@@ -666,7 +682,9 @@
     "boomSkill": 2,
     "bornBuff": [
       8,
-      11
+      11,
+      14,
+      15
     ],
     "score": 1,
     "blood": 1
@@ -684,7 +702,9 @@
     "boomSkill": 2,
     "bornBuff": [
       8,
-      11
+      11,
+      14,
+      15
     ],
     "score": 1,
     "blood": 1

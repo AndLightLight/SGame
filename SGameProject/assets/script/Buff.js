@@ -60,19 +60,20 @@ var Buff = cc.Class({
                 }
             }
             else if (this.info.triggertype == 2) {
-                if (isBegin && require("Game").instance._isdown) {
-                    var num = this.torole._maphandle.info.roleid.length;
-                    do {
-                        var r = Math.ceil(Math.random()*(num));
-                        var roleid = this.torole._maphandle.info.roleid[r-1];
-                    } while (roleid == this.lastroleid);
-                    this.lastroleid = roleid;
-                    var cpos = this.torole._maphandle.GetPosByIndex(this.torole.idx);
-                    var drole = this.torole._maphandle.GetRoleByPos(cc.v2(cpos.x,cpos.y+1));
-                    if (!drole) {
-                        var didx = this.torole._maphandle.GetIndexByPos(cc.v2(cpos.x,cpos.y+1));
-                        this.torole._maphandle.CreateRole(roleid,didx,require("RoleNode").StateType.DOWN);
-                    }
+                if (isBegin) {
+                    this.torole.ChangeState(require("RoleNode").StateType.CREATE);
+                    // var num = this.torole._maphandle.info.roleid.length;
+                    // do {
+                    //     var r = Math.ceil(Math.random()*(num));
+                    //     var roleid = this.torole._maphandle.info.roleid[r-1];
+                    // } while (roleid == this.lastroleid);
+                    // this.lastroleid = roleid;
+                    // var cpos = this.torole._maphandle.GetPosByIndex(this.torole.idx);
+                    // var drole = this.torole._maphandle.GetRoleByPos(cc.v2(cpos.x,cpos.y+1));
+                    // if (!drole) {
+                    //     var didx = this.torole._maphandle.GetIndexByPos(cc.v2(cpos.x,cpos.y+1));
+                    //     this.torole._maphandle.CreateRole(roleid,didx,require("RoleNode").StateType.DOWN);
+                    // }
                 }
             }
             else if (this.info.triggertype == 3) {

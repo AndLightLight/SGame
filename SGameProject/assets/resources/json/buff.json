@@ -31,8 +31,8 @@
     "id": 3,
     "name": "downrole",
     "duration": -1,
-    "triggercd": 10,
-    "triggernum": 0,
+    "triggercd": 0,
+    "triggernum": 1,
     "animationpre": [
       0
     ],
@@ -52,7 +52,7 @@
     ],
     "triggertype": 3,
     "param": [
-      3
+      4
     ]
   },
   {
@@ -98,7 +98,9 @@
     "triggertype": 6,
     "param": [
       6,
-      10
+      10,
+      12,
+      13
     ]
   },
   {
@@ -130,7 +132,9 @@
     "triggertype": 6,
     "param": [
       8,
-      11
+      11,
+      14,
+      15
     ]
   },
   {
@@ -165,6 +169,74 @@
       "0",
       "0",
       "6"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "lock1changebChange",
+    "duration": -1,
+    "triggercd": 0,
+    "triggernum": 1,
+    "animationpre": [
+      0
+    ],
+    "triggertype": 5,
+    "param": [
+      "bChange",
+      "0",
+      "0",
+      "false"
+    ]
+  },
+  {
+    "id": 13,
+    "name": "lock1changebFloat",
+    "duration": -1,
+    "triggercd": 0,
+    "triggernum": 1,
+    "animationpre": [
+      0
+    ],
+    "triggertype": 5,
+    "param": [
+      "bFloat",
+      "0",
+      "0",
+      "false"
+    ]
+  },
+  {
+    "id": 14,
+    "name": "lock2changebChange",
+    "duration": -1,
+    "triggercd": 0,
+    "triggernum": 1,
+    "animationpre": [
+      0
+    ],
+    "triggertype": 5,
+    "param": [
+      "bChange",
+      "0",
+      "0",
+      "false"
+    ]
+  },
+  {
+    "id": 15,
+    "name": "lock2changebFloat",
+    "duration": -1,
+    "triggercd": 0,
+    "triggernum": 1,
+    "animationpre": [
+      0
+    ],
+    "triggertype": 5,
+    "param": [
+      "bFloat",
+      "0",
+      "0",
+      "false"
     ]
   }
 ]
