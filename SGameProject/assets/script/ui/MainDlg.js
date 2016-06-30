@@ -7,12 +7,12 @@ var MainDlg = cc.Class({
 
     onStage1Click: function (params) {
         require("Game").instance.StartGame(1);
-        this.Hide();
+        this.onHide();
     },
 
     onStage2Click: function (params) {
         require("Game").instance.StartGame(2);
-        this.Hide();
+        this.onHide();
     },
 
 
@@ -21,7 +21,7 @@ var MainDlg = cc.Class({
          
     },
 
-    Hide: function () {
+    onHide: function () {
         this.node.active = false;
     },
 
@@ -61,3 +61,9 @@ MainDlg.Show = function (params) {
         }
     });
 };
+
+MainDlg.Hide = function (params) {
+    if (MainDlg.instance) {
+        MainDlg.instance.onHide(params);
+    }
+}

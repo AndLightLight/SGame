@@ -202,6 +202,31 @@ var MapLayoutHandle = cc.Class({
         return cc.v2(this.mapWidth*this.tileWidth/2,this.mapHeight*this.tileHeight/2);
     },
 
+    GetScorePercent: function () {
+        var re = 0;
+        if (this.CurrentStageParamInfo) {
+            var paramlist = DataMgr.instance.GetTalbeByName("stageparam");
+            var index = this.CurrentStageParamInfo?this.CurrentStageParamInfo.id:0;
+            for (; index < paramlist.length; index++) {
+                var element = paramlist[index];
+                if (element.stageid == this.info.id) {
+                    if (element.type == 1) {
+                        re = (this.playTime - this.CurrentStageParamInfo.param)/(element.param - this.CurrentStageParamInfo.param);
+                        break;
+                    }
+                    else if (element.type == 2) {
+                        re = (this.score - this.CurrentStageParamInfo.param)/(element.param - this.CurrentStageParamInfo.param);
+                        break;
+                    }
+                    break;
+                }
+            }      
+        }
+
+
+        return re;
+    },
+
     FindTenWordRole: function (idx) {
         var rolelist = [];
         var pos = this.GetPosByIndex(idx);

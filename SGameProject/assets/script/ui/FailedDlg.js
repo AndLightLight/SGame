@@ -10,25 +10,27 @@ var FailedDlg = cc.Class({
 
     onBackClick: function (params) {
         require("Game").instance.currentMap.Out();
-        this.Hide();
+        this.onHide();
         require("MainDlg").Show();
+        require("StageCommon").Hide();
     },
 
     onOutBtClick: function (params) {
         require("Game").instance.currentMap.Out();
-        this.Hide();
+        this.onHide();
         require("MainDlg").Show();
+        require("StageCommon").Hide();
     },
 
     onCancelBtClick: function (params) {
-        this.Hide();
+        this.onHide();
     },
 
     onShow: function (params) {
         this.Scorelb.string = require("Game").instance.currentMap.score;
     },
 
-    Hide: function () {
+    onHide: function () {
         this.node.active = false;
     },
 
@@ -68,3 +70,9 @@ FailedDlg.Show = function (params) {
         }
     });
 };
+
+FailedDlg.Hide = function (params) {
+    if (FailedDlg.instance) {
+        FailedDlg.instance.onHide(params);
+    }
+}

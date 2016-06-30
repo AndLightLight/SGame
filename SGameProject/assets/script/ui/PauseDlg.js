@@ -6,24 +6,25 @@ var PauseDlg = cc.Class({
     },
 
     onBackClick: function (params) {
-        this.Hide();
+        this.onHide();
     },
 
     onOutBtClick: function (params) {
         require("Game").instance.currentMap.Out();
-        this.Hide();
+        this.onHide();
         require("MainDlg").Show();
+        require("StageCommon").Hide();
     },
 
     onCancelBtClick: function (params) {
-        this.Hide();
+        this.onHide();
     },
 
     onShow: function (params) {
         require("Game").instance.currentMap.pause = true;  
     },
 
-    Hide: function () {
+    onHide: function () {
         this.node.active = false;
         require("Game").instance.currentMap.pause = false;
     },
@@ -64,3 +65,9 @@ PauseDlg.Show = function (params) {
         }
     });
 };
+
+PauseDlg.Hide = function (params) {
+    if (PauseDlg.instance) {
+        PauseDlg.instance.onHide(params);
+    }
+}

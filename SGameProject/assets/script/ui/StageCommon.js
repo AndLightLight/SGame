@@ -15,6 +15,16 @@ var StageCommon = cc.Class({
             default: null,
             type: cc.Button,
         },
+
+        roundBar: {
+            default: null,
+            type: cc.ProgressBar,
+        },
+
+        zhiZhen: {
+            default: null,
+            type: cc.Node,
+        },
     },
 
     pause: function () {
@@ -23,6 +33,10 @@ var StageCommon = cc.Class({
 
     onShow: function (params) {
         
+    },
+
+    onHide: function () {
+        this.node.active = false;
     },
 
     // use this for initialization
@@ -42,7 +56,11 @@ var StageCommon = cc.Class({
                 this.scoreLabel.string = Game.instance.currentMap.score;
                 var moment = require('moment');
                 var day = moment.unix(Game.instance.currentMap.playTime);
-                this.timeLabel.string = day.format('mm:ss');                
+                this.timeLabel.string = day.format('mm:ss');
+
+                var percent = Game.instance.currentMap.GetScorePercent();
+                this.roundBar.progress = percent;
+                this.zhiZhen.rotation = -360*percent;                
             }
             else {
                 this.scoreLabel.string = 0;
@@ -64,8 +82,14 @@ StageCommon.Show = function (params) {
                 uinode.x = 0;
                 uinode.y = 0;
             }
-            StageCommon.instance.active = true;
+            StageCommon.instance.node.active = true;
             StageCommon.instance.onShow(params);
         }
     });
 };
+
+StageCommon.Hide = function (params) {
+    if (StageCommon.instance) {
+        StageCommon.instance.onHide(params);
+    }
+}
