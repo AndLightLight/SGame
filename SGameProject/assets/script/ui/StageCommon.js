@@ -7,6 +7,10 @@ var StageCommon = cc.Class({
             default: null,
             type: cc.Label,
         },
+        LvLabel: {
+            default: null,
+            type: cc.Label,
+        },
         timeLabel: {
             default: null,
             type: cc.Label,
@@ -60,7 +64,8 @@ var StageCommon = cc.Class({
 
                 var percent = Game.instance.currentMap.GetScorePercent();
                 this.roundBar.progress = percent;
-                this.zhiZhen.rotation = -360*percent;                
+                this.zhiZhen.rotation = -360*percent;
+                Game.instance.currentMap.CurrentStageParamInfo?this.LvLabel.string = Game.instance.currentMap.CurrentStageParamInfo.id:null;              
             }
             else {
                 this.scoreLabel.string = 0;

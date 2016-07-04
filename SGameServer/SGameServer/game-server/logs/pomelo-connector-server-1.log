@@ -1,0 +1,4 @@
+[2016-07-04 20:06:11.249] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "connector-server-1"
+[2016-07-04 20:06:20.983] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"connector-server-1" enter after start...
+[2016-07-04 20:06:20.989] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"connector-server-1" finish start
+[2016-07-04 20:06:20.990] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"connector-server-1" startup in 9616 ms
