@@ -3,6 +3,7 @@
   var Protocol = exports;
 
   var HEADER = 5;
+  var EventEmitter = Window.EventEmitter;
 
   var Message = function(id,route,body){
       this.id = id;
@@ -157,27 +158,27 @@ var bt2Str = function(byteArray,start,end) {
   };
 
   pomelo.request = function(route) {
-    if(!route) {
-      return;
-    }
-    var msg = {};
-    var cb;
-    arguments = Array.prototype.slice.apply(arguments);
-    if(arguments.length === 2){
-      if(typeof arguments[1] === 'function'){
-        cb = arguments[1];
-      } else if(typeof arguments[1] === 'object'){
-        msg = arguments[1];
-      }
-    } else if(arguments.length === 3){
-      msg = arguments[1];
-      cb = arguments[2];
-    }
+    // if(!route) {
+    //   return;
+    // }
+    // var msg = {};
+    // var cb;
+    // arguments = Array.prototype.slice.apply(arguments);
+    //if(arguments.length === 2){
+      // if(typeof arguments[1] === 'function'){
+      //   cb = arguments[1];
+      // } else if(typeof arguments[1] === 'object'){
+      //   msg = arguments[1];
+      // }
+    // } else if(arguments.length === 3){
+    //   msg = arguments[1];
+    //   cb = arguments[2];
+    //}
 
-    id++;
-    callbacks[id] = cb;
+    // id++;
+    // callbacks[id] = cb;
 
-    sendMessage(id, route, msg);
+    // sendMessage(id, route, msg);
   };
 
   pomelo.notify = function(route, msg) {
