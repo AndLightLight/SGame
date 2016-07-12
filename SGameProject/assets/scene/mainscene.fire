@@ -2191,8 +2191,8 @@
     "target": {
       "__id__": 55
     },
-    "component": "",
-    "handler": ""
+    "component": "LoginDlg",
+    "handler": "onLoginBtClick"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -2694,8 +2694,8 @@
     "target": {
       "__id__": 55
     },
-    "component": "",
-    "handler": ""
+    "component": "LoginDlg",
+    "handler": "onBackClick"
   },
   {
     "__type__": "276ff4gvfhJv5BTRspBzYd9",
