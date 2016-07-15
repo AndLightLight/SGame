@@ -18,8 +18,8 @@ var LoginDlg = cc.Class({
 
     onLoginBtClick: function (params) {
         window.pomelo.init({
-            host: "10.237.18.49",
-            port: 5630,
+            host: "127.0.0.1",
+            port: 3014,
             log: true 
         }, function () {
             window.pomelo.request(

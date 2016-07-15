@@ -17,7 +17,7 @@ var PauseDlg = cc.Class({
     },
 
     onCancelBtClick: function (params) {
-        this.onHide();
+        this.Hide();
     },
 
     onShow: function (params) {
