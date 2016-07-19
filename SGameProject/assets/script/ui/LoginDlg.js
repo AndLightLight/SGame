@@ -19,17 +19,18 @@ var LoginDlg = cc.Class({
     onLoginBtClick: function (params) {
         window.pomelo.init({
             host: "127.0.0.1",
-            port: 3014,
+            port: 2011,
             log: true 
         }, function () {
             window.pomelo.request(
                 'gate.gateHandler.queryEntry',
                 {
-                    uid: this.NameEB.string,
-                    password: this.PasswordEB.string,
+                    uid: LoginDlg.instance.NameEB.string,
+                    password: LoginDlg.instance.PasswordEB.string,
                 },
                 function (params) {
-                    this.onHide();
+                    LoginDlg.Hide();
+                    MainDlg.Show();
                 }
             );
         });

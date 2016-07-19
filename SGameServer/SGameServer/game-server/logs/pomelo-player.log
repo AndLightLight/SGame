@@ -3,3 +3,23 @@
 [2016-07-15 13:38:45.890] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
 [2016-07-15 13:38:45.891] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
 [2016-07-15 13:38:45.891] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 732 ms
+[2016-07-19 14:50:26.131] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-07-19 14:50:27.725] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-07-19 14:50:27.725] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-07-19 14:50:27.725] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1591 ms
+[2016-07-19 14:51:40.149] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-07-19 14:51:41.169] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-07-19 14:51:41.170] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-07-19 14:51:41.171] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 960 ms
+[2016-07-19 15:00:09.565] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-07-19 15:00:10.527] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-07-19 15:00:10.528] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-07-19 15:00:10.528] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 956 ms
+[2016-07-19 15:14:45.283] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-07-19 15:14:46.924] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-07-19 15:14:46.925] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-07-19 15:14:46.925] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1611 ms
+[2016-07-19 15:27:54.911] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-07-19 15:27:57.469] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-07-19 15:27:57.470] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-07-19 15:27:57.470] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 2556 ms
