@@ -55,7 +55,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "",
     "_active": true,
     "_components": [
@@ -114,7 +113,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "",
     "_active": true,
     "_components": [
@@ -172,7 +170,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "",
     "_active": true,
     "_components": [
@@ -194,6 +191,7 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
+    "_actualFontSize": 40,
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": false,
@@ -209,7 +207,9 @@
     "root": {
       "__id__": 1
     },
-    "asset": null,
+    "asset": {
+      "__uuid__": "5103eefe-6ad1-49d3-8eca-46a258b7758b"
+    },
     "fileId": "c47516/uoNG/6bd0zew0A/h"
   },
   {
@@ -311,7 +311,9 @@
     "root": {
       "__id__": 1
     },
-    "asset": null,
+    "asset": {
+      "__uuid__": "5103eefe-6ad1-49d3-8eca-46a258b7758b"
+    },
     "fileId": "275dd1NxVZBv4LoBTXf1Ov1"
   },
   {
@@ -360,7 +362,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "",
     "_active": true,
     "_components": [
@@ -418,7 +419,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "",
     "_active": true,
     "_components": [
@@ -440,6 +440,7 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
+    "_actualFontSize": 40,
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": false,
@@ -455,7 +456,9 @@
     "root": {
       "__id__": 1
     },
-    "asset": null,
+    "asset": {
+      "__uuid__": "5103eefe-6ad1-49d3-8eca-46a258b7758b"
+    },
     "fileId": "80f838XK85Dl7gKUe9hFzbP"
   },
   {
@@ -557,7 +560,9 @@
     "root": {
       "__id__": 1
     },
-    "asset": null,
+    "asset": {
+      "__uuid__": "5103eefe-6ad1-49d3-8eca-46a258b7758b"
+    },
     "fileId": "9adb5jx3CVJAJ0bIi3h1AR3"
   },
   {
@@ -574,7 +579,9 @@
     "root": {
       "__id__": 1
     },
-    "asset": null,
+    "asset": {
+      "__uuid__": "5103eefe-6ad1-49d3-8eca-46a258b7758b"
+    },
     "fileId": "961b4/uboRNLLCQlOnjPESX"
   }
 ]

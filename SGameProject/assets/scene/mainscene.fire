@@ -10,7 +10,6 @@
   },
   {
     "__type__": "cc.Scene",
-    "_name": "",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
@@ -41,7 +40,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "8cde38ca-4fe1-4ef5-aec3-5d40b89eda55"
   },
   {
@@ -105,7 +103,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "08316IZGEhASrwwhZ0jdmTr",
     "_active": true,
     "_components": [
@@ -158,7 +155,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "7b7d7yqPuZOx5rDGIaBGVKz",
     "_active": true,
     "_components": [
@@ -272,7 +268,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "d75a40FzNJGHY6pqtPQMDqa",
     "_active": true,
     "_components": [
@@ -332,7 +327,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "1b7d9GoAXdCfZQ5G6REjls9",
     "_active": true,
     "_components": [
@@ -391,7 +385,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "27875W7hWZK7Z8c9EUwkppU",
     "_active": true,
     "_components": [
@@ -513,7 +506,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "e6dcc2cZ4RGx4gUWxNCPpP0",
     "_active": true,
     "_components": [
@@ -570,7 +562,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "4d66c6Cq6xP1LDLiCAPUZnA",
     "_active": true,
     "_components": [
@@ -601,6 +592,7 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
+    "_actualFontSize": 40,
     "_fontSize": 40,
     "_lineHeight": 60,
     "_enableWrapText": true,
@@ -774,7 +766,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "34262rh4AJCC6Xa5HBqyNQY",
     "_active": false,
     "_components": [
@@ -836,7 +827,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "1213fM38DJIR50mdWxsSPJP",
     "_active": true,
     "_components": [
@@ -856,6 +846,7 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
+    "_actualFontSize": 40,
     "_fontSize": 70,
     "_lineHeight": 100,
     "_enableWrapText": true,
@@ -912,7 +903,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "0c01eKH7uZDjLo4nx1hC71o",
     "_active": true,
     "_components": [
@@ -968,7 +958,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "3e05a5VVKZK9ZI1juXvHAeH",
     "_active": true,
     "_components": [
@@ -1223,7 +1212,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "86f043EijZDOrc5Q7Siq9gD",
     "_active": true,
     "_components": [
@@ -1286,7 +1274,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "a251aaLj9dCMrQ4pihOTr2v",
     "_active": false,
     "_components": [
@@ -1345,7 +1332,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "38b1dfiR61EXp0Ob2IgYs8M",
     "_active": true,
     "_components": [
@@ -1403,7 +1389,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "de0a3D+TXJGzalEos/kABVv",
     "_active": true,
     "_components": [
@@ -1425,6 +1410,7 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
+    "_actualFontSize": 40,
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": false,
@@ -1595,7 +1581,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "4823bOyPFxFKLI++oKQKrtY",
     "_active": true,
     "_components": [
@@ -1653,7 +1638,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "1c2b9ZxPiRPsr+S/9uytAcy",
     "_active": true,
     "_components": [
@@ -1675,6 +1659,7 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
+    "_actualFontSize": 40,
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": false,
@@ -1864,7 +1849,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "483d9bRMihHA7MxxXZLmWPw",
     "_active": true,
     "_components": [
@@ -1941,7 +1925,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "98139YPgCNJcaSSZDDhJGnG",
     "_active": true,
     "_components": [
@@ -2000,7 +1983,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "76ec5zuP69E9afUDa/ZmzyX",
     "_active": true,
     "_components": [
@@ -2058,7 +2040,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "7e4873mUNNN1oryNnYmW2+z",
     "_active": true,
     "_components": [
@@ -2080,6 +2061,7 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
+    "_actualFontSize": 40,
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": false,
@@ -2246,7 +2228,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "117adS9S2ZBl4vkG8NLH+Ub",
     "_active": true,
     "_components": [
@@ -2272,6 +2253,7 @@
     "editingDidBegan": [],
     "textChanged": [],
     "editingDidEnded": [],
+    "editingReturn": [],
     "_N$backgroundImage": {
       "__uuid__": "67e68bc9-dad5-4ad9-a2d8-7e03d458e32f"
     },
@@ -2350,7 +2332,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "2278euxfXFB27Hj2tW3VAeY",
     "_active": true,
     "_components": [
@@ -2376,6 +2357,7 @@
     "editingDidBegan": [],
     "textChanged": [],
     "editingDidEnded": [],
+    "editingReturn": [],
     "_N$backgroundImage": {
       "__uuid__": "67e68bc9-dad5-4ad9-a2d8-7e03d458e32f"
     },
@@ -2454,7 +2436,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "160036RyjdMsI2a0oB/unDs",
     "_active": true,
     "_components": [
@@ -2476,6 +2457,7 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
+    "_actualFontSize": 40,
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,
@@ -2538,7 +2520,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "4085bL1cFZLW4t6KvTOhU20",
     "_active": true,
     "_components": [
@@ -2560,6 +2541,7 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
+    "_actualFontSize": 40,
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,
@@ -2798,7 +2780,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "66afd/67qlISqlvDVjK3F5H",
     "_active": true,
     "_components": [
@@ -2857,7 +2838,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "836eaYU9iRKf6GvV/lkcIzY",
     "_active": true,
     "_components": [
@@ -2877,6 +2857,7 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
+    "_actualFontSize": 40,
     "_fontSize": 20,
     "_lineHeight": 40,
     "_enableWrapText": false,
@@ -3048,7 +3029,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "d921fOvSsBMAp4zyl+OPcGp",
     "_active": true,
     "_components": [
@@ -3107,7 +3087,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "988b6VhlIRAB7UDJ+jKOWvS",
     "_active": true,
     "_components": [
@@ -3127,6 +3106,7 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
+    "_actualFontSize": 40,
     "_fontSize": 20,
     "_lineHeight": 40,
     "_enableWrapText": false,

@@ -13,7 +13,17 @@ var LoginDlg = cc.Class({
     },
 
     onBackClick: function (params) {
-
+        window.pomelo.request(
+            'player.playerHandler.getScoreList',
+            {
+                uid: 0,
+            },
+            function (params) {
+                // LoginDlg.Hide();
+                // MainDlg.Show();
+                cc.log("player success!params.route:"+params.route);
+            }
+        );
     },
 
     onLoginBtClick: function (params) {
@@ -29,8 +39,26 @@ var LoginDlg = cc.Class({
                     password: LoginDlg.instance.PasswordEB.string,
                 },
                 function (params) {
-                    LoginDlg.Hide();
-                    MainDlg.Show();
+                    pomelo.disconnect();
+                    window.pomelo.init({
+                        host: params.host,
+                        port: params.port,
+                        log: true 
+                    }, function () {
+                        window.pomelo.request(
+                            'connector.entryHandler.enter',
+                            {
+                                uid: LoginDlg.instance.NameEB.string,
+                                password: LoginDlg.instance.PasswordEB.string,
+                                rid: LoginDlg.instance.NameEB.string,
+                                username: LoginDlg.instance.PasswordEB.string,
+
+                            },
+                            function (params) {
+                                cc.log("login sucess!users:"+params.users)
+                            }
+                        );
+                    });
                 }
             );
         });

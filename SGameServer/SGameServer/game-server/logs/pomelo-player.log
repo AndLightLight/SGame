@@ -23,3 +23,414 @@
 [2016-07-19 15:27:57.469] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
 [2016-07-19 15:27:57.470] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
 [2016-07-19 15:27:57.470] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 2556 ms
+[2016-07-25 16:31:39.804] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-07-25 16:31:42.675] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-07-25 16:31:42.675] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-07-25 16:31:42.675] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 2868 ms
+[2016-07-25 16:31:42.728] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector-server-1","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","serverType":"connector","pid":6076}}
+[2016-07-25 16:46:52.544] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39mplayer receive replaceServer signal: {"action":"replaceServer","servers":{"gate":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"gate","host":"127.0.0.1","clientPort":2011,"frontend":"true","serverType":"gate","pid":7908},"connector-server-1":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector-server-1","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","serverType":"connector","pid":6076},"player":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"player","host":"127.0.0.1","port":3152,"args":" --debug=12456","serverType":"player","pid":8988}}}
+[2016-07-25 16:48:20.012] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39mplayer receive replaceServer signal: {"action":"replaceServer","servers":{"gate":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"gate","host":"127.0.0.1","clientPort":2011,"frontend":"true","serverType":"gate","pid":7908},"connector-server-1":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector-server-1","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","serverType":"connector","pid":6076},"player":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"player","host":"127.0.0.1","port":3152,"args":" --debug=12456","serverType":"player","pid":8988}}}
+[2016-07-25 17:13:05.732] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-07-25 17:13:06.845] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-07-25 17:13:06.845] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-07-25 17:13:06.845] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1110 ms
+[2016-07-26 14:56:00.215] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-07-26 14:56:01.626] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-07-26 14:56:01.626] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-07-26 14:56:01.626] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1404 ms
+[2016-07-26 14:56:01.796] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector-server-1","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":5780}}
+[2016-07-26 15:00:24.579] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-07-26 15:00:26.726] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-07-26 15:00:26.726] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-07-26 15:00:26.726] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 2144 ms
+[2016-07-26 15:00:26.771] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"gate","host":"127.0.0.1","clientPort":2011,"frontend":"true","serverType":"gate","pid":9080}}
+[2016-07-26 15:03:47.847] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-07-26 15:03:49.749] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-07-26 15:03:49.750] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-07-26 15:03:49.750] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1900 ms
+[2016-07-26 15:07:31.851] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-07-26 15:07:33.854] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-07-26 15:07:33.854] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-07-26 15:07:33.855] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 2000 ms
+[2016-07-26 15:15:01.282] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-07-26 15:15:04.022] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-07-26 15:15:04.022] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-07-26 15:15:04.022] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 2707 ms
+[2016-07-26 15:15:04.108] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector-server-1","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":8884}}
+[2016-07-26 15:15:05.289] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"gate","host":"127.0.0.1","clientPort":2011,"frontend":"true","serverType":"gate","pid":8020}}
+[2016-07-26 15:37:00.070] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-07-26 15:37:01.209] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-07-26 15:37:01.210] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-07-26 15:37:01.210] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1067 ms
+[2016-07-27 10:47:14.975] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-07-27 10:47:16.627] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-07-27 10:47:16.627] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-07-27 10:47:16.627] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1647 ms
+[2016-07-27 14:30:13.978] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-07-27 14:30:17.037] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-07-27 14:30:17.037] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-07-27 14:30:17.037] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 3029 ms
+[2016-07-27 14:30:17.820] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector-server-1","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":4400}}
+[2016-07-27 14:31:06.240] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-07-27 14:31:07.088] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-07-27 14:31:07.089] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-07-27 14:31:07.089] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 846 ms
+[2016-08-26 11:26:06.395] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-26 11:26:08.108] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-26 11:26:08.108] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-26 11:26:08.109] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1712 ms
+[2016-08-26 11:26:08.174] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"gate","host":"127.0.0.1","clientPort":2011,"frontend":"true","serverType":"gate","pid":6336}}
+[2016-08-26 11:26:08.422] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector-server-1","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":3056}}
+[2016-08-26 15:01:16.345] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-26 15:01:17.601] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-26 15:01:17.601] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-26 15:01:17.601] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1253 ms
+[2016-08-26 15:01:17.652] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"gate","host":"127.0.0.1","clientPort":2011,"frontend":"true","serverType":"gate","pid":5528}}
+[2016-08-26 15:01:17.818] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector-server-1","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":5884}}
+[2016-08-26 15:17:34.007] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-26 15:17:34.995] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-26 15:17:34.996] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-26 15:17:34.996] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 987 ms
+[2016-08-26 17:25:45.085] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-26 17:25:46.043] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-26 17:25:46.043] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-26 17:25:46.043] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 936 ms
+[2016-08-29 10:01:22.725] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 10:01:24.222] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 10:01:24.223] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 10:01:24.223] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1495 ms
+[2016-08-29 10:01:24.520] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":7036}}
+[2016-08-29 11:19:47.941] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 11:19:48.851] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 11:19:48.852] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 11:19:48.853] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 908 ms
+[2016-08-29 11:33:44.817] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 11:33:46.160] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 11:33:46.160] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 11:33:46.160] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1340 ms
+[2016-08-29 11:33:46.273] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":7756}}
+[2016-08-29 14:09:55.712] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 14:09:56.860] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 14:09:56.861] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 14:09:56.862] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1147 ms
+[2016-08-29 14:09:56.963] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":5292}}
+[2016-08-29 14:12:47.890] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 14:12:49.075] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 14:12:49.076] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 14:12:49.076] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1144 ms
+[2016-08-29 14:12:49.154] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":5496}}
+[2016-08-29 14:21:27.866] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 14:21:28.800] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 14:21:28.801] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 14:21:28.801] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 918 ms
+[2016-08-29 14:21:28.863] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":8360}}
+[2016-08-29 14:24:29.629] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 14:24:30.729] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 14:24:30.729] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 14:24:30.729] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1097 ms
+[2016-08-29 14:24:30.917] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":8636}}
+[2016-08-29 14:30:44.834] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 14:30:45.738] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 14:30:45.739] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 14:30:45.739] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 900 ms
+[2016-08-29 14:30:46.245] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":7176}}
+[2016-08-29 14:30:46.300] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"gate","host":"127.0.0.1","clientPort":2011,"frontend":"true","serverType":"gate","pid":7644}}
+[2016-08-29 14:33:15.397] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 14:33:16.599] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 14:33:16.599] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 14:33:16.599] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1199 ms
+[2016-08-29 14:33:16.829] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":7612}}
+[2016-08-29 14:33:16.936] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"gate","host":"127.0.0.1","clientPort":2011,"frontend":"true","serverType":"gate","pid":4064}}
+[2016-08-29 14:35:54.442] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 14:35:55.596] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 14:35:55.596] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 14:35:55.596] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1151 ms
+[2016-08-29 14:35:55.694] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":2220}}
+[2016-08-29 14:35:56.441] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"gate","host":"127.0.0.1","clientPort":2011,"frontend":"true","serverType":"gate","pid":3580}}
+[2016-08-29 14:38:36.615] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 14:38:37.526] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 14:38:37.526] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 14:38:37.527] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 909 ms
+[2016-08-29 14:38:57.539] [WARN] pomelo - [33m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js] [39mcould not find the method send in handler: playerHandler
+[2016-08-29 14:38:57.539] [ERROR] pomelo - [31m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js] [39m[handleManager]: fail to find handler for "player.playerHandler.send"
+[2016-08-29 14:38:57.541] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js] [39mno default error handler to resolve unknown exception. Error: fail to find handler for player.playerHandler.send
+    at Service.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js:33:30)
+    at handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:370:25)
+    at next (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\filterService.js:50:7)
+    at Service.beforeFilter (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\filterService.js:65:3)
+    at beforeFilter (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:242:8)
+    at doHandle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:383:3)
+    at pro.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:125:3)
+    at pro.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\components\server.js:67:14)
+    at Remote.forwardMessage (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\remote\backend\msgRemote.js:45:10)
+    at pro.route (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\node_modules\pomelo-rpc\lib\rpc-server\dispatcher.js:51:10)
+[2016-08-29 14:39:18.523] [WARN] pomelo - [33m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js] [39mcould not find the method send in handler: playerHandler
+[2016-08-29 14:39:18.523] [ERROR] pomelo - [31m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js] [39m[handleManager]: fail to find handler for "player.playerHandler.send"
+[2016-08-29 14:39:18.524] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js] [39mno default error handler to resolve unknown exception. Error: fail to find handler for player.playerHandler.send
+    at Service.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js:33:30)
+    at handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:370:25)
+    at next (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\filterService.js:50:7)
+    at Service.beforeFilter (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\filterService.js:65:3)
+    at beforeFilter (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:242:8)
+    at doHandle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:383:3)
+    at pro.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:125:3)
+    at pro.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\components\server.js:67:14)
+    at Remote.forwardMessage (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\remote\backend\msgRemote.js:45:10)
+    at pro.route (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\node_modules\pomelo-rpc\lib\rpc-server\dispatcher.js:51:10)
+[2016-08-29 14:39:56.222] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 14:39:57.130] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 14:39:57.130] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 14:39:57.130] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 905 ms
+[2016-08-29 14:44:46.789] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 14:44:48.087] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 14:44:48.088] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 14:44:48.088] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1253 ms
+[2016-08-29 14:44:48.238] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":7600}}
+[2016-08-29 14:45:51.159] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 14:45:52.410] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 14:45:52.411] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 14:45:52.411] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1249 ms
+[2016-08-29 14:45:52.585] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":8096}}
+[2016-08-29 14:46:43.905] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 14:46:45.013] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 14:46:45.014] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 14:46:45.014] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1057 ms
+[2016-08-29 14:48:04.877] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 14:48:05.846] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 14:48:05.847] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 14:48:05.847] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 968 ms
+[2016-08-29 14:48:06.158] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":7608}}
+[2016-08-29 14:48:06.607] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"gate","host":"127.0.0.1","clientPort":2011,"frontend":"true","serverType":"gate","pid":9076}}
+[2016-08-29 14:49:13.703] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 14:49:14.641] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 14:49:14.641] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 14:49:14.641] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 935 ms
+[2016-08-29 14:49:14.710] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"gate","host":"127.0.0.1","clientPort":2011,"frontend":"true","serverType":"gate","pid":2220}}
+[2016-08-29 14:51:42.298] [WARN] pomelo - [33m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js] [39mcould not find the method send1 in handler: playerHandler
+[2016-08-29 14:51:42.298] [ERROR] pomelo - [31m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js] [39m[handleManager]: fail to find handler for "player.playerHandler.send1"
+[2016-08-29 14:51:42.300] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js] [39mno default error handler to resolve unknown exception. Error: fail to find handler for player.playerHandler.send1
+    at Service.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js:33:30)
+    at handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:370:25)
+    at next (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\filterService.js:50:7)
+    at Service.beforeFilter (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\filterService.js:65:3)
+    at beforeFilter (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:242:8)
+    at doHandle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:383:3)
+    at pro.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:125:3)
+    at pro.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\components\server.js:67:14)
+    at Remote.forwardMessage (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\remote\backend\msgRemote.js:45:10)
+    at pro.route (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\node_modules\pomelo-rpc\lib\rpc-server\dispatcher.js:51:10)
+[2016-08-29 14:58:48.978] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 14:58:49.986] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 14:58:49.986] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 14:58:49.986] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1005 ms
+[2016-08-29 14:58:50.140] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"gate","host":"127.0.0.1","clientPort":2011,"frontend":"true","serverType":"gate","pid":7648}}
+[2016-08-29 14:58:50.162] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":9152}}
+[2016-08-29 15:03:26.974] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 15:03:28.003] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 15:03:28.005] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 15:03:28.005] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1027 ms
+[2016-08-29 15:03:28.256] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":8476}}
+[2016-08-29 15:07:01.497] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 15:07:02.328] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 15:07:02.328] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 15:07:02.328] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 829 ms
+[2016-08-29 15:07:28.762] [WARN] pomelo - [33m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js] [39mcould not find the method send1 in handler: playerHandler
+[2016-08-29 15:07:28.762] [ERROR] pomelo - [31m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js] [39m[handleManager]: fail to find handler for "player.playerHandler.send1"
+[2016-08-29 15:07:28.763] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js] [39mno default error handler to resolve unknown exception. Error: fail to find handler for player.playerHandler.send1
+    at Service.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js:33:30)
+    at handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:370:25)
+    at next (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\filterService.js:50:7)
+    at Service.beforeFilter (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\filterService.js:65:3)
+    at beforeFilter (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:242:8)
+    at doHandle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:383:3)
+    at pro.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:125:3)
+    at pro.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\components\server.js:67:14)
+    at Remote.forwardMessage (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\remote\backend\msgRemote.js:45:10)
+    at pro.route (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\node_modules\pomelo-rpc\lib\rpc-server\dispatcher.js:51:10)
+[2016-08-29 15:15:54.774] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 15:15:55.986] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 15:15:55.987] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 15:15:55.987] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1149 ms
+[2016-08-29 15:16:56.927] [WARN] pomelo - [33m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js] [39mcould not find the method upLoadScore in handler: playerHandler
+[2016-08-29 15:16:56.927] [ERROR] pomelo - [31m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js] [39m[handleManager]: fail to find handler for "player.playerHandler.upLoadScore"
+[2016-08-29 15:16:56.928] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js] [39mno default error handler to resolve unknown exception. Error: fail to find handler for player.playerHandler.upLoadScore
+    at Service.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js:33:30)
+    at handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:370:25)
+    at next (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\filterService.js:50:7)
+    at Service.beforeFilter (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\filterService.js:65:3)
+    at beforeFilter (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:242:8)
+    at doHandle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:383:3)
+    at pro.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:125:3)
+    at pro.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\components\server.js:67:14)
+    at Remote.forwardMessage (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\remote\backend\msgRemote.js:45:10)
+    at pro.route (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\node_modules\pomelo-rpc\lib\rpc-server\dispatcher.js:51:10)
+[2016-08-29 15:17:36.615] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 15:17:37.826] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 15:17:37.827] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 15:17:37.827] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1209 ms
+[2016-08-29 15:17:38.028] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":7284}}
+[2016-08-29 15:17:48.382] [WARN] pomelo - [33m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js] [39mcould not find the method upLoadScore in handler: playerHandler
+[2016-08-29 15:17:48.382] [ERROR] pomelo - [31m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js] [39m[handleManager]: fail to find handler for "player.playerHandler.upLoadScore"
+[2016-08-29 15:17:48.383] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js] [39mno default error handler to resolve unknown exception. Error: fail to find handler for player.playerHandler.upLoadScore
+    at Service.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js:33:30)
+    at handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:370:25)
+    at next (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\filterService.js:50:7)
+    at Service.beforeFilter (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\filterService.js:65:3)
+    at beforeFilter (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:242:8)
+    at doHandle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:383:3)
+    at pro.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:125:3)
+    at pro.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\components\server.js:67:14)
+    at Remote.forwardMessage (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\remote\backend\msgRemote.js:45:10)
+    at pro.route (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\node_modules\pomelo-rpc\lib\rpc-server\dispatcher.js:51:10)
+[2016-08-29 15:18:42.057] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 15:18:43.909] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 15:18:43.910] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 15:18:43.910] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1850 ms
+[2016-08-29 15:18:43.998] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":5468}}
+[2016-08-29 15:19:17.907] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 15:19:19.058] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 15:19:19.058] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 15:19:19.058] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1087 ms
+[2016-08-29 15:19:19.179] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"gate","host":"127.0.0.1","clientPort":2011,"frontend":"true","serverType":"gate","pid":6216}}
+[2016-08-29 15:20:00.257] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 15:20:01.742] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 15:20:01.742] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 15:20:01.742] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1482 ms
+[2016-08-29 15:20:01.899] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":8776}}
+[2016-08-29 15:20:21.627] [WARN] pomelo - [33m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js] [39mcould not find the method upLoadScore in handler: playerHandler
+[2016-08-29 15:20:21.627] [ERROR] pomelo - [31m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js] [39m[handleManager]: fail to find handler for "player.playerHandler.upLoadScore"
+[2016-08-29 15:20:21.628] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js] [39mno default error handler to resolve unknown exception. Error: fail to find handler for player.playerHandler.upLoadScore
+    at Service.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js:33:30)
+    at handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:370:25)
+    at next (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\filterService.js:50:7)
+    at Service.beforeFilter (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\filterService.js:65:3)
+    at beforeFilter (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:242:8)
+    at doHandle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:383:3)
+    at pro.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:125:3)
+    at pro.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\components\server.js:67:14)
+    at Remote.forwardMessage (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\remote\backend\msgRemote.js:45:10)
+    at pro.route (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\node_modules\pomelo-rpc\lib\rpc-server\dispatcher.js:51:10)
+[2016-08-29 15:20:50.848] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 15:20:52.247] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 15:20:52.248] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 15:20:52.248] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1395 ms
+[2016-08-29 15:20:52.587] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"gate","host":"127.0.0.1","clientPort":2011,"frontend":"true","serverType":"gate","pid":9004}}
+[2016-08-29 15:21:04.788] [WARN] pomelo - [33m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js] [39mcould not find the method up in handler: playerHandler
+[2016-08-29 15:21:04.789] [ERROR] pomelo - [31m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js] [39m[handleManager]: fail to find handler for "player.playerHandler.up"
+[2016-08-29 15:21:04.790] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js] [39mno default error handler to resolve unknown exception. Error: fail to find handler for player.playerHandler.up
+    at Service.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js:33:30)
+    at handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:370:25)
+    at next (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\filterService.js:50:7)
+    at Service.beforeFilter (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\filterService.js:65:3)
+    at beforeFilter (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:242:8)
+    at doHandle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:383:3)
+    at pro.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:125:3)
+    at pro.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\components\server.js:67:14)
+    at Remote.forwardMessage (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\remote\backend\msgRemote.js:45:10)
+    at pro.route (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\node_modules\pomelo-rpc\lib\rpc-server\dispatcher.js:51:10)
+[2016-08-29 15:22:14.776] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 15:22:16.052] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 15:22:16.053] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 15:22:16.053] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1233 ms
+[2016-08-29 15:22:16.316] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":3624}}
+[2016-08-29 15:22:52.262] [WARN] pomelo - [33m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js] [39mcould not find the method sendup in handler: playerHandler
+[2016-08-29 15:22:52.262] [ERROR] pomelo - [31m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js] [39m[handleManager]: fail to find handler for "player.playerHandler.sendup"
+[2016-08-29 15:22:52.264] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js] [39mno default error handler to resolve unknown exception. Error: fail to find handler for player.playerHandler.sendup
+    at Service.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js:33:30)
+    at handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:370:25)
+    at next (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\filterService.js:50:7)
+    at Service.beforeFilter (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\filterService.js:65:3)
+    at beforeFilter (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:242:8)
+    at doHandle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:383:3)
+    at pro.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:125:3)
+    at pro.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\components\server.js:67:14)
+    at Remote.forwardMessage (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\remote\backend\msgRemote.js:45:10)
+    at pro.route (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\node_modules\pomelo-rpc\lib\rpc-server\dispatcher.js:51:10)
+[2016-08-29 15:23:37.493] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 15:23:40.483] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 15:23:40.483] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 15:23:40.483] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 2985 ms
+[2016-08-29 15:24:15.072] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 15:24:17.810] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 15:24:17.811] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 15:24:17.811] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 2736 ms
+[2016-08-29 15:24:25.792] [WARN] pomelo - [33m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js] [39mcould not find the method sendu in handler: playerHandler
+[2016-08-29 15:24:25.792] [ERROR] pomelo - [31m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js] [39m[handleManager]: fail to find handler for "player.playerHandler.sendu"
+[2016-08-29 15:24:25.794] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js] [39mno default error handler to resolve unknown exception. Error: fail to find handler for player.playerHandler.sendu
+    at Service.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\handlerService.js:33:30)
+    at handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:370:25)
+    at next (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\filterService.js:50:7)
+    at Service.beforeFilter (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\service\filterService.js:65:3)
+    at beforeFilter (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:242:8)
+    at doHandle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:383:3)
+    at pro.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\server\server.js:125:3)
+    at pro.handle (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\components\server.js:67:14)
+    at Remote.forwardMessage (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\common\remote\backend\msgRemote.js:45:10)
+    at pro.route (D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\node_modules\pomelo-rpc\lib\rpc-server\dispatcher.js:51:10)
+[2016-08-29 15:36:32.001] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 15:36:33.149] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 15:36:33.150] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 15:36:33.150] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1146 ms
+[2016-08-29 15:36:33.248] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"gate","host":"127.0.0.1","clientPort":2011,"frontend":"true","serverType":"gate","pid":6736}}
+[2016-08-29 15:40:07.232] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 15:40:08.163] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 15:40:08.163] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 15:40:08.163] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 927 ms
+[2016-08-29 15:40:08.284] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":3176}}
+[2016-08-29 15:40:08.444] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"gate","host":"127.0.0.1","clientPort":2011,"frontend":"true","serverType":"gate","pid":7744}}
+[2016-08-29 15:40:58.252] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 15:40:59.457] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 15:40:59.458] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 15:40:59.458] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1132 ms
+[2016-08-29 15:40:59.532] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":5760}}
+[2016-08-29 15:40:59.835] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"gate","host":"127.0.0.1","clientPort":2011,"frontend":"true","serverType":"gate","pid":4320}}
+[2016-08-29 15:43:23.593] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 15:43:24.760] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 15:43:24.761] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 15:43:24.761] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1165 ms
+[2016-08-29 15:43:24.791] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"gate","host":"127.0.0.1","clientPort":2011,"frontend":"true","serverType":"gate","pid":6752}}
+[2016-08-29 15:44:29.873] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 15:44:31.667] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 15:44:31.668] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 15:44:31.668] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1732 ms
+[2016-08-29 16:00:34.132] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 16:00:35.598] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 16:00:35.598] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 16:00:35.598] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1462 ms
+[2016-08-29 16:00:36.121] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":8692}}
+[2016-08-29 16:02:44.906] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 16:02:46.465] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 16:02:46.465] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 16:02:46.465] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1473 ms
+[2016-08-29 16:02:46.478] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":7692}}
+[2016-08-29 16:04:11.805] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 16:04:12.993] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 16:04:12.993] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 16:04:12.993] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1184 ms
+[2016-08-29 16:05:35.269] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 16:05:36.355] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 16:05:36.356] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 16:05:36.356] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 992 ms
+[2016-08-29 16:06:15.818] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 16:06:16.844] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 16:06:16.845] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 16:06:16.845] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1024 ms
+[2016-08-29 16:10:20.287] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 16:10:21.543] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 16:10:21.544] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 16:10:21.544] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1216 ms
+[2016-08-29 16:10:21.812] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"connector","host":"127.0.0.1","port":3150,"clientPort":2010,"frontend":"true","args":" --debug=12456","serverType":"connector","pid":9016}}
+[2016-08-29 16:12:22.865] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 16:12:25.498] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 16:12:25.498] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 16:12:25.498] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 2631 ms
+[2016-08-29 16:12:25.766] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"gate","host":"127.0.0.1","clientPort":2011,"frontend":"true","serverType":"gate","pid":9148}}
+[2016-08-29 16:13:18.907] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 16:13:21.301] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 16:13:21.301] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 16:13:21.302] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 2311 ms
+[2016-08-29 16:15:49.749] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39mapplication inited: "player"
+[2016-08-29 16:15:51.166] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" enter after start...
+[2016-08-29 16:15:51.167] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" finish start
+[2016-08-29 16:15:51.167] [INFO] pomelo - [32m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\application.js] [39m"player" startup in 1415 ms
+[2016-08-29 16:15:51.778] [DEBUG] pomelo - [36m[D:\SGame\SGameServer\SGameServer\game-server\node_modules\pomelo\lib\modules\monitorwatcher.js] [39m[player] receive addServer signal: {"action":"addServer","server":{"main":"D:\\SGame\\SGameServer\\SGameServer\\game-server\\app.js","env":"development","id":"gate","host":"127.0.0.1","clientPort":2011,"frontend":"true","serverType":"gate","pid":8520}}
